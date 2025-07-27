@@ -1,0 +1,687 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8"/>
+    <title>Configuration</title>
+    <link rel="stylesheet" type="text/css" href="dscript.css">
+ </head>
+
+<body onload="startAJAX()">
+    <div id="container">
+            <p id="ModuleName"> ~Module~ <span style="font-size: 40%">  System Configuration </span> </p>
+            <p id="devantech"> Devantech Ltd </p>
+          <br>
+        <div id="hr"> <hr style="width: 100%; height: 1px; background-color: #FFFFFF; border: none">  </div>
+
+          <div id="menubar">
+            <ul>
+                <div onmouseover="StatusText(this)" onmouseout="ScheduleText(this)"> <li><a href="_config.htm">Status</a></li> </div>
+                <div onmouseover="NetworkText(this)" onmouseout="ScheduleText(this)"><li><a href="_config2.htm">Network</a></li> </div>
+                <div onmouseover="TCPIPText(this)" onmouseout="ScheduleText(this)"> <li><a href="_config3.htm">TCP/IP</a></li> </div>
+                <div onmouseover="RelayText(this)" onmouseout="ScheduleText(this)"> <li><a href="_config5.htm">Relays</a></li> </div>
+                <div onmouseover="IOText(this)" onmouseout="ScheduleText(this)"> <li><a href="_config7.htm">Input/Output</a></li> </div>
+                <div onmouseover="dSxText(this)" onmouseout="ScheduleText(this)"> <li><a href="_config6.htm">dSx Config</a></li> </div>
+                <div onmouseover="SequenceText(this)" onmouseout="ScheduleText(this)"> <li><a href="_config14.htm">Sequencer</a></li> </div>
+                <div onmouseover="ScheduleText(this)"> <li><a style="background-color: #8090a0;" href="_config11.htm">Scheduler</a></li> </div>
+                <div onmouseover="CounterText(this)" onmouseout="ScheduleText(this)"> <li><a href="_config12.htm">Counter/Timer</a></li> </div>
+                <div onmouseover="NotifyText(this)" onmouseout="ScheduleText(this)"> <li><a href="_config4.htm">Event Notification</a></li> </div>
+                <div onmouseover="P2PText(this)"onmouseout="ScheduleText(this)"> <li><a href="_config10.htm">Peer to Peer</a></li> </div>
+                <div onmouseover="EasyMailText(this)" onmouseout="ScheduleText(this)"> <li><a href="_config9.htm">Email</a></li> </div>
+                <div onmouseover="PingText(this)" onmouseout="ScheduleText(this)"> <li><a href="_config8.htm">Ping</a></li> </div>
+                <div onmouseover="AppText(this)" onmouseout="ScheduleText(this)"> <li><a href="index.htm">Application Page</a></li> </div>
+            </ul>
+        </div>
+
+       <div id="centerblock">
+            <div onmouseover="SchNoText(this)" onmouseout="ScheduleText(this)">
+                <div class="item-line"> Schedule No. </div>
+                <select id="SchNum" onChange="SelectSch();">
+                    <option value="1">1</option>
+                </select>
+            </div>  <br>
+            <div id="sch1" style="display:block">
+                <div style="margin-bottom:5px" onmouseover="SchRelayText(this)" onmouseout="ScheduleText(this)">
+                    <div class="item-line"> Target Relay</div>
+                    <input style="width:20px; margin:5px;" type="text" value = "~System_Sch_R1~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_R1='+document.getElementById('SR1').value);" id="SR1">
+                </div>
+                <div onmouseover="SchWdayText(this)" onmouseout="ScheduleText(this)">
+                    <div class="item-line2"> W/Days </div>
+                    <button style="margin-left:12px;width:33px;height:25px;" id="WDay1" onmousedown="newAJAXCommand('dscript.cgi?SystemWDayUpdated=1');">S</button>
+                    <button style="width:33px;height:25px;" id="WDay2" onmousedown="newAJAXCommand('dscript.cgi?SystemWDayUpdated=2');">M</button>
+                    <button style="width:33px;height:25px;" id="WDay3" onmousedown="newAJAXCommand('dscript.cgi?SystemWDayUpdated=3');">T</button>
+                    <button style="width:33px;height:25px;" id="WDay4" onmousedown="newAJAXCommand('dscript.cgi?SystemWDayUpdated=4');">W</button>
+                    <button style="width:33px;height:25px;" id="WDay5" onmousedown="newAJAXCommand('dscript.cgi?SystemWDayUpdated=5');">T</button>
+                    <button style="width:33px;height:25px;" id="WDay6" onmousedown="newAJAXCommand('dscript.cgi?SystemWDayUpdated=6');">F</button>
+                    <button style="width:33px;height:25px;" id="WDay7" onmousedown="newAJAXCommand('dscript.cgi?SystemWDayUpdated=7');">S</button>
+                </div>
+                <div style = "margin-top:10px">
+                    <span style = "margin-left:150px"> Hours </span>
+                    <span style = "margin-left:40px"> Minutes </span>
+                    <span style = "margin-left:35px"> Seconds </span>
+                </div>
+                <div onmouseover="SchStartText(this)" onmouseout="ScheduleText(this)">
+                    <div class="item-line"> Start 1</div>
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_STH1a~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_STH1a='+document.getElementById('STH1a').value);" id="STH1a">
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_STM1a~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_STM1a='+document.getElementById('STM1a').value);" id="STM1a">
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_STS1a~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_STS1a='+document.getElementById('STS1a').value);" id="STS1a">
+                </div>
+                <div onmouseover="SchStopText(this)" onmouseout="ScheduleText(this)">
+                    <div class="item-line"> Stop 1</div>
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_SPH1a~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_SPH1a='+document.getElementById('SPH1a').value);" id="SPH1a">
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_SPM1a~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_SPM1a='+document.getElementById('SPM1a').value);" id="SPM1a">
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_SPS1a~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_SPS1a='+document.getElementById('SPS1a').value);" id="SPS1a">
+                </div>
+                <div onmouseover="SchStartText(this)" onmouseout="ScheduleText(this)" style = "margin-top:10px">
+                    <div class="item-line"> Start 2</div>
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_STH1b~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_STH1b='+document.getElementById('STH1b').value);" id="STH1b">
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_STM1b~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_STM1b='+document.getElementById('STM1b').value);" id="STM1b">
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_STS1b~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_STS1b='+document.getElementById('STS1b').value);" id="STS1b">
+                </div>
+               <div onmouseover="SchStopText(this)" onmouseout="ScheduleText(this)">
+                    <div class="item-line"> Stop 2</div>
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_SPH1b~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_SPH1b='+document.getElementById('SPH1b').value);" id="SPH1b">
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_SPM1b~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_SPM1b='+document.getElementById('SPM1b').value);" id="SPM1b">
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_SPS1b~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_SPS1b='+document.getElementById('SPS1b').value);" id="SPS1b">
+                </div>
+                <p id="Loading"> Loading Schedule Data >------</p>
+            </div>
+            <div id="sch2" style="display:none">
+                <div style="margin-bottom:5px" onmouseover="SchRelayText(this)" onmouseout="ScheduleText(this)">
+                    <div class="item-line"> Target Relay</div>
+                    <input style="width:20px; margin:5px;" type="text" value = "~System_Sch_R2~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_R2='+document.getElementById('SR2').value);" id="SR2">
+                </div>
+                <div onmouseover="SchWdayText(this)" onmouseout="ScheduleText(this)">
+                    <div class="item-line2"> W/Days </div>
+                    <button style="margin-left:12px;width:33px;height:25px;" id="WDay21" onmousedown="newAJAXCommand('dscript.cgi?SystemWDayUpdated=8');">S</button>
+                    <button style="width:33px;height:25px;" id="WDay22" onmousedown="newAJAXCommand('dscript.cgi?SystemWDayUpdated=9');">M</button>
+                    <button style="width:33px;height:25px;" id="WDay23" onmousedown="newAJAXCommand('dscript.cgi?SystemWDayUpdated=10');">T</button>
+                    <button style="width:33px;height:25px;" id="WDay24" onmousedown="newAJAXCommand('dscript.cgi?SystemWDayUpdated=11');">W</button>
+                    <button style="width:33px;height:25px;" id="WDay25" onmousedown="newAJAXCommand('dscript.cgi?SystemWDayUpdated=12');">T</button>
+                    <button style="width:33px;height:25px;" id="WDay26" onmousedown="newAJAXCommand('dscript.cgi?SystemWDayUpdated=13');">F</button>
+                    <button style="width:33px;height:25px;" id="WDay27" onmousedown="newAJAXCommand('dscript.cgi?SystemWDayUpdated=14');">S</button>
+                </div>
+                <div style = "margin-top:10px">
+                    <span style = "margin-left:150px"> Hours </span>
+                    <span style = "margin-left:40px"> Minutes </span>
+                    <span style = "margin-left:35px"> Seconds </span>
+                </div>
+                <div onmouseover="SchStartText(this)" onmouseout="ScheduleText(this)">
+                    <div class="item-line"> Start 1</div>
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_STH2a~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_STH2a='+document.getElementById('STH2a').value);" id="STH2a">
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_STM2a~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_STM2a='+document.getElementById('STM2a').value);" id="STM2a">
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_STS2a~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_STS2a='+document.getElementById('STS2a').value);" id="STS2a">
+                </div>
+                <div onmouseover="SchStopText(this)" onmouseout="ScheduleText(this)">
+                    <div class="item-line"> Stop 1</div>
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_SPH2a~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_SPH2a='+document.getElementById('SPH2a').value);" id="SPH2a">
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_SPM2a~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_SPM2a='+document.getElementById('SPM2a').value);" id="SPM2a">
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_SPS2a~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_SPS2a='+document.getElementById('SPS2a').value);" id="SPS2a">
+                </div>
+                <div onmouseover="SchStartText(this)" onmouseout="ScheduleText(this)" style = "margin-top:10px">
+                    <div class="item-line"> Start 2</div>
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_STH2b~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_STH2b='+document.getElementById('STH2b').value);" id="STH2b">
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_STM2b~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_STM2b='+document.getElementById('STM2b').value);" id="STM2b">
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_STS2b~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_STS2b='+document.getElementById('STS2b').value);" id="STS2b">
+                </div>
+               <div onmouseover="SchStopText(this)" onmouseout="ScheduleText(this)">
+                    <div class="item-line"> Stop 2</div>
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_SPH2b~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_SPH2b='+document.getElementById('SPH2b').value);" id="SPH2b">
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_SPM2b~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_SPM2b='+document.getElementById('SPM2b').value);" id="SPM2b">
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_SPS2b~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_SPS2b='+document.getElementById('SPS2b').value);" id="SPS2b">
+                </div>
+                <script> document.getElementById('Loading').innerHTML = "Loading Schedule Data ->-----"; </script>
+                <p></p> <!--To maintain vertical spacing of "loading" paragraph  -->
+            </div>
+            <div id="sch3" style="display:none">
+                <div style="margin-bottom:5px" onmouseover="SchRelayText(this)" onmouseout="ScheduleText(this)">
+                    <div class="item-line"> Target Relay</div>
+                    <input style="width:20px; margin:5px;" type="text" value = "~System_Sch_R3~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_R3='+document.getElementById('SR3').value);" id="SR3">
+                </div>
+                <div onmouseover="SchWdayText(this)" onmouseout="ScheduleText(this)">
+                    <div class="item-line2"> W/Days </div>
+                    <button style="margin-left:12px;width:33px;height:25px;" id="WDay31" onmousedown="newAJAXCommand('dscript.cgi?SystemWDayUpdated=15');">S</button>
+                    <button style="width:33px;height:25px;" id="WDay32" onmousedown="newAJAXCommand('dscript.cgi?SystemWDayUpdated=16');">M</button>
+                    <button style="width:33px;height:25px;" id="WDay33" onmousedown="newAJAXCommand('dscript.cgi?SystemWDayUpdated=17');">T</button>
+                    <button style="width:33px;height:25px;" id="WDay34" onmousedown="newAJAXCommand('dscript.cgi?SystemWDayUpdated=18');">W</button>
+                    <button style="width:33px;height:25px;" id="WDay35" onmousedown="newAJAXCommand('dscript.cgi?SystemWDayUpdated=19');">T</button>
+                    <button style="width:33px;height:25px;" id="WDay36" onmousedown="newAJAXCommand('dscript.cgi?SystemWDayUpdated=20');">F</button>
+                    <button style="width:33px;height:25px;" id="WDay37" onmousedown="newAJAXCommand('dscript.cgi?SystemWDayUpdated=21');">S</button>
+                </div>
+                <div style = "margin-top:10px">
+                    <span style = "margin-left:150px"> Hours </span>
+                    <span style = "margin-left:40px"> Minutes </span>
+                    <span style = "margin-left:35px"> Seconds </span>
+                </div>
+                <div onmouseover="SchStartText(this)" onmouseout="ScheduleText(this)">
+                    <div class="item-line"> Start 1</div>
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_STH3a~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_STH3a='+document.getElementById('STH3a').value);" id="STH3a">
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_STM3a~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_STM3a='+document.getElementById('STM3a').value);" id="STM3a">
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_STS3a~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_STS3a='+document.getElementById('STS3a').value);" id="STS3a">
+                </div>
+                <div onmouseover="SchStopText(this)" onmouseout="ScheduleText(this)">
+                    <div class="item-line"> Stop 1</div>
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_SPH3a~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_SPH3a='+document.getElementById('SPH3a').value);" id="SPH3a">
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_SPM3a~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_SPM3a='+document.getElementById('SPM3a').value);" id="SPM3a">
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_SPS3a~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_SPS3a='+document.getElementById('SPS3a').value);" id="SPS3a">
+                </div>
+                <div onmouseover="SchStartText(this)" onmouseout="ScheduleText(this)" style = "margin-top:10px">
+                    <div class="item-line"> Start 2</div>
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_STH3b~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_STH3b='+document.getElementById('STH3b').value);" id="STH3b">
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_STM3b~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_STM3b='+document.getElementById('STM3b').value);" id="STM3b">
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_STS3b~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_STS3b='+document.getElementById('STS3b').value);" id="STS3b">
+                </div>
+               <div onmouseover="SchStopText(this)" onmouseout="ScheduleText(this)">
+                    <div class="item-line"> Stop 2</div>
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_SPH3b~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_SPH3b='+document.getElementById('SPH3b').value);" id="SPH3b">
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_SPM3b~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_SPM3b='+document.getElementById('SPM3b').value);" id="SPM3b">
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_SPS3b~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_SPS3b='+document.getElementById('SPS3b').value);" id="SPS3b">
+                </div>
+                <script> document.getElementById('Loading').innerHTML = "Loading Schedule Data -->----"; </script>
+                <p></p> <!--To maintain vertical spacing of "loading" paragraph  -->
+            </div>
+            <div id="sch4" style="display:none">
+                <div style="margin-bottom:5px" onmouseover="SchRelayText(this)" onmouseout="ScheduleText(this)">
+                    <div class="item-line"> Target Relay</div>
+                    <input style="width:20px; margin:5px;" type="text" value = "~System_Sch_R4~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_R4='+document.getElementById('SR4').value);" id="SR4">
+                </div>
+                <div onmouseover="SchWdayText(this)" onmouseout="ScheduleText(this)">
+                    <div class="item-line2"> W/Days </div>
+                    <button style="margin-left:12px;width:33px;height:25px;" id="WDay41" onmousedown="newAJAXCommand('dscript.cgi?SystemWDayUpdated=22');">S</button>
+                    <button style="width:33px;height:25px;" id="WDay42" onmousedown="newAJAXCommand('dscript.cgi?SystemWDayUpdated=23');">M</button>
+                    <button style="width:33px;height:25px;" id="WDay43" onmousedown="newAJAXCommand('dscript.cgi?SystemWDayUpdated=24');">T</button>
+                    <button style="width:33px;height:25px;" id="WDay44" onmousedown="newAJAXCommand('dscript.cgi?SystemWDayUpdated=25');">W</button>
+                    <button style="width:33px;height:25px;" id="WDay45" onmousedown="newAJAXCommand('dscript.cgi?SystemWDayUpdated=26');">T</button>
+                    <button style="width:33px;height:25px;" id="WDay46" onmousedown="newAJAXCommand('dscript.cgi?SystemWDayUpdated=27');">F</button>
+                    <button style="width:33px;height:25px;" id="WDay47" onmousedown="newAJAXCommand('dscript.cgi?SystemWDayUpdated=28');">S</button>
+                </div>
+                <div style = "margin-top:10px">
+                    <span style = "margin-left:150px"> Hours </span>
+                    <span style = "margin-left:40px"> Minutes </span>
+                    <span style = "margin-left:35px"> Seconds </span>
+                </div>
+                <div onmouseover="SchStartText(this)" onmouseout="ScheduleText(this)">
+                    <div class="item-line"> Start 1</div>
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_STH4a~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_STH4a='+document.getElementById('STH4a').value);" id="STH4a">
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_STM4a~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_STM4a='+document.getElementById('STM4a').value);" id="STM4a">
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_STS4a~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_STS4a='+document.getElementById('STS4a').value);" id="STS4a">
+                </div>
+                <div onmouseover="SchStopText(this)" onmouseout="ScheduleText(this)">
+                    <div class="item-line"> Stop 1</div>
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_SPH4a~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_SPH4a='+document.getElementById('SPH4a').value);" id="SPH4a">
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_SPM4a~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_SPM4a='+document.getElementById('SPM4a').value);" id="SPM4a">
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_SPS4a~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_SPS4a='+document.getElementById('SPS4a').value);" id="SPS4a">
+                </div>
+                <div onmouseover="SchStartText(this)" onmouseout="ScheduleText(this)" style = "margin-top:10px">
+                    <div class="item-line"> Start 2</div>
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_STH4b~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_STH4b='+document.getElementById('STH4b').value);" id="STH4b">
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_STM4b~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_STM4b='+document.getElementById('STM4b').value);" id="STM4b">
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_STS4b~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_STS4b='+document.getElementById('STS4b').value);" id="STS4b">
+                </div>
+               <div onmouseover="SchStopText(this)" onmouseout="ScheduleText(this)">
+                    <div class="item-line"> Stop 2</div>
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_SPH4b~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_SPH4b='+document.getElementById('SPH4b').value);" id="SPH4b">
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_SPM4b~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_SPM4b='+document.getElementById('SPM4b').value);" id="SPM4b">
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_SPS4b~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_SPS4b='+document.getElementById('SPS4b').value);" id="SPS4b">
+                </div>
+                <script> document.getElementById('Loading').innerHTML = "Loading Schedule Data --->---"; </script>
+                <p></p> <!--To maintain vertical spacing of "loading" paragraph  -->
+            </div>
+            <div id="sch5" style="display:none">
+                <div style="margin-bottom:5px" onmouseover="SchRelayText(this)" onmouseout="ScheduleText(this)">
+                    <div class="item-line"> Target Relay</div>
+                    <input style="width:20px; margin:5px;" type="text" value = "~System_Sch_R5~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_R5='+document.getElementById('SR5').value);" id="SR5">
+                </div>
+                <div onmouseover="SchWdayText(this)" onmouseout="ScheduleText(this)">
+                    <div class="item-line2"> W/Days </div>
+                    <button style="margin-left:12px;width:33px;height:25px;" id="WDay51" onmousedown="newAJAXCommand('dscript.cgi?SystemWDayUpdated=29');">S</button>
+                    <button style="width:33px;height:25px;" id="WDay52" onmousedown="newAJAXCommand('dscript.cgi?SystemWDayUpdated=30');">M</button>
+                    <button style="width:33px;height:25px;" id="WDay53" onmousedown="newAJAXCommand('dscript.cgi?SystemWDayUpdated=31');">T</button>
+                    <button style="width:33px;height:25px;" id="WDay54" onmousedown="newAJAXCommand('dscript.cgi?SystemWDayUpdated=32');">W</button>
+                    <button style="width:33px;height:25px;" id="WDay55" onmousedown="newAJAXCommand('dscript.cgi?SystemWDayUpdated=33');">T</button>
+                    <button style="width:33px;height:25px;" id="WDay56" onmousedown="newAJAXCommand('dscript.cgi?SystemWDayUpdated=34');">F</button>
+                    <button style="width:33px;height:25px;" id="WDay57" onmousedown="newAJAXCommand('dscript.cgi?SystemWDayUpdated=35');">S</button>
+                </div>
+                <div style = "margin-top:10px">
+                    <span style = "margin-left:150px"> Hours </span>
+                    <span style = "margin-left:40px"> Minutes </span>
+                    <span style = "margin-left:35px"> Seconds </span>
+                </div>
+                <div onmouseover="SchStartText(this)" onmouseout="ScheduleText(this)">
+                    <div class="item-line"> Start 1</div>
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_STH5a~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_STH5a='+document.getElementById('STH5a').value);" id="STH5a">
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_STM5a~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_STM5a='+document.getElementById('STM5a').value);" id="STM5a">
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_STS5a~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_STS5a='+document.getElementById('STS5a').value);" id="STS5a">
+                </div>
+                <div onmouseover="SchStopText(this)" onmouseout="ScheduleText(this)">
+                    <div class="item-line"> Stop 1</div>
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_SPH5a~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_SPH5a='+document.getElementById('SPH5a').value);" id="SPH5a">
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_SPM5a~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_SPM5a='+document.getElementById('SPM5a').value);" id="SPM5a">
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_SPS5a~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_SPS5a='+document.getElementById('SPS5a').value);" id="SPS5a">
+                </div>
+                <div onmouseover="SchStartText(this)" onmouseout="ScheduleText(this)" style = "margin-top:10px">
+                    <div class="item-line"> Start 2</div>
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_STH5b~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_STH5b='+document.getElementById('STH5b').value);" id="STH5b">
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_STM5b~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_STM5b='+document.getElementById('STM5b').value);" id="STM5b">
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_STS5b~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_STS5b='+document.getElementById('STS5b').value);" id="STS5b">
+                </div>
+               <div onmouseover="SchStopText(this)" onmouseout="ScheduleText(this)">
+                    <div class="item-line"> Stop 2</div>
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_SPH5b~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_SPH5b='+document.getElementById('SPH5b').value);" id="SPH5b">
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_SPM5b~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_SPM5b='+document.getElementById('SPM5b').value);" id="SPM5b">
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_SPS5b~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_SPS5b='+document.getElementById('SPS5b').value);" id="SPS5b">
+                </div>
+                <script> document.getElementById('Loading').innerHTML = "Loading Schedule Data ---->--"; </script>
+                <p></p> <!--To maintain vertical spacing of "loading" paragraph  -->
+            </div>
+            <div id="sch6" style="display:none">
+                <div style="margin-bottom:5px" onmouseover="SchRelayText(this)" onmouseout="ScheduleText(this)">
+                    <div class="item-line"> Target Relay</div>
+                    <input style="width:20px; margin:5px;" type="text" value = "~System_Sch_R6~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_R6='+document.getElementById('SR6').value);" id="SR6">
+                </div>
+                <div onmouseover="SchWdayText(this)" onmouseout="ScheduleText(this)">
+                    <div class="item-line2"> W/Days </div>
+                    <button style="margin-left:12px;width:33px;height:25px;" id="WDay61" onmousedown="newAJAXCommand('dscript.cgi?SystemWDayUpdated=36');">S</button>
+                    <button style="width:33px;height:25px;" id="WDay62" onmousedown="newAJAXCommand('dscript.cgi?SystemWDayUpdated=37');">M</button>
+                    <button style="width:33px;height:25px;" id="WDay63" onmousedown="newAJAXCommand('dscript.cgi?SystemWDayUpdated=38');">T</button>
+                    <button style="width:33px;height:25px;" id="WDay64" onmousedown="newAJAXCommand('dscript.cgi?SystemWDayUpdated=39');">W</button>
+                    <button style="width:33px;height:25px;" id="WDay65" onmousedown="newAJAXCommand('dscript.cgi?SystemWDayUpdated=40');">T</button>
+                    <button style="width:33px;height:25px;" id="WDay66" onmousedown="newAJAXCommand('dscript.cgi?SystemWDayUpdated=41');">F</button>
+                    <button style="width:33px;height:25px;" id="WDay67" onmousedown="newAJAXCommand('dscript.cgi?SystemWDayUpdated=42');">S</button>
+                </div>
+                <div style = "margin-top:10px">
+                    <span style = "margin-left:150px"> Hours </span>
+                    <span style = "margin-left:40px"> Minutes </span>
+                    <span style = "margin-left:35px"> Seconds </span>
+                </div>
+                <div onmouseover="SchStartText(this)" onmouseout="ScheduleText(this)">
+                    <div class="item-line"> Start 1</div>
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_STH6a~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_STH6a='+document.getElementById('STH6a').value);" id="STH6a">
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_STM6a~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_STM6a='+document.getElementById('STM6a').value);" id="STM6a">
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_STS6a~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_STS6a='+document.getElementById('STS6a').value);" id="STS6a">
+                </div>
+                <div onmouseover="SchStopText(this)" onmouseout="ScheduleText(this)">
+                    <div class="item-line"> Stop 1</div>
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_SPH6a~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_SPH6a='+document.getElementById('SPH6a').value);" id="SPH6a">
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_SPM6a~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_SPM6a='+document.getElementById('SPM6a').value);" id="SPM6a">
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_SPS6a~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_SPS6a='+document.getElementById('SPS6a').value);" id="SPS6a">
+                </div>
+                <div onmouseover="SchStartText(this)" onmouseout="ScheduleText(this)" style = "margin-top:10px">
+                    <div class="item-line"> Start 2</div>
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_STH6b~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_STH6b='+document.getElementById('STH6b').value);" id="STH6b">
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_STM6b~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_STM6b='+document.getElementById('STM6b').value);" id="STM6b">
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_STS6b~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_STS6b='+document.getElementById('STS6b').value);" id="STS6b">
+                </div>
+               <div onmouseover="SchStopText(this)" onmouseout="ScheduleText(this)">
+                    <div class="item-line"> Stop 2</div>
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_SPH6b~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_SPH6b='+document.getElementById('SPH6b').value);" id="SPH6b">
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_SPM6b~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_SPM6b='+document.getElementById('SPM6b').value);" id="SPM6b">
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_SPS6b~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_SPS6b='+document.getElementById('SPS6b').value);" id="SPS6b">
+                </div>
+                <script> document.getElementById('Loading').innerHTML = "Loading Schedule Data ----->-"; </script>
+                <p></p> <!--To maintain vertical spacing of "loading" paragraph  -->
+            </div>
+            <div id="sch7" style="display:none">
+                <div style="margin-bottom:5px" onmouseover="SchRelayText(this)" onmouseout="ScheduleText(this)">
+                    <div class="item-line"> Target Relay</div>
+                    <input style="width:20px; margin:5px;" type="text" value = "~System_Sch_R7~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_R7='+document.getElementById('SR7').value);" id="SR7">
+                </div>
+                <div onmouseover="SchWdayText(this)" onmouseout="ScheduleText(this)">
+                    <div class="item-line2"> W/Days </div>
+                    <button style="margin-left:12px;width:33px;height:25px;" id="WDay71" onmousedown="newAJAXCommand('dscript.cgi?SystemWDayUpdated=43');">S</button>
+                    <button style="width:33px;height:25px;" id="WDay72" onmousedown="newAJAXCommand('dscript.cgi?SystemWDayUpdated=44');">M</button>
+                    <button style="width:33px;height:25px;" id="WDay73" onmousedown="newAJAXCommand('dscript.cgi?SystemWDayUpdated=45');">T</button>
+                    <button style="width:33px;height:25px;" id="WDay74" onmousedown="newAJAXCommand('dscript.cgi?SystemWDayUpdated=46');">W</button>
+                    <button style="width:33px;height:25px;" id="WDay75" onmousedown="newAJAXCommand('dscript.cgi?SystemWDayUpdated=47');">T</button>
+                    <button style="width:33px;height:25px;" id="WDay76" onmousedown="newAJAXCommand('dscript.cgi?SystemWDayUpdated=48');">F</button>
+                    <button style="width:33px;height:25px;" id="WDay77" onmousedown="newAJAXCommand('dscript.cgi?SystemWDayUpdated=49');">S</button>
+                </div>
+                <div style = "margin-top:10px">
+                    <span style = "margin-left:150px"> Hours </span>
+                    <span style = "margin-left:40px"> Minutes </span>
+                    <span style = "margin-left:35px"> Seconds </span>
+                </div>
+                <div onmouseover="SchStartText(this)" onmouseout="ScheduleText(this)">
+                    <div class="item-line"> Start 1</div>
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_STH7a~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_STH7a='+document.getElementById('STH7a').value);" id="STH7a">
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_STM7a~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_STM7a='+document.getElementById('STM7a').value);" id="STM7a">
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_STS7a~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_STS7a='+document.getElementById('STS7a').value);" id="STS7a">
+                </div>
+                <div onmouseover="SchStopText(this)" onmouseout="ScheduleText(this)">
+                    <div class="item-line"> Stop 1</div>
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_SPH7a~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_SPH7a='+document.getElementById('SPH7a').value);" id="SPH7a">
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_SPM7a~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_SPM7a='+document.getElementById('SPM7a').value);" id="SPM7a">
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_SPS7a~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_SPS7a='+document.getElementById('SPS7a').value);" id="SPS7a">
+                </div>
+                <div onmouseover="SchStartText(this)" onmouseout="ScheduleText(this)" style = "margin-top:10px">
+                    <div class="item-line"> Start 2</div>
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_STH7b~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_STH7b='+document.getElementById('STH7b').value);" id="STH7b">
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_STM7b~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_STM7b='+document.getElementById('STM7b').value);" id="STM7b">
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_STS7b~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_STS7b='+document.getElementById('STS7b').value);" id="STS7b">
+                </div>
+               <div onmouseover="SchStopText(this)" onmouseout="ScheduleText(this)">
+                    <div class="item-line"> Stop 2</div>
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_SPH7b~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_SPH7b='+document.getElementById('SPH7b').value);" id="SPH7b">
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_SPM7b~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_SPM7b='+document.getElementById('SPM7b').value);" id="SPM7b">
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_SPS7b~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_SPS7b='+document.getElementById('SPS7b').value);" id="SPS7b">
+                </div>
+                <script> document.getElementById('Loading').innerHTML = "Loading Schedule Data ------>"; </script>
+                <p></p> <!--To maintain vertical spacing of "loading" paragraph  -->
+            </div>
+            <div id="sch8" style="display:none">
+                <div style="margin-bottom:5px" onmouseover="SchRelayText(this)" onmouseout="ScheduleText(this)">
+                    <div class="item-line"> Target Relay</div>
+                    <input style="width:20px; margin:5px;" type="text" value = "~System_Sch_R8~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_R8='+document.getElementById('SR8').value);" id="SR8">
+                </div>
+                <div onmouseover="SchWdayText(this)" onmouseout="ScheduleText(this)">
+                    <div class="item-line2"> W/Days </div>
+                    <button style="margin-left:12px;width:33px;height:25px;" id="WDay81" onmousedown="newAJAXCommand('dscript.cgi?SystemWDayUpdated=50');">S</button>
+                    <button style="width:33px;height:25px;" id="WDay82" onmousedown="newAJAXCommand('dscript.cgi?SystemWDayUpdated=51');">M</button>
+                    <button style="width:33px;height:25px;" id="WDay83" onmousedown="newAJAXCommand('dscript.cgi?SystemWDayUpdated=52');">T</button>
+                    <button style="width:33px;height:25px;" id="WDay84" onmousedown="newAJAXCommand('dscript.cgi?SystemWDayUpdated=53');">W</button>
+                    <button style="width:33px;height:25px;" id="WDay85" onmousedown="newAJAXCommand('dscript.cgi?SystemWDayUpdated=54');">T</button>
+                    <button style="width:33px;height:25px;" id="WDay86" onmousedown="newAJAXCommand('dscript.cgi?SystemWDayUpdated=55');">F</button>
+                    <button style="width:33px;height:25px;" id="WDay87" onmousedown="newAJAXCommand('dscript.cgi?SystemWDayUpdated=56');">S</button>
+                </div>
+                <div style = "margin-top:10px">
+                    <span style = "margin-left:150px"> Hours </span>
+                    <span style = "margin-left:40px"> Minutes </span>
+                    <span style = "margin-left:35px"> Seconds </span>
+                </div>
+                <div onmouseover="SchStartText(this)" onmouseout="ScheduleText(this)">
+                    <div class="item-line"> Start 1</div>
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_STH8a~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_STH8a='+document.getElementById('STH8a').value);" id="STH8a">
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_STM8a~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_STM8a='+document.getElementById('STM8a').value);" id="STM8a">
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_STS8a~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_STS8a='+document.getElementById('STS8a').value);" id="STS8a">
+                </div>
+                <div onmouseover="SchStopText(this)" onmouseout="ScheduleText(this)">
+                    <div class="item-line"> Stop 1</div>
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_SPH8a~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_SPH8a='+document.getElementById('SPH8a').value);" id="SPH8a">
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_SPM8a~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_SPM8a='+document.getElementById('SPM8a').value);" id="SPM8a">
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_SPS8a~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_SPS8a='+document.getElementById('SPS8a').value);" id="SPS8a">
+                </div>
+                <div onmouseover="SchStartText(this)" onmouseout="ScheduleText(this)" style = "margin-top:10px">
+                    <div class="item-line"> Start 2</div>
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_STH8b~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_STH8b='+document.getElementById('STH8b').value);" id="STH8b">
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_STM8b~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_STM8b='+document.getElementById('STM8b').value);" id="STM8b">
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_STS8b~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_STS8b='+document.getElementById('STS8b').value);" id="STS8b">
+                </div>
+               <div onmouseover="SchStopText(this)" onmouseout="ScheduleText(this)">
+                    <div class="item-line"> Stop 2</div>
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_SPH8b~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_SPH8b='+document.getElementById('SPH8b').value);" id="SPH8b">
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_SPM8b~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_SPM8b='+document.getElementById('SPM8b').value);" id="SPM8b">
+                    <input style="width:70px; margin:5px;" type="text" value = "~System_Sch_SPS8b~" onkeyup="newAJAXCommand('dscript.cgi?System_Sch_SPS8b='+document.getElementById('SPS8b').value);" id="SPS8b">
+                </div>
+                <script> document.getElementById('Loading').innerHTML = ""; </script>
+                <p></p> <!--To maintain vertical spacing of "loading" paragraph  -->
+            </div>
+            <div onmouseover="SchTimeText(this)" onmouseout="ScheduleText(this)" style = "margin-top:10px">
+                <div class="item-line"> Current Time </div>
+                <input id="Hours" readonly="readonly" style="width:70px; margin:5px;" type="text" value = "~Hours~" >
+                <input id="Minutes" readonly="readonly" style="width:70px; margin:5px;" type="text" value = "~Minutes~" >
+                <input id="Seconds" readonly="readonly" style="width:70px; margin:5px;" type="text" value = "~Seconds~" >
+            </div>
+            <div onmouseover="TimeZoneText(this)" onmouseout="ScheduleText(this)">
+                <div class="item-line"> Time Zone </div>
+                <input style="width:70px; margin:5px;" type="text" value = "~TimeZone~" onkeyup="newAJAXCommand('dscript.cgi?TimeZone='+encodeURIComponent(this.value));">
+            </div>
+            <div onmouseover="DaylightText(this)" onmouseout="ScheduleText(this)">
+                <div class="item-line2"> Daylight Saving </div>
+                <input id="DST" type="checkbox" onclick="newAJAXCommand('dscript.cgi?UseDST=1')">
+            </div>
+
+
+        </div>
+
+        <div id="helpblock">
+            <div ID="help">
+            </div>
+            <div>
+                <div class='Indicator1'>  <img class='IO' id='Pend' src='DarkOff.png'/> Update Pending </div>
+            </div>
+        </div>
+
+    </div>
+
+ <script>
+
+if(~DaylightSaving~) document.getElementById("DST").checked = true;
+
+ScheduleText(0);
+
+var sel = document.getElementById('SchNum');
+for(var i = 2; i < 9; i++) {
+    var opt = document.createElement('option');
+    opt.innerHTML = i;
+    opt.value = i;
+    sel.appendChild(opt);
+}
+
+
+function SelectSch()
+{
+    selection = document.getElementById('SchNum');
+    k = selection.options[selection.selectedIndex].value;
+    for(x=1; x<9; x++) {
+        if(k==x) {
+            document.getElementById('sch'+x).style.display = 'block';
+        }
+        else {
+            document.getElementById("sch"+x).style.display = "none";
+        }
+    }
+}
+
+function NotifyText(x) {
+    document.getElementById('help').innerHTML = "<br>Event Notification<br><br>Send an event notification to a server when any specified Relay or Input changes state.<br><br>";
+}
+
+function dSxText(x) {
+    document.getElementById('help').innerHTML = "<br>dSx Extension Modules.<br><br>Configure dSx I/O extension modules that are connected down stream on the RS485 port.";
+}
+
+function PingText(x) {
+    document.getElementById('help').innerHTML = "<br>Ping<br><br>Ping to up to two remote hosts.<br><br> Used to to test if a remote system is alive and well.<br><br>";
+}
+
+function TimeZoneText(x) {
+    document.getElementById('help').innerHTML = "<br>Time Zone<br><br>Enter your time zone here.<br><br>For GMT enter 0<br>CET enter 1<br>EST enter -5<br>IST enter 5:30";
+}
+
+function DaylightText(x) {
+    document.getElementById('help').innerHTML = "<br>Daylight Saving Time<br><br>Advances the time by 1 hour between the last Sunday in March, and the last Sunday in October.";
+}
+
+function CounterText(x) {
+    document.getElementById('help').innerHTML = "<br>Counter/Timers<br><br>Eight Counter/Timers.<br> Used as Counters when the count input is connected to an Input <br><br>Used as Timers when connected to the internal 1Hz clock, T1.<br><br>The 32-bit counter counts up from zero to a maximum of 2,147,483,647.";
+}
+
+function SchRelayText(x) {
+    document.getElementById('help').innerHTML = "<br>Relay Number<br><br>The relay that this schedule will control.<br><br>";
+}
+
+function SchTimeText(x) {
+    document.getElementById('help').innerHTML = "<br>Current Time<br><br>Read only, it cannot be changed.<br><br>The current time comes from internet time servers. To use the schedular the module must have an internet connection.<br><br>Displays zero if no time server can be located.";
+}
+
+function SchStartText(x) {
+    document.getElementById('help').innerHTML = "<br>Start Time<br><br>The schedule is active when the current time is between the start and stop times.";
+}
+
+function SchStopText(x) {
+    document.getElementById('help').innerHTML = "<br>Stop Time<br><br>The schedule is active when the current time is between the start and stop times.";
+}
+
+function SchWdayText(x) {
+    document.getElementById('help').innerHTML = "<br>Weekday Mask<br><br>Red indicates the week day is active. Click a button to toggle.<br><br>Schedule is disabled when all buttons are grey.";
+}
+
+function SchNoText(x) {
+    document.getElementById('help').innerHTML = "<br>Schedule Number<br><br>Selects the Schedule to configure.<br><br>Used in boolean equations to reference the schedules output.<br>S1-S8";
+}
+
+function ScheduleText(x) {
+    document.getElementById('help').innerHTML = "<br>Scheduler<br><br>Schedule daily events with 8 schedules, 2 events per schedule and a week day mask.";
+}
+
+function P2PText(x) {
+    document.getElementById('help').innerHTML = "<br>Peer to Peer<br><br>Use inputs on this module to control relays on other dSxxxx modules which can be on your local LAN or across the internet.<br>";
+}
+
+function HostText(x) {
+    document.getElementById('help').innerHTML = "<br>Host Name<br><br>A unique name for the device on your network. Use plain text such as:<br>MYMODULE";
+}
+
+function EasyMailText(x) {
+    document.getElementById('help').innerHTML = "<br>Easy Mail<br><br>Send secure emails in response to selected events.";
+}
+
+function P2PtimeoutText(x) {
+    document.getElementById('help').innerHTML = "<br>Communications Timeout<br><br>If there is no response from the remote device then communications will terminate after this time period.<br><br>5000 (5000mS = 5 Seconds) is a suitable value for a device on the LAN. <br><br>10000 for the WAN <br><br>15000 is better if going over 3G or 4G networks.";
+}
+
+function P2PNoText(x) {
+    document.getElementById('help').innerHTML = "<br>Peer to Peer event number<br><br>Selected with the 8 radio buttons below.";
+}
+
+function P2PinputText(x) {
+    document.getElementById('help').innerHTML = "<br>Input Event<br><br>Enter $ followed by boolean expression.<br><br>D1 for Digital input 1 active.<br>R1 for Relay 1 active.<br>D1&D2 for both active.<br>D1|D2 for either active.<br>A1<1234 analog input less than.<br>A1>1234 greater than.<br>(D1&D2)|A3>1234.<br><br>&nbsp&nbsp&nbsp&nbsp100 characters max.<br>&nbsp&nbsp&nbsp&nbspSee manual for full documentation";
+}
+
+function P2PIPText(x) {
+    document.getElementById('help').innerHTML = "<br>Target IP address<br><br>This can be an IP address on your local network (LAN) or on the wider Internet.";
+}
+
+function P2PportText(x) {
+    document.getElementById('help').innerHTML = "<br>Port Number<br><br>This is the TCP/IP port number of the target module.";
+}
+
+function P2PrelayText(x) {
+    document.getElementById('help').innerHTML = "<br>Relay Number<br><br>This is the Relay number of the relay on the target module.";
+}
+
+function P2PactionText(x) {
+    document.getElementById('help').innerHTML = "<br>Remote Relay Action<br><br>0 No Action - event is disabled.<br>1 Follow me.<br>2 Set Relay.<br>3 Reset Relay.<br>4 Toggle Relay.<br>100+ Pulse Relay.<br><br>Pulse times are mS.<br>1000mS = 1 Second.<br><br>5-99 No Action.";
+}
+
+function RelayText(x) {
+    document.getElementById('help').innerHTML = "<br>Relay Names<br><br>These are the labels on the relay buttons on the aplication page to give each relay a unique and descriptive name. <br><br>Maximum 20 characters.";
+}
+
+function IOText(x) {
+    document.getElementById('help').innerHTML = "<br>I/O Names<br><br>These are the I/O labels on the aplication page to give each I/O a unique and descriptive name. <br><br>Maximum 20 characters.";
+}
+
+function IOType(x) {
+    document.getElementById('help').innerHTML = "<br>I/O Types<br><br>Configure Digital I/O with or without pull-up resistors, or analogue inputs with 4.096v or 5v reference.";
+}
+
+function StatusText(x) {
+    document.getElementById('help').innerHTML = "<br>Status<br><br>Shows the current status of the module.";
+}
+
+function NetworkText(x) {
+    document.getElementById('help').innerHTML = "<br>Network<br><br>Configure network IP address and associated parameters.";
+}
+
+function TCPIPText(x) {
+    document.getElementById('help').innerHTML = "<br>TCP/IP<br><br>Configure the TCP/IP port and command set.";
+}
+
+function AppText(x) {
+    document.getElementById('help').innerHTML = "<br>Application<br><br>Jumps to the application webpage.";
+}
+
+function printDHCPhelp()
+{
+    document.getElementById('help').innerHTML = "<br>Static IP is disabled because DHCP is enabled.<br><br>Uncheck DHCP to allow static IP addresses.";
+}
+
+function SequenceText(x) {
+    document.getElementById('help').innerHTML = "<br>Sequencer<br><br>A 120 step, 12 output sequencer<br><br>Delay in mS, Seconds, Minutes, Hours or Random Seconds.<br><br>Wait for specified time.<br><br>Jump, Call & Return.<br><br>Branch on Relay, Digital Input or Schedule active.";
+}
+
+
+</script>
+
+<script>
+function ajaxUpdate()
+{
+    document.getElementById('WDay1').style.backgroundColor = (getValue('System_Sch_WD1')&'0x40') ? 'rgb(255,190,190)' : 'rgb(230,230,230)';
+    document.getElementById('WDay2').style.backgroundColor = (getValue('System_Sch_WD1')&'0x20') ? 'rgb(255,190,190)' : 'rgb(230,230,230)';
+    document.getElementById('WDay3').style.backgroundColor = (getValue('System_Sch_WD1')&'0x10') ? 'rgb(255,190,190)' : 'rgb(230,230,230)';
+    document.getElementById('WDay4').style.backgroundColor = (getValue('System_Sch_WD1')&'0x08') ? 'rgb(255,190,190)' : 'rgb(230,230,230)';
+    document.getElementById('WDay5').style.backgroundColor = (getValue('System_Sch_WD1')&'0x04') ? 'rgb(255,190,190)' : 'rgb(230,230,230)';
+    document.getElementById('WDay6').style.backgroundColor = (getValue('System_Sch_WD1')&'0x02') ? 'rgb(255,190,190)' : 'rgb(230,230,230)';
+    document.getElementById('WDay7').style.backgroundColor = (getValue('System_Sch_WD1')&'0x01') ? 'rgb(255,190,190)' : 'rgb(230,230,230)';
+
+    document.getElementById('WDay21').style.backgroundColor = (getValue('System_Sch_WD2')&'0x40') ? 'rgb(255,190,190)' : 'rgb(230,230,230)';
+    document.getElementById('WDay22').style.backgroundColor = (getValue('System_Sch_WD2')&'0x20') ? 'rgb(255,190,190)' : 'rgb(230,230,230)';
+    document.getElementById('WDay23').style.backgroundColor = (getValue('System_Sch_WD2')&'0x10') ? 'rgb(255,190,190)' : 'rgb(230,230,230)';
+    document.getElementById('WDay24').style.backgroundColor = (getValue('System_Sch_WD2')&'0x08') ? 'rgb(255,190,190)' : 'rgb(230,230,230)';
+    document.getElementById('WDay25').style.backgroundColor = (getValue('System_Sch_WD2')&'0x04') ? 'rgb(255,190,190)' : 'rgb(230,230,230)';
+    document.getElementById('WDay26').style.backgroundColor = (getValue('System_Sch_WD2')&'0x02') ? 'rgb(255,190,190)' : 'rgb(230,230,230)';
+    document.getElementById('WDay27').style.backgroundColor = (getValue('System_Sch_WD2')&'0x01') ? 'rgb(255,190,190)' : 'rgb(230,230,230)';
+
+    document.getElementById('WDay31').style.backgroundColor = (getValue('System_Sch_WD3')&'0x40') ? 'rgb(255,190,190)' : 'rgb(230,230,230)';
+    document.getElementById('WDay32').style.backgroundColor = (getValue('System_Sch_WD3')&'0x20') ? 'rgb(255,190,190)' : 'rgb(230,230,230)';
+    document.getElementById('WDay33').style.backgroundColor = (getValue('System_Sch_WD3')&'0x10') ? 'rgb(255,190,190)' : 'rgb(230,230,230)';
+    document.getElementById('WDay34').style.backgroundColor = (getValue('System_Sch_WD3')&'0x08') ? 'rgb(255,190,190)' : 'rgb(230,230,230)';
+    document.getElementById('WDay35').style.backgroundColor = (getValue('System_Sch_WD3')&'0x04') ? 'rgb(255,190,190)' : 'rgb(230,230,230)';
+    document.getElementById('WDay36').style.backgroundColor = (getValue('System_Sch_WD3')&'0x02') ? 'rgb(255,190,190)' : 'rgb(230,230,230)';
+    document.getElementById('WDay37').style.backgroundColor = (getValue('System_Sch_WD3')&'0x01') ? 'rgb(255,190,190)' : 'rgb(230,230,230)';
+
+    document.getElementById('WDay41').style.backgroundColor = (getValue('System_Sch_WD4')&'0x40') ? 'rgb(255,190,190)' : 'rgb(230,230,230)';
+    document.getElementById('WDay42').style.backgroundColor = (getValue('System_Sch_WD4')&'0x20') ? 'rgb(255,190,190)' : 'rgb(230,230,230)';
+    document.getElementById('WDay43').style.backgroundColor = (getValue('System_Sch_WD4')&'0x10') ? 'rgb(255,190,190)' : 'rgb(230,230,230)';
+    document.getElementById('WDay44').style.backgroundColor = (getValue('System_Sch_WD4')&'0x08') ? 'rgb(255,190,190)' : 'rgb(230,230,230)';
+    document.getElementById('WDay45').style.backgroundColor = (getValue('System_Sch_WD4')&'0x04') ? 'rgb(255,190,190)' : 'rgb(230,230,230)';
+    document.getElementById('WDay46').style.backgroundColor = (getValue('System_Sch_WD4')&'0x02') ? 'rgb(255,190,190)' : 'rgb(230,230,230)';
+    document.getElementById('WDay47').style.backgroundColor = (getValue('System_Sch_WD4')&'0x01') ? 'rgb(255,190,190)' : 'rgb(230,230,230)';
+
+    document.getElementById('WDay51').style.backgroundColor = (getValue('System_Sch_WD5')&'0x40') ? 'rgb(255,190,190)' : 'rgb(230,230,230)';
+    document.getElementById('WDay52').style.backgroundColor = (getValue('System_Sch_WD5')&'0x20') ? 'rgb(255,190,190)' : 'rgb(230,230,230)';
+    document.getElementById('WDay53').style.backgroundColor = (getValue('System_Sch_WD5')&'0x10') ? 'rgb(255,190,190)' : 'rgb(230,230,230)';
+    document.getElementById('WDay54').style.backgroundColor = (getValue('System_Sch_WD5')&'0x08') ? 'rgb(255,190,190)' : 'rgb(230,230,230)';
+    document.getElementById('WDay55').style.backgroundColor = (getValue('System_Sch_WD5')&'0x04') ? 'rgb(255,190,190)' : 'rgb(230,230,230)';
+    document.getElementById('WDay56').style.backgroundColor = (getValue('System_Sch_WD5')&'0x02') ? 'rgb(255,190,190)' : 'rgb(230,230,230)';
+    document.getElementById('WDay57').style.backgroundColor = (getValue('System_Sch_WD5')&'0x01') ? 'rgb(255,190,190)' : 'rgb(230,230,230)';
+
+    document.getElementById('WDay61').style.backgroundColor = (getValue('System_Sch_WD6')&'0x40') ? 'rgb(255,190,190)' : 'rgb(230,230,230)';
+    document.getElementById('WDay62').style.backgroundColor = (getValue('System_Sch_WD6')&'0x20') ? 'rgb(255,190,190)' : 'rgb(230,230,230)';
+    document.getElementById('WDay63').style.backgroundColor = (getValue('System_Sch_WD6')&'0x10') ? 'rgb(255,190,190)' : 'rgb(230,230,230)';
+    document.getElementById('WDay64').style.backgroundColor = (getValue('System_Sch_WD6')&'0x08') ? 'rgb(255,190,190)' : 'rgb(230,230,230)';
+    document.getElementById('WDay65').style.backgroundColor = (getValue('System_Sch_WD6')&'0x04') ? 'rgb(255,190,190)' : 'rgb(230,230,230)';
+    document.getElementById('WDay66').style.backgroundColor = (getValue('System_Sch_WD6')&'0x02') ? 'rgb(255,190,190)' : 'rgb(230,230,230)';
+    document.getElementById('WDay67').style.backgroundColor = (getValue('System_Sch_WD6')&'0x01') ? 'rgb(255,190,190)' : 'rgb(230,230,230)';
+
+    document.getElementById('WDay71').style.backgroundColor = (getValue('System_Sch_WD7')&'0x40') ? 'rgb(255,190,190)' : 'rgb(230,230,230)';
+    document.getElementById('WDay72').style.backgroundColor = (getValue('System_Sch_WD7')&'0x20') ? 'rgb(255,190,190)' : 'rgb(230,230,230)';
+    document.getElementById('WDay73').style.backgroundColor = (getValue('System_Sch_WD7')&'0x10') ? 'rgb(255,190,190)' : 'rgb(230,230,230)';
+    document.getElementById('WDay74').style.backgroundColor = (getValue('System_Sch_WD7')&'0x08') ? 'rgb(255,190,190)' : 'rgb(230,230,230)';
+    document.getElementById('WDay75').style.backgroundColor = (getValue('System_Sch_WD7')&'0x04') ? 'rgb(255,190,190)' : 'rgb(230,230,230)';
+    document.getElementById('WDay76').style.backgroundColor = (getValue('System_Sch_WD7')&'0x02') ? 'rgb(255,190,190)' : 'rgb(230,230,230)';
+    document.getElementById('WDay77').style.backgroundColor = (getValue('System_Sch_WD7')&'0x01') ? 'rgb(255,190,190)' : 'rgb(230,230,230)';
+
+    document.getElementById('WDay81').style.backgroundColor = (getValue('System_Sch_WD8')&'0x40') ? 'rgb(255,190,190)' : 'rgb(230,230,230)';
+    document.getElementById('WDay82').style.backgroundColor = (getValue('System_Sch_WD8')&'0x20') ? 'rgb(255,190,190)' : 'rgb(230,230,230)';
+    document.getElementById('WDay83').style.backgroundColor = (getValue('System_Sch_WD8')&'0x10') ? 'rgb(255,190,190)' : 'rgb(230,230,230)';
+    document.getElementById('WDay84').style.backgroundColor = (getValue('System_Sch_WD8')&'0x08') ? 'rgb(255,190,190)' : 'rgb(230,230,230)';
+    document.getElementById('WDay85').style.backgroundColor = (getValue('System_Sch_WD8')&'0x04') ? 'rgb(255,190,190)' : 'rgb(230,230,230)';
+    document.getElementById('WDay86').style.backgroundColor = (getValue('System_Sch_WD8')&'0x02') ? 'rgb(255,190,190)' : 'rgb(230,230,230)';
+    document.getElementById('WDay87').style.backgroundColor = (getValue('System_Sch_WD8')&'0x01') ? 'rgb(255,190,190)' : 'rgb(230,230,230)';
+
+    document.getElementById('Hours').value = getValue('Hours');
+    document.getElementById('Minutes').value = getValue('Minutes');
+    document.getElementById('Seconds').value = getValue('Seconds');
+
+    LedStatus = getValue('FlashWritePending');
+    if(LedStatus>0) document.getElementById('Pend').src = 'RedOn.png';
+    else document.getElementById('Pend').src = 'DarkOff.png';
+
+}
+</script>
+
+</body>
+</html>
+

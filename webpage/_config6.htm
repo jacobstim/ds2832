@@ -1,0 +1,284 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8"/>
+    <title>Configuration</title>
+    <link rel="stylesheet" type="text/css" href="dscript.css">
+ </head>
+
+<body onload="startAJAX()">
+    <div id="container">
+            <p id="ModuleName"> ~Module~ <span style="font-size: 40%">  System Configuration </span> </p>
+            <p id="devantech"> Devantech Ltd </p>
+          <br>
+        <div id="hr"> <hr style="width: 100%; height: 1px; background-color: #FFFFFF; border: none">  </div>
+
+          <div id="menubar">
+            <ul>
+                <div onmouseover="StatusText(this)" onmouseout="dSxText(this)"> <li><a href="_config.htm">Status</a></li> </div>
+                <div onmouseover="NetworkText(this)"> <li><a href="_config2.htm">Network</a></li> </div>
+                <div onmouseover="TCPIPText(this)" onmouseout="dSxText(this)"> <li><a href="_config3.htm">TCP/IP</a></li> </div>
+                <div onmouseover="RelayText(this)" onmouseout="dSxText(this)"> <li><a href="_config5.htm">Relays</a></li> </div>
+                <div onmouseover="IOText(this)" onmouseout="dSxText(this)"> <li><a href="_config7.htm">Input/Output</a></li> </div>
+                <div onmouseover="dSxText(this)" > <li><a style="background-color: #8090a0;" href="_config6.htm">dSx Config</a></li> </div>
+                <div onmouseover="SequenceText(this)" onmouseout="dSxText(this)"> <li><a href="_config14.htm">Sequencer</a></li> </div>
+                <div onmouseover="ScheduleText(this)" onmouseout="dSxText(this)"> <li><a href="_config11.htm">Scheduler</a></li> </div>
+                <div onmouseover="CounterText(this)" onmouseout="dSxText(this)"> <li><a href="_config12.htm">Counter/Timer</a></li> </div>
+                <div onmouseover="NotifyText(this)" onmouseout="dSxText(this)"> <li><a href="_config4.htm">Event Notification</a></li> </div>
+                <div onmouseover="P2PText(this)" onmouseout="dSxText(this)"> <li><a href="_config10.htm">Peer to Peer</a></li> </div>
+                <div onmouseover="EasyMailText(this)" onmouseout="dSxText(this)"> <li><a href="_config9.htm">Email</a></li> </div>
+                <div onmouseover="PingText(this)" onmouseout="dSxText(this)"> <li><a href="_config8.htm">Ping</a></li> </div>
+                <div onmouseover="AppText(this)" onmouseout="dSxText(this)"> <li><a href="index.htm">Application Page</a></li> </div>
+            </ul>
+        </div>
+
+        <div id="centerblock">
+            <div id="center">
+                <div onmouseover="EndSxText(this)" onmouseout="dSxText(this)">
+                    <div class="item-line2"> Enable dSx </div>
+                    <input id="dSxChkBox" name="Enable dSx" type="checkbox" ~dSxChecked~ onclick="handleEndSx(this)" />
+                </div>
+                <br>
+                <div onmouseover="SearchText(this)" onmouseout="dSxText(this)">
+                    <div class="item-line2"> dSx Search</div>
+                    <button style="margin-left:12px;width:100px;height:20px;" id="WDay1" onmousedown="newAJAXCommand('dscript.cgi?SystemdSxSearch=1');">Start</button>
+                </div>
+                <br>
+                <div class="tableHdr"; style="margin-left:90px;";>UID</div>
+                <div class="tableHdr"; style="margin-left:26px;";>Map</div>
+                <div class="tableHdr"; style="margin-left:50px;";>UID</div>
+                <div class="tableHdr"; style="margin-left:26px;";>Map</div>
+
+<script>
+module = 1;
+for(var x=1; x<9; x++) {
+    document.write('<div style="text-align:center;">');
+    document.write("<button onmouseover='UIDText(this)' onmouseout='dSxText(this)' style='width:60px;height:20px;margin-top:10px;margin-right:5px;' id='Id"+module+"' onmousedown='newAJAXCommand(&quot;dscript.cgi?SystemIdentify="+module+"&quot;);'>--</button>");
+    document.write("<select onmouseover='MapText(this)' onmouseout='dSxText(this)' id='Map"+module+"' onChange='SetMapping(this);'> <option value=''>-</option> </select>");
+    document.write("<button onmouseover='UIDText(this)' onmouseout='dSxText(this)' style='width:60px;height:20px;margin-left:20px;margin-right:5px;margin-top:10px;' id='Id"+(module+1)+"' onmousedown='newAJAXCommand(&quot;dscript.cgi?SystemIdentify="+(module+1)+"&quot;);'>--</button>");
+    document.write("<select onmouseover='MapText(this)' onmouseout='dSxText(this)' id='Map"+(module+1)+"' onChange='SetMapping(this);'> <option value=''>-</option> </select>");
+    document.write('</div>');
+    module += 2;
+}
+
+
+
+</script>
+             </div>            
+             <br>
+             <p style = "text-align: center;"> <a class="cfg" href="dSx42.htm">dSx42 Overview</a></p>
+         </div>
+
+        <div id="helpblock">
+            <div ID="help">
+            </div>
+            <div>
+                <div class='Indicator1'>  <img class='IO' id='Pend' src='DarkOff.png'/> Update Pending </div>
+            </div>
+        </div>
+
+    </div>
+
+ <script>
+
+dSxText(0);
+
+for(var x=1; x<17; x++) {
+    var sel = document.getElementById('Map'+x);
+    for(var i = 1; i < 32; i+=2) {
+        var opt = document.createElement('option');
+        opt.innerHTML = i;
+        opt.value = i;
+        sel.appendChild(opt);
+    }
+}
+
+function NotifyText(x) {
+    document.getElementById('help').innerHTML = "<br>Event Notification<br><br>Send an event notification to a server when any specified Relay or Input changes state.<br><br>";
+}
+
+function MapText(x) {
+document.getElementById('help').innerHTML = "<br>Mapping. &nbsp;&nbsp;Click dropdown button to change mapping.<br><br>1 = Map to relays 1,2 Inputs 100-103<br>3 = Map to relays 3,4 Inp 104-107<br>5 = Map to relays 5,6 Inp 108-111<br>7 = Map to relays 7,8 Inp 112-115<br>9 = Map to relays 9,10 Inp 116-119<br>11 = Map to relays 11,12 Inp 120-123<br>13 = Map to relays 13,14 Inp 124-127<br>15 = Map to relays 15,16 Inp 128-131<br>17 = Map to relays 17,18 Inp 132-135<br>19 = Map to relays 19,20 Inp 136-139<br>21 = Map to relays 21,22 Inp 140-143<br>23 = Map to relays 23,24 Inp 144-147<br>25 = Map to relays 25,26 Inp 148-151<br>27 = Map to relays 27,28 Inp 152-155<br>29 = Map to relays 29,30 Inp 156-159<br>31 = Map to relays 31,32 Inp 160-163<br><br>In Use:<br>D160 reads input as digital.<br>A160 reads input as analogue.";
+}
+
+function SearchText(x) {
+    document.getElementById('help').innerHTML = "<br>Extension Module search.<br><br>Searches for all dSx modules on the RS485 bus, and lists them for mapping.<br><br>A default mapping is offered, which can be changed as required. Take care not to map more than one module to the same Relays/Inputs.";
+}
+
+function EndSxText(x) {
+    document.getElementById('help').innerHTML = "<br>Enable dSx extension Modules.<br><br>Enables dSx modules. This will allow the use of dSx extension modules such as the dSx42. The RS485 serial port is used for this, which means its use by the MODBUS over TCPIP is disabled.<br><br>When checked, Serial port 3 is set to 250k baud for the dSx modules.<br><br>When un-checked the serial port is set from the TCP/IP page (when MODBUS is selected).";
+}
+
+function dSxText(x) {
+    document.getElementById('help').innerHTML = "<br>dSx Extension Modules.<br><br>Configure dSx I/O extension modules that are connected down stream on the RS485 port.";
+}
+
+function UIDText(x) {
+    document.getElementById('help').innerHTML = "<br>UID - Unique ID<br><br>These are the UIDs of all modules found on the RS485 bus listed lowest to highest (not physical position). <br><br>Click the UID to identify module, all LEDs on that module will flash. Only one module can identify at one time. <br<br>Click again, or empty position (0) to stop.<br><br>Note: operation of all dSx modules are inhibited whilst in identify mode.";
+}
+
+function PasswordText(x) {
+    document.getElementById('help').innerHTML = "<br>Webpages security password.<br><br>This is the password that is stored on your browser when you load _pw.htm. When non-blank, only authorised browsers may access your webpages. The password may be up to 200 ASCII characters in the range 0x20-0x7E excluding \" (0x22).<br><br>Leave blank to disable webpage security.";
+}
+
+function HttpText(x) {
+    document.getElementById('help').innerHTML = "<br>The HTTP port number.<br><br>This the port number used for the webpages. The default is 80.<br>If you change it from 80, you will need to include the port number in the address.<br><br>Example if you change to port 1234:<br>168.192.0.145:1234/index.htm";
+}
+
+function DHCPText(x) {
+    document.getElementById('help').innerHTML = "<br>Enable DHCP<br><br>Checking the box will enable DHCP so the device will get its IP address from the DHCP server on your network. <br><br>Static IP - 2 choices<br><br>1. Uncheck the Enable DCHP box. You will then be able to enter your static IP details.<br><br>2. Enable DHCP. In your Router/DHCP Server, link the MAC address to your desired IP. This is preferred as it keeps all IP management in one place.<br><br> Note:<br>Using DHCP without linking MAC to IP in your DHCP Server is not advised as it could change, and you would lose contact with the module.";
+}
+
+function MacText(x) {
+    document.getElementById('help').innerHTML = "<br>MAC Address<br><br>This modules MAC address. <br><br> Each Module has a fixed and unique MAC address.";
+}
+
+function CounterText(x) {
+    document.getElementById('help').innerHTML = "<br>Counter/Timers<br><br>Eight Counter/Timers.<br> Used as Counters when the count input is connected to an Input <br><br>Used as Timers when connected to the internal 1Hz clock, T1.<br><br>The 32-bit counter counts up from zero to a maximum of 2,147,483,647.";
+}
+
+function ScheduleText(x) {
+    document.getElementById('help').innerHTML = "<br>Scheduler<br><br>Schedule daily events with 8 schedules, 2 events per schedule and a week day mask.";
+}
+
+function P2PText(x) {
+    document.getElementById('help').innerHTML = "<br>Peer to Peer<br><br>Use inputs on this module to control relays on other dSxxxx modules which can be on your local LAN or across the internet.<br>";
+}
+
+function RelayText(x) {
+    document.getElementById('help').innerHTML = "<br>Relay Names<br><br>These are the labels on the relay buttons on the aplication page to give each relay a unique and descriptive name. <br><br>Maximum 20 characters.";
+}
+
+function IOText(x) {
+    document.getElementById('help').innerHTML = "<br>I/O Names<br><br>These are the I/O labels on the aplication page to give each I/O a unique and descriptive name. <br><br>Maximum 20 characters.";
+}
+
+function PingText(x) {
+    document.getElementById('help').innerHTML = "<br>Ping<br><br>Ping to up to two remote hosts.<br><br> Used to to test if a remote system is alive and well.<br><br>";
+}
+
+function EasyMailText(x) {
+    document.getElementById('help').innerHTML = "<br>Easy Mail<br><br>Send secure emails in response to selected events.";
+}
+
+function HostText(x) {
+    document.getElementById('help').innerHTML = "<br>Host Name<br><br>A unique name for the device on your network. Use plain text such as:<br>MYMODULE";
+}
+
+function StatusText(x) {
+    document.getElementById('help').innerHTML = "<br>Status<br><br>Shows the current status of the module.";
+}
+
+function NetworkText(x) {
+    document.getElementById('help').innerHTML = "<br>Network<br><br>Configure network IP address and associated parameters.";
+}
+
+function TCPIPText(x) {
+    document.getElementById('help').innerHTML = "<br>TCP/IP<br><br>Configure the TCP/IP port and command set.";
+}
+
+function AppText(x) {
+    document.getElementById('help').innerHTML = "<br>Application<br><br>Jumps to the application webpage.";
+}
+
+function printDHCPhelp()
+{
+    document.getElementById('help').innerHTML = "<br>Static IP is disabled because DHCP is enabled.<br><br>Uncheck DHCP to allow static IP addresses.";
+}
+
+function IPText(x) {
+    if(document.getElementById('SystemIP').disabled == true) printDHCPhelp();
+    else document.getElementById('help').innerHTML = "<br>IP Address<br><br>Enter a static IP address for the device, for example:<br>192.168.0.123<br><br>Changes will come into effect after this device is re-booted. ";
+}
+
+function SubText(x) {
+    if(document.getElementById('SystemIP').disabled == true) printDHCPhelp();
+    else document.getElementById('help').innerHTML = "<br>SubNet Mask<br><br>Normally set to:<br>255.255.255.0<br><br>This must be identical to your networks subnet.";
+}
+
+function GateText(x) {
+    if(document.getElementById('SystemIP').disabled == true) printDHCPhelp();
+    else document.getElementById('help').innerHTML = "<br>Gateway Address<br><br>This is normally the address of your router. It is the way out of your local network to the wider internet.";
+}
+
+function DNS1Text(x) {
+    if(document.getElementById('SystemIP').disabled == true) printDHCPhelp();
+    else document.getElementById('help').innerHTML = "<br>Primary DNS Address<br><br>This can be the address of your router if your ISP has provided DNS addresses.<br>It can also be the address of the DNS server itself.<br><br> Google provides a free server at 8.8.8.8<br>This is a good choice for the secondary DNS";
+}
+
+function DNS2Text(x) {
+    if(document.getElementById('SystemIP').disabled == true) printDHCPhelp();
+    else document.getElementById('help').innerHTML = "<br>Secondary DNS Address<br><br>This can be the address of your router if your ISP has provided DNS addresses.<br>It can also be the address of the DNS server itself.<br><br> Google provides a free server at 8.8.8.8<br>This is a good choice for the secondary DNS";
+}
+
+function SequenceText(x) {
+    document.getElementById('help').innerHTML = "<br>Sequencer<br><br>A 120 step, 12 output sequencer<br><br>Delay in mS, Seconds, Minutes, Hours or Random Seconds.<br><br>Wait for specified time.<br><br>Jump, Call & Return.<br><br>Branch on Relay, Digital Input or Schedule active.";
+}
+
+
+function handleEndSx(cb) {
+    if(cb.checked) {
+        newAJAXCommand('dscript.cgi?System_Enable_dSx=1');
+    }
+    else {
+        newAJAXCommand('dscript.cgi?System_Enable_dSx=0');
+    }
+    newAJAXCommand('dscript.cgi?SystemCmdUpdated=1');
+}
+
+function SetMapping(x)
+{
+    idx = x.id.substring(3)*256+x.selectedIndex;
+    newAJAXCommand('dscript.cgi?System_Map_dSx='+idx);    
+}
+
+function ajaxUpdate()
+{
+var splits = [];
+    LedStatus = getValue('FlashWritePending');
+    if(LedStatus>0) document.getElementById('Pend').src = 'RedOn.png';
+    else document.getElementById('Pend').src = 'DarkOff.png';
+    dSxUID = getValue('dSxUID');
+    splits = dSxUID.split(',');
+    document.getElementById('Id1').innerHTML = Number(splits[0]).toString(16).toUpperCase();
+    document.getElementById('Id2').innerHTML = Number(splits[1]).toString(16).toUpperCase();
+    document.getElementById('Id3').innerHTML = Number(splits[2]).toString(16).toUpperCase();
+    document.getElementById('Id4').innerHTML = Number(splits[3]).toString(16).toUpperCase();
+    document.getElementById('Id5').innerHTML = Number(splits[4]).toString(16).toUpperCase();
+    document.getElementById('Id6').innerHTML = Number(splits[5]).toString(16).toUpperCase();
+    document.getElementById('Id7').innerHTML = Number(splits[6]).toString(16).toUpperCase();
+    document.getElementById('Id8').innerHTML = Number(splits[7]).toString(16).toUpperCase();
+    document.getElementById('Id9').innerHTML = Number(splits[8]).toString(16).toUpperCase();
+    document.getElementById('Id10').innerHTML = Number(splits[9]).toString(16).toUpperCase();
+    document.getElementById('Id11').innerHTML = Number(splits[10]).toString(16).toUpperCase();
+    document.getElementById('Id12').innerHTML = Number(splits[11]).toString(16).toUpperCase();
+    document.getElementById('Id13').innerHTML = Number(splits[12]).toString(16).toUpperCase();
+    document.getElementById('Id14').innerHTML = Number(splits[13]).toString(16).toUpperCase();
+    document.getElementById('Id15').innerHTML = Number(splits[14]).toString(16).toUpperCase();
+    document.getElementById('Id16').innerHTML = Number(splits[15]).toString(16).toUpperCase();
+
+    dSxMap = getValue('dSxMap');
+    splits = dSxMap.split(',');
+    document.getElementById('Map1').selectedIndex = splits[0];
+    document.getElementById('Map2').selectedIndex = splits[1];
+    document.getElementById('Map3').selectedIndex = splits[2];
+    document.getElementById('Map4').selectedIndex = splits[3];
+    document.getElementById('Map5').selectedIndex = splits[4];
+    document.getElementById('Map6').selectedIndex = splits[5];
+    document.getElementById('Map7').selectedIndex = splits[6];
+    document.getElementById('Map8').selectedIndex = splits[7];
+    document.getElementById('Map9').selectedIndex = splits[8];
+    document.getElementById('Map10').selectedIndex = splits[9];
+    document.getElementById('Map11').selectedIndex = splits[10];
+    document.getElementById('Map12').selectedIndex = splits[11];
+    document.getElementById('Map13').selectedIndex = splits[12];
+    document.getElementById('Map14').selectedIndex = splits[13];
+    document.getElementById('Map15').selectedIndex = splits[14];
+    document.getElementById('Map16').selectedIndex = splits[15];
+}
+</script>
+
+</body>
+</html>
+

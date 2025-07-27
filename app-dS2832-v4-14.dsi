@@ -1,0 +1,5579 @@
+;
+; dS2832 Application File
+;
+const		AppMajor	4					; version of this application
+const		AppMinor	14
+const		AppVersion	(AppMajor*256)+AppMinor
+
+const       MinRelayPulse   19              ; 19 for 20mS minimum pulse width. 
+
+
+flint32     unused        ; was initControl, now moved to eeprom. This remains as a place holder so that previously save configs still work.
+
+flstring    System_HostName[21]
+flstring    System_IP[16]
+flstring    System_SubNet[16]
+flstring    System_Gateway[16]
+flstring    System_DNS1[16]
+flstring    System_DNS2[16]
+flint32     System_TcpPort
+flint32     System_HttpPort
+flint8      System_Cmd
+flint8      System_EnablePW
+flint8      System_EnableDHCP
+flstring    System_Password[201]
+flstring    System_AES_key[33]
+flstring    System_PW[10]
+
+const       NAMESIZE    21
+const       BOOLSIZE    51
+
+flstring    System_AD1Name[NAMESIZE]
+flstring    System_AD2Name[NAMESIZE]
+flstring    System_AD3Name[NAMESIZE]
+flstring    System_AD4Name[NAMESIZE]
+
+flint32     System_ModbusUID
+flint8      System_ModbusBaud
+flint8      System_ModbusParity
+
+flstring    System_Rly1Name[NAMESIZE]
+flstring    System_Rly1Bool[BOOLSIZE]
+flstring    System_Rly1Set[BOOLSIZE]
+flstring    System_Rly1Rst[BOOLSIZE]
+flstring    System_Rly1Tog[BOOLSIZE]
+
+flstring    System_Rly2Name[NAMESIZE]
+flstring    System_Rly2Bool[BOOLSIZE]
+flstring    System_Rly2Set[BOOLSIZE]
+flstring    System_Rly2Rst[BOOLSIZE]
+flstring    System_Rly2Tog[BOOLSIZE]
+
+flstring    System_Rly3Name[NAMESIZE]
+flstring    System_Rly3Bool[BOOLSIZE]
+flstring    System_Rly3Set[BOOLSIZE]
+flstring    System_Rly3Rst[BOOLSIZE]
+flstring    System_Rly3Tog[BOOLSIZE]
+
+flstring    System_Rly4Name[NAMESIZE]
+flstring    System_Rly4Bool[BOOLSIZE]
+flstring    System_Rly4Set[BOOLSIZE]
+flstring    System_Rly4Rst[BOOLSIZE]
+flstring    System_Rly4Tog[BOOLSIZE]
+
+flstring    System_Rly5Name[NAMESIZE]
+flstring    System_Rly5Bool[BOOLSIZE]
+flstring    System_Rly5Set[BOOLSIZE]
+flstring    System_Rly5Rst[BOOLSIZE]
+flstring    System_Rly5Tog[BOOLSIZE]
+
+flstring    System_Rly6Name[NAMESIZE]
+flstring    System_Rly6Bool[BOOLSIZE]
+flstring    System_Rly6Set[BOOLSIZE]
+flstring    System_Rly6Rst[BOOLSIZE]
+flstring    System_Rly6Tog[BOOLSIZE]
+
+flstring    System_Rly7Name[NAMESIZE]
+flstring    System_Rly7Bool[BOOLSIZE]
+flstring    System_Rly7Set[BOOLSIZE]
+flstring    System_Rly7Rst[BOOLSIZE]
+flstring    System_Rly7Tog[BOOLSIZE]
+
+flstring    System_Rly8Name[NAMESIZE]
+flstring    System_Rly8Bool[BOOLSIZE]
+flstring    System_Rly8Set[BOOLSIZE]
+flstring    System_Rly8Rst[BOOLSIZE]
+flstring    System_Rly8Tog[BOOLSIZE]
+
+flstring    System_Rly9Name[NAMESIZE]
+flstring    System_Rly9Bool[BOOLSIZE]
+flstring    System_Rly9Set[BOOLSIZE]
+flstring    System_Rly9Rst[BOOLSIZE]
+flstring    System_Rly9Tog[BOOLSIZE]
+
+flstring    System_Rly10Name[NAMESIZE]
+flstring    System_Rly10Bool[BOOLSIZE]
+flstring    System_Rly10Set[BOOLSIZE]
+flstring    System_Rly10Rst[BOOLSIZE]
+flstring    System_Rly10Tog[BOOLSIZE]
+
+flstring    System_Rly11Name[NAMESIZE]
+flstring    System_Rly11Bool[BOOLSIZE]
+flstring    System_Rly11Set[BOOLSIZE]
+flstring    System_Rly11Rst[BOOLSIZE]
+flstring    System_Rly11Tog[BOOLSIZE]
+
+flstring    System_Rly12Name[NAMESIZE]
+flstring    System_Rly12Bool[BOOLSIZE]
+flstring    System_Rly12Set[BOOLSIZE]
+flstring    System_Rly12Rst[BOOLSIZE]
+flstring    System_Rly12Tog[BOOLSIZE]
+
+flstring    System_Rly13Name[NAMESIZE]
+flstring    System_Rly13Bool[BOOLSIZE]
+flstring    System_Rly13Set[BOOLSIZE]
+flstring    System_Rly13Rst[BOOLSIZE]
+flstring    System_Rly13Tog[BOOLSIZE]
+
+flstring    System_Rly14Name[NAMESIZE]
+flstring    System_Rly14Bool[BOOLSIZE]
+flstring    System_Rly14Set[BOOLSIZE]
+flstring    System_Rly14Rst[BOOLSIZE]
+flstring    System_Rly14Tog[BOOLSIZE]
+
+flstring    System_Rly15Name[NAMESIZE]
+flstring    System_Rly15Bool[BOOLSIZE]
+flstring    System_Rly15Set[BOOLSIZE]
+flstring    System_Rly15Rst[BOOLSIZE]
+flstring    System_Rly15Tog[BOOLSIZE]
+
+flstring    System_Rly16Name[NAMESIZE]
+flstring    System_Rly16Bool[BOOLSIZE]
+flstring    System_Rly16Set[BOOLSIZE]
+flstring    System_Rly16Rst[BOOLSIZE]
+flstring    System_Rly16Tog[BOOLSIZE]
+
+flstring    System_Rly17Name[NAMESIZE]
+flstring    System_Rly17Bool[BOOLSIZE]
+flstring    System_Rly17Set[BOOLSIZE]
+flstring    System_Rly17Rst[BOOLSIZE]
+flstring    System_Rly17Tog[BOOLSIZE]
+
+flstring    System_Rly18Name[NAMESIZE]
+flstring    System_Rly18Bool[BOOLSIZE]
+flstring    System_Rly18Set[BOOLSIZE]
+flstring    System_Rly18Rst[BOOLSIZE]
+flstring    System_Rly18Tog[BOOLSIZE]
+
+flstring    System_Rly19Name[NAMESIZE]
+flstring    System_Rly19Bool[BOOLSIZE]
+flstring    System_Rly19Set[BOOLSIZE]
+flstring    System_Rly19Rst[BOOLSIZE]
+flstring    System_Rly19Tog[BOOLSIZE]
+
+flstring    System_Rly20Name[NAMESIZE]
+flstring    System_Rly20Bool[BOOLSIZE]
+flstring    System_Rly20Set[BOOLSIZE]
+flstring    System_Rly20Rst[BOOLSIZE]
+flstring    System_Rly20Tog[BOOLSIZE]
+
+flstring    System_Rly21Name[NAMESIZE]
+flstring    System_Rly21Bool[BOOLSIZE]
+flstring    System_Rly21Set[BOOLSIZE]
+flstring    System_Rly21Rst[BOOLSIZE]
+flstring    System_Rly21Tog[BOOLSIZE]
+
+flstring    System_Rly22Name[NAMESIZE]
+flstring    System_Rly22Bool[BOOLSIZE]
+flstring    System_Rly22Set[BOOLSIZE]
+flstring    System_Rly22Rst[BOOLSIZE]
+flstring    System_Rly22Tog[BOOLSIZE]
+
+flstring    System_Rly23Name[NAMESIZE]
+flstring    System_Rly23Bool[BOOLSIZE]
+flstring    System_Rly23Set[BOOLSIZE]
+flstring    System_Rly23Rst[BOOLSIZE]
+flstring    System_Rly23Tog[BOOLSIZE]
+
+flstring    System_Rly24Name[NAMESIZE]
+flstring    System_Rly24Bool[BOOLSIZE]
+flstring    System_Rly24Set[BOOLSIZE]
+flstring    System_Rly24Rst[BOOLSIZE]
+flstring    System_Rly24Tog[BOOLSIZE]
+
+flstring    System_Rly25Name[NAMESIZE]
+flstring    System_Rly25Bool[BOOLSIZE]
+flstring    System_Rly25Set[BOOLSIZE]
+flstring    System_Rly25Rst[BOOLSIZE]
+flstring    System_Rly25Tog[BOOLSIZE]
+
+flstring    System_Rly26Name[NAMESIZE]
+flstring    System_Rly26Bool[BOOLSIZE]
+flstring    System_Rly26Set[BOOLSIZE]
+flstring    System_Rly26Rst[BOOLSIZE]
+flstring    System_Rly26Tog[BOOLSIZE]
+
+flstring    System_Rly27Name[NAMESIZE]
+flstring    System_Rly27Bool[BOOLSIZE]
+flstring    System_Rly27Set[BOOLSIZE]
+flstring    System_Rly27Rst[BOOLSIZE]
+flstring    System_Rly27Tog[BOOLSIZE]
+
+flstring    System_Rly28Name[NAMESIZE]
+flstring    System_Rly28Bool[BOOLSIZE]
+flstring    System_Rly28Set[BOOLSIZE]
+flstring    System_Rly28Rst[BOOLSIZE]
+flstring    System_Rly28Tog[BOOLSIZE]
+
+flstring    System_Rly29Name[NAMESIZE]
+flstring    System_Rly29Bool[BOOLSIZE]
+flstring    System_Rly29Set[BOOLSIZE]
+flstring    System_Rly29Rst[BOOLSIZE]
+flstring    System_Rly29Tog[BOOLSIZE]
+
+flstring    System_Rly30Name[NAMESIZE]
+flstring    System_Rly30Bool[BOOLSIZE]
+flstring    System_Rly30Set[BOOLSIZE]
+flstring    System_Rly30Rst[BOOLSIZE]
+flstring    System_Rly30Tog[BOOLSIZE]
+
+flstring    System_Rly31Name[NAMESIZE]
+flstring    System_Rly31Bool[BOOLSIZE]
+flstring    System_Rly31Set[BOOLSIZE]
+flstring    System_Rly31Rst[BOOLSIZE]
+flstring    System_Rly31Tog[BOOLSIZE]
+
+flstring    System_Rly32Name[NAMESIZE]
+flstring    System_Rly32Bool[BOOLSIZE]
+flstring    System_Rly32Set[BOOLSIZE]
+flstring    System_Rly32Rst[BOOLSIZE]
+flstring    System_Rly32Tog[BOOLSIZE]
+
+flstring    System_IO1Name[NAMESIZE]
+flstring    System_IO2Name[NAMESIZE]
+flstring    System_IO3Name[NAMESIZE]
+flstring    System_IO4Name[NAMESIZE]
+flstring    System_IO5Name[NAMESIZE]
+flstring    System_IO6Name[NAMESIZE]
+flstring    System_IO7Name[NAMESIZE]
+flstring    System_IO8Name[NAMESIZE]
+
+flint8      System_IO1Type
+flint8      System_IO2Type
+flint8      System_IO3Type
+flint8      System_IO4Type
+flint8      System_IO5Type
+flint8      System_IO6Type
+flint8      System_IO7Type
+flint8      System_IO8Type
+
+flint8      System_IO1AttachedRly
+flint8      System_IO2AttachedRly
+flint8      System_IO3AttachedRly
+flint8      System_IO4AttachedRly
+flint8      System_IO5AttachedRly
+flint8      System_IO6AttachedRly
+flint8      System_IO7AttachedRly
+flint8      System_IO8AttachedRly
+
+flint32     System_RLY_PUR
+
+const       EMAILSIZE1  101
+const       EMAILSIZE2  151
+flstring    System_EmailFromAddr[EMAILSIZE1]
+flstring    System_EmailAddr1[EMAILSIZE1]
+flstring    System_EmailAddr2[EMAILSIZE1]
+flstring    System_EmailAddr3[EMAILSIZE1]
+flstring    System_EmailAddr4[EMAILSIZE1]
+flstring    System_EmailAddr5[EMAILSIZE1]
+flstring    System_EmailAddr6[EMAILSIZE1]
+flstring    System_EmailAddr7[EMAILSIZE1]
+flstring    System_EmailAddr8[EMAILSIZE1]
+flstring    System_EmailSubject1[EMAILSIZE2]
+flstring    System_EmailSubject2[EMAILSIZE2]
+flstring    System_EmailSubject3[EMAILSIZE2]
+flstring    System_EmailSubject4[EMAILSIZE2]
+flstring    System_EmailSubject5[EMAILSIZE2]
+flstring    System_EmailSubject6[EMAILSIZE2]
+flstring    System_EmailSubject7[EMAILSIZE2]
+flstring    System_EmailSubject8[EMAILSIZE2]
+flstring    System_EmailTrigger1[BOOLSIZE]
+flstring    System_EmailTrigger2[BOOLSIZE]
+flstring    System_EmailTrigger3[BOOLSIZE]
+flstring    System_EmailTrigger4[BOOLSIZE]
+flstring    System_EmailTrigger5[BOOLSIZE]
+flstring    System_EmailTrigger6[BOOLSIZE]
+flstring    System_EmailTrigger7[BOOLSIZE]
+flstring    System_EmailTrigger8[BOOLSIZE]
+
+const       P2PSIZE1    51
+flstring    System_P2P_Input1[BOOLSIZE]
+flstring    System_P2P_Input2[BOOLSIZE]
+flstring    System_P2P_Input3[BOOLSIZE]
+flstring    System_P2P_Input4[BOOLSIZE]
+flstring    System_P2P_Input5[BOOLSIZE]
+flstring    System_P2P_Input6[BOOLSIZE]
+flstring    System_P2P_Input7[BOOLSIZE]
+flstring    System_P2P_Input8[BOOLSIZE]
+flstring    System_P2P_IP1[P2PSIZE1]
+flstring    System_P2P_IP2[P2PSIZE1]
+flstring    System_P2P_IP3[P2PSIZE1]
+flstring    System_P2P_IP4[P2PSIZE1]
+flstring    System_P2P_IP5[P2PSIZE1]
+flstring    System_P2P_IP6[P2PSIZE1]
+flstring    System_P2P_IP7[P2PSIZE1]
+flstring    System_P2P_IP8[P2PSIZE1]
+flint32     System_P2P_Port1
+flint32     System_P2P_Port2
+flint32     System_P2P_Port3
+flint32     System_P2P_Port4
+flint32     System_P2P_Port5
+flint32     System_P2P_Port6
+flint32     System_P2P_Port7
+flint32     System_P2P_Port8
+flint32     System_P2P_Relay1
+flint32     System_P2P_Relay2
+flint32     System_P2P_Relay3
+flint32     System_P2P_Relay4
+flint32     System_P2P_Relay5
+flint32     System_P2P_Relay6
+flint32     System_P2P_Relay7
+flint32     System_P2P_Relay8
+flint32     System_P2P_Action1
+flint32     System_P2P_Action2
+flint32     System_P2P_Action3
+flint32     System_P2P_Action4
+flint32     System_P2P_Action5
+flint32     System_P2P_Action6
+flint32     System_P2P_Action7
+flint32     System_P2P_Action8
+flint32     System_P2P_Timeout1
+flint32     System_P2P_Timeout2
+flint32     System_P2P_Timeout3
+flint32     System_P2P_Timeout4
+flint32     System_P2P_Timeout5
+flint32     System_P2P_Timeout6
+flint32     System_P2P_Timeout7
+flint32     System_P2P_Timeout8
+flint32     System_P2P_AES
+
+flint8      System_Sch_R1
+flint8      System_Sch_STH1a    ; Start 1
+flint8      System_Sch_STM1a
+flint8      System_Sch_STS1a
+flint8      System_Sch_SPH1a    ; Stop 1
+flint8      System_Sch_SPM1a
+flint8      System_Sch_SPS1a
+flint8      System_Sch_STH1b    ; Start 2
+flint8      System_Sch_STM1b
+flint8      System_Sch_STS1b
+flint8      System_Sch_SPH1b    ; Stop 2
+flint8      System_Sch_SPM1b
+flint8      System_Sch_SPS1b
+flint8      System_Sch_WD1      ; W/Days
+
+flint8      System_Sch_R2
+flint8      System_Sch_STH2a    ; Start 1
+flint8      System_Sch_STM2a
+flint8      System_Sch_STS2a
+flint8      System_Sch_SPH2a    ; Stop 1
+flint8      System_Sch_SPM2a
+flint8      System_Sch_SPS2a
+flint8      System_Sch_STH2b    ; Start 2
+flint8      System_Sch_STM2b
+flint8      System_Sch_STS2b
+flint8      System_Sch_SPH2b    ; Stop 2
+flint8      System_Sch_SPM2b
+flint8      System_Sch_SPS2b
+flint8      System_Sch_WD2      ; W/Days
+
+flint8      System_Sch_R3
+flint8      System_Sch_STH3a    ; Start 1
+flint8      System_Sch_STM3a
+flint8      System_Sch_STS3a
+flint8      System_Sch_SPH3a    ; Stop 1
+flint8      System_Sch_SPM3a
+flint8      System_Sch_SPS3a
+flint8      System_Sch_STH3b    ; Start 2
+flint8      System_Sch_STM3b
+flint8      System_Sch_STS3b
+flint8      System_Sch_SPH3b    ; Stop 2
+flint8      System_Sch_SPM3b
+flint8      System_Sch_SPS3b
+flint8      System_Sch_WD3      ; W/Days
+
+flint8      System_Sch_R4
+flint8      System_Sch_STH4a    ; Start 1
+flint8      System_Sch_STM4a
+flint8      System_Sch_STS4a
+flint8      System_Sch_SPH4a    ; Stop 1
+flint8      System_Sch_SPM4a
+flint8      System_Sch_SPS4a
+flint8      System_Sch_STH4b    ; Start 2
+flint8      System_Sch_STM4b
+flint8      System_Sch_STS4b
+flint8      System_Sch_SPH4b    ; Stop 2
+flint8      System_Sch_SPM4b
+flint8      System_Sch_SPS4b
+flint8      System_Sch_WD4      ; W/Days
+
+flint8      System_Sch_R5
+flint8      System_Sch_STH5a    ; Start 1
+flint8      System_Sch_STM5a
+flint8      System_Sch_STS5a
+flint8      System_Sch_SPH5a    ; Stop 1
+flint8      System_Sch_SPM5a
+flint8      System_Sch_SPS5a
+flint8      System_Sch_STH5b    ; Start 2
+flint8      System_Sch_STM5b
+flint8      System_Sch_STS5b
+flint8      System_Sch_SPH5b    ; Stop 2
+flint8      System_Sch_SPM5b
+flint8      System_Sch_SPS5b
+flint8      System_Sch_WD5      ; W/Days
+
+flint8      System_Sch_R6
+flint8      System_Sch_STH6a    ; Start 1
+flint8      System_Sch_STM6a
+flint8      System_Sch_STS6a
+flint8      System_Sch_SPH6a    ; Stop 1
+flint8      System_Sch_SPM6a
+flint8      System_Sch_SPS6a
+flint8      System_Sch_STH6b    ; Start 2
+flint8      System_Sch_STM6b
+flint8      System_Sch_STS6b
+flint8      System_Sch_SPH6b    ; Stop 2
+flint8      System_Sch_SPM6b
+flint8      System_Sch_SPS6b
+flint8      System_Sch_WD6      ; W/Days
+
+flint8      System_Sch_R7
+flint8      System_Sch_STH7a    ; Start 1
+flint8      System_Sch_STM7a
+flint8      System_Sch_STS7a
+flint8      System_Sch_SPH7a    ; Stop 1
+flint8      System_Sch_SPM7a
+flint8      System_Sch_SPS7a
+flint8      System_Sch_STH7b    ; Start 2
+flint8      System_Sch_STM7b
+flint8      System_Sch_STS7b
+flint8      System_Sch_SPH7b    ; Stop 2
+flint8      System_Sch_SPM7b
+flint8      System_Sch_SPS7b
+flint8      System_Sch_WD7      ; W/Days
+
+flint8      System_Sch_R8
+flint8      System_Sch_STH8a    ; Start 1
+flint8      System_Sch_STM8a
+flint8      System_Sch_STS8a
+flint8      System_Sch_SPH8a    ; Stop 1
+flint8      System_Sch_SPM8a
+flint8      System_Sch_SPS8a
+flint8      System_Sch_STH8b    ; Start 2
+flint8      System_Sch_STM8b
+flint8      System_Sch_STS8b
+flint8      System_Sch_SPH8b    ; Stop 2
+flint8      System_Sch_SPM8b
+flint8      System_Sch_SPS8b
+flint8      System_Sch_WD8      ; W/Days
+
+flstring    System_CtrName1[NAMESIZE]
+flstring    System_CtrName2[NAMESIZE]
+flstring    System_CtrName3[NAMESIZE]
+flstring    System_CtrName4[NAMESIZE]
+flstring    System_CtrName5[NAMESIZE]
+flstring    System_CtrName6[NAMESIZE]
+flstring    System_CtrName7[NAMESIZE]
+flstring    System_CtrName8[NAMESIZE]
+flstring    System_CtrReset1[BOOLSIZE]
+flstring    System_CtrReset2[BOOLSIZE]
+flstring    System_CtrReset3[BOOLSIZE]
+flstring    System_CtrReset4[BOOLSIZE]
+flstring    System_CtrReset5[BOOLSIZE]
+flstring    System_CtrReset6[BOOLSIZE]
+flstring    System_CtrReset7[BOOLSIZE]
+flstring    System_CtrReset8[BOOLSIZE]
+flstring    System_CtrCount1[BOOLSIZE]
+flstring    System_CtrCount2[BOOLSIZE]
+flstring    System_CtrCount3[BOOLSIZE]
+flstring    System_CtrCount4[BOOLSIZE]
+flstring    System_CtrCount5[BOOLSIZE]
+flstring    System_CtrCount6[BOOLSIZE]
+flstring    System_CtrCount7[BOOLSIZE]
+flstring    System_CtrCount8[BOOLSIZE]
+flstring    System_CtrCap1[BOOLSIZE]
+flstring    System_CtrCap2[BOOLSIZE]
+flstring    System_CtrCap3[BOOLSIZE]
+flstring    System_CtrCap4[BOOLSIZE]
+flstring    System_CtrCap5[BOOLSIZE]
+flstring    System_CtrCap6[BOOLSIZE]
+flstring    System_CtrCap7[BOOLSIZE]
+flstring    System_CtrCap8[BOOLSIZE]
+
+flstring    TimeZone[10]
+flint32     DaylightSaving
+
+const       HOSTSIZE 51
+flstring    System_PingHost1[HOSTSIZE]                          ; Ping control variable
+flstring    System_PingHost2[HOSTSIZE]
+flstring    System_PingHost3[HOSTSIZE]
+flstring    System_PingHost4[HOSTSIZE]
+flint32     System_PingRepeat1
+flint32     System_PingRepeat2
+flint32     System_PingRepeat3
+flint32     System_PingRepeat4
+flint32     System_PingAttempts1
+flint32     System_PingAttempts2
+flint32     System_PingAttempts3
+flint32     System_PingAttempts4
+flint32     System_PingDelay1
+flint32     System_PingDelay2
+flint32     System_PingDelay3
+flint32     System_PingDelay4
+
+flint32     sequencer[128]
+flint8      System_Enable_dSx
+flint32     dSxUID[16]                  ; holds dSx UID
+flint8      dSxMap[16]                  ; holds dSx mapped position 
+flint8      dSxReMap[32]                ; holds dSx map index for each relay, 0=unmapped, (0x20-0x3F)-0x20=index 
+
+const       NOTISIZE 101
+flstring    System_Noti_Event[NOTISIZE]
+flstring    System_Noti_IP[HOSTSIZE]    ; for notifications
+flint32     System_Noti_Port
+flint32     System_Noti_Timeout
+flint32     System_Noti_TDS             ; Time & Date Stamp
+
+;******************* End of Flash configuration Variables *********************************
+
+int32		aX
+int32		RLY_PUR
+int8		RlySetTrn[33]
+int8		RlyRstTrn[33]
+int8		RlyTogTrn[33]
+
+int32		P2Pbool1
+int32		P2Pbool2
+int32		P2Pbool3
+int32		P2Pbool4
+int32		P2Pbool5
+int32		P2Pbool6
+int32		P2Pbool7
+int32		P2Pbool8
+int32		P2Pbool
+int32		P2Plength
+int32		P2P_AES
+
+string		P2Pcmd[50]
+string		nonce[50]
+
+clientport	p2p1 System_P2P_IP1 System_P2P_Port1 System_P2P_Timeout1
+clientport	p2p2 System_P2P_IP2 System_P2P_Port2 System_P2P_Timeout2
+clientport	p2p3 System_P2P_IP3 System_P2P_Port3 System_P2P_Timeout3
+clientport	p2p4 System_P2P_IP4 System_P2P_Port4 System_P2P_Timeout4
+clientport	p2p5 System_P2P_IP5 System_P2P_Port5 System_P2P_Timeout5
+clientport	p2p6 System_P2P_IP6 System_P2P_Port6 System_P2P_Timeout6
+clientport	p2p7 System_P2P_IP7 System_P2P_Port7 System_P2P_Timeout7
+clientport	p2p8 System_P2P_IP8 System_P2P_Port8 System_P2P_Timeout8
+
+clientport  Noti System_Noti_IP System_Noti_Port System_Noti_Timeout        ; Notifications
+int32       notiFlg
+
+int32		System_CtrVal1
+int32		System_CtrVal2
+int32		System_CtrVal3
+int32		System_CtrVal4
+int32		System_CtrVal5
+int32		System_CtrVal6
+int32		System_CtrVal7
+int32		System_CtrVal8
+int32		System_CtrCapt1
+int32		System_CtrCapt2
+int32		System_CtrCapt3
+int32		System_CtrCapt4
+int32		System_CtrCapt5
+int32		System_CtrCapt6
+int32		System_CtrCapt7
+int32		System_CtrCapt8
+setcounters	System_CtrVal1 System_CtrVal2 System_CtrVal3 System_CtrVal4 System_CtrVal5 System_CtrVal6 System_CtrVal7 System_CtrVal8
+
+int8		CTreset[9]
+int8		CTcount[9]
+int8		CTcapt[9]
+
+int32		SchT
+int32		SystemWDayUpdated
+int32       SystemdSxSearch
+int32       SystemIdentify
+int16       dSxADinputs[64]             ; stores the (potential) 64 A/D inputs from up to 16 dSx modules
+setdsxinputs dSxADinputs
+
+int32		SchStartA[9]
+int32		SchStopA[9]
+int32		SchStartB[9]
+int32		SchStopB[9]
+int8		SchWDay[9]
+int8		SchRelays[9]
+int8		SchStatus[9]
+int32		SchX
+int32		schState
+
+UTCport		UTC TimeZone DaylightSaving
+int8		Hours
+int8		Minutes
+int8		Seconds
+int32		UseDST
+
+int32       PingIP1
+int32       PingIP2
+int32       PingIP3
+int32       PingIP4
+int32       PingTimer1                                          ; PingTimer and PingTime are to double buffer the result
+int32       PingTimer2
+int32       PingTimer3
+int32       PingTimer4
+int32       PingTime1
+int32       PingTime2
+int32       PingTime3
+int32       PingTime4
+setpingtimers  PingTime1 PingTime2 PingTime3 PingTime4
+
+int32       seqUpdateOutput
+int32       seqUpdateCmd
+int32       seqrow
+int32       seq1Handle
+int32       seq1Timer
+int32       Koutputs
+setkoutputs Koutputs
+
+easymail	em1	System_EmailAddr1, System_EmailFromAddr			; To Address, From Address
+easymail	em2	System_EmailAddr2, System_EmailFromAddr
+easymail	em3	System_EmailAddr3, System_EmailFromAddr
+easymail	em4	System_EmailAddr4, System_EmailFromAddr
+easymail	em5	System_EmailAddr5, System_EmailFromAddr
+easymail	em6	System_EmailAddr6, System_EmailFromAddr
+easymail	em7	System_EmailAddr7, System_EmailFromAddr
+easymail	em8	System_EmailAddr8, System_EmailFromAddr
+
+int32	eIdx						; index and
+int8	armed[8]					; emails armed array.
+int32	eResponse					; returned from sending the email
+int32	eX
+string	msg[1000]					; for automated response
+
+tcpip.ip		System_IP
+tcpip.mask		System_SubNet
+tcpip.hostname	System_HostName
+tcpip.port		System_TcpPort
+tcpip.dns1		System_DNS1
+tcpip.dns2		System_DNS2
+tcpip.gateway	System_Gateway
+tcpip.dhcp		System_EnableDHCP
+
+html.password	System_Password
+html.port 		System_HttpPort
+html.setup 		System_EnablePW
+
+aes.key			System_AES_key 
+int32			Nonce
+int32			NonceIn
+
+digitalport     clearStatesBuffer    0      ; there is no I/O zero, this is special and clears the state changed buffer for all digital I/O's
+digitalport		Rly1	1
+digitalport		Rly2	2
+digitalport		Rly3	3
+digitalport		Rly4	4
+digitalport		Rly5	5
+digitalport		Rly6	6
+digitalport		Rly7	7
+digitalport		Rly8	8
+digitalport		Rly9	9
+digitalport		Rly10	10
+digitalport		Rly11	11
+digitalport		Rly12	12
+digitalport		Rly13	13
+digitalport		Rly14	14
+digitalport		Rly15	15
+digitalport		Rly16	16
+digitalport		Rly17	17
+digitalport		Rly18	18
+digitalport		Rly19	19
+digitalport		Rly20	20
+digitalport		Rly21	21
+digitalport		Rly22	22
+digitalport		Rly23	23
+digitalport		Rly24	24
+digitalport		Rly25	25
+digitalport		Rly26	26
+digitalport		Rly27	27
+digitalport		Rly28	28
+digitalport		Rly29	29
+digitalport		Rly30	30
+digitalport		Rly31	31
+digitalport		Rly32	32
+
+digitalport	LedBlue		33
+digitalport	LedGreen	34
+digitalport	LedRed		35
+
+flexport	IO1		1	System_IO1Type
+flexport	IO2		2	System_IO2Type
+flexport	IO3		3	System_IO3Type
+flexport	IO4		4	System_IO4Type
+flexport	IO5		5	System_IO5Type
+flexport	IO6		6	System_IO6Type
+flexport	IO7		7	System_IO7Type
+flexport	IO8		8	System_IO8Type
+
+flexport	IO1_s	9	 	; These are read-only status bits.
+flexport	IO2_s	10  	;   7   6    5     4    3   2 1 0
+flexport	IO3_s	11		; | x | x | Out | Inp | x | Mode |
+flexport	IO4_s	12 		;
+flexport	IO5_s	13 		; x     unused
+flexport	IO6_s	14 		; Out	Ouput, 0=inactive, 1=active
+flexport	IO7_s	15 		; Inp	Input, could be from actual input or result of driving the output active.
+flexport	IO8_s	16 		; mode	0=digital no pullup, 1=digital with pullup, 4=analog 4.096v ref, 5=analog 5v ref.
+
+
+analogport	TS1		100	; on-board temp sensor
+analogport	PSU		101	; DC power voltage
+
+digitalport    dSx102   102
+digitalport    dSx103   103
+digitalport    dSx104   104
+digitalport    dSx105   105
+digitalport    dSx106   106
+digitalport    dSx107   107
+digitalport    dSx108   108
+digitalport    dSx109   109
+digitalport    dSx110   110
+digitalport    dSx111   111
+digitalport    dSx112   112
+digitalport    dSx113   113
+digitalport    dSx114   114
+digitalport    dSx115   115
+digitalport    dSx116   116
+digitalport    dSx117   117
+digitalport    dSx118   118
+digitalport    dSx119   119
+digitalport    dSx120   120
+digitalport    dSx121   121
+digitalport    dSx122   122
+digitalport    dSx123   123
+digitalport    dSx124   124
+digitalport    dSx125   125
+digitalport    dSx126   126
+digitalport    dSx127   127
+digitalport    dSx128   128
+digitalport    dSx129   129
+digitalport    dSx130   130
+digitalport    dSx131   131
+digitalport    dSx132   132
+digitalport    dSx133   133
+digitalport    dSx134   134
+digitalport    dSx135   135
+digitalport    dSx136   136
+digitalport    dSx137   137
+digitalport    dSx138   138
+digitalport    dSx139   139
+digitalport    dSx140   140
+digitalport    dSx141   141
+digitalport    dSx142   142
+digitalport    dSx143   143
+digitalport    dSx144   144
+digitalport    dSx145   145
+digitalport    dSx146   146
+digitalport    dSx147   147
+digitalport    dSx148   148
+digitalport    dSx149   149
+digitalport    dSx150   150
+digitalport    dSx151   151
+digitalport    dSx152   152
+digitalport    dSx153   153
+digitalport    dSx154   154
+digitalport    dSx155   155
+digitalport    dSx156   156
+digitalport    dSx157   157
+digitalport    dSx158   158
+digitalport    dSx159   159
+digitalport    dSx160   160
+digitalport    dSx161   161
+digitalport    dSx162   162
+digitalport    dSx163   163
+
+analogport  AD102   102 ; dSx analogue inputs
+analogport  AD103   103
+analogport  AD104   104
+analogport  AD105   105
+analogport  AD106   106
+analogport  AD107   107
+analogport  AD108   108
+analogport  AD109   109
+analogport  AD110   110
+analogport  AD111   111
+analogport  AD112   112
+analogport  AD113   113
+analogport  AD114   114
+analogport  AD115   115
+analogport  AD116   116
+analogport  AD117   117
+analogport  AD118   118
+analogport  AD119   119
+analogport  AD120   120
+analogport  AD121   121
+analogport  AD122   122
+analogport  AD123   123
+analogport  AD124   124
+analogport  AD125   125
+analogport  AD126   126
+analogport  AD127   127
+analogport  AD128   128
+analogport  AD129   129
+analogport  AD130   130
+analogport  AD131   131
+analogport  AD132   132
+analogport  AD133   133
+analogport  AD134   134
+analogport  AD135   135
+analogport  AD136   136
+analogport  AD137   137
+analogport  AD138   138
+analogport  AD139   139
+analogport  AD140   140
+analogport  AD141   141
+analogport  AD142   142
+analogport  AD143   143
+analogport  AD144   144
+analogport  AD145   145
+analogport  AD146   146
+analogport  AD147   147
+analogport  AD148   148
+analogport  AD149   149
+analogport  AD150   150
+analogport  AD151   151
+analogport  AD152   152
+analogport  AD153   153
+analogport  AD154   154
+analogport  AD155   155
+analogport  AD156   156
+analogport  AD157   157
+analogport  AD158   158
+analogport  AD159   159
+analogport  AD160   160
+analogport  AD161   161
+analogport  AD162   162
+analogport  AD163   163
+
+int32 BrdTemp
+int32 Volts
+
+string AsciiChecked[8]
+string ModBusChecked[8]
+string BinaryChecked[8]
+string AESChecked[8]
+string PWChecked[8]
+string DHCPChecked[8]
+string PhoneChecked[8]
+string dSxChecked[8]
+string TDSChecked[8]
+
+string Module[30]
+int32 VerMajor
+int32 VerMinor
+int32 AppVerMajor
+int32 AppVerMinor
+
+int32	RlyState
+int32	PulseTime
+
+int32 	cmdIdx
+int32	cmdIO
+int32	cmdPulseTime
+string	cmdAction[20]
+string	cmdPassWord[20]
+string	cmdStr[20]
+
+int32	tcpLength
+string	tcpInBuf[1024]
+string	tcpOutBuf[500]
+string	rtu[300]
+string  dSxBuf[10]
+int32	crc
+
+string	CLS[4]						; Loaded with LCD05 clear screen commands
+string	CR[3]						; Loaded with Carriage Return 0x0d, 0x0a (or 13, 10 if you prefer)
+
+int32	mbTI						; ModBus variables, Transaction Identifier
+int32	mbPI						; Protocol Indentifier
+int32	mbLen						; Length
+int32	mbUI						; Unit Identifier
+int32	mbFC						; Function Code
+int32	mbSA						; Start Address
+int32	mbNP						; Number of Points
+int32 	mbX							; General Purpose
+
+int32	SystemCmdUpdated			; used to tell when webpage updates "System_Cmd"
+int32	SystemRlysUpdated			; updated from webpage to toggle/pulse relays - contains relay number
+int32	FlashWritePending			; indicate to config pages that a flash write is pending
+int32   SystemReset                 ; set by webpage to request a reboot
+int32   System_Map_dSx
+
+int32	RBP							; used by boolean eval
+int32	x
+int32	Zero
+
+eeint32 initControl
+eeint8	RelayStore[32]				; to restore relays after power outage
+
+int8	AttachedRly
+int8	AttachedRlyState
+
+const dSx_RETURN_FRAME  1
+const dSx_GET_VER       2
+const dSx_SET_RELAY     3           ; commands for dSx extension modules
+const dSx_GET_INPUTS    4
+const dSx_GET_ANALOG    5
+const dSx_IDENTIFY      6
+const dSx_SET_SEARCH    7
+const dSx_LESS_THAN     8
+
+string  System_MAC[20]              ; holds this modules formatted MAC address
+string	s1[100]
+serialport LCD05 1 10 90
+serialport RS485 3 300 300
+
+thread DST(UseDST)
+	if DaylightSaving==1 then DaylightSaving=0 else DaylightSaving=1 endif
+	UseDST = 0;
+endthread
+	
+thread P2PAES(P2P_AES)
+	select P2P_AES
+		case 1 System_P2P_AES ^= 0x01
+		case 2 System_P2P_AES ^= 0x02
+		case 3 System_P2P_AES ^= 0x04
+		case 4 System_P2P_AES ^= 0x08
+		case 5 System_P2P_AES ^= 0x10
+		case 6 System_P2P_AES ^= 0x20
+		case 7 System_P2P_AES ^= 0x40
+		case 8 System_P2P_AES ^= 0x80			
+	endselect
+	P2P_AES = 0
+endthread
+
+thread Reboot(SystemReset)      ; thread is triggered when webpage sets "SystemReset" to non-zero.
+    x = system.Restart          ; no further processing after this  (CPU is reset)
+endthread
+
+thread RLYPUR(RLY_PUR)
+	select RLY_PUR
+		case 1 System_RLY_PUR ^= 0x01
+		case 2 System_RLY_PUR ^= 0x02
+		case 3 System_RLY_PUR ^= 0x04
+		case 4 System_RLY_PUR ^= 0x08
+		case 5 System_RLY_PUR ^= 0x10
+		case 6 System_RLY_PUR ^= 0x20
+		case 7 System_RLY_PUR ^= 0x40
+		case 8 System_RLY_PUR ^= 0x80			
+		case 9 System_RLY_PUR ^= 0x0100
+		case 10 System_RLY_PUR ^= 0x0200
+		case 11 System_RLY_PUR ^= 0x0400
+		case 12 System_RLY_PUR ^= 0x0800
+		case 13 System_RLY_PUR ^= 0x1000
+		case 14 System_RLY_PUR ^= 0x2000
+		case 15 System_RLY_PUR ^= 0x4000
+		case 16 System_RLY_PUR ^= 0x8000			
+		case 17 System_RLY_PUR ^= 0x010000
+		case 18 System_RLY_PUR ^= 0x020000
+		case 19 System_RLY_PUR ^= 0x040000
+		case 20 System_RLY_PUR ^= 0x080000
+		case 21 System_RLY_PUR ^= 0x100000
+		case 22 System_RLY_PUR ^= 0x200000
+		case 23 System_RLY_PUR ^= 0x400000
+		case 24 System_RLY_PUR ^= 0x800000			
+		case 25 System_RLY_PUR ^= 0x01000000
+		case 26 System_RLY_PUR ^= 0x02000000
+		case 27 System_RLY_PUR ^= 0x04000000
+		case 28 System_RLY_PUR ^= 0x08000000
+		case 29 System_RLY_PUR ^= 0x10000000
+		case 30 System_RLY_PUR ^= 0x20000000
+		case 31 System_RLY_PUR ^= 0x40000000
+		case 32 System_RLY_PUR ^= 0x80000000
+	endselect
+	RLY_PUR = 0
+endthread
+
+thread dSxScan(const)
+int16 ADresult
+int8 idx
+int8 Identify
+int8 x
+int8 RemoteRlylyNum
+int8 RemoteRlyState
+
+    dSx_Remap()                                          ; translates the mapping so we don't need to do reverse lookup
+    idx = 0                 
+    do
+        if SystemIdentify then
+            if SystemIdentify==Identify or dSxUID[SystemIdentify-1]==0 then
+                dSx_SendFrame(dSx_IDENTIFY, 0, 0, 0)                            ; turn identify off
+                Identify = 0;
+            else 
+                dSx_SendFrame(dSx_IDENTIFY, dSxUID[SystemIdentify-1], 0, 0)     ; else new module to identify
+                Identify = SystemIdentify
+            endif
+            threadsleep 2
+            RS485.Read(dSxBuf, 0, 1)
+            SystemIdentify = 0
+        elseif SystemdSxSearch 
+            dSxSearch()                                                         ; find dSx modules (from config page)
+            dSx_Remap()
+            Identify=0 
+        elseif Identify==0 
+            idx += 1
+            if idx>15 then 
+                idx = 0 
+                if RemoteRlylyNum==1 then RemoteRlylyNum=2 else RemoteRlylyNum=1 endif
+            endif
+
+            if dSxUID[idx]>0 and dSxMap[idx]>0 then                              ; scan and update dSx modules
+                if RemoteRlylyNum==1 then RemoteRlyState = dSxGetRly(dSxMap[idx]*2-1)
+                else RemoteRlyState = dSxGetRly(dSxMap[idx]*2)
+                endif
+                dSx_SendFrame(dSx_SET_RELAY, dSxUID[idx], RemoteRlylyNum, RemoteRlyState)
+                threadsleep(2)
+                RS485.Read(dSxBuf, 0, 10)
+                if dSx_ChecksumOK(9) then
+                    x = (dSxMap[idx]-1)*4
+                    dSxADinputs[x]   = (dSxBuf[1]<<8)+(dSxBuf[2]&255)
+                    dSxADinputs[x+1] = (dSxBuf[3]<<8)+(dSxBuf[4]&255)
+                    dSxADinputs[x+2] = (dSxBuf[5]<<8)+(dSxBuf[6]&255)
+                    dSxADinputs[x+3] = (dSxBuf[7]<<8)+(dSxBuf[8]&255)
+                endif
+            endif
+        endif
+    loop
+endthread
+
+function int8 dSx_ChecksumOK(int8 cnt)      ; checks first cnt (zero based) bytes in dSxBuf against checksum in next position 
+int8 x
+int8 sum
+int8 chk
+    sum = 0;
+    for x=1 to cnt
+        sum += dSxBuf[x-1];
+    next
+    sum ^= 255
+    chk = dSxBuf[cnt]
+    if sum == chk then return 1
+    else return 0
+    endif
+endfunction
+
+
+function int8 dSxGetRly(int8 RlyNum)
+    select RlyNum
+        case 1 return Rly1
+        case 2 return Rly2
+        case 3 return Rly3
+        case 4 return Rly4
+        case 5 return Rly5
+        case 6 return Rly6
+        case 7 return Rly7
+        case 8 return Rly8
+        case 9 return Rly9
+        case 10 return Rly10
+        case 11 return Rly11
+        case 12 return Rly12
+        case 13 return Rly13
+        case 14 return Rly14
+        case 15 return Rly15
+        case 16 return Rly16
+        case 17 return Rly17
+        case 18 return Rly18
+        case 19 return Rly19
+        case 20 return Rly20
+        case 21 return Rly21
+        case 22 return Rly22
+        case 23 return Rly23
+        case 24 return Rly24
+        case 25 return Rly25
+        case 26 return Rly26
+        case 27 return Rly27
+        case 28 return Rly28
+        case 29 return Rly29
+        case 30 return Rly30
+        case 31 return Rly31
+        case 32 return Rly32
+    endselect
+    return 0
+endfunction
+
+function dSxSearch()
+int32 walk
+int32 addr
+int32 cnt
+int8 x
+    SystemdSxSearch = 0
+    dSx_SendFrame(dSx_SET_SEARCH, 0, 0, 0)
+    for cnt=0 to 15 
+        dSxUID[cnt]=0               ; clear old UID and mapping at start of search
+        dSxMap[cnt]=0 
+    next
+    
+    for cnt = 0 to 15
+        addr = 0x00800000
+        walk = 0x00800000
+        do
+            dSx_SendFrame(dSx_LESS_THAN, addr, 0, 0)
+            x = dSx_GetLessThanResponse()
+            if x==0 addr ^= walk
+            walk >>= 1
+            addr |= walk
+        loop while walk
+        if addr < 0x7FFFFF then
+            dSx_SendFrame(dSx_GET_VER, addr, 0, 0)
+            dSxUID[cnt] = addr
+            dSxMap[cnt] = cnt+13
+        else
+            return
+        endif
+    next
+endfunction
+
+function dSx_SendFrame(int8 cmd, int32 addr, int8 rly, int32 data)
+    dSxBuf[0] = cmd
+    dSxBuf[1] = addr>>16
+    dSxBuf[2] = addr>>8
+    dSxBuf[3] = addr
+    dSxBuf[4] = rly
+    dSxBuf[5] = data>>24
+    dSxBuf[6] = data>>16
+    dSxBuf[7] = data>>8
+    dSxBuf[8] = data
+    dSxBuf[9] = (dSxBuf[0]+dSxBuf[1]+dSxBuf[2]+dSxBuf[3]+dSxBuf[4]+dSxBuf[5]+dSxBuf[6]+dSxBuf[7]+dSxBuf[8])^255
+    RS485.Write(dSxBuf,0,10)
+    threadsleep 2 
+endfunction
+
+function int8 dSx_GetLessThanResponse()
+int8 x
+    if RS485.BytesToRead==0 return 0xff
+    RS485.Read(dSxBuf, 0, 6)
+    return  0
+endfunction
+
+function dSx_Remap()
+int8 idx
+int8 x
+    
+    for x=0 to 31 dSxReMap[x] = 0x40 next
+    for idx=0 to 15
+        x= dSxMap[idx]
+        if x>0 then
+            x = (x-1)*2
+            dSxReMap[x] = idx
+            dSxReMap[x+1] = idx
+        endif
+    next
+endfunction
+
+thread dSx_MapUpdate(System_Map_dSx)
+    dSxMap[System_Map_dSx/256-1] = System_Map_dSx&255
+    System_Map_dSx = 0
+    dSx_Remap()
+endthread
+
+thread WDayUpdate(SystemWDayUpdated)
+	select SystemWDayUpdated
+		case 1 System_Sch_WD1 ^= 0x40
+		case 2 System_Sch_WD1 ^= 0x20
+		case 3 System_Sch_WD1 ^= 0x10
+		case 4 System_Sch_WD1 ^= 0x08
+		case 5 System_Sch_WD1 ^= 0x04
+		case 6 System_Sch_WD1 ^= 0x02
+		case 7 System_Sch_WD1 ^= 0x01
+		case 8 System_Sch_WD2 ^= 0x40
+		case 9 System_Sch_WD2 ^= 0x20
+		case 10 System_Sch_WD2 ^= 0x10
+		case 11 System_Sch_WD2 ^= 0x08
+		case 12 System_Sch_WD2 ^= 0x04
+		case 13 System_Sch_WD2 ^= 0x02
+		case 14 System_Sch_WD2 ^= 0x01
+		case 15 System_Sch_WD3 ^= 0x40
+		case 16 System_Sch_WD3 ^= 0x20
+		case 17 System_Sch_WD3 ^= 0x10
+		case 18 System_Sch_WD3 ^= 0x08
+		case 19 System_Sch_WD3 ^= 0x04
+		case 20 System_Sch_WD3 ^= 0x02
+		case 21 System_Sch_WD3 ^= 0x01
+		case 22 System_Sch_WD4 ^= 0x40
+		case 23 System_Sch_WD4 ^= 0x20
+		case 24 System_Sch_WD4 ^= 0x10
+		case 25 System_Sch_WD4 ^= 0x08
+		case 26 System_Sch_WD4 ^= 0x04
+		case 27 System_Sch_WD4 ^= 0x02
+		case 28 System_Sch_WD4 ^= 0x01
+		case 29 System_Sch_WD5 ^= 0x40
+		case 30 System_Sch_WD5 ^= 0x20
+		case 31 System_Sch_WD5 ^= 0x10
+		case 32 System_Sch_WD5 ^= 0x08
+		case 33 System_Sch_WD5 ^= 0x04
+		case 34 System_Sch_WD5 ^= 0x02
+		case 35 System_Sch_WD5 ^= 0x01
+		case 36 System_Sch_WD6 ^= 0x40
+		case 37 System_Sch_WD6 ^= 0x20
+		case 38 System_Sch_WD6 ^= 0x10
+		case 39 System_Sch_WD6 ^= 0x08
+		case 40 System_Sch_WD6 ^= 0x04
+		case 41 System_Sch_WD6 ^= 0x02
+		case 42 System_Sch_WD6 ^= 0x01
+		case 43 System_Sch_WD7 ^= 0x40
+		case 44 System_Sch_WD7 ^= 0x20
+		case 45 System_Sch_WD7 ^= 0x10
+		case 46 System_Sch_WD7 ^= 0x08
+		case 47 System_Sch_WD7 ^= 0x04
+		case 48 System_Sch_WD7 ^= 0x02
+		case 49 System_Sch_WD7 ^= 0x01
+		case 50 System_Sch_WD8 ^= 0x40
+		case 51 System_Sch_WD8 ^= 0x20
+		case 52 System_Sch_WD8 ^= 0x10
+		case 53 System_Sch_WD8 ^= 0x08
+		case 54 System_Sch_WD8 ^= 0x04
+		case 55 System_Sch_WD8 ^= 0x02
+		case 56 System_Sch_WD8 ^= 0x01
+	endselect
+	SystemWDayUpdated = 0
+endthread
+		
+thread Rly1Thread(const)			; These relay threads pulse the relay on for the pulsetime.
+	Rly1 = on 				
+	threadsleep PulseTime
+	Rly1 = off
+endthread
+	
+thread Rly2Thread(const)
+	Rly2 = on 
+	threadsleep PulseTime
+	Rly2 = off
+endthread
+	
+thread Rly3Thread(const)
+	Rly3 = on 
+	threadsleep PulseTime
+	Rly3 = off
+endthread
+	
+thread Rly4Thread(const)
+	Rly4 = on 
+	threadsleep PulseTime
+	Rly4 = off
+endthread
+	
+thread Rly5Thread(const)
+	Rly5 = on 
+	threadsleep PulseTime
+	Rly5 = off
+endthread
+	
+thread Rly6Thread(const)
+	Rly6 = on 
+	threadsleep PulseTime
+	Rly6 = off
+endthread
+	
+thread Rly7Thread(const)
+	Rly7 = on 
+	threadsleep PulseTime
+	Rly7 = off
+endthread
+	
+thread Rly8Thread(const)
+	Rly8 = on 
+	threadsleep PulseTime
+	Rly8 = off
+endthread
+	
+thread Rly9Thread(const)
+	Rly9 = on 
+	threadsleep PulseTime
+	Rly9 = off
+endthread
+	
+thread Rly10Thread(const)
+	Rly10 = on 
+	threadsleep PulseTime
+	Rly10 = off
+endthread
+	
+thread Rly11Thread(const)
+	Rly11 = on 
+	threadsleep PulseTime
+	Rly11 = off
+endthread
+	
+thread Rly12Thread(const)
+	Rly12 = on 
+	threadsleep PulseTime
+	Rly12 = off
+endthread
+	
+thread Rly13Thread(const)
+	Rly13 = on 
+	threadsleep PulseTime
+	Rly13 = off
+endthread
+	
+thread Rly14Thread(const)
+	Rly14 = on 
+	threadsleep PulseTime
+	Rly14 = off
+endthread
+	
+thread Rly15Thread(const)
+	Rly15 = on 
+	threadsleep PulseTime
+	Rly15 = off
+endthread
+	
+thread Rly16Thread(const)
+	Rly16 = on 
+	threadsleep PulseTime
+	Rly16 = off
+endthread
+	
+thread Rly17Thread(const)
+	Rly17 = on 
+	threadsleep PulseTime
+	Rly17 = off
+endthread
+	
+thread Rly18Thread(const)
+	Rly18 = on 
+	threadsleep PulseTime
+	Rly18 = off
+endthread
+	
+thread Rly19Thread(const)
+	Rly19 = on 
+	threadsleep PulseTime
+	Rly19 = off
+endthread
+	
+thread Rly20Thread(const)
+	Rly20 = on 
+	threadsleep PulseTime
+	Rly20 = off
+endthread
+	
+thread Rly21Thread(const)
+	Rly21 = on 
+	threadsleep PulseTime
+	Rly21 = off
+endthread
+	
+thread Rly22Thread(const)
+	Rly22 = on 
+	threadsleep PulseTime
+	Rly22 = off
+endthread
+	
+thread Rly23Thread(const)
+	Rly23 = on 
+	threadsleep PulseTime
+	Rly23 = off
+endthread
+	
+thread Rly24Thread(const)
+	Rly24 = on 
+	threadsleep PulseTime
+	Rly24 = off
+endthread
+	
+thread Rly25Thread(const)
+	Rly25 = on 
+	threadsleep PulseTime
+	Rly25 = off
+endthread
+	
+thread Rly26Thread(const)
+	Rly26 = on 
+	threadsleep PulseTime
+	Rly26 = off
+endthread
+	
+thread Rly27Thread(const)
+	Rly27 = on 
+	threadsleep PulseTime
+	Rly27 = off
+endthread
+	
+thread Rly28Thread(const)
+	Rly28 = on 
+	threadsleep PulseTime
+	Rly28 = off
+endthread
+	
+thread Rly29Thread(const)
+	Rly29 = on 
+	threadsleep PulseTime
+	Rly29 = off
+endthread
+	
+thread Rly30Thread(const)
+	Rly30 = on 
+	threadsleep PulseTime
+	Rly30 = off
+endthread
+	
+thread Rly31Thread(const)
+	Rly31 = on 
+	threadsleep PulseTime
+	Rly31 = off
+endthread
+	
+thread Rly32Thread(const)
+	Rly32 = on 
+	threadsleep PulseTime
+	Rly32 = off
+endthread
+
+
+;  sequencer[row] format is:
+;  A. 31:29 unused, 28:24 cmd, 23:19 Object num, 18:12 target row, 11:0 K outputs
+;  B. 31:29 unused, 28:24 cmd, 23:12 Delay time, 11:0 K outputs
+;
+;  called when k1-k12 output status change on Sequence config screen
+;  Bits 31:10 unused, 9:5 row, 4:1 col, 0 new checked state
+thread SequencerUpdateOutputs(seqUpdateOutput)
+int32 row
+int32 col
+int32 k
+    row = (seqUpdateOutput/32)-1
+    col = (seqUpdateOutput/2)&0x0f
+    k = seqUpdateOutput&1
+    select(col)
+        case 1   if(k) then sequencer[row] |= 0x001 else sequencer[row] &= 0xfffffffe endif
+        case 2   if(k) then sequencer[row] |= 0x002 else sequencer[row] &= 0xfffffffd endif
+        case 3   if(k) then sequencer[row] |= 0x004 else sequencer[row] &= 0xfffffffb endif
+        case 4   if(k) then sequencer[row] |= 0x008 else sequencer[row] &= 0xfffffff7 endif
+        case 5   if(k) then sequencer[row] |= 0x010 else sequencer[row] &= 0xffffffef endif
+        case 6   if(k) then sequencer[row] |= 0x020 else sequencer[row] &= 0xffffffdf endif
+        case 7   if(k) then sequencer[row] |= 0x040 else sequencer[row] &= 0xffffffbf endif
+        case 8   if(k) then sequencer[row] |= 0x080 else sequencer[row] &= 0xffffff7f endif
+        case 9   if(k) then sequencer[row] |= 0x100 else sequencer[row] &= 0xfffffeff endif
+        case 10  if(k) then sequencer[row] |= 0x200 else sequencer[row] &= 0xfffffdff endif
+        case 11  if(k) then sequencer[row] |= 0x400 else sequencer[row] &= 0xfffffbff endif
+        case 12  if(k) then sequencer[row] |= 0x800 else sequencer[row] &= 0xfffff7ff endif
+    endselect
+
+    seqUpdateOutput = 0;
+    threadsuspend
+endthread
+
+
+;  sequencer[row] format is:
+;  A. 31:29 unused, 28:24 cmd, 23:19 Object num, 18:12 target row, 11:0 K outputs
+;  B. 31:29 unused, 28:24 cmd, 23:12 Delay time, 11:0 K outputs
+;
+;  called when control changes on Sequence config screen
+;  Bits 31:24 unused, 23:19 cmd, 18:14 Rly num, 13:7 line (or 18:7 delay time), 6:0 row
+thread SequencerUpdateCmds(seqUpdateCmd)
+int32 row
+int32 cmd
+int32 dly
+int16 v1
+int16 v2
+
+    cmd = seqUpdateCmd >> 19
+    row = seqUpdateCmd & 0x7f
+    dly = (seqUpdateCmd >> 7) & 0x0fff     
+    v1 = (seqUpdateCmd >> 14) & 0x1f
+    v2 = (seqUpdateCmd >> 7) & 0x7f
+
+    sequencer[row] &= 0xfff         ; remove any previous command, leave K outputs
+    sequencer[row] |= (cmd << 24)   ; merge the command
+    select(cmd) 
+        case 1 to 8                 ; secs, mS, M, H, J, C, U, X
+            sequencer[row] |= (dly << 12)
+        case 9 to 13                ; T, R, D, S, K
+            sequencer[row] |= (v1 << 19)
+            sequencer[row] |= (v2 << 12)
+    endselect
+    
+    seqUpdateCmd = 0;
+    threadsuspend
+endthread
+
+
+;  sequencer[row] format is:
+;  A. 31:29 unused, 28:24 cmd, 23:19 Object num, 18:12 target row, 11:0 K outputs
+;  B. 31:29 unused, 28:24 cmd, 23:12 Delay time, 11:0 K outputs
+thread RunSequencer(const)
+int32 cmd
+int32 v1
+int32 v2
+int32 dly
+int32 sp
+int32 stack[4]
+int16 k
+
+    seqrow = 0
+    sp = 0
+    seq1Handle = system.ThreadHandle    
+    do 
+        do while (sequencer[0]&0x1ffff000)==0               ; sleep while first row has no command
+            threadsleep 1000                                ; allows editing sequence without it running
+            seqrow = 0
+        loop 
+
+        cmd = sequencer[seqrow]>>24
+        v1 = (sequencer[seqrow]>>19)&0x1f
+        v2 = (sequencer[seqrow]>>12)&0x7f
+        dly = (sequencer[seqrow]>>12)&0x0fff
+        select cmd
+            case 1  Koutputs = sequencer[seqrow]&0xfff
+                    threadsleep dly*1000                    ; delay seconds
+                    seqrow += 1
+            case 2  Koutputs = sequencer[seqrow]&0xfff
+                    threadsleep dly                         ; m delay mS
+                    seqrow += 1
+            case 3  Koutputs = sequencer[seqrow]&0xfff
+                    threadsleep dly*60000                   ; M delay Minutes
+                    seqrow += 1
+            case 4  Koutputs = sequencer[seqrow]&0xfff
+                    if dly<597 threadsleep dly*3600000      ; H delay Hours
+                    seqrow += 1
+            case 5  seqrow = v2                             ; J jump to row
+            case 6  stack[sp] = (seqrow+1)&0x7f             ; C call row
+                    sp = (sp+1)&3
+                    seqrow = v2
+            case 7  Koutputs = sequencer[seqrow]&0xfff
+                    threadsleep ((system.Random&0x7fffffff)//dly)*1000+1  ; U Unknown (Random) delay between 0 and dly
+                    seqrow += 1
+            case 8  sp = (sp-1)&3
+                    seqrow = stack[sp]&0x7f                  ; X eXit subroutine (Return)
+            case 9  Koutputs = sequencer[seqrow]&0xfff
+                    do                                       ; T wait for HH:MM match  
+                        threadsleep 500            
+                    loop while v1!=Hours or v2!=Minutes             
+                    seqrow += 1
+            case 10 seqrow += 1
+                    select v1                                ; R jump if Relay is active
+                        case  0 if Rly1 seqrow = v2
+                        case  1 if Rly2 seqrow = v2
+                        case  2 if Rly3 seqrow = v2
+                        case  3 if Rly4 seqrow = v2
+                        case  4 if Rly5 seqrow = v2
+                        case  5 if Rly6 seqrow = v2
+                        case  6 if Rly7 seqrow = v2
+                        case  7 if Rly8 seqrow = v2
+                        case  8 if Rly9 seqrow = v2
+                        case  9 if Rly10 seqrow = v2
+                        case 10 if Rly11 seqrow = v2
+                        case 11 if Rly12 seqrow = v2
+                        case 12 if Rly13 seqrow = v2
+                        case 13 if Rly14 seqrow = v2
+                        case 14 if Rly15 seqrow = v2
+                        case 15 if Rly16 seqrow = v2
+                        case 16 if Rly17 seqrow = v2
+                        case 17 if Rly18 seqrow = v2
+                        case 18 if Rly19 seqrow = v2
+                        case 19 if Rly20 seqrow = v2
+                        case 20 if Rly21 seqrow = v2
+                        case 21 if Rly22 seqrow = v2
+                        case 22 if Rly23 seqrow = v2
+                        case 23 if Rly24 seqrow = v2
+                        case 24 if Rly25 seqrow = v2
+                        case 25 if Rly26 seqrow = v2
+                        case 26 if Rly27 seqrow = v2
+                        case 27 if Rly28 seqrow = v2
+                        case 28 if Rly29 seqrow = v2
+                        case 29 if Rly30 seqrow = v2
+                        case 30 if Rly31 seqrow = v2
+                        case 31 if Rly32 seqrow = v2
+                    endselect
+            case 11 seqrow += 1
+                    select v1                              ; D jump if I/O is active
+                        case 1  if IO1 seqrow = v2
+                        case 2  if IO2 seqrow = v2
+                        case 3  if IO3 seqrow = v2
+                        case 4  if IO4 seqrow = v2
+                    endselect
+            case 12 seqrow += 1
+                    if SchStatus[v1&7] seqrow = v2      ; S jump if shedule is active   
+            else    seqrow = 0                          ; Blamk line, default jump to first line
+        endselect
+    loop
+endthread
+
+thread RelayUpdate(100)
+	if System_RLY_PUR&0x00000001 RelayStore[0] = Rly1		; keep eeprom updated with relay states
+	if System_RLY_PUR&0x00000002 RelayStore[1] = Rly2		; note the eeprom will only actually get written on changes
+	if System_RLY_PUR&0x00000004 RelayStore[2] = Rly3
+	if System_RLY_PUR&0x00000008 RelayStore[3] = Rly4
+	if System_RLY_PUR&0x00000010 RelayStore[4] = Rly5
+	if System_RLY_PUR&0x00000020 RelayStore[5] = Rly6
+	if System_RLY_PUR&0x00000040 RelayStore[6] = Rly7
+	if System_RLY_PUR&0x00000080 RelayStore[7] = Rly8
+	if System_RLY_PUR&0x00000100 RelayStore[8] = Rly9
+	if System_RLY_PUR&0x00000200 RelayStore[9] = Rly10
+	if System_RLY_PUR&0x00000400 RelayStore[10] = Rly11
+	if System_RLY_PUR&0x00000800 RelayStore[11] = Rly12
+	if System_RLY_PUR&0x00001000 RelayStore[12] = Rly13
+	if System_RLY_PUR&0x00002000 RelayStore[13] = Rly14
+	if System_RLY_PUR&0x00004000 RelayStore[14] = Rly15
+	if System_RLY_PUR&0x00008000 RelayStore[15] = Rly16
+	if System_RLY_PUR&0x00010000 RelayStore[16] = Rly17
+	if System_RLY_PUR&0x00020000 RelayStore[17] = Rly18
+	if System_RLY_PUR&0x00040000 RelayStore[18] = Rly19
+	if System_RLY_PUR&0x00080000 RelayStore[19] = Rly20
+	if System_RLY_PUR&0x00100000 RelayStore[20] = Rly21
+	if System_RLY_PUR&0x00200000 RelayStore[21] = Rly22
+	if System_RLY_PUR&0x00400000 RelayStore[22] = Rly23
+	if System_RLY_PUR&0x00800000 RelayStore[23] = Rly24
+	if System_RLY_PUR&0x01000000 RelayStore[24] = Rly25
+	if System_RLY_PUR&0x02000000 RelayStore[25] = Rly26
+	if System_RLY_PUR&0x04000000 RelayStore[26] = Rly27
+	if System_RLY_PUR&0x08000000 RelayStore[27] = Rly28
+	if System_RLY_PUR&0x10000000 RelayStore[28] = Rly29
+	if System_RLY_PUR&0x20000000 RelayStore[29] = Rly30
+	if System_RLY_PUR&0x40000000 RelayStore[30] = Rly31
+	if System_RLY_PUR&0x80000000 RelayStore[31] = Rly32
+endthread
+		
+
+
+function ScheduleArrayInit()
+	SchStartA[1] = (System_Sch_STH1a*3600) + (System_Sch_STM1a*60) + System_Sch_STS1a
+	SchStopA[1] = (System_Sch_SPH1a*3600) + (System_Sch_SPM1a*60) + System_Sch_SPS1a
+	SchStartB[1] = (System_Sch_STH1b*3600) + (System_Sch_STM1b*60) + System_Sch_STS1b
+	SchStopB[1] = (System_Sch_SPH1b*3600) + (System_Sch_SPM1b*60) + System_Sch_SPS1b
+	SchWDay[1] = System_Sch_WD1&0x7f
+	SchRelays[1] = System_Sch_R1
+	
+	SchStartA[2] = (System_Sch_STH2a*3600) + (System_Sch_STM2a*60) + System_Sch_STS2a
+	SchStopA[2] = (System_Sch_SPH2a*3600) + (System_Sch_SPM2a*60) + System_Sch_SPS2a
+	SchStartB[2] = (System_Sch_STH2b*3600) + (System_Sch_STM2b*60) + System_Sch_STS2b
+	SchStopB[2] = (System_Sch_SPH2b*3600) + (System_Sch_SPM2b*60) + System_Sch_SPS2b
+	SchWDay[2] = System_Sch_WD2&0x7f
+	SchRelays[2] = System_Sch_R2
+	
+	SchStartA[3] = (System_Sch_STH3a*3600) + (System_Sch_STM3a*60) + System_Sch_STS3a
+	SchStopA[3] = (System_Sch_SPH3a*3600) + (System_Sch_SPM3a*60) + System_Sch_SPS3a
+	SchStartB[3] = (System_Sch_STH3b*3600) + (System_Sch_STM3b*60) + System_Sch_STS3b
+	SchStopB[3] = (System_Sch_SPH3b*3600) + (System_Sch_SPM3b*60) + System_Sch_SPS3b
+	SchWDay[3] = System_Sch_WD3&0x7f
+	SchRelays[3] = System_Sch_R3
+	
+	SchStartA[4] = (System_Sch_STH4a*3600) + (System_Sch_STM4a*60) + System_Sch_STS4a
+	SchStopA[4] = (System_Sch_SPH4a*3600) + (System_Sch_SPM4a*60) + System_Sch_SPS4a
+	SchStartB[4] = (System_Sch_STH4b*3600) + (System_Sch_STM4b*60) + System_Sch_STS4b
+	SchStopB[4] = (System_Sch_SPH4b*3600) + (System_Sch_SPM4b*60) + System_Sch_SPS4b
+	SchWDay[4] = System_Sch_WD4&0x7f
+	SchRelays[4] = System_Sch_R4
+	
+	SchStartA[5] = (System_Sch_STH5a*3600) + (System_Sch_STM5a*60) + System_Sch_STS5a
+	SchStopA[5] = (System_Sch_SPH5a*3600) + (System_Sch_SPM5a*60) + System_Sch_SPS5a
+	SchStartB[5] = (System_Sch_STH5b*3600) + (System_Sch_STM5b*60) + System_Sch_STS5b
+	SchStopB[5] = (System_Sch_SPH5b*3600) + (System_Sch_SPM5b*60) + System_Sch_SPS5b
+	SchWDay[5] = System_Sch_WD5&0x7f
+	SchRelays[5] = System_Sch_R5
+	
+	SchStartA[6] = (System_Sch_STH6a*3600) + (System_Sch_STM6a*60) + System_Sch_STS6a
+	SchStopA[6] = (System_Sch_SPH6a*3600) + (System_Sch_SPM6a*60) + System_Sch_SPS6a
+	SchStartB[6] = (System_Sch_STH6b*3600) + (System_Sch_STM6b*60) + System_Sch_STS6b
+	SchStopB[6] = (System_Sch_SPH6b*3600) + (System_Sch_SPM6b*60) + System_Sch_SPS6b
+	SchWDay[6] = System_Sch_WD6&0x7f
+	SchRelays[6] = System_Sch_R6
+	
+	SchStartA[7] = (System_Sch_STH7a*3600) + (System_Sch_STM7a*60) + System_Sch_STS7a
+	SchStopA[7] = (System_Sch_SPH7a*3600) + (System_Sch_SPM7a*60) + System_Sch_SPS7a
+	SchStartB[7] = (System_Sch_STH7b*3600) + (System_Sch_STM7b*60) + System_Sch_STS7b
+	SchStopB[7] = (System_Sch_SPH7b*3600) + (System_Sch_SPM7b*60) + System_Sch_SPS7b
+	SchWDay[7] = System_Sch_WD7&0x7f
+	SchRelays[7] = System_Sch_R7
+		
+	SchStartA[8] = (System_Sch_STH8a*3600) + (System_Sch_STM8a*60) + System_Sch_STS8a
+	SchStopA[8] = (System_Sch_SPH8a*3600) + (System_Sch_SPM8a*60) + System_Sch_SPS8a
+	SchStartB[8] = (System_Sch_STH8b*3600) + (System_Sch_STM8b*60) + System_Sch_STS8b
+	SchStopB[8] = (System_Sch_SPH8b*3600) + (System_Sch_SPM8b*60) + System_Sch_SPS8b
+	SchWDay[8] = System_Sch_WD8&0x7f
+	SchRelays[8] = System_Sch_R8
+	return
+endfunction
+	
+function ProcessRelay(string follow, string set, string res, string tog, int32 rly)
+        if follow.IsBool() then SetRelay(rly, follow.BooleanEval())     ; Relay 
+        else 
+            if set.IsBool() then
+                RlySetTrn[rly] <<= 1
+                if set.BooleanEval() RlySetTrn[rly] |= 0x01
+                if RlySetTrn[rly] == 0x01 then 
+                    Zero = 0        
+                    PulseTime=follow.GetNumAscii(Zero)                     
+                    if PulseTime<MinRelayPulse PulseTime=on
+                    SetRelay(rly, PulseTime)
+                endif
+            endif
+            if res.IsBool() then
+                RlyRstTrn[rly] <<= 1
+                if res.BooleanEval() RlyRstTrn[rly] |= 0x01
+                if RlyRstTrn[rly] == 0x01 SetRelay(rly, off)
+            endif
+            if tog.IsBool() then
+                RlyTogTrn[rly] <<= 1
+                if tog.BooleanEval() RlyTogTrn[rly] |= 0x01
+                if RlyTogTrn[rly] == 0x01 then
+                    Zero = 0        
+                    PulseTime=System_Rly1Bool.GetNumAscii(Zero)                     
+                    if PulseTime<MinRelayPulse PulseTime=2
+                    SetRelay(rly, PulseTime)
+                endif
+            endif
+        endif
+endfunction
+
+thread RunBooleanProcesses(const)
+int32 trigger
+    
+    ScheduleArrayInit()
+    do 
+       if notiFlg==0 then 
+            trigger = System_Noti_Event.BooleanEval()
+            if trigger>0 notiFlg = system.TriggerPort + 0x100
+       endif
+
+        ProcessRelay(System_Rly1Bool, System_Rly1Set, System_Rly1Rst, System_Rly1Tog, 1)
+        ProcessRelay(System_Rly2Bool, System_Rly2Set, System_Rly2Rst, System_Rly2Tog, 2)
+        ProcessRelay(System_Rly3Bool, System_Rly3Set, System_Rly3Rst, System_Rly3Tog, 3)
+        ProcessRelay(System_Rly4Bool, System_Rly4Set, System_Rly4Rst, System_Rly4Tog, 4)
+        ProcessRelay(System_Rly5Bool, System_Rly5Set, System_Rly5Rst, System_Rly5Tog, 5)
+        ProcessRelay(System_Rly6Bool, System_Rly6Set, System_Rly6Rst, System_Rly6Tog, 6)
+        ProcessRelay(System_Rly7Bool, System_Rly7Set, System_Rly7Rst, System_Rly7Tog, 7)
+        ProcessRelay(System_Rly8Bool, System_Rly8Set, System_Rly8Rst, System_Rly8Tog, 8)
+        ProcessRelay(System_Rly9Bool, System_Rly9Set, System_Rly9Rst, System_Rly9Tog, 9)
+        ProcessRelay(System_Rly10Bool, System_Rly10Set, System_Rly10Rst, System_Rly10Tog, 10)
+        ProcessRelay(System_Rly11Bool, System_Rly11Set, System_Rly11Rst, System_Rly11Tog, 11)
+        ProcessRelay(System_Rly12Bool, System_Rly12Set, System_Rly12Rst, System_Rly12Tog, 12)
+        ProcessRelay(System_Rly13Bool, System_Rly13Set, System_Rly13Rst, System_Rly13Tog, 13)
+        ProcessRelay(System_Rly14Bool, System_Rly14Set, System_Rly14Rst, System_Rly14Tog, 14)
+        ProcessRelay(System_Rly15Bool, System_Rly15Set, System_Rly15Rst, System_Rly15Tog, 15)
+        ProcessRelay(System_Rly16Bool, System_Rly16Set, System_Rly16Rst, System_Rly16Tog, 16)
+        ProcessRelay(System_Rly17Bool, System_Rly17Set, System_Rly17Rst, System_Rly17Tog, 17)
+        ProcessRelay(System_Rly18Bool, System_Rly18Set, System_Rly18Rst, System_Rly18Tog, 18)
+        ProcessRelay(System_Rly19Bool, System_Rly19Set, System_Rly19Rst, System_Rly19Tog, 19)
+        ProcessRelay(System_Rly20Bool, System_Rly20Set, System_Rly20Rst, System_Rly20Tog, 20)
+        ProcessRelay(System_Rly21Bool, System_Rly21Set, System_Rly21Rst, System_Rly21Tog, 21)
+        ProcessRelay(System_Rly22Bool, System_Rly22Set, System_Rly22Rst, System_Rly22Tog, 22)
+        ProcessRelay(System_Rly23Bool, System_Rly23Set, System_Rly23Rst, System_Rly23Tog, 23)
+        ProcessRelay(System_Rly24Bool, System_Rly24Set, System_Rly24Rst, System_Rly24Tog, 24)
+        ProcessRelay(System_Rly25Bool, System_Rly25Set, System_Rly25Rst, System_Rly25Tog, 25)
+        ProcessRelay(System_Rly26Bool, System_Rly26Set, System_Rly26Rst, System_Rly26Tog, 26)
+        ProcessRelay(System_Rly27Bool, System_Rly27Set, System_Rly27Rst, System_Rly27Tog, 27)
+        ProcessRelay(System_Rly28Bool, System_Rly28Set, System_Rly28Rst, System_Rly28Tog, 28)
+        ProcessRelay(System_Rly29Bool, System_Rly29Set, System_Rly29Rst, System_Rly29Tog, 29)
+        ProcessRelay(System_Rly30Bool, System_Rly30Set, System_Rly30Rst, System_Rly30Tog, 30)
+        ProcessRelay(System_Rly31Bool, System_Rly31Set, System_Rly31Rst, System_Rly31Tog, 31)
+        ProcessRelay(System_Rly32Bool, System_Rly32Set, System_Rly32Rst, System_Rly32Tog, 32)
+
+        if SystemRlysUpdated then
+            Zero = 0
+            select SystemRlysUpdated
+                case 1  if System_Rly1Bool.IsBool()==0 then 
+                            PulseTime=System_Rly1Bool.GetNumAscii(Zero)
+                            if PulseTime<MinRelayPulse PulseTime=2
+                            SetRelay(1, PulseTime)
+                        endif
+                case 2  if System_Rly2Bool.IsBool()==0 then 
+                            PulseTime=System_Rly2Bool.GetNumAscii(Zero)
+                            if PulseTime<MinRelayPulse PulseTime=2
+                            SetRelay(2, PulseTime)
+                        endif
+                case 3  if System_Rly3Bool.IsBool()==0 then 
+                            PulseTime=System_Rly3Bool.GetNumAscii(Zero)
+                            if PulseTime<MinRelayPulse PulseTime=2
+                            SetRelay(3, PulseTime)
+                        endif
+                case 4  if System_Rly4Bool.IsBool()==0 then 
+                            PulseTime=System_Rly4Bool.GetNumAscii(Zero)
+                            if PulseTime<MinRelayPulse PulseTime=2
+                            SetRelay(4, PulseTime)
+                        endif
+                case 5  if System_Rly5Bool.IsBool()==0 then 
+                            PulseTime=System_Rly5Bool.GetNumAscii(Zero)
+                            if PulseTime<MinRelayPulse PulseTime=2
+                            SetRelay(5, PulseTime)
+                        endif
+                case 6  if System_Rly6Bool.IsBool()==0 then 
+                            PulseTime=System_Rly6Bool.GetNumAscii(Zero)
+                            if PulseTime<MinRelayPulse PulseTime=2
+                            SetRelay(6, PulseTime)
+                        endif
+                case 7  if System_Rly7Bool.IsBool()==0 then 
+                            PulseTime=System_Rly7Bool.GetNumAscii(Zero)
+                            if PulseTime<MinRelayPulse PulseTime=2
+                            SetRelay(7, PulseTime)
+                        endif
+                case 8  if System_Rly8Bool.IsBool()==0 then 
+                            PulseTime=System_Rly8Bool.GetNumAscii(Zero)
+                            if PulseTime<MinRelayPulse PulseTime=2
+                            SetRelay(8, PulseTime)
+                        endif
+                case 9  if System_Rly9Bool.IsBool()==0 then 
+                            PulseTime=System_Rly9Bool.GetNumAscii(Zero)
+                            if PulseTime<MinRelayPulse PulseTime=2
+                            SetRelay(9, PulseTime)
+                        endif
+                case 10 if System_Rly10Bool.IsBool()==0 then 
+                            PulseTime=System_Rly10Bool.GetNumAscii(Zero)
+                            if PulseTime<MinRelayPulse PulseTime=2
+                            SetRelay(10, PulseTime)
+                        endif
+                case 11 if System_Rly11Bool.IsBool()==0 then 
+                            PulseTime=System_Rly11Bool.GetNumAscii(Zero)
+                            if PulseTime<MinRelayPulse PulseTime=2
+                            SetRelay(11, PulseTime)
+                        endif
+                case 12 if System_Rly12Bool.IsBool()==0 then 
+                            PulseTime=System_Rly12Bool.GetNumAscii(Zero)
+                            if PulseTime<MinRelayPulse PulseTime=2
+                            SetRelay(12, PulseTime)
+                        endif
+                case 13 if System_Rly13Bool.IsBool()==0 then 
+                            PulseTime=System_Rly13Bool.GetNumAscii(Zero)
+                            if PulseTime<MinRelayPulse PulseTime=2
+                            SetRelay(13, PulseTime)
+                        endif
+                case 14 if System_Rly14Bool.IsBool()==0 then 
+                            PulseTime=System_Rly14Bool.GetNumAscii(Zero)
+                            if PulseTime<MinRelayPulse PulseTime=2
+                            SetRelay(14, PulseTime)
+                        endif
+                case 15 if System_Rly15Bool.IsBool()==0 then 
+                            PulseTime=System_Rly15Bool.GetNumAscii(Zero)
+                            if PulseTime<MinRelayPulse PulseTime=2
+                            SetRelay(15, PulseTime)
+                        endif
+                case 16 if System_Rly16Bool.IsBool()==0 then 
+                            PulseTime=System_Rly16Bool.GetNumAscii(Zero)
+                            if PulseTime<MinRelayPulse PulseTime=2
+                            SetRelay(16, PulseTime)
+                        endif
+                case 17 if System_Rly17Bool.IsBool()==0 then 
+                            PulseTime=System_Rly17Bool.GetNumAscii(Zero)
+                            if PulseTime<MinRelayPulse PulseTime=2
+                            SetRelay(17, PulseTime)
+                        endif
+                case 18 if System_Rly18Bool.IsBool()==0 then 
+                            PulseTime=System_Rly18Bool.GetNumAscii(Zero)
+                            if PulseTime<MinRelayPulse PulseTime=2
+                            SetRelay(18, PulseTime)
+                        endif
+                case 19 if System_Rly19Bool.IsBool()==0 then 
+                            PulseTime=System_Rly19Bool.GetNumAscii(Zero)
+                            if PulseTime<MinRelayPulse PulseTime=2
+                            SetRelay(19, PulseTime)
+                        endif
+                case 20 if System_Rly20Bool.IsBool()==0 then 
+                            PulseTime=System_Rly20Bool.GetNumAscii(Zero)
+                            if PulseTime<MinRelayPulse PulseTime=2
+                            SetRelay(20, PulseTime)
+                        endif
+                case 21 if System_Rly21Bool.IsBool()==0 then 
+                            PulseTime=System_Rly21Bool.GetNumAscii(Zero)
+                            if PulseTime<MinRelayPulse PulseTime=2
+                            SetRelay(21, PulseTime)
+                        endif
+                case 22 if System_Rly22Bool.IsBool()==0 then 
+                            PulseTime=System_Rly22Bool.GetNumAscii(Zero)
+                            if PulseTime<MinRelayPulse PulseTime=2
+                            SetRelay(22, PulseTime)
+                        endif
+                case 23 if System_Rly23Bool.IsBool()==0 then 
+                            PulseTime=System_Rly23Bool.GetNumAscii(Zero)
+                            if PulseTime<MinRelayPulse PulseTime=2
+                            SetRelay(23, PulseTime)
+                        endif
+                case 24 if System_Rly24Bool.IsBool()==0 then 
+                            PulseTime=System_Rly24Bool.GetNumAscii(Zero)
+                            if PulseTime<MinRelayPulse PulseTime=2
+                            SetRelay(24, PulseTime)
+                        endif
+                case 25 if System_Rly25Bool.IsBool()==0 then 
+                            PulseTime=System_Rly25Bool.GetNumAscii(Zero)
+                            if PulseTime<MinRelayPulse PulseTime=2
+                            SetRelay(25, PulseTime)
+                        endif
+                case 26 if System_Rly26Bool.IsBool()==0 then 
+                            PulseTime=System_Rly26Bool.GetNumAscii(Zero)
+                            if PulseTime<MinRelayPulse PulseTime=2
+                            SetRelay(26, PulseTime)
+                        endif
+                case 27 if System_Rly27Bool.IsBool()==0 then 
+                            PulseTime=System_Rly27Bool.GetNumAscii(Zero)
+                            if PulseTime<MinRelayPulse PulseTime=2
+                            SetRelay(27, PulseTime)
+                        endif
+                case 28 if System_Rly28Bool.IsBool()==0 then 
+                            PulseTime=System_Rly28Bool.GetNumAscii(Zero)
+                            if PulseTime<MinRelayPulse PulseTime=2
+                            SetRelay(28, PulseTime)
+                        endif
+                case 29 if System_Rly29Bool.IsBool()==0 then 
+                            PulseTime=System_Rly29Bool.GetNumAscii(Zero)
+                            if PulseTime<MinRelayPulse PulseTime=2
+                            SetRelay(29, PulseTime)
+                        endif
+                case 30 if System_Rly30Bool.IsBool()==0 then 
+                            PulseTime=System_Rly30Bool.GetNumAscii(Zero)
+                            if PulseTime<MinRelayPulse PulseTime=2
+                            SetRelay(30, PulseTime)
+                        endif
+                case 31 if System_Rly31Bool.IsBool()==0 then 
+                            PulseTime=System_Rly31Bool.GetNumAscii(Zero)
+                            if PulseTime<MinRelayPulse PulseTime=2
+                            SetRelay(31, PulseTime)
+                        endif
+                case 32 if System_Rly32Bool.IsBool()==0 then 
+                            PulseTime=System_Rly32Bool.GetNumAscii(Zero)
+                            if PulseTime<MinRelayPulse PulseTime=2
+                            SetRelay(32, PulseTime)
+                        endif
+            endselect
+            SystemRlysUpdated = 0       ; ready for next trigger
+        endif
+        
+		if System_IO1AttachedRly then 
+			AttachedRly = System_IO1AttachedRly
+			GetAttachedRly()
+			IO1 = AttachedRlyState 
+		endif
+		if System_IO2AttachedRly then 
+			AttachedRly = System_IO2AttachedRly
+			GetAttachedRly()
+			IO2 = AttachedRlyState 
+		endif
+		if System_IO3AttachedRly then 
+			AttachedRly = System_IO3AttachedRly
+			GetAttachedRly()
+			IO3 = AttachedRlyState 
+		endif
+		if System_IO4AttachedRly then 
+			AttachedRly = System_IO4AttachedRly
+			GetAttachedRly()
+			IO4 = AttachedRlyState 
+		endif
+		if System_IO5AttachedRly then 
+			AttachedRly = System_IO5AttachedRly
+			GetAttachedRly()
+			IO5 = AttachedRlyState 
+		endif
+		if System_IO6AttachedRly then 
+			AttachedRly = System_IO6AttachedRly
+			GetAttachedRly()
+			IO6 = AttachedRlyState 
+		endif
+		if System_IO7AttachedRly then 
+			AttachedRly = System_IO7AttachedRly
+			GetAttachedRly()
+			IO7 = AttachedRlyState 
+		endif
+		if System_IO8AttachedRly then 
+			AttachedRly = System_IO8AttachedRly
+			GetAttachedRly()
+			IO8 = AttachedRlyState 
+		endif
+	
+		SchT = (Hours*3600) + (Minutes*60) + Seconds	; calc time as seconds from midnight
+		
+		for SchX = 1 to 8
+			schState = 0
+			select UTC.Wday
+				case 0 if SchWDay[SchX]&0x40 schState = 1	; check if today is active
+				case 1 if SchWDay[SchX]&0x20 schState = 1
+				case 2 if SchWDay[SchX]&0x10 schState = 1
+				case 3 if SchWDay[SchX]&0x08 schState = 1
+				case 4 if SchWDay[SchX]&0x04 schState = 1
+				case 5 if SchWDay[SchX]&0x02 schState = 1
+				case 6 if SchWDay[SchX]&0x01 schState = 1
+			endselect			
+			if schState then
+				schState = 0
+				if SchT>SchStartA[SchX] and SchT<SchStopA[SchX] then schState = 1 endif	 
+				if SchT>SchStartB[SchX] and SchT<SchStopB[SchX] then schState = 1 endif
+				system.Schedules[SchX] = schState
+				SchStatus[SchX] <<= 1
+				if schState SchStatus[SchX] |= 1
+				schState = SchRelays[SchX]
+				if SchStatus[SchX]&3==0x01 then
+					system.Relays[schState] = on		; } action 01 and 10, they are the change (edge)
+				endif
+				if SchStatus[SchX]&3==0x02 then
+					system.Relays[schState] = off	; } ignore 00 and 11, they are the steady state
+				endif
+			endif
+		next
+		
+		CTreset[1] <<= 1
+		if System_CtrReset1.BooleanEval() CTreset[1] |= 1
+		if CTreset[1]&3 == 0x01 then 
+			if System_CtrCap1.Length==0 System_CtrCapt1 = System_CtrVal1 ; no capture defined so do it on reset
+			System_CtrVal1 = 0							; reset the counter/timer
+		endif
+		CTcount[1] <<= 1
+		if System_CtrCount1.BooleanEval() CTcount[1] |= 1
+		if CTcount[1]&3 == 0x01 System_CtrVal1 += 1		; increment counter/timer
+		CTcapt[1] <<= 1
+		if System_CtrCap1.BooleanEval() CTcapt[1] |= 1
+		if CTcapt[1]&3 == 0x01 System_CtrCapt1 = System_CtrVal1 
+		
+		CTreset[2] <<= 1
+		if System_CtrReset2.BooleanEval() CTreset[2] |= 1
+		if CTreset[2]&3 == 0x01 then 
+			if System_CtrCap2.Length==0 System_CtrCapt2 = System_CtrVal2 
+			System_CtrVal2 = 0	
+		endif
+		CTcount[2] <<= 1
+		if System_CtrCount2.BooleanEval() CTcount[2] |= 1
+		if CTcount[2]&3 == 0x01 System_CtrVal2 += 1		
+		CTcapt[2] <<= 1
+		if System_CtrCap2.BooleanEval() CTcapt[2] |= 1
+		if CTcapt[2]&3 == 0x01 System_CtrCapt2 = System_CtrVal2 
+		
+		CTreset[3] <<= 1
+		if System_CtrReset3.BooleanEval() CTreset[3] |= 1
+		if CTreset[3]&3 == 0x01 then 
+			if System_CtrCap3.Length==0 System_CtrCapt3 = System_CtrVal3 
+			System_CtrVal3 = 0	
+		endif
+		CTcount[3] <<= 1
+		if System_CtrCount3.BooleanEval() CTcount[3] |= 1
+		if CTcount[3]&3 == 0x01 System_CtrVal3 += 1		
+		CTcapt[3] <<= 1
+		if System_CtrCap3.BooleanEval() CTcapt[3] |= 1
+		if CTcapt[3]&3 == 0x01 System_CtrCapt3 = System_CtrVal3 
+		
+		CTreset[4] <<= 1
+		if System_CtrReset4.BooleanEval() CTreset[4] |= 1
+		if CTreset[4]&3 == 0x01 then 
+			if System_CtrCap4.Length==0 System_CtrCapt4 = System_CtrVal4 
+			System_CtrVal4 = 0	
+		endif
+		CTcount[4] <<= 1
+		if System_CtrCount4.BooleanEval() CTcount[4] |= 1
+		if CTcount[4]&3 == 0x01 System_CtrVal4 += 1		
+		CTcapt[4] <<= 1
+		if System_CtrCap4.BooleanEval() CTcapt[4] |= 1
+		if CTcapt[4]&3 == 0x01 System_CtrCapt4 = System_CtrVal4 
+
+		CTreset[5] <<= 1
+		if System_CtrReset5.BooleanEval() CTreset[5] |= 1
+		if CTreset[5]&3 == 0x01 then 
+			if System_CtrCap5.Length==0 System_CtrCapt5 = System_CtrVal5 
+			System_CtrVal5 = 0	
+		endif
+		CTcount[5] <<= 1
+		if System_CtrCount5.BooleanEval() CTcount[5] |= 1
+		if CTcount[5]&3 == 0x01 System_CtrVal5 += 1		
+		CTcapt[5] <<= 1
+		if System_CtrCap5.BooleanEval() CTcapt[5] |= 1
+		if CTcapt[5]&3 == 0x01 System_CtrCapt5 = System_CtrVal5 
+
+		CTreset[6] <<= 1
+		if System_CtrReset6.BooleanEval() CTreset[6] |= 1
+		if CTreset[6]&3 == 0x01 then 
+			if System_CtrCap6.Length==0 System_CtrCapt6 = System_CtrVal6 
+			System_CtrVal6 = 0	
+		endif
+		CTcount[6] <<= 1
+		if System_CtrCount6.BooleanEval() CTcount[6] |= 1
+		if CTcount[6]&3 == 0x01 System_CtrVal6 += 1	
+		CTcapt[6] <<= 1
+		if System_CtrCap6.BooleanEval() CTcapt[6] |= 1
+		if CTcapt[6]&3 == 0x01 System_CtrCapt6 = System_CtrVal6 
+		
+		CTreset[7] <<= 1
+		if System_CtrReset7.BooleanEval() CTreset[7] |= 1
+		if CTreset[7]&3 == 0x01 then 
+			if System_CtrCap7.Length==0 System_CtrCapt7 = System_CtrVal7 
+			System_CtrVal7 = 0	
+		endif
+		CTcount[7] <<= 1
+		if System_CtrCount7.BooleanEval() CTcount[7] |= 1
+		if CTcount[7]&3 == 0x01 System_CtrVal7 += 1	
+		CTcapt[7] <<= 1
+		if System_CtrCap7.BooleanEval() CTcapt[7] |= 1
+		if CTcapt[7]&3 == 0x01 System_CtrCapt7 = System_CtrVal7 
+			
+		CTreset[8] <<= 1
+		if System_CtrReset8.BooleanEval() CTreset[8] |= 1
+		if CTreset[8]&3 == 0x01 then 
+			if System_CtrCap8.Length==0 System_CtrCapt8 = System_CtrVal8 
+			System_CtrVal8 = 0	
+		endif
+		CTcount[8] <<= 1
+		if System_CtrCount8.BooleanEval() CTcount[8] |= 1
+		if CTcount[8]&3 == 0x01 System_CtrVal8 += 1		
+		CTcapt[8] <<= 1
+		if System_CtrCap8.BooleanEval() CTcapt[8] |= 1
+		if CTcapt[8]&3 == 0x01 System_CtrCapt8 = System_CtrVal8 
+	loop
+endthread
+
+function GetAttachedRly()
+	select AttachedRly
+		case 1 AttachedRlyState = Rly1
+		case 2 AttachedRlyState = Rly2
+		case 3 AttachedRlyState = Rly3
+		case 4 AttachedRlyState = Rly4
+		case 5 AttachedRlyState = Rly5
+		case 6 AttachedRlyState = Rly6
+		case 7 AttachedRlyState = Rly7
+		case 8 AttachedRlyState = Rly8
+		case 9 AttachedRlyState = Rly9
+		case 10 AttachedRlyState = Rly10
+		case 11 AttachedRlyState = Rly11
+		case 12 AttachedRlyState = Rly12
+		case 13 AttachedRlyState = Rly13
+		case 14 AttachedRlyState = Rly14
+		case 15 AttachedRlyState = Rly15
+		case 16 AttachedRlyState = Rly16
+		case 17 AttachedRlyState = Rly17
+		case 18 AttachedRlyState = Rly18
+		case 19 AttachedRlyState = Rly19
+		case 20 AttachedRlyState = Rly20
+		case 21 AttachedRlyState = Rly21
+		case 22 AttachedRlyState = Rly22
+		case 23 AttachedRlyState = Rly23
+		case 24 AttachedRlyState = Rly24
+		case 25 AttachedRlyState = Rly25
+		case 26 AttachedRlyState = Rly26
+		case 27 AttachedRlyState = Rly27
+		case 28 AttachedRlyState = Rly28
+		case 29 AttachedRlyState = Rly29
+		case 30 AttachedRlyState = Rly30
+		case 31 AttachedRlyState = Rly31
+		case 32 AttachedRlyState = Rly32
+	endselect
+	return
+endfunction
+		
+function CheckedStrings()
+    if System_Cmd==1 then ModBusChecked="checked" else ModBusChecked=" " endif
+    if System_Cmd==2 then AsciiChecked="checked" else AsciiChecked=" " endif
+    if System_Cmd==3 then BinaryChecked="checked" else BinaryChecked=" " endif
+    if System_Cmd==4 then AESChecked="checked" else AESChecked=" " endif
+    if System_Cmd==5 then PhoneChecked="checked" else PhoneChecked=" " endif
+    if System_EnablePW==1 then PWChecked="checked" else PWChecked=" " endif
+    if System_Enable_dSx==1 then dSxChecked="checked" else dSxChecked=" " endif
+    if System_EnableDHCP==1 then DHCPChecked="checked" else DHCPChecked=" " endif
+    if System_Noti_TDS==1 then TDSChecked="checked" else TDSChecked=" " endif
+endfunction
+
+thread UpdateCheckedStrings(SystemCmdUpdated)
+    CheckedStrings()
+    SystemCmdUpdated = 0;
+    threadsuspend
+endthread
+
+function generateNotiMsg()
+int32 idx
+int32 x
+int32 state
+int32 inp
+
+    if System_Noti_TDS then             ; include time & date stamp if requested
+        msg = msg ~ UTC.Day ~ "/" ~ UTC.Month+1 ~ "/" ~ UTC.Year ~ " " ~ UTC.Hour ~ ":" ~ UTC.Minute ~ ":" ~ UTC.Second ~ CR
+    endif
+    
+    for idx=1 to 32                     ; include the 32 relay states
+        x = GetIO(idx)
+        msg = msg ~ x
+    next
+    msg = msg ~ CR
+
+    for idx=1 to 8                      ; include the 8 inputs                    
+        x = GetAD(idx)
+        msg = msg ~ x ~ " "
+    next
+    msg = msg ~ CR
+
+    for idx=0 to 15                     ; include any dSx modules on the system
+        x = dSxMap[idx]
+        if x>0 then
+            for inp=x*4+96 to x*4+99
+                state = GetIO(inp)
+                msg = msg ~ state
+            next
+            msg = msg ~ " "
+            for inp=x*4+96 to x*4+99
+                state = GetAD(inp)
+                msg = msg ~ state ~ " "
+            next
+            msg = msg ~ " dSx" ~ x*4+96 ~ "-" ~ x*4+99 ~ CR     
+        endif
+    next
+endfunction
+
+function generateEmailMsg()
+	msg = "System Status:" ~ CR
+	msg = msg ~ System_Rly1Name
+	if Rly1 msg = msg ~ " - Active"
+	msg = msg ~ CR
+	msg = msg ~ System_Rly2Name
+	if Rly2 msg = msg ~ " - Active"
+	msg = msg ~ CR
+	msg = msg ~ System_Rly3Name
+	if Rly3 msg = msg ~ " - Active" 
+	msg = msg ~ CR
+	msg = msg ~ System_Rly4Name
+	if Rly4 msg = msg ~ " - Active" 
+	msg = msg ~ CR
+	msg = msg ~ System_Rly5Name
+	if Rly5 msg = msg ~ " - Active" 
+	msg = msg ~ CR
+	msg = msg ~ System_Rly6Name
+	if Rly6 msg = msg ~ " - Active" 
+	msg = msg ~ CR
+	msg = msg ~ System_Rly7Name
+	if Rly7 msg = msg ~ " - Active" 
+	msg = msg ~ CR
+	msg = msg ~ System_Rly8Name
+	if Rly8 msg = msg ~ " - Active" 
+	msg = msg ~ CR
+	msg = msg ~ System_Rly9Name
+	if Rly9 msg = msg ~ " - Active" 
+	msg = msg ~ CR
+	msg = msg ~ System_Rly10Name
+	if Rly10 msg = msg ~ " - Active" 
+	msg = msg ~ CR
+	msg = msg ~ System_Rly11Name
+	if Rly11 msg = msg ~ " - Active" 
+	msg = msg ~ CR
+	msg = msg ~ System_Rly12Name
+	if Rly12 msg = msg ~ " - Active" 
+	msg = msg ~ CR
+	msg = msg ~ System_Rly13Name
+	if Rly13 msg = msg ~ " - Active" 
+	msg = msg ~ CR
+	msg = msg ~ System_Rly14Name
+	if Rly14 msg = msg ~ " - Active" 
+	msg = msg ~ CR
+	msg = msg ~ System_Rly15Name
+	if Rly15 msg = msg ~ " - Active" 
+	msg = msg ~ CR
+	msg = msg ~ System_Rly16Name
+	if Rly16 msg = msg ~ " - Active" 
+	msg = msg ~ CR
+	msg = msg ~ System_Rly17Name
+	if Rly17 msg = msg ~ " - Active" 
+	msg = msg ~ CR
+	msg = msg ~ System_Rly18Name
+	if Rly18 msg = msg ~ " - Active" 
+	msg = msg ~ CR
+	msg = msg ~ System_Rly19Name
+	if Rly19 msg = msg ~ " - Active" 
+	msg = msg ~ CR
+	msg = msg ~ System_Rly20Name
+	if Rly20 msg = msg ~ " - Active" 
+	msg = msg ~ CR
+	msg = msg ~ System_Rly21Name
+	if Rly21 msg = msg ~ " - Active" 
+	msg = msg ~ CR
+	msg = msg ~ System_Rly22Name
+	if Rly22 msg = msg ~ " - Active" 
+	msg = msg ~ CR
+	msg = msg ~ System_Rly23Name
+	if Rly23 msg = msg ~ " - Active" 
+	msg = msg ~ CR
+	msg = msg ~ System_Rly24Name
+	if Rly24 msg = msg ~ " - Active" 
+	msg = msg ~ CR ~ CR
+	msg = msg ~ System_Rly25Name
+	if Rly25 msg = msg ~ " - Active"
+	msg = msg ~ CR
+	msg = msg ~ System_Rly26Name
+	if Rly26 msg = msg ~ " - Active"
+	msg = msg ~ CR
+	msg = msg ~ System_Rly27Name
+	if Rly27 msg = msg ~ " - Active"
+	msg = msg ~ CR
+	msg = msg ~ System_Rly28Name
+	if Rly28 msg = msg ~ " - Active"
+	msg = msg ~ CR
+	msg = msg ~ System_Rly29Name
+	if Rly29 msg = msg ~ " - Active"
+	msg = msg ~ CR
+	msg = msg ~ System_Rly30Name
+	if Rly30 msg = msg ~ " - Active"
+	msg = msg ~ CR
+	msg = msg ~ System_Rly31Name
+	if Rly31 msg = msg ~ " - Active"
+	msg = msg ~ CR
+	msg = msg ~ System_Rly32Name
+	if Rly32 msg = msg ~ " - Active"
+	msg = msg ~ CR
+
+	msg = msg ~ System_IO1Name ~ " - "
+	if IO1_s&4 then msg = msg ~ "Analogue - " ~ IO1 
+	else 
+		select IO1_s&0x30
+			case 0x30 msg = msg ~ "Digital - Output active"
+			case 0x10 msg = msg ~ "Digital - Input active"
+			else msg = msg ~ "Digital"
+		endselect
+	endif
+	msg = msg ~ CR
+	msg = msg ~ System_IO2Name ~ " - "
+	if IO2_s&4 then msg = msg ~ "Analogue - " ~ IO2 
+	else 
+		select IO2_s&0x30
+			case 0x30 msg = msg ~ "Digital - Output active"
+			case 0x10 msg = msg ~ "Digital - Input active"
+			else msg = msg ~ "Digital"
+		endselect
+	endif
+	msg = msg ~ CR
+	msg = msg ~ System_IO3Name ~ " - "
+	if IO3_s&4 then msg = msg ~ "Analogue - " ~ IO3 
+	else 
+		select IO3_s&0x30
+			case 0x30 msg = msg ~ "Digital - Output active"
+			case 0x10 msg = msg ~ "Digital - Input active"
+			else msg = msg ~ "Digital"
+		endselect
+	endif
+	msg = msg ~ CR
+	msg = msg ~ System_IO4Name ~ " - "
+	if IO4_s&4 then msg = msg ~ "Analogue - " ~ IO4 
+	else 
+		select IO4_s&0x30
+			case 0x30 msg = msg ~ "Digital - Output active"
+			case 0x10 msg = msg ~ "Digital - Input active"
+			else msg = msg ~ "Digital"
+		endselect
+	endif
+	msg = msg ~ CR
+	msg = msg ~ System_IO5Name ~ " - "
+	if IO5_s&4 then msg = msg ~ "Analogue - " ~ IO5 
+	else 
+		select IO5_s&0x30
+			case 0x30 msg = msg ~ "Digital - Output active"
+			case 0x10 msg = msg ~ "Digital - Input active"
+			else msg = msg ~ "Digital"
+		endselect
+	endif
+	msg = msg ~ CR
+	msg = msg ~ System_IO6Name ~ " - "
+	if IO6_s&4 then msg = msg ~ "Analogue - " ~ IO6 
+	else 
+		select IO6_s&0x30
+			case 0x30 msg = msg ~ "Digital - Output active"
+			case 0x10 msg = msg ~ "Digital - Input active"
+			else msg = msg ~ "Digital"
+		endselect
+	endif
+	msg = msg ~ CR
+	msg = msg ~ System_IO7Name ~ " - "
+	if IO7_s&4 then msg = msg ~ "Analogue - " ~ IO7 
+	else 
+		select IO7_s&0x30
+			case 0x30 msg = msg ~ "Digital - Output active"
+			case 0x10 msg = msg ~ "Digital - Input active"
+			else msg = msg ~ "Digital"
+		endselect
+	endif
+	msg = msg ~ CR
+	msg = msg ~ System_IO8Name ~ " - "
+	if IO8_s&4 then msg = msg ~ "Analogue - " ~ IO8 
+	else 
+		select IO8_s&0x30
+			case 0x30 msg = msg ~ "Digital - Output active"
+			case 0x10 msg = msg ~ "Digital - Input active"
+			else msg = msg ~ "Digital"
+		endselect
+	endif
+	msg = msg ~ CR
+
+	if System_CtrName1.Length>0 msg = msg ~ System_CtrName1 ~ " - " ~ System_CtrVal1 ~ " - " ~ System_CtrCapt1 ~ CR
+	if System_CtrName2.Length>0 msg = msg ~ System_CtrName2 ~ " - " ~ System_CtrVal2 ~ " - " ~ System_CtrCapt2 ~ CR
+	if System_CtrName3.Length>0 msg = msg ~ System_CtrName3 ~ " - " ~ System_CtrVal3 ~ " - " ~ System_CtrCapt3 ~ CR
+	if System_CtrName4.Length>0 msg = msg ~ System_CtrName4 ~ " - " ~ System_CtrVal4 ~ " - " ~ System_CtrCapt4 ~ CR
+	if System_CtrName5.Length>0 msg = msg ~ System_CtrName5 ~ " - " ~ System_CtrVal5 ~ " - " ~ System_CtrCapt5 ~ CR
+	if System_CtrName6.Length>0 msg = msg ~ System_CtrName6 ~ " - " ~ System_CtrVal6 ~ " - " ~ System_CtrCapt6 ~ CR
+	if System_CtrName7.Length>0 msg = msg ~ System_CtrName7 ~ " - " ~ System_CtrVal7 ~ " - " ~ System_CtrCapt7 ~ CR
+	if System_CtrName8.Length>0 msg = msg ~ System_CtrName8 ~ " - " ~ System_CtrVal8 ~ " - " ~ System_CtrCapt8 ~ CR
+
+    msg = msg ~ System_PingHost1 ~ " - " ~ PingTime1 ~ CR
+    msg = msg ~ System_PingHost2 ~ " - " ~ PingTime2 ~ CR
+    
+	msg = msg ~ "..End.." ~ CR
+	LedBlue = on
+	return
+endfunction	
+		
+thread SendEmails(const)
+	do
+		if eIdx>7 then eIdx=0 endif											; keep range in 0-7
+		select eIdx
+			case 0
+				if armed[eIdx] then
+					if System_EmailTrigger1.BooleanEval() then
+						generateEmailMsg()
+						em1.Send(System_EmailSubject1, msg, eResponse)		; send the email
+						armed[eIdx] = 0										; dis-arm so we don't keep sending it
+					endif
+				else
+					if System_EmailTrigger1.BooleanEval()==0 then
+						armed[eIdx] = 1										; re-arm the email
+					endif
+				endif
+			case 1
+				if armed[eIdx] then
+					if System_EmailTrigger2.BooleanEval() then
+						generateEmailMsg()
+						em2.Send(System_EmailSubject2, msg, eResponse)		; send the email
+						armed[eIdx] = 0										; dis-arm so we don't keep sending it
+					endif
+				else
+					if System_EmailTrigger2.BooleanEval()==0 then
+						armed[eIdx] = 1										; re-arm the email
+					endif
+				endif
+			case 2
+				if armed[eIdx] then
+					if System_EmailTrigger3.BooleanEval() then
+						generateEmailMsg()
+						em3.Send(System_EmailSubject3, msg, eResponse)		; send the email
+						armed[eIdx] = 0										; dis-arm so we don't keep sending it
+					endif
+				else
+					if System_EmailTrigger3.BooleanEval()==0 then
+						armed[eIdx] = 1										; re-arm the email
+					endif
+				endif
+			case 3
+				if armed[eIdx] then
+					if System_EmailTrigger4.BooleanEval() then
+						generateEmailMsg()
+						em4.Send(System_EmailSubject4, msg, eResponse)		; send the email
+						armed[eIdx] = 0										; dis-arm so we don't keep sending it
+					endif
+				else
+					if System_EmailTrigger4.BooleanEval()==0 then
+						armed[eIdx] = 1										; re-arm the email
+					endif
+				endif
+			case 4
+				if armed[eIdx] then
+					if System_EmailTrigger5.BooleanEval() then
+						generateEmailMsg()
+						em5.Send(System_EmailSubject5, msg, eResponse)		; send the email
+						armed[eIdx] = 0										; dis-arm so we don't keep sending it
+					endif
+				else
+					if System_EmailTrigger5.BooleanEval()==0 then
+						armed[eIdx] = 1										; re-arm the email
+					endif
+				endif
+			case 5
+				if armed[eIdx] then
+					if System_EmailTrigger6.BooleanEval() then
+						generateEmailMsg()
+						em6.Send(System_EmailSubject6, msg, eResponse)		; send the email
+						armed[eIdx] = 0										; dis-arm so we don't keep sending it
+					endif
+				else
+					if System_EmailTrigger6.BooleanEval()==0 then
+						armed[eIdx] = 1										; re-arm the email
+					endif
+				endif
+			case 6
+				if armed[eIdx] then
+					if System_EmailTrigger7.BooleanEval() then
+						generateEmailMsg()
+						em7.Send(System_EmailSubject7, msg, eResponse)		; send the email
+						armed[eIdx] = 0										; dis-arm so we don't keep sending it
+					endif
+				else
+					if System_EmailTrigger7.BooleanEval()==0 then
+						armed[eIdx] = 1										; re-arm the email
+					endif
+				endif
+			case 7
+				if armed[eIdx] then
+					if System_EmailTrigger8.BooleanEval() then
+						generateEmailMsg()
+						em8.Send(System_EmailSubject8, msg, eResponse)		; send the email
+						armed[eIdx] = 0										; dis-arm so we don't keep sending it
+					endif
+				else
+					if System_EmailTrigger8.BooleanEval()==0 then
+						armed[eIdx] = 1										; re-arm the email
+					endif
+				endif
+		endselect
+		eIdx += 1	
+		if LedBlue then
+			if eResponse==0 then
+				LedGreen = on	
+				LedBlue = off
+			else
+				LedRed = on
+				LedBlue = off
+			endif
+		endif
+		threadsleep 10
+	loop
+endthread
+				
+thread main(const)
+	if initControl != AppVersion Init()		; init module if different from app version
+;	Init()									; uncomment this line to force init
+	
+;    x = system.InhibitUSBLock                  ; NOT RECOMMENDED, uncomment to allow config pages when USB is unplugged. This exposes the config pages makes the system vunerable
+
+	if System_RLY_PUR&0x00000001 Rly1 = RelayStore[0]		; restore relay states on power up
+	if System_RLY_PUR&0x00000002 Rly2 = RelayStore[1]
+	if System_RLY_PUR&0x00000004 Rly3 = RelayStore[2]
+	if System_RLY_PUR&0x00000008 Rly4 = RelayStore[3]
+	if System_RLY_PUR&0x00000010 Rly5 = RelayStore[4] 
+	if System_RLY_PUR&0x00000020 Rly6 = RelayStore[5]
+	if System_RLY_PUR&0x00000040 Rly7 = RelayStore[6] 
+	if System_RLY_PUR&0x00000080 Rly8 = RelayStore[7]
+	if System_RLY_PUR&0x00000100 Rly9 = RelayStore[8]
+	if System_RLY_PUR&0x00000200 Rly10 = RelayStore[9]
+	if System_RLY_PUR&0x00000400 Rly11 = RelayStore[10] 
+	if System_RLY_PUR&0x00000800 Rly12 = RelayStore[11] 
+	if System_RLY_PUR&0x00001000 Rly13 = RelayStore[12] 
+	if System_RLY_PUR&0x00002000 Rly14 = RelayStore[13] 
+	if System_RLY_PUR&0x00004000 Rly15 = RelayStore[14]
+	if System_RLY_PUR&0x00008000 Rly16 = RelayStore[15]
+	if System_RLY_PUR&0x00010000 Rly17 = RelayStore[16] 
+	if System_RLY_PUR&0x00020000 Rly18 = RelayStore[17] 
+	if System_RLY_PUR&0x00040000 Rly19 = RelayStore[18] 
+	if System_RLY_PUR&0x00080000 Rly20 = RelayStore[19] 
+	if System_RLY_PUR&0x00100000 Rly21 = RelayStore[20] 
+	if System_RLY_PUR&0x00200000 Rly22 = RelayStore[21]
+	if System_RLY_PUR&0x00400000 Rly23 = RelayStore[22] 
+	if System_RLY_PUR&0x00800000 Rly24 = RelayStore[23] 
+	if System_RLY_PUR&0x01000000 Rly25 = RelayStore[24] 
+	if System_RLY_PUR&0x02000000 Rly26 = RelayStore[25]
+	if System_RLY_PUR&0x04000000 Rly27 = RelayStore[26] 
+	if System_RLY_PUR&0x08000000 Rly28 = RelayStore[27] 
+	if System_RLY_PUR&0x10000000 Rly29 = RelayStore[28] 
+	if System_RLY_PUR&0x20000000 Rly30 = RelayStore[29]
+	if System_RLY_PUR&0x40000000 Rly31 = RelayStore[30] 
+	if System_RLY_PUR&0x80000000 Rly32 = RelayStore[31] 	
+	
+	CLS = {c}12 ~ {C}19 ~ {c}4 					; setup LCD control strings
+	CR = {c}13 ~ {C}10
+
+	AppVerMajor = AppMajor						; set variables for status page display
+	AppVerMinor = AppMinor
+	
+    CheckedStrings()                            ; update all checked strings for config pages
+
+    P2Pbool1 = 3                                ; just to force 1st update of remote relays
+    P2Pbool2 = 3
+    P2Pbool3 = 3
+    P2Pbool4 = 3
+    P2Pbool5 = 3
+    P2Pbool6 = 3
+    P2Pbool7 = 3
+    P2Pbool8 = 3;
+
+    if System_Enable_dSx==1 then
+        RS485.BaudRate = baud250k                       ; configure for dSx modules
+        RS485.Parity = 0;
+        RS485.StopBits = 2;
+    else
+        select System_ModbusBaud                        ; else configure for Modbus
+            case 1 RS485.BaudRate = baud9600 
+            case 2 RS485.BaudRate = baud19200 
+            case 3 RS485.BaudRate = baud31250 
+            case 4 RS485.BaudRate = baud38400 
+            case 5 RS485.BaudRate = baud57600 
+            case 6 RS485.BaudRate = baud115200 
+            case 7 RS485.BaudRate = baud250k 
+            case 8 RS485.BaudRate = baud500k 
+            case 9 RS485.BaudRate = baud1M 
+        endselect
+    
+    	RS485.Parity = System_ModbusParity
+    	if System_ModbusParity==0 then RS485.StopBits = 2 ; 2 stop bits when no parity used, 1 stop bit with parity
+    	else RS485.StopBits = 1 
+        endif
+	endif	
+		
+	for x = 1 to 3							; flash blue led to indicate this firmware is loaded
+		threadsleep	500
+		LedBlue = on
+		threadsleep	500
+		LedBlue = off
+	next
+	
+	for eIdx=0 to 7 armed[eIdx] = 1 next	; arm all emails
+	
+	SystemCmdUpdated = 1;
+    do loop while system.Booting
+
+    tcpip.ReadMacAddr(msg)                  ; read and format MAC address for display on Network page (_config2.htm)
+    System_MAC = {h02} msg[0] ~ ":" ~ {h02} msg[1] ~ ":" ~ {h02} msg[2] ~ ":" ~ {h02} msg[3] ~ ":" ~ {h02} msg[4] ~ ":" ~ {h02} msg[5]
+
+    Zero = 0
+    threadsleep 1000
+
+    if System_PingRepeat1>0 then    
+        DNSResolve(System_PingHost1, PingIP1) 
+    endif
+    if System_PingRepeat2>0 then    
+        DNSResolve(System_PingHost2, PingIP2) 
+    endif
+    if System_PingRepeat3>0 then    
+        DNSResolve(System_PingHost3, PingIP3) 
+    endif
+    if System_PingRepeat4>0 then    
+        DNSResolve(System_PingHost4, PingIP4) 
+    endif
+
+    threadstart SequencerUpdateOutputs
+    threadstart SequencerUpdateCmds
+    threadstart RunSequencer
+	threadstart UpdateCheckedStrings
+	threadstart CalcVoltsTemp
+	threadstart TcpipCmd
+	threadstart	SendEmails
+	threadstart RunBooleanProcesses
+	threadstart P2P
+	threadstart WDayUpdate
+	threadstart	P2PAES
+	threadstart	DST
+	threadstart RelayUpdate
+	threadstart RLYPUR
+    threadstart Reboot
+    threadstart dSx_MapUpdate
+    threadstart dSxScan
+
+    if System_PingRepeat1>0 threadstart Ping1
+    if System_PingRepeat2>0 threadstart Ping2
+    if System_PingRepeat3>0 threadstart Ping3
+    if System_PingRepeat4>0 threadstart Ping4
+    	
+	select system.ModuleID
+		case 30
+			Module = "dS3484"			; Load the Module string with module name
+		case 31
+			Module = "dS1242"
+		case 34
+			Module = "dS2824"
+		case 35
+			Module = "dS378"
+        case 42
+            Module = "dS2832"
+	endselect
+		
+	VerMajor = system.VerMajor			; move to a variable so it can be accesssed by webpage 
+	VerMinor = system.VerMinor
+	
+	Nonce = system.Random				; start with a random value
+	
+	do 
+		FlashWritePending = system.FlashPending	; keep up-to-date so webpage can access it
+		Hours = UTC.Hour
+		Minutes = UTC.Minute
+		Seconds = UTC.Second
+        seq1Timer = system.SleepTimer(seq1Handle)
+		threadsleep 100
+	loop
+    Zero = clearStatesBuffer                    ; reading this clears the I/O changed buffer
+endthread		
+
+
+thread Ping1(const)
+int32 count
+
+    PingTime1 = 1                                           ; 1uS - impossibly low ping time allows immediate start without waiting for first ping
+    threadsleep System_PingDelay1*1000                      ; start-up delay
+    count = System_PingAttempts1
+    do
+        PingTimer1 = 0                                  ; init ping timer to 0
+        tcpip.Ping(PingIP1, PingTimer1)
+        threadsleep System_PingRepeat1*1000             ; delay to next ping 
+        if PingTimer1 then
+            count = System_PingAttempts1                ; we received an echo so reset counter and update PingTime
+            PingTime1 = PingTimer1
+        else
+            count -= 1                                  ; echo failed
+            if count == 0 then
+                PingTime1 = 0                           ; failed to detect remote system
+                count = System_PingAttempts1            ; reset the attempts counter
+                threadsleep System_PingDelay1*1000      ; delay before restarting pings 
+            endif
+        endif
+    loop
+endthread
+
+thread Ping2(const)
+int32 count
+
+    PingTime2 = 1                                           ; 1uS - impossibly low ping time allows immediate start without waiting for first ping
+    threadsleep System_PingDelay2*1000                      ; start-up delay
+    count = System_PingAttempts2
+    do
+        PingTimer2 = 0                                  ; init ping timer to 0
+        tcpip.Ping(PingIP2, PingTimer2)
+        threadsleep System_PingRepeat2*1000             ; delay to next ping 
+        if PingTimer2 then
+            count = System_PingAttempts2                ; we received an echo so reset counter and update PingTime
+            PingTime2 = PingTimer2
+        else
+            count -= 1                                  ; echo failed
+            if count == 0 then
+                PingTime2 = 0                           ; failed to detect remote system
+                count = System_PingAttempts2            ; reset the attempts counter
+                threadsleep System_PingDelay2*1000      ; delay before restarting pings 
+            endif
+        endif
+    loop
+endthread
+
+thread Ping3(const)
+int32 count
+
+    PingTime3 = 1                                           ; 1uS - impossibly low ping time allows immediate start without waiting for first ping
+    threadsleep System_PingDelay3*1000                      ; start-up delay
+    count = System_PingAttempts3
+    do
+        PingTimer3 = 0                                  ; init ping timer to 0
+        tcpip.Ping(PingIP3, PingTimer3)
+        threadsleep System_PingRepeat3*1000             ; delay to next ping 
+        if PingTimer3 then
+            count = System_PingAttempts3                ; we received an echo so reset counter and update PingTime
+            PingTime3 = PingTimer3
+        else
+            count -= 1                                  ; echo failed
+            if count == 0 then
+                PingTime3 = 0                           ; failed to detect remote system
+                count = System_PingAttempts3            ; reset the attempts counter
+                threadsleep System_PingDelay3*1000      ; delay before restarting pings 
+            endif
+        endif
+    loop
+endthread
+
+thread Ping4(const)
+int32 count
+
+    PingTime4 = 1                                           ; 1uS - impossibly low ping time allows immediate start without waiting for first ping
+    threadsleep System_PingDelay4*1000                      ; start-up delay
+    count = System_PingAttempts4
+    do
+        PingTimer4 = 0                                  ; init ping timer to 0
+        tcpip.Ping(PingIP4, PingTimer4)
+        threadsleep System_PingRepeat4*1000             ; delay to next ping 
+        if PingTimer4 then
+            count = System_PingAttempts4                ; we received an echo so reset counter and update PingTime
+            PingTime4 = PingTimer4
+        else
+            count -= 1                                  ; echo failed
+            if count == 0 then
+                PingTime4 = 0                           ; failed to detect remote system
+                count = System_PingAttempts4            ; reset the attempts counter
+                threadsleep System_PingDelay4*1000      ; delay before restarting pings 
+            endif
+        endif
+    loop
+endthread
+
+function Init()
+	System_HostName = "dS2832"
+    System_IP = "192.168.0.123"
+    System_SubNet = "255.255.255.0"
+    System_Gateway = "192.168.0.1"
+    System_DNS1 = "192.168.0.1"
+    System_DNS2 = "8.8.8.8"
+    System_TcpPort = 17123
+    System_HttpPort = 80
+    System_Cmd = 2              ; ASCII
+    System_EnablePW = 0
+    System_EnableDHCP = on
+    System_Password = ""    
+    System_AES_key = "This MUST be 32 characters long."
+                     ;12345678901234567890123456789012
+    System_PW = "123&Qx78"
+
+    System_AD1Name = "AD1"
+    System_AD2Name = "AD2"
+    System_AD3Name = "AD3"
+    System_AD4Name = "AD4"
+    
+    System_ModbusUID = 1
+    System_ModbusBaud = 1               ; 9600
+    System_ModbusParity = 1             ; even
+
+    System_Rly1Name = "Relay 1"
+    System_Rly2Name = "Relay 2"
+    System_Rly3Name = "Relay 3"
+    System_Rly4Name = "Relay 4"
+    System_Rly5Name = "Relay 5"
+    System_Rly6Name = "Relay 6"
+    System_Rly7Name = "Relay 7"
+    System_Rly8Name = "Relay 8"
+    System_Rly9Name = "Relay 9"
+    System_Rly10Name = "Relay 10"
+    System_Rly11Name = "Relay 11"
+    System_Rly12Name = "Relay 12"
+    System_Rly13Name = "Relay 13"
+    System_Rly14Name = "Relay 14"
+    System_Rly15Name = "Relay 15"
+    System_Rly16Name = "Relay 16"
+    System_Rly17Name = "Relay 17"
+    System_Rly18Name = "Relay 18"
+    System_Rly19Name = "Relay 19"
+    System_Rly20Name = "Relay 20"
+    System_Rly21Name = "Relay 21"
+    System_Rly22Name = "Relay 22"
+    System_Rly23Name = "Relay 23"
+    System_Rly24Name = "Relay 24"
+    System_Rly25Name = "Relay 25"
+    System_Rly26Name = "Relay 26"
+    System_Rly27Name = "Relay 27"
+    System_Rly28Name = "Relay 28"
+    System_Rly29Name = "Relay 29"
+    System_Rly30Name = "Relay 30"
+    System_Rly31Name = "Relay 31"
+    System_Rly32Name = "Relay 32"
+    
+    System_Rly1Set = ""
+    System_Rly2Set = ""
+    System_Rly3Set = ""
+    System_Rly4Set = ""
+    System_Rly5Set = ""
+    System_Rly6Set = ""
+    System_Rly7Set = ""
+    System_Rly8Set = ""
+    System_Rly9Set = ""
+    System_Rly10Set = ""
+    System_Rly11Set = ""
+    System_Rly12Set = ""
+    System_Rly13Set = ""
+    System_Rly14Set = ""
+    System_Rly15Set = ""
+    System_Rly16Set = ""
+    System_Rly17Set = ""
+    System_Rly18Set = ""
+    System_Rly19Set = ""
+    System_Rly20Set = ""
+    System_Rly21Set = ""
+    System_Rly22Set = ""
+    System_Rly23Set = ""
+    System_Rly24Set = ""
+    System_Rly25Set = ""
+    System_Rly26Set = ""
+    System_Rly27Set = ""
+    System_Rly28Set = ""
+    System_Rly29Set = ""
+    System_Rly30Set = ""
+    System_Rly31Set = ""
+    System_Rly32Set = ""
+    System_Rly1Rst = ""
+    System_Rly2Rst = ""
+    System_Rly3Rst = ""
+    System_Rly4Rst = ""
+    System_Rly5Rst = ""
+    System_Rly6Rst = ""
+    System_Rly7Rst = ""
+    System_Rly8Rst = ""
+    System_Rly9Rst = ""
+    System_Rly10Rst = ""
+    System_Rly11Rst = ""
+    System_Rly12Rst = ""
+    System_Rly13Rst = ""
+    System_Rly14Rst = ""
+    System_Rly15Rst = ""
+    System_Rly16Rst = ""
+    System_Rly17Rst = ""
+    System_Rly18Rst = ""
+    System_Rly19Rst = ""
+    System_Rly20Rst = ""
+    System_Rly21Rst = ""
+    System_Rly22Rst = ""
+    System_Rly23Rst = ""
+    System_Rly24Rst = ""
+    System_Rly25Rst = ""
+    System_Rly26Rst = ""
+    System_Rly27Rst = ""
+    System_Rly28Rst = ""
+    System_Rly29Rst = ""
+    System_Rly30Rst = ""
+    System_Rly31Rst = ""
+    System_Rly32Rst = ""
+    System_Rly1Tog = ""
+    System_Rly2Tog = ""
+    System_Rly3Tog = ""
+    System_Rly4Tog = ""
+    System_Rly5Tog = ""
+    System_Rly6Tog = ""
+    System_Rly7Tog = ""
+    System_Rly8Tog = ""
+    System_Rly9Tog = ""
+    System_Rly10Tog = ""
+    System_Rly11Tog = ""
+    System_Rly12Tog = ""
+    System_Rly13Tog = ""
+    System_Rly14Tog = ""
+    System_Rly15Tog = ""
+    System_Rly16Tog = ""
+    System_Rly17Tog = ""
+    System_Rly18Tog = ""
+    System_Rly19Tog = ""
+    System_Rly20Tog = ""
+    System_Rly21Tog = ""
+    System_Rly22Tog = ""
+    System_Rly23Tog = ""
+    System_Rly24Tog = ""
+    System_Rly25Tog = ""
+    System_Rly26Tog = ""
+    System_Rly27Tog = ""
+    System_Rly28Tog = ""
+    System_Rly29Tog = ""
+    System_Rly30Tog = ""
+    System_Rly31Tog = ""
+    System_Rly32Tog = ""
+    System_Rly1Bool = "0"
+    System_Rly2Bool = System_Rly1Bool
+    System_Rly3Bool = System_Rly1Bool
+    System_Rly4Bool = System_Rly1Bool
+    System_Rly5Bool = System_Rly1Bool
+    System_Rly6Bool = System_Rly1Bool
+    System_Rly7Bool = System_Rly1Bool
+    System_Rly8Bool = System_Rly1Bool
+    System_Rly9Bool = System_Rly1Bool
+    System_Rly10Bool = System_Rly1Bool
+    System_Rly11Bool = System_Rly1Bool
+    System_Rly12Bool = System_Rly1Bool
+    System_Rly13Bool = System_Rly1Bool
+    System_Rly14Bool = System_Rly1Bool
+    System_Rly15Bool = System_Rly1Bool
+    System_Rly16Bool = System_Rly1Bool
+    System_Rly17Bool = System_Rly1Bool
+    System_Rly18Bool = System_Rly1Bool
+    System_Rly19Bool = System_Rly1Bool
+    System_Rly20Bool = System_Rly1Bool
+    System_Rly21Bool = System_Rly1Bool
+    System_Rly22Bool = System_Rly1Bool
+    System_Rly23Bool = System_Rly1Bool
+    System_Rly24Bool = System_Rly1Bool
+    System_Rly25Bool = System_Rly1Bool
+    System_Rly26Bool = System_Rly1Bool
+    System_Rly27Bool = System_Rly1Bool
+    System_Rly28Bool = System_Rly1Bool
+    System_Rly29Bool = System_Rly1Bool
+    System_Rly30Bool = System_Rly1Bool
+    System_Rly31Bool = System_Rly1Bool
+    System_Rly32Bool = System_Rly1Bool
+
+    System_IO1Name = "IO1"
+    System_IO2Name = "IO2"
+    System_IO3Name = "IO3"
+    System_IO4Name = "IO4"
+    System_IO5Name = "IO5"
+    System_IO6Name = "IO6"
+    System_IO7Name = "IO7"
+    System_IO8Name = "IO8"
+
+    System_IO1Type = digitalpullup
+    System_IO2Type = digitalpullup
+    System_IO3Type = digitalpullup
+    System_IO4Type = digitalpullup
+    System_IO5Type = digitalpullup
+    System_IO6Type = digitalpullup
+    System_IO7Type = digitalpullup
+    System_IO8Type = digitalpullup
+
+    System_IO1AttachedRly = 0
+    System_IO2AttachedRly = 0
+    System_IO3AttachedRly = 0
+    System_IO4AttachedRly = 0
+    System_IO5AttachedRly = 0
+    System_IO6AttachedRly = 0
+    System_IO7AttachedRly = 0
+    System_IO8AttachedRly = 0
+    System_RLY_PUR = 0
+    
+    System_EmailFromAddr = "someone@dScript-mail.uk"
+    System_EmailAddr1 = "yourname@example.com"
+    System_EmailAddr2 = "" 
+    System_EmailAddr3 = "" 
+    System_EmailAddr4 = "" 
+    System_EmailAddr5 = "" 
+    System_EmailAddr6 = "" 
+    System_EmailAddr7 = "" 
+    System_EmailAddr8 = "" 
+    System_EmailSubject1 = "Event message goes here"    
+    System_EmailSubject2 = "Leave Trigger empty to disable."
+    System_EmailSubject3 = System_EmailSubject2
+    System_EmailSubject4 = System_EmailSubject2
+    System_EmailSubject5 = System_EmailSubject2
+    System_EmailSubject6 = System_EmailSubject2
+    System_EmailSubject7 = System_EmailSubject2
+    System_EmailSubject8 = System_EmailSubject2
+    
+    System_EmailTrigger1 = "For example, D1"
+    System_EmailTrigger2 = ""
+    System_EmailTrigger3 = ""
+    System_EmailTrigger4 = ""
+    System_EmailTrigger5 = ""
+    System_EmailTrigger6 = ""
+    System_EmailTrigger7 = ""
+    System_EmailTrigger8 = ""
+
+    System_P2P_Input1 = "D1"
+    System_P2P_Input2 = ""
+    System_P2P_Input3 = ""
+    System_P2P_Input4 = ""
+    System_P2P_Input5 = ""
+    System_P2P_Input6 = ""
+    System_P2P_Input7 = ""
+    System_P2P_Input8 = ""
+    System_P2P_IP1 = "0.0.0.0"
+    System_P2P_IP2 = System_P2P_IP1
+    System_P2P_IP3 = System_P2P_IP1
+    System_P2P_IP4 = System_P2P_IP1
+    System_P2P_IP5 = System_P2P_IP1
+    System_P2P_IP6 = System_P2P_IP1
+    System_P2P_IP7 = System_P2P_IP1
+    System_P2P_IP8 = System_P2P_IP1
+    System_P2P_Port1 = 0
+    System_P2P_Port2 = 0
+    System_P2P_Port3 = 0
+    System_P2P_Port4 = 0
+    System_P2P_Port5 = 0
+    System_P2P_Port6 = 0
+    System_P2P_Port7 = 0
+    System_P2P_Port8 = 0
+    System_P2P_Relay1 = 1
+    System_P2P_Relay2 = 1
+    System_P2P_Relay3 = 1
+    System_P2P_Relay4 = 1
+    System_P2P_Relay5 = 1
+    System_P2P_Relay6 = 1
+    System_P2P_Relay7 = 1
+    System_P2P_Relay8 = 1
+    System_P2P_Action1 = 0
+    System_P2P_Action2 = 0
+    System_P2P_Action3 = 0
+    System_P2P_Action4 = 0
+    System_P2P_Action5 = 0
+    System_P2P_Action6 = 0
+    System_P2P_Action7 = 0
+    System_P2P_Action8 = 0
+    System_P2P_Timeout1 = 5000
+    System_P2P_Timeout2 = System_P2P_Timeout1
+    System_P2P_Timeout3 = System_P2P_Timeout1
+    System_P2P_Timeout4 = System_P2P_Timeout1
+    System_P2P_Timeout5 = System_P2P_Timeout1
+    System_P2P_Timeout6 = System_P2P_Timeout1
+    System_P2P_Timeout7 = System_P2P_Timeout1
+    System_P2P_Timeout8 = System_P2P_Timeout1
+    System_P2P_AES = 0
+
+    System_Sch_R1 = 0
+    System_Sch_WD1 = 0
+    System_Sch_STH1a = 0
+    System_Sch_STM1a = 0
+    System_Sch_STS1a = 0
+    System_Sch_SPH1a = 0    
+    System_Sch_SPM1a = 0
+    System_Sch_SPS1a = 0
+    System_Sch_STH1b = 0    
+    System_Sch_STM1b = 0
+    System_Sch_STS1b = 0
+    System_Sch_SPH1b = 0
+    System_Sch_SPM1b = 0
+    System_Sch_SPS1b = 0
+    System_Sch_R2 = 0
+    System_Sch_WD2 = 0
+    System_Sch_STH2a = 0
+    System_Sch_STM2a = 0
+    System_Sch_STS2a = 0
+    System_Sch_SPH2a = 0    
+    System_Sch_SPM2a = 0
+    System_Sch_SPS2a = 0
+    System_Sch_STH2b = 0    
+    System_Sch_STM2b = 0
+    System_Sch_STS2b = 0
+    System_Sch_SPH2b = 0
+    System_Sch_SPM2b = 0
+    System_Sch_SPS2b = 0
+    System_Sch_R3 = 0
+    System_Sch_WD3 = 0
+    System_Sch_STH3a = 0
+    System_Sch_STM3a = 0
+    System_Sch_STS3a = 0
+    System_Sch_SPH3a = 0    
+    System_Sch_SPM3a = 0
+    System_Sch_SPS3a = 0
+    System_Sch_STH3b = 0    
+    System_Sch_STM3b = 0
+    System_Sch_STS3b = 0
+    System_Sch_SPH3b = 0
+    System_Sch_SPM3b = 0
+    System_Sch_SPS3b = 0
+    System_Sch_R4 = 0
+    System_Sch_WD4 = 0
+    System_Sch_STH4a = 0
+    System_Sch_STM4a = 0
+    System_Sch_STS4a = 0
+    System_Sch_SPH4a = 0    
+    System_Sch_SPM4a = 0
+    System_Sch_SPS4a = 0
+    System_Sch_STH4b = 0    
+    System_Sch_STM4b = 0
+    System_Sch_STS4b = 0
+    System_Sch_SPH4b = 0
+    System_Sch_SPM4b = 0
+    System_Sch_SPS4b = 0
+    System_Sch_R5 = 0
+    System_Sch_WD5 = 0
+    System_Sch_STH5a = 0
+    System_Sch_STM5a = 0
+    System_Sch_STS5a = 0
+    System_Sch_SPH5a = 0    
+    System_Sch_SPM5a = 0
+    System_Sch_SPS5a = 0
+    System_Sch_STH5b = 0    
+    System_Sch_STM5b = 0
+    System_Sch_STS5b = 0
+    System_Sch_SPH5b = 0
+    System_Sch_SPM5b = 0
+    System_Sch_SPS5b = 0
+    System_Sch_R6 = 0
+    System_Sch_WD6 = 0
+    System_Sch_STH6a = 0
+    System_Sch_STM6a = 0
+    System_Sch_STS6a = 0
+    System_Sch_SPH6a = 0    
+    System_Sch_SPM6a = 0
+    System_Sch_SPS6a = 0
+    System_Sch_STH6b = 0    
+    System_Sch_STM6b = 0
+    System_Sch_STS6b = 0
+    System_Sch_SPH6b = 0
+    System_Sch_SPM6b = 0
+    System_Sch_SPS6b = 0
+    System_Sch_R7 = 0
+    System_Sch_WD7 = 0
+    System_Sch_STH7a = 0
+    System_Sch_STM7a = 0
+    System_Sch_STS7a = 0
+    System_Sch_SPH7a = 0    
+    System_Sch_SPM7a = 0
+    System_Sch_SPS7a = 0
+    System_Sch_STH7b = 0    
+    System_Sch_STM7b = 0
+    System_Sch_STS7b = 0
+    System_Sch_SPH7b = 0
+    System_Sch_SPM7b = 0
+    System_Sch_SPS7b = 0
+    System_Sch_R8 = 0
+    System_Sch_WD8 = 0
+    System_Sch_STH8a = 0
+    System_Sch_STM8a = 0
+    System_Sch_STS8a = 0
+    System_Sch_SPH8a = 0    
+    System_Sch_SPM8a = 0
+    System_Sch_SPS8a = 0
+    System_Sch_STH8b = 0    
+    System_Sch_STM8b = 0
+    System_Sch_STS8b = 0
+    System_Sch_SPH8b = 0
+    System_Sch_SPM8b = 0
+    System_Sch_SPS8b = 0
+    
+    System_CtrName1 = "Ctr1"
+    System_CtrName2 = "Ctr2"
+    System_CtrName3 = "Ctr3"
+    System_CtrName4 = "Ctr4"
+    System_CtrName5 = "Ctr5"
+    System_CtrName6 = "Ctr6"
+    System_CtrName7 = "Ctr7"
+    System_CtrName8 = "Ctr8"
+    System_CtrReset1 = ""
+    System_CtrReset2 = ""
+    System_CtrReset3 = ""
+    System_CtrReset4 = ""
+    System_CtrReset5 = ""
+    System_CtrReset6 = ""
+    System_CtrReset7 = ""
+    System_CtrReset8 = ""
+    System_CtrCount1 = ""
+    System_CtrCount2 = ""
+    System_CtrCount3 = ""
+    System_CtrCount4 = ""
+    System_CtrCount5 = ""
+    System_CtrCount6 = ""
+    System_CtrCount7 = ""
+    System_CtrCount8 = ""
+    System_CtrCap1 = ""
+    System_CtrCap2 = ""
+    System_CtrCap3 = ""
+    System_CtrCap4 = ""
+    System_CtrCap5 = ""
+    System_CtrCap6 = ""
+    System_CtrCap7 = ""
+    System_CtrCap8 = ""
+    
+    System_PingHost1 = "example.com"
+    System_PingHost2 = "192.168.1.2"
+    System_PingHost3 = ""
+    System_PingHost4 = ""
+    System_PingRepeat1 = 0
+    System_PingRepeat2 = 0
+    System_PingRepeat3 = 0
+    System_PingRepeat4 = 0
+    System_PingAttempts1 = 3
+    System_PingAttempts2 = 3
+    System_PingAttempts3 = 3
+    System_PingAttempts4 = 3
+    System_PingDelay1 = 600
+    System_PingDelay2 = 600
+    System_PingDelay3 = 600
+    System_PingDelay4 = 600
+
+    System_Noti_Event = ""
+    System_Noti_IP = ""
+    System_Noti_Port = 0
+    System_Noti_Timeout = 5000
+    System_Noti_TDS = 0
+
+    for x = 0 to 127 
+        sequencer[x] = 0 
+     next
+
+    System_Enable_dSx = 0
+    for x = 0 to 16 
+        dSxUID[x] = 0
+        dSxMap[x] = 0 
+     next
+
+    TimeZone = "0"
+    DaylightSaving = 1
+            
+    initControl = AppVersion
+    return
+endfunction
+
+thread CalcVoltsTemp(1000)
+	BrdTemp = ((TS1*3223)-500000)/1000	; thread runs once per second to keep
+	Volts = PSU*18369/100000			; board temperature and volts updated
+endthread
+		
+		
+thread TcpipCmd(tcpip)
+	tcpip.Read(tcpInBuf, tcpLength)		; read the tcp/ip data into the buffer
+	select System_Cmd					; and branch to appropiate handler as
+		case 1							; defined in System_Cmd.
+			ModBus()
+		case 2
+			Ascii()
+		case 3
+			Binary()
+		case 4
+			AESBinary()				; AES also uses binary command set
+        case 5
+            PhoneApp()
+	endselect
+endthread
+		
+function Ascii()
+	if tcpLength > 0 then
+		cmdIdx = 0
+		cmdStr = tcpInBuf.GetText(cmdIdx)							; extract command
+		cmdStr = cmdStr.ToLower()
+		tcpOutBuf = "Ok" ~ CR										; preload with ok, this will change if error		
+
+		select cmdStr
+			case "sr"												; Set Relay
+				cmdIO = tcpInBuf.GetNumAscii(cmdIdx)				; extract Relay/IO port number
+				cmdAction = tcpInBuf.GetText(cmdIdx)				; extract Action to take
+				cmdPulseTime = tcpInBuf.GetNumAscii(cmdIdx)			; extract pulse time in 1mS units
+				cmdAction = cmdAction.ToLower()
+				RlyState = -1										; default to do nothing
+				select cmdAction
+					case "a"
+						RlyState = on
+					case "active"
+						RlyState = on
+					case "on"
+						RlyState = on
+					case "i"
+						RlyState = off
+					case "inactive"
+						RlyState = off
+					case "off"
+						RlyState = off
+					else 
+						tcpOutBuf = "Unknown Action" ~ CR			; Don't know if relay supposed to be on or off!
+				endselect
+				if RlyState != -1 then
+                    PulseTime = RlyState
+                    if cmdPulseTime>2 PulseTime=cmdPulseTime        ; in mS
+					select cmdIO
+						case 1 to 32
+							SetRelay(cmdIO, PulseTime)				; set the relay	
+						else
+							tcpOutBuf = "Unknown relay number" ~ CR	; else don't know which IO to use!					
+					endselect
+				endif
+			
+			case "so"												; Set output
+				cmdIO = tcpInBuf.GetNumAscii(cmdIdx)				; extract Relay/IO port number
+				cmdAction = tcpInBuf.GetText(cmdIdx)				; extract Action to take
+				cmdAction = cmdAction.ToLower()
+				RlyState = -1										; default to do nothing
+				select cmdAction
+					case "a"
+						RlyState = on
+					case "active"
+						RlyState = on
+					case "on"
+						RlyState = on
+					case "i"
+						RlyState = off
+					case "inactive"
+						RlyState = off
+					case "off"
+						RlyState = off
+					else 
+						tcpOutBuf = "Unknown Action" ~ CR			; Don't know if relay supposed to be on or off!
+				endselect
+				
+				if RlyState != -1 then
+					select cmdIO
+						case 1 to 8
+							SetIO()
+						else
+							tcpOutBuf = "Unknown IO number" ~ CR			; Don't know which IO to use!					
+					endselect
+				endif
+				
+			case "gr"
+					cmdIO = tcpInBuf.GetNumAscii(cmdIdx)					; extract relay number
+					select cmdIO
+						case 1
+							if Rly1 == on then tcpOutBuf = "Active" ~ CR
+							else tcpOutBuf = "InActive" ~ CR
+							endif
+						case 2
+							if Rly2 == on then tcpOutBuf = "Active" ~ CR
+							else tcpOutBuf = "InActive" ~ CR
+							endif
+						case 3
+							if Rly3 == on then tcpOutBuf = "Active" ~ CR
+							else tcpOutBuf = "InActive" ~ CR
+							endif
+						case 4
+							if Rly4 == on then tcpOutBuf = "Active" ~ CR
+							else tcpOutBuf = "InActive" ~ CR
+							endif
+						case 5
+							if Rly5 == on then tcpOutBuf = "Active" ~ CR
+							else tcpOutBuf = "InActive" ~ CR
+							endif
+						case 6
+							if Rly6 == on then tcpOutBuf = "Active" ~ CR
+							else tcpOutBuf = "InActive" ~ CR
+							endif
+						case 7
+							if Rly7 == on then tcpOutBuf = "Active" ~ CR
+							else tcpOutBuf = "InActive" ~ CR
+							endif
+						case 8
+							if Rly8 == on then tcpOutBuf = "Active" ~ CR
+							else tcpOutBuf = "InActive" ~ CR
+							endif
+						case 9
+							if Rly9 == on then tcpOutBuf = "Active" ~ CR
+							else tcpOutBuf = "InActive" ~ CR
+							endif
+						case 10
+							if Rly10 == on then tcpOutBuf = "Active" ~ CR
+							else tcpOutBuf = "InActive" ~ CR
+							endif
+						case 11
+							if Rly11 == on then tcpOutBuf = "Active" ~ CR
+							else tcpOutBuf = "InActive" ~ CR
+							endif
+						case 12
+							if Rly12 == on then tcpOutBuf = "Active" ~ CR
+							else tcpOutBuf = "InActive" ~ CR
+							endif
+						case 13
+							if Rly13 == on then tcpOutBuf = "Active" ~ CR
+							else tcpOutBuf = "InActive" ~ CR
+							endif
+						case 14
+							if Rly14 == on then tcpOutBuf = "Active" ~ CR
+							else tcpOutBuf = "InActive" ~ CR
+							endif
+						case 15
+							if Rly15 == on then tcpOutBuf = "Active" ~ CR
+							else tcpOutBuf = "InActive" ~ CR
+							endif
+						case 16
+							if Rly16 == on then tcpOutBuf = "Active" ~ CR
+							else tcpOutBuf = "InActive" ~ CR
+							endif
+						case 17
+							if Rly17 == on then tcpOutBuf = "Active" ~ CR
+							else tcpOutBuf = "InActive" ~ CR
+							endif
+						case 18
+							if Rly18 == on then tcpOutBuf = "Active" ~ CR
+							else tcpOutBuf = "InActive" ~ CR
+							endif
+						case 19
+							if Rly19 == on then tcpOutBuf = "Active" ~ CR
+							else tcpOutBuf = "InActive" ~ CR
+							endif
+						case 20
+							if Rly20 == on then tcpOutBuf = "Active" ~ CR
+							else tcpOutBuf = "InActive" ~ CR
+							endif
+						case 21
+							if Rly21 == on then tcpOutBuf = "Active" ~ CR
+							else tcpOutBuf = "InActive" ~ CR
+							endif
+						case 22
+							if Rly22 == on then tcpOutBuf = "Active" ~ CR
+							else tcpOutBuf = "InActive" ~ CR
+							endif
+						case 23
+							if Rly23 == on then tcpOutBuf = "Active" ~ CR
+							else tcpOutBuf = "InActive" ~ CR
+							endif
+						case 24
+							if Rly24 == on then tcpOutBuf = "Active" ~ CR
+							else tcpOutBuf = "InActive" ~ CR
+							endif
+						case 25
+							if Rly25 == on then tcpOutBuf = "Active" ~ CR
+							else tcpOutBuf = "InActive" ~ CR
+							endif
+						case 26
+							if Rly26 == on then tcpOutBuf = "Active" ~ CR
+							else tcpOutBuf = "InActive" ~ CR
+							endif
+						case 27
+							if Rly27 == on then tcpOutBuf = "Active" ~ CR
+							else tcpOutBuf = "InActive" ~ CR
+							endif
+						case 28
+							if Rly28 == on then tcpOutBuf = "Active" ~ CR
+							else tcpOutBuf = "InActive" ~ CR
+							endif
+						case 29
+							if Rly29 == on then tcpOutBuf = "Active" ~ CR
+							else tcpOutBuf = "InActive" ~ CR
+							endif
+						case 30
+							if Rly30 == on then tcpOutBuf = "Active" ~ CR
+							else tcpOutBuf = "InActive" ~ CR
+							endif
+						case 31
+							if Rly31 == on then tcpOutBuf = "Active" ~ CR
+							else tcpOutBuf = "InActive" ~ CR
+							endif
+						case 32
+							if Rly32 == on then tcpOutBuf = "Active" ~ CR
+							else tcpOutBuf = "InActive" ~ CR
+							endif
+						else
+							tcpOutBuf = "Unknown relay number" ~ CR			; Don't know which relay to use!					
+					endselect	
+								
+			case "gi"
+					GetInput()
+					
+			case "ga"
+					GetInput()
+
+			case "gc"
+				cmdIO = tcpInBuf.GetNumAscii(cmdIdx)					; extract counter number
+				select cmdIO
+					case 1 tcpOutBuf = System_CtrVal1 ~ ", " ~ System_CtrCapt1 ~ CR
+					case 2 tcpOutBuf = System_CtrVal2 ~ ", " ~ System_CtrCapt2 ~ CR
+					case 3 tcpOutBuf = System_CtrVal3 ~ ", " ~ System_CtrCapt3 ~ CR
+					case 4 tcpOutBuf = System_CtrVal4 ~ ", " ~ System_CtrCapt4 ~ CR
+					case 5 tcpOutBuf = System_CtrVal5 ~ ", " ~ System_CtrCapt5 ~ CR
+					case 6 tcpOutBuf = System_CtrVal6 ~ ", " ~ System_CtrCapt6 ~ CR
+					case 7 tcpOutBuf = System_CtrVal7 ~ ", " ~ System_CtrCapt7 ~ CR
+					case 8 tcpOutBuf = System_CtrVal8 ~ ", " ~ System_CtrCapt8 ~ CR
+					else
+						tcpOutBuf = "Unknown counter number" ~ CR		; Don't know which counter to use!					
+				endselect
+
+			case "st"
+					tcpOutBuf = "Module Type: " ~ Module ~ CR 
+								~ "System Firmware Version: " ~ VerMajor ~ "." ~ VerMinor ~ CR 
+								~ "Application Firmware Version: " ~ AppVerMajor ~ "." ~ AppVerMinor ~ CR 
+								~ "Supply Voltage: " ~ Volts/10 ~ "." ~ Volts//10 ~ CR 
+								~ "Board Temperature: " ~ BrdTemp/10 ~ "." ~ BrdTemp//10 ~ "C" ~ CR
+			else
+				tcpOutBuf = "Unknown Command" ~ CR
+		endselect
+		tcpip.Write(tcpOutBuf, tcpOutBuf.Length)
+	endif
+	return
+endfunction
+
+function int32 GetIO(int32 idx)
+int32 state
+    select idx
+        case 1 state = Rly1
+        case 2 state = Rly2
+        case 3 state = Rly3
+        case 4 state = Rly4
+        case 5 state = Rly5
+        case 6 state = Rly6
+        case 7 state = Rly7
+        case 8 state = Rly8
+        case 9 state = Rly9
+        case 10 state = Rly10
+        case 11 state = Rly11
+        case 12 state = Rly12
+        case 13 state = Rly13
+        case 14 state = Rly14
+        case 15 state = Rly15
+        case 16 state = Rly16
+        case 17 state = Rly17
+        case 18 state = Rly18
+        case 19 state = Rly19
+        case 20 state = Rly20
+        case 21 state = Rly21
+        case 22 state = Rly22
+        case 23 state = Rly23
+        case 24 state = Rly24
+        case 25 state = Rly25
+        case 26 state = Rly26
+        case 27 state = Rly27
+        case 28 state = Rly28
+        case 29 state = Rly29
+        case 30 state = Rly30
+        case 31 state = Rly31
+        case 32 state = Rly32
+        case 41 state = IO1
+        case 42 state = IO2
+        case 43 state = IO3
+        case 44 state = IO4
+        case 45 state = IO5
+        case 46 state = IO6
+        case 47 state = IO7
+        case 104 state = dSx104
+        case 105 state = dSx105
+        case 106 state = dSx106
+        case 107 state = dSx107
+        case 108 state = dSx108
+        case 109 state = dSx109
+        case 110 state = dSx110
+        case 111 state = dSx111
+        case 112 state = dSx112
+        case 113 state = dSx113
+        case 114 state = dSx114
+        case 115 state = dSx115
+        case 116 state = dSx116
+        case 117 state = dSx117
+        case 118 state = dSx118
+        case 119 state = dSx119
+        case 120 state = dSx120
+        case 121 state = dSx121
+        case 122 state = dSx122
+        case 123 state = dSx123
+        case 124 state = dSx124
+        case 125 state = dSx125
+        case 126 state = dSx126
+        case 127 state = dSx127
+        case 128 state = dSx128
+        case 129 state = dSx129
+        case 130 state = dSx130
+        case 131 state = dSx131
+        case 132 state = dSx132
+        case 133 state = dSx133
+        case 134 state = dSx134
+        case 135 state = dSx135
+        case 136 state = dSx136
+        case 137 state = dSx137
+        case 138 state = dSx138
+        case 139 state = dSx139
+        case 140 state = dSx140
+        case 141 state = dSx141
+        case 142 state = dSx142
+        case 143 state = dSx143
+        case 144 state = dSx144
+        case 145 state = dSx145
+        case 146 state = dSx146
+        case 147 state = dSx147
+        case 148 state = dSx148
+        case 149 state = dSx149
+        case 150 state = dSx150
+        case 151 state = dSx151
+        case 152 state = dSx152
+        case 153 state = dSx153
+        case 154 state = dSx154
+        case 155 state = dSx155
+        case 156 state = dSx156
+        case 157 state = dSx157
+        case 158 state = dSx158
+        case 159 state = dSx159
+        case 160 state = dSx160
+        case 161 state = dSx161
+        case 162 state = dSx162
+        case 163 state = dSx163   
+        else state = 0
+    endselect
+    return state
+endfunction
+
+function int32 GetAD(int32 idx)
+int32 ad
+    select idx
+        case 1 ad = IO1
+        case 2 ad = IO2
+        case 3 ad = IO3
+        case 4 ad = IO4
+        case 5 ad = IO5
+        case 6 ad = IO6
+        case 7 ad = IO7
+        case 8 ad = IO8
+
+        case 100 ad = TS1
+        case 101 ad = PSU
+        case 102 ad = AD102
+        case 103 ad = AD103
+        case 104 ad = AD104
+        case 105 ad = AD105
+        case 106 ad = AD106
+        case 107 ad = AD107
+        case 108 ad = AD108
+        case 109 ad = AD109
+        case 110 ad = AD110
+        case 111 ad = AD111
+        case 112 ad = AD112
+        case 113 ad = AD113
+        case 114 ad = AD114
+        case 115 ad = AD115
+        case 116 ad = AD116
+        case 117 ad = AD117
+        case 118 ad = AD118
+        case 119 ad = AD119
+        case 120 ad = AD120
+        case 121 ad = AD121
+        case 122 ad = AD122
+        case 123 ad = AD123
+        case 124 ad = AD124
+        case 125 ad = AD125
+        case 126 ad = AD126
+        case 127 ad = AD127
+        case 128 ad = AD128
+        case 129 ad = AD129
+        case 130 ad = AD130
+        case 131 ad = AD131
+        case 132 ad = AD132
+        case 133 ad = AD133
+        case 134 ad = AD134
+        case 135 ad = AD135
+        case 136 ad = AD136
+        case 137 ad = AD137
+        case 138 ad = AD138
+        case 139 ad = AD139
+        case 140 ad = AD140
+        case 141 ad = AD141
+        case 142 ad = AD142
+        case 143 ad = AD143
+        case 144 ad = AD144
+        case 145 ad = AD145
+        case 146 ad = AD146
+        case 147 ad = AD147
+        case 148 ad = AD148
+        case 149 ad = AD149
+        case 150 ad = AD150
+        case 151 ad = AD151
+        case 152 ad = AD152
+        case 153 ad = AD153
+        case 154 ad = AD154
+        case 155 ad = AD155
+        case 156 ad = AD156
+        case 157 ad = AD157
+        case 158 ad = AD158
+        case 159 ad = AD159
+        case 160 ad = AD160
+        case 161 ad = AD161
+        case 162 ad = AD162
+        case 163 ad = AD163
+    endselect
+    return ad
+endfunction
+
+function SetRelay(int8 Rly, int32 pulse)                    ; pulse = 0/1/2/3 off/on/toggle/toggle, or pulse time
+int8 rlyState
+    if pulse>3 and pulse<MinRelayPulse return               ; ignore if out of range
+    select Rly
+        case 1
+            if pulse>3 then threadstart Rly1Thread
+            elseif pulse>1 Rly1 = Rly1 ^ 1
+            else Rly1 = pulse endif
+            rlyState = Rly1
+        case 2
+            if pulse>3 then threadstart Rly2Thread
+            elseif pulse>1 Rly2 = Rly2 ^ 1
+            else Rly2 = pulse endif
+            rlyState = Rly2
+        case 3
+            if pulse>3 then threadstart Rly3Thread
+            elseif pulse>1 Rly3 = Rly3 ^ 1
+            else Rly3 = pulse endif
+            rlyState = Rly3
+        case 4
+            if pulse>3 then threadstart Rly4Thread
+            elseif pulse>1 Rly4 = Rly4 ^ 1
+            else Rly4 = pulse endif
+            rlyState = Rly4
+        case 5
+            if pulse>3 then threadstart Rly5Thread
+            elseif pulse>1 Rly5 = Rly5 ^ 1
+            else Rly5 = pulse endif
+            rlyState = Rly5
+        case 6
+            if pulse>3 then threadstart Rly6Thread
+            elseif pulse>1 Rly6 = Rly6 ^ 1
+            else Rly6 = pulse endif
+            rlyState = Rly6
+        case 7
+            if pulse>3 then threadstart Rly7Thread
+            elseif pulse>1 Rly7 = Rly7 ^ 1
+            else Rly7 = pulse endif
+            rlyState = Rly7
+        case 8
+            if pulse>3 then threadstart Rly8Thread
+            elseif pulse>1 Rly8 = Rly8 ^ 1
+            else Rly8 = pulse endif
+            rlyState = Rly8
+        case 9
+            if pulse>3 then threadstart Rly9Thread
+            elseif pulse>1 Rly9 = Rly9 ^ 1
+            else Rly9 = pulse endif
+            rlyState = Rly9
+        case 10
+            if pulse>3 then threadstart Rly10Thread
+            elseif pulse>1 Rly10 = Rly10 ^ 1
+            else Rly10 = pulse endif
+            rlyState = Rly10
+        case 11
+            if pulse>3 then threadstart Rly11Thread
+            elseif pulse>1 Rly11 = Rly11 ^ 1
+            else Rly11 = pulse endif
+            rlyState = Rly11
+        case 12
+            if pulse>3 then threadstart Rly12Thread
+            elseif pulse>1 Rly12 = Rly12 ^ 1
+            else Rly12 = pulse endif
+            rlyState = Rly12
+        case 13
+            if pulse>3 then threadstart Rly13Thread
+            elseif pulse>1 Rly13 = Rly13 ^ 1
+            else Rly13 = pulse endif
+            rlyState = Rly13
+        case 14
+            if pulse>3 then threadstart Rly14Thread
+            elseif pulse>1 Rly14 = Rly14 ^ 1
+            else Rly14 = pulse endif
+            rlyState = Rly14
+        case 15
+            if pulse>3 then threadstart Rly15Thread
+            elseif pulse>1 Rly15 = Rly15 ^ 1
+            else Rly15 = pulse endif
+            rlyState = Rly15
+        case 16
+            if pulse>3 then threadstart Rly16Thread
+            elseif pulse>1 Rly16 = Rly16 ^ 1
+            else Rly16 = pulse endif
+            rlyState = Rly16
+        case 17
+            if pulse>3 then threadstart Rly17Thread
+            elseif pulse>1 Rly17 = Rly17 ^ 1
+            else Rly17 = pulse endif
+            rlyState = Rly17
+        case 18
+            if pulse>3 then threadstart Rly18Thread
+            elseif pulse>1 Rly18 = Rly18 ^ 1
+            else Rly18 = pulse endif
+            rlyState = Rly18
+        case 19
+            if pulse>3 then threadstart Rly19Thread
+            elseif pulse>1 Rly19 = Rly19 ^ 1
+            else Rly19 = pulse endif
+            rlyState = Rly19
+        case 20
+            if pulse>3 then threadstart Rly20Thread
+            elseif pulse>1 Rly20 = Rly20 ^ 1
+            else Rly20 = pulse endif
+            rlyState = Rly20
+        case 21
+            if pulse>3 then threadstart Rly21Thread
+            elseif pulse>1 Rly21 = Rly21 ^ 1
+            else Rly21 = pulse endif
+            rlyState = Rly21
+        case 22
+            if pulse>3 then threadstart Rly22Thread
+            elseif pulse>1 Rly22 = Rly22 ^ 1
+            else Rly22 = pulse endif
+            rlyState = Rly22
+        case 23
+            if pulse>3 then threadstart Rly23Thread
+            elseif pulse>1 Rly23 = Rly23 ^ 1
+            else Rly23 = pulse endif
+            rlyState = Rly23
+        case 24
+            if pulse>3 then threadstart Rly24Thread
+            elseif pulse>1 Rly24 = Rly24 ^ 1
+            else Rly24 = pulse endif
+            rlyState = Rly24
+        case 25
+            if pulse>3 then threadstart Rly25Thread
+            elseif pulse>1 Rly25 = Rly25 ^ 1
+            else Rly25 = pulse endif
+            rlyState = Rly25
+        case 26
+            if pulse>3 then threadstart Rly26Thread
+            elseif pulse>1 Rly26 = Rly26 ^ 1
+            else Rly26 = pulse endif
+            rlyState = Rly26
+        case 27
+            if pulse>3 then threadstart Rly27Thread
+            elseif pulse>1 Rly27 = Rly27 ^ 1
+            else Rly27 = pulse endif
+            rlyState = Rly27
+        case 28
+            if pulse>3 then threadstart Rly28Thread
+            elseif pulse>1 Rly28 = Rly28 ^ 1
+            else Rly28 = pulse endif
+            rlyState = Rly28
+        case 29
+            if pulse>3 then threadstart Rly29Thread
+            elseif pulse>1 Rly29 = Rly29 ^ 1
+            else Rly29 = pulse endif
+            rlyState = Rly29
+        case 30
+            if pulse>3 then threadstart Rly30Thread
+            elseif pulse>1 Rly30 = Rly30 ^ 1
+            else Rly30 = pulse endif
+            rlyState = Rly30
+        case 31
+            if pulse>3 then threadstart Rly31Thread
+            elseif pulse>1 Rly31 = Rly31 ^ 1
+            else Rly31 = pulse endif
+            rlyState = Rly31
+        case 32
+            if pulse>3 then threadstart Rly32Thread
+            elseif pulse>1 Rly32 = Rly32 ^ 1
+            else Rly32 = pulse endif
+            rlyState = Rly32
+    endselect
+endfunction
+
+function SetIO()							; subroutine called from Ascii and Binary modes to set output
+	select cmdIO
+		case 1 
+			IO1 = RlyState
+		case 2
+			IO2 = RlyState
+		case 3
+			IO3 = RlyState
+		case 4
+			IO4 = RlyState
+		case 5
+			IO5 = RlyState
+		case 6
+			IO6 = RlyState
+		case 7
+			IO7 = RlyState
+		case 8
+			IO8 = RlyState
+	endselect
+	return
+endfunction
+
+function GetInput()											; subroutine, as get digital and analogue are the same for dS378/dS2832
+	cmdIO = tcpInBuf.GetNumAscii(cmdIdx)					; extract IO port number
+	select cmdIO
+		case 1
+			if IO1_s&0x04 then tcpOutBuf = IO1 ~ CR
+			else
+				if IO1 == off then tcpOutBuf = "InActive" ~ CR
+				else tcpOutBuf = "Active" ~ CR
+				endif
+			endif
+		case 2
+			if IO2_s&0x04 then tcpOutBuf = IO2 ~ CR
+			else
+				if IO2 == off then tcpOutBuf = "InActive" ~ CR
+				else tcpOutBuf = "Active" ~ CR
+				endif
+			endif
+		case 3
+			if IO3_s&0x04 then tcpOutBuf = IO3 ~ CR
+			else
+				if IO3 == off then tcpOutBuf = "InActive" ~ CR
+				else tcpOutBuf = "Active" ~ CR
+				endif
+			endif
+		case 4
+			if IO4_s&0x04 then tcpOutBuf = IO4 ~ CR
+			else
+				if IO4 == off then tcpOutBuf = "InActive" ~ CR
+				else tcpOutBuf = "Active" ~ CR
+				endif
+			endif
+		case 5
+			if IO5_s&0x04 then tcpOutBuf = IO5 ~ CR
+			else
+				if IO5 == off then tcpOutBuf = "InActive" ~ CR
+				else tcpOutBuf = "Active" ~ CR
+				endif
+			endif
+		case 6
+			if IO6_s&0x04 then tcpOutBuf = IO6 ~ CR
+			else
+				if IO6 == off then tcpOutBuf = "InActive" ~ CR
+				else tcpOutBuf = "Active" ~ CR
+				endif
+			endif
+		case 7
+			if IO7_s&0x04 then tcpOutBuf = IO7 ~ CR
+			else
+				if IO7 == off then tcpOutBuf = "InActive" ~ CR
+				else tcpOutBuf = "Active" ~ CR
+				endif
+			endif
+		case 8
+			if IO8_s&0x04 then tcpOutBuf = IO8 ~ CR
+			else
+				if IO8 == off then tcpOutBuf = "InActive" ~ CR
+				else tcpOutBuf = "Active" ~ CR
+				endif
+			endif
+		else
+			tcpOutBuf = "Unknown I/O number" ~ CR			; Don't know which relay to use!					
+	endselect
+	return
+endfunction
+
+
+function int32 GenNonce()
+int32 x
+int32 y
+string s[10]
+    for x=0 to 11 tcpOutBuf[x] = 0 next
+    x = system.Random
+    tcpOutBuf[12] = x >> 24
+    tcpOutBuf[13] = x >> 16      
+    tcpOutBuf[14] = x >> 8
+    tcpOutBuf[15] = x
+    s[0] = tcpOutBuf[12] ^ (System_PW[0] + System_PW[7])
+    s[1] = tcpOutBuf[13] ^ (System_PW[1] + System_PW[6])
+    s[2] = tcpOutBuf[14] ^ (System_PW[2] + System_PW[5])
+    s[3] = tcpOutBuf[15] ^ (System_PW[3] + System_PW[4])
+    x = 0;
+    x = s.GetNumBinary(x, 4)
+    y = x>>1
+    y &= 0x7fffffff
+    x=y^((0-(x&1))&0xd0000001)
+    tcpLength = 16
+    return x   
+endfunction
+
+
+function int32 checkNonce()
+int32 x
+    x = 12
+    x = tcpInBuf.GetNumBinary(x, 4)
+    if x==Nonce then x=1 else x=0 endif
+    return x
+endfunction
+
+
+function PhoneApp()
+int32 x
+int32 junk
+
+    if tcpLength == 16 then                         ; needs to be 16 bytes 
+        tcpLength = 0
+        for x = 0 to 11 tcpOutBuf[x] = 0 next    
+        select tcpInBuf[0]
+            case 0x41                               ; just ack command
+                Nonce = GenNonce()  
+            case 0x42  ; return module status
+                x = checkNonce()
+                if checkNonce() then
+                    Nonce = GenNonce()  
+                    loadStatus()
+                endif     
+            case 0x43                               ; Set Relay - relay num, state, pulse time/state (4 bytes), total 7 byte command
+                if checkNonce() then
+                   Nonce = GenNonce()  
+                    cmdIO = tcpInBuf[1]             
+                    RlyState = tcpInBuf[2]      
+                    PulseTime = 3                    
+                    PulseTime = tcpInBuf.GetNumBinary(PulseTime, 4)  
+                    if PulseTime<4 PulseTime = RlyState  
+                    select cmdIO
+                        case 1 to 32
+                            SetRelay(cmdIO, PulseTime)    
+                            tcpOutBuf[0] = 0       ; ACK
+                        else
+                            tcpOutBuf[0] = cmdIO   ; send relay number as NACK            
+                    endselect
+                endif
+            case 0x44                               ; Set Output - output num, state, total 3 byte command
+                if checkNonce() then
+                    Nonce = GenNonce()  
+                    cmdIO = tcpInBuf[1]   
+                    if tcpInBuf[2]==0 then RlyState=off else RlyState=on endif  ; get state
+                    select cmdIO
+                        case 1 to 8
+                            SetIO()                 ; set the output    
+                            tcpOutBuf[0] = 0        ; ACK
+                        else
+                            tcpOutBuf[0] = cmdIO    ; NACK, unknown I/O number, send number as NACK                 
+                    endselect
+                endif                
+            case 0x45                               ; Get Relay - 1st is requested relay, 2nd,4rd,4th are packed relays, 
+                if checkNonce() then
+                    Nonce = GenNonce()  
+                    if Rly1==on then tcpOutBuf[3] = tcpOutBuf[3] | 0x01 endif
+                    if Rly2==on then tcpOutBuf[3] = tcpOutBuf[3] | 0x02 endif
+                    if Rly3==on then tcpOutBuf[3] = tcpOutBuf[3] | 0x04 endif
+                    if Rly4==on then tcpOutBuf[3] = tcpOutBuf[3] | 0x08 endif
+                    if Rly5==on then tcpOutBuf[3] = tcpOutBuf[3] | 0x10 endif
+                    if Rly6==on then tcpOutBuf[3] = tcpOutBuf[3] | 0x20 endif
+                    if Rly7==on then tcpOutBuf[3] = tcpOutBuf[3] | 0x40 endif
+                    if Rly8==on then tcpOutBuf[3] = tcpOutBuf[3] | 0x80 endif
+                    if Rly9==on then tcpOutBuf[2] = tcpOutBuf[2] | 0x01 endif
+                    if Rly10==on then tcpOutBuf[2] = tcpOutBuf[2] | 0x02 endif
+                    if Rly11==on then tcpOutBuf[2] = tcpOutBuf[2] | 0x04 endif
+                    if Rly12==on then tcpOutBuf[2] = tcpOutBuf[2] | 0x08 endif
+                    if Rly13==on then tcpOutBuf[2] = tcpOutBuf[2] | 0x10 endif
+                    if Rly14==on then tcpOutBuf[2] = tcpOutBuf[2] | 0x20 endif
+                    if Rly15==on then tcpOutBuf[2] = tcpOutBuf[2] | 0x40 endif
+                    if Rly16==on then tcpOutBuf[2] = tcpOutBuf[2] | 0x80 endif                  
+                    if Rly17==on then tcpOutBuf[1] = tcpOutBuf[1] | 0x01 endif
+                    if Rly18==on then tcpOutBuf[1] = tcpOutBuf[1] | 0x02 endif
+                    if Rly19==on then tcpOutBuf[1] = tcpOutBuf[1] | 0x04 endif
+                    if Rly20==on then tcpOutBuf[1] = tcpOutBuf[1] | 0x08 endif
+                    if Rly21==on then tcpOutBuf[1] = tcpOutBuf[1] | 0x10 endif
+                    if Rly22==on then tcpOutBuf[1] = tcpOutBuf[1] | 0x20 endif
+                    if Rly23==on then tcpOutBuf[1] = tcpOutBuf[1] | 0x40 endif
+                    if Rly24==on then tcpOutBuf[1] = tcpOutBuf[1] | 0x80 endif          
+                    if Rly25==on then tcpOutBuf[0] = tcpOutBuf[0] | 0x01 endif
+                    if Rly26==on then tcpOutBuf[0] = tcpOutBuf[0] | 0x02 endif
+                    if Rly27==on then tcpOutBuf[0] = tcpOutBuf[0] | 0x04 endif
+                    if Rly28==on then tcpOutBuf[0] = tcpOutBuf[0] | 0x08 endif
+                    if Rly29==on then tcpOutBuf[0] = tcpOutBuf[0] | 0x10 endif
+                    if Rly30==on then tcpOutBuf[0] = tcpOutBuf[0] | 0x20 endif
+                    if Rly31==on then tcpOutBuf[0] = tcpOutBuf[0] | 0x40 endif
+                    if Rly32==on then tcpOutBuf[0] = tcpOutBuf[0] | 0x80 endif
+                endif                
+            case 0x46                               ; Get packed inputs
+                if checkNonce() then
+                    Nonce = GenNonce()  
+                    if IO1==on then tcpOutBuf[0] = 0x01 endif
+                    if IO2==on then tcpOutBuf[0] |= 0x02 endif
+                    if IO3==on then tcpOutBuf[0] |= 0x04 endif
+                    if IO4==on then tcpOutBuf[0] |= 0x08 endif
+                    if IO5==on then tcpOutBuf[0] |= 0x10 endif
+                    if IO6==on then tcpOutBuf[0] |= 0x20 endif
+                    if IO7==on then tcpOutBuf[0] |= 0x40 endif
+                    if IO8==on then tcpOutBuf[0] |= 0x80 endif
+                endif                
+            case 0x47                               ; Get Analog - 1st is high byte, 2nd is low byte of input
+                if checkNonce() then
+                    Nonce = GenNonce()  
+                    if tcpInBuf[1]==0 then
+                        mbX = IO1
+                        tcpOutBuf[0] = mbX>>8           ; returns first 4 analog inputs 
+                        tcpOutBuf[1] = mbX&255  
+                        mbX = IO2
+                        tcpOutBuf[2] = mbX>>8
+                        tcpOutBuf[3] = mbX&255  
+                        mbX = IO3
+                        tcpOutBuf[4] = mbX>>8  
+                        tcpOutBuf[5] = mbX&255  
+                        mbX = IO4
+                        tcpOutBuf[6] = mbX>>8
+                        tcpOutBuf[7] = mbX&255  
+                    else
+                        mbX = IO5
+                        tcpOutBuf[0] = mbX>>8           ; returns 2nd block of analog inputs 
+                        tcpOutBuf[1] = mbX&255  
+                        mbX = IO6
+                        tcpOutBuf[2] = mbX>>8
+                        tcpOutBuf[3] = mbX&255  
+                        mbX = IO7
+                        tcpOutBuf[4] = mbX>>8  
+                        tcpOutBuf[5] = mbX&255  
+                        mbX = IO8
+                        tcpOutBuf[6] = mbX>>8
+                        tcpOutBuf[7] = mbX&255  
+                    endif
+                endif                
+            case 0x48                               ;  Get Counter and Capture registers for one channel
+                if checkNonce() then
+                    Nonce = GenNonce()  
+                    cmdIO = tcpInBuf[1]                         ; get counter number
+                    select cmdIO
+                        case 1  mbX = System_CtrVal1
+                                mbFC = System_CtrCapt1
+                        case 2  mbX = System_CtrVal2
+                                mbFC = System_CtrCapt2
+                        case 3  mbX = System_CtrVal3
+                                mbFC = System_CtrCapt3
+                        case 4  mbX = System_CtrVal4
+                                mbFC = System_CtrCapt4
+                        case 5  mbX = System_CtrVal5
+                                mbFC = System_CtrCapt5
+                        case 6  mbX = System_CtrVal6
+                                mbFC = System_CtrCapt6
+                        case 7  mbX = System_CtrVal7
+                                mbFC = System_CtrCapt7
+                        case 8  mbX = System_CtrVal8
+                                mbFC = System_CtrCapt8
+                        else    mbX = 0
+                                mbFC = 0
+                    endselect
+                    tcpOutBuf[0] = mbX>>24
+                    tcpOutBuf[1] = mbX>>16  
+                    tcpOutBuf[2] = mbX>>8
+                    tcpOutBuf[3] = mbX&255              
+                    tcpOutBuf[4] = mbFC>>24
+                    tcpOutBuf[5] = mbFC>>16     
+                    tcpOutBuf[6] = mbFC>>8
+                    tcpOutBuf[7] = mbFC&255     
+               endif                
+        endselect
+        if tcpLength>0 tcpip.Write(tcpOutBuf, 16)
+    endif
+    return
+endfunction
+
+function Binary()
+	if tcpLength > 0 then 
+		NonceIn = Nonce							; not using AES, so just make it equal do DoBinary will work OK.
+		DoBinary()
+		if(tcpLength) tcpip.Write(tcpOutBuf, tcpLength)
+	endif
+	return
+endfunction		
+
+function AESBinary()
+	if tcpLength > 31 then						; needs to be at least 32 bytes 
+		aes.decrypt(tcpInBuf, 16)
+		x = 12
+		NonceIn = tcpInBuf.GetNumBinary(x, 4)					
+		for x = 0 to 15 
+			tcpOutBuf[x] = 0
+		next
+		DoBinary()
+		aes.encrypt(tcpOutBuf, 16)
+		tcpip.Write(tcpOutBuf, 32)
+	endif
+	return
+endfunction	
+
+function loadStatus()
+    tcpOutBuf[0] = system.ModuleID      ; 42 for dS2832
+    tcpOutBuf[1] = VerMajor             ; Firmware version - major
+    tcpOutBuf[2] = VerMinor             ; Firmware version - minor
+    tcpOutBuf[3] = AppVerMajor          ; Application Firmware version - major
+    tcpOutBuf[4] = AppVerMinor          ; Application Firmware version - minor
+    tcpOutBuf[5] = Volts                ; Volts*10, 125 = 12.5v
+    tcpOutBuf[6] = BrdTemp>>8           ; internal temperature*10, high byte
+    tcpOutBuf[7] = BrdTemp&255          ; internal temperature*10, low byte, (combined to 16 bits, 267 = 26.7 degrees C)
+endfunction
+
+function DoBinary()
+	tcpLength = 0							; default incase of invalid command
+	select tcpInBuf[0]
+		case 0x30								; GS, Get Status - returns 6 bytes. 
+			tcpOutBuf[0] = system.ModuleID		; 42 for dS2832
+			tcpOutBuf[1] = VerMajor				; System Firmware version - major
+			tcpOutBuf[2] = VerMinor				; System Firmware version - minor
+			tcpOutBuf[3] = AppVerMajor			; Application Firmware version - major
+			tcpOutBuf[4] = AppVerMinor			; Application Firmware version - minor
+			tcpOutBuf[5] = Volts				; Volts*10, 125 = 12.5v
+			tcpOutBuf[6] = BrdTemp>>8			; internal temperature*10, high byte
+			tcpOutBuf[7] = BrdTemp&255			; internal temperature*10, low byte, (combined to 16 bits, 267 = 26.7 degrees C)
+			Nonce = system.Random
+			tcpOutBuf[12] = Nonce >> 24
+			tcpOutBuf[13] = Nonce >> 16			; insert Nonce - just in case we are being called by AES mode 
+			tcpOutBuf[14] = Nonce >> 8
+			tcpOutBuf[15] = Nonce
+			tcpLength = 8
+				
+		case 0x31								; SR, Set Relay - relay num, state, pulse time/state (4 bytes), total 7 byte command
+			cmdIO = tcpInBuf[1]											; get relay number
+			RlyState = tcpInBuf[2]										; get state (0,1 or 3 for toggle)
+			PulseTime = 3		; as a temporary index
+			PulseTime = tcpInBuf.GetNumBinary(PulseTime, 4)				; get 4 byte pulse time
+            if PulseTime<4 PulseTime = RlyState
+			select cmdIO
+				case 1 to 32
+					if Nonce == NonceIn SetRelay(cmdIO, PulseTime)  	; set the relay	
+					tcpOutBuf[0] = 0						; ACK
+				else
+					tcpOutBuf[0] = cmdIO					; NACK, unknown relay number, send relay number as NACK					
+			endselect
+			Nonce = system.Random
+			tcpOutBuf[12] = Nonce >> 24
+			tcpOutBuf[13] = Nonce >> 16			; insert Nonce - just in case we are being called by AES mode 
+			tcpOutBuf[14] = Nonce >> 8
+			tcpOutBuf[15] = Nonce
+			tcpLength = 1
+				
+		case 0x32								; SO, Set Output - output num, state, total 3 byte command
+			cmdIO = tcpInBuf[1]											; get output number
+			if tcpInBuf[2]==0 then RlyState=off else RlyState=on endif	; get state
+			select cmdIO
+				case 1 to 8
+					if Nonce == NonceIn SetIO()				; set the output	
+					tcpOutBuf[0] = 0						; ACK
+				else
+					tcpOutBuf[0] = cmdIO					; NACK, unknown I/O number, send number as NACK					
+			endselect
+			Nonce = system.Random
+			tcpOutBuf[12] = Nonce >> 24
+			tcpOutBuf[13] = Nonce >> 16			; insert Nonce - just in case we are being called by AES mode 
+			tcpOutBuf[14] = Nonce >> 8
+			tcpOutBuf[15] = Nonce
+			tcpLength = 1
+				
+		case 0x33								; GR, Get Relay - 1st is requested relay, 2nd,3rd,4th are packed relays, 
+			tcpOutBuf[0] = 0
+			select tcpInBuf[1]
+				case 1 if Rly1==on tcpOutBuf[0] = 1
+				case 2 if Rly2==on tcpOutBuf[0] = 1
+				case 3 if Rly3==on tcpOutBuf[0] = 1
+				case 4 if Rly4==on tcpOutBuf[0] = 1
+				case 5 if Rly5==on tcpOutBuf[0] = 1
+				case 6 if Rly6==on tcpOutBuf[0] = 1
+				case 7 if Rly7==on tcpOutBuf[0] = 1
+				case 8 if Rly8==on tcpOutBuf[0] = 1
+				case 9 if Rly9==on tcpOutBuf[0] = 1
+				case 10 if Rly10==on tcpOutBuf[0] = 1
+				case 11 if Rly11==on tcpOutBuf[0] = 1
+				case 12 if Rly12==on tcpOutBuf[0] = 1
+				case 13 if Rly13==on tcpOutBuf[0] = 1
+				case 14 if Rly14==on tcpOutBuf[0] = 1
+				case 15 if Rly15==on tcpOutBuf[0] = 1
+				case 16 if Rly16==on tcpOutBuf[0] = 1
+				case 17 if Rly17==on tcpOutBuf[0] = 1
+				case 18 if Rly18==on tcpOutBuf[0] = 1
+				case 19 if Rly19==on tcpOutBuf[0] = 1
+				case 20 if Rly20==on tcpOutBuf[0] = 1
+				case 21 if Rly21==on tcpOutBuf[0] = 1
+				case 22 if Rly22==on tcpOutBuf[0] = 1
+				case 23 if Rly23==on tcpOutBuf[0] = 1
+				case 24 if Rly24==on tcpOutBuf[0] = 1
+				case 25 if Rly25==on tcpOutBuf[0] = 1
+				case 26 if Rly26==on tcpOutBuf[0] = 1
+				case 27 if Rly27==on tcpOutBuf[0] = 1
+				case 28 if Rly28==on tcpOutBuf[0] = 1
+				case 29 if Rly29==on tcpOutBuf[0] = 1
+				case 30 if Rly30==on tcpOutBuf[0] = 1
+				case 31 if Rly31==on tcpOutBuf[0] = 1
+				case 32 if Rly32==on tcpOutBuf[0] = 1
+			endselect
+			tcpOutBuf[1] = 0
+			tcpOutBuf[2] = 0
+			tcpOutBuf[3] = 0
+			tcpOutBuf[4] = 0
+			if Rly1==on then tcpOutBuf[4] = tcpOutBuf[4] | 0x01 endif
+			if Rly2==on then tcpOutBuf[4] = tcpOutBuf[4] | 0x02 endif
+			if Rly3==on then tcpOutBuf[4] = tcpOutBuf[4] | 0x04 endif
+			if Rly4==on then tcpOutBuf[4] = tcpOutBuf[4] | 0x08 endif
+			if Rly5==on then tcpOutBuf[4] = tcpOutBuf[4] | 0x10 endif
+			if Rly6==on then tcpOutBuf[4] = tcpOutBuf[4] | 0x20 endif
+			if Rly7==on then tcpOutBuf[4] = tcpOutBuf[4] | 0x40 endif
+			if Rly8==on then tcpOutBuf[4] = tcpOutBuf[4] | 0x80 endif
+			if Rly9==on then tcpOutBuf[3] = tcpOutBuf[3] | 0x01 endif
+			if Rly10==on then tcpOutBuf[3] = tcpOutBuf[3] | 0x02 endif
+			if Rly11==on then tcpOutBuf[3] = tcpOutBuf[3] | 0x04 endif
+			if Rly12==on then tcpOutBuf[3] = tcpOutBuf[3] | 0x08 endif
+			if Rly13==on then tcpOutBuf[3] = tcpOutBuf[3] | 0x10 endif
+			if Rly14==on then tcpOutBuf[3] = tcpOutBuf[3] | 0x20 endif
+			if Rly15==on then tcpOutBuf[3] = tcpOutBuf[3] | 0x40 endif
+			if Rly16==on then tcpOutBuf[3] = tcpOutBuf[3] | 0x80 endif					
+			if Rly17==on then tcpOutBuf[2] = tcpOutBuf[2] | 0x01 endif
+			if Rly18==on then tcpOutBuf[2] = tcpOutBuf[2] | 0x02 endif
+			if Rly19==on then tcpOutBuf[2] = tcpOutBuf[2] | 0x04 endif
+			if Rly20==on then tcpOutBuf[2] = tcpOutBuf[2] | 0x08 endif
+			if Rly21==on then tcpOutBuf[2] = tcpOutBuf[2] | 0x10 endif
+			if Rly22==on then tcpOutBuf[2] = tcpOutBuf[2] | 0x20 endif
+			if Rly23==on then tcpOutBuf[2] = tcpOutBuf[2] | 0x40 endif
+			if Rly24==on then tcpOutBuf[2] = tcpOutBuf[2] | 0x80 endif			
+			if Rly25==on then tcpOutBuf[1] = tcpOutBuf[1] | 0x01 endif
+			if Rly26==on then tcpOutBuf[1] = tcpOutBuf[1] | 0x02 endif
+			if Rly27==on then tcpOutBuf[1] = tcpOutBuf[1] | 0x04 endif
+			if Rly28==on then tcpOutBuf[1] = tcpOutBuf[1] | 0x08 endif
+			if Rly29==on then tcpOutBuf[1] = tcpOutBuf[1] | 0x10 endif
+			if Rly30==on then tcpOutBuf[1] = tcpOutBuf[1] | 0x20 endif
+			if Rly31==on then tcpOutBuf[1] = tcpOutBuf[1] | 0x40 endif
+			if Rly32==on then tcpOutBuf[1] = tcpOutBuf[1] | 0x80 endif
+			tcpLength = 5
+		
+		case 0x34								; GI, Get Input - 1st is requested input, 2nd is packed inputs
+			tcpOutBuf[0] = 0
+			tcpOutBuf[1] = 0
+			select tcpInBuf[1]
+				case 1	if IO1==on tcpOutBuf[0] = 1	
+				case 2	if IO2==on tcpOutBuf[0] = 1	
+				case 3	if IO3==on tcpOutBuf[0] = 1	
+				case 4	if IO4==on tcpOutBuf[0] = 1	
+				case 5	if IO5==on tcpOutBuf[0] = 1	
+				case 6	if IO6==on tcpOutBuf[0] = 1	
+				case 7	if IO7==on tcpOutBuf[0] = 1	
+				case 8	if IO8==on tcpOutBuf[0] = 1	
+			endselect
+			if IO1==on then tcpOutBuf[1] = tcpOutBuf[1] | 0x01 endif
+			if IO2==on then tcpOutBuf[1] = tcpOutBuf[1] | 0x02 endif
+			if IO3==on then tcpOutBuf[1] = tcpOutBuf[1] | 0x04 endif
+			if IO4==on then tcpOutBuf[1] = tcpOutBuf[1] | 0x08 endif
+			if IO5==on then tcpOutBuf[1] = tcpOutBuf[1] | 0x10 endif
+			if IO6==on then tcpOutBuf[1] = tcpOutBuf[1] | 0x20 endif
+			if IO7==on then tcpOutBuf[1] = tcpOutBuf[1] | 0x40 endif
+			if IO8==on then tcpOutBuf[1] = tcpOutBuf[1] | 0x80 endif
+			tcpLength = 2	
+
+		case 0x35							; GA, Get Analog - 1st is high byte, 2nd is low byte of input
+			tcpOutBuf[0] = IO1>>8			; returns all 8 analog inputs (some may actually be digital)
+			tcpOutBuf[1] = IO1&255 	
+			tcpOutBuf[2] = IO2>>8
+			tcpOutBuf[3] = IO2&255 	
+			tcpOutBuf[4] = IO3>>8
+			tcpOutBuf[5] = IO3&255 	
+			tcpOutBuf[6] = IO4>>8
+			tcpOutBuf[7] = IO4&255 	
+			tcpOutBuf[8] = IO5>>8
+			tcpOutBuf[9] = IO5&255 	
+			tcpOutBuf[10] = IO6>>8
+			tcpOutBuf[11] = IO6&255 	
+			tcpOutBuf[12] = IO7>>8
+			tcpOutBuf[13] = IO7&255 	
+			tcpOutBuf[14] = IO8>>8
+			tcpOutBuf[15] = IO8&255 	
+			tcpLength = 16
+
+		case 0x36										; GC, Get Counter - Counter num, 2 byte command returning 8 bytes
+			cmdIO = tcpInBuf[1]							; get counter number
+			select cmdIO
+				case 1	mbX = System_CtrVal1
+						mbFC = System_CtrCapt1
+				case 2	mbX = System_CtrVal2
+						mbFC = System_CtrCapt2
+				case 3	mbX = System_CtrVal3
+						mbFC = System_CtrCapt3
+				case 4	mbX = System_CtrVal4
+						mbFC = System_CtrCapt4
+				case 5	mbX = System_CtrVal5
+						mbFC = System_CtrCapt5
+				case 6	mbX = System_CtrVal6
+						mbFC = System_CtrCapt6
+				case 7	mbX = System_CtrVal7
+						mbFC = System_CtrCapt7
+				case 8	mbX = System_CtrVal8
+						mbFC = System_CtrCapt8
+				else 	mbX = 0
+						mbFC = 0
+			endselect
+			tcpOutBuf[0] = mbX>>24
+			tcpOutBuf[1] = mbX>>16 	
+			tcpOutBuf[2] = mbX>>8
+			tcpOutBuf[3] = mbX&255 				
+			tcpOutBuf[4] = mbFC>>24
+			tcpOutBuf[5] = mbFC>>16 	
+			tcpOutBuf[6] = mbFC>>8
+			tcpOutBuf[7] = mbFC&255 	
+			tcpLength = 8				
+
+
+        case 0x37               ; update all relays with data from bytes 1-4
+            if Nonce == NonceIn then
+                if(tcpInBuf[4]&0x01) then SetRelay(1,on) else SetRelay(1,off) endif
+                if(tcpInBuf[4]&0x02) then SetRelay(2,on) else SetRelay(2,off) endif
+                if(tcpInBuf[4]&0x04) then SetRelay(3,on) else SetRelay(3,off) endif
+                if(tcpInBuf[4]&0x08) then SetRelay(4,on) else SetRelay(4,off) endif
+                if(tcpInBuf[4]&0x10) then SetRelay(5,on) else SetRelay(5,off) endif
+                if(tcpInBuf[4]&0x20) then SetRelay(6,on) else SetRelay(6,off) endif
+                if(tcpInBuf[4]&0x40) then SetRelay(7,on) else SetRelay(7,off) endif
+                if(tcpInBuf[4]&0x80) then SetRelay(8,on) else SetRelay(8,off) endif
+
+                if(tcpInBuf[3]&0x01) then SetRelay(9,on) else SetRelay(9,off) endif
+                if(tcpInBuf[3]&0x02) then SetRelay(10,on) else SetRelay(10,off) endif
+                if(tcpInBuf[3]&0x04) then SetRelay(11,on) else SetRelay(11,off) endif
+                if(tcpInBuf[3]&0x08) then SetRelay(12,on) else SetRelay(12,off) endif
+                if(tcpInBuf[3]&0x10) then SetRelay(13,on) else SetRelay(13,off) endif
+                if(tcpInBuf[3]&0x20) then SetRelay(14,on) else SetRelay(14,off) endif
+                if(tcpInBuf[3]&0x40) then SetRelay(15,on) else SetRelay(15,off) endif
+                if(tcpInBuf[3]&0x80) then SetRelay(16,on) else SetRelay(16,off) endif
+
+                if(tcpInBuf[2]&0x01) then SetRelay(17,on) else SetRelay(17,off) endif
+                if(tcpInBuf[2]&0x02) then SetRelay(18,on) else SetRelay(18,off) endif
+                if(tcpInBuf[2]&0x04) then SetRelay(19,on) else SetRelay(19,off) endif
+                if(tcpInBuf[2]&0x08) then SetRelay(20,on) else SetRelay(20,off) endif
+                if(tcpInBuf[2]&0x10) then SetRelay(21,on) else SetRelay(21,off) endif
+                if(tcpInBuf[2]&0x20) then SetRelay(22,on) else SetRelay(22,off) endif
+                if(tcpInBuf[2]&0x40) then SetRelay(23,on) else SetRelay(23,off) endif
+                if(tcpInBuf[2]&0x80) then SetRelay(24,on) else SetRelay(24,off) endif
+                
+                if(tcpInBuf[1]&0x01) then SetRelay(25,on) else SetRelay(25,off) endif
+                if(tcpInBuf[1]&0x02) then SetRelay(26,on) else SetRelay(26,off) endif
+                if(tcpInBuf[1]&0x04) then SetRelay(27,on) else SetRelay(27,off) endif
+                if(tcpInBuf[1]&0x08) then SetRelay(28,on) else SetRelay(28,off) endif
+                if(tcpInBuf[1]&0x10) then SetRelay(29,on) else SetRelay(29,off) endif
+                if(tcpInBuf[1]&0x20) then SetRelay(30,on) else SetRelay(30,off) endif
+                if(tcpInBuf[1]&0x40) then SetRelay(31,on) else SetRelay(31,off) endif
+                if(tcpInBuf[1]&0x80) then SetRelay(32,on) else SetRelay(32,off) endif
+            endif
+            tcpOutBuf[0] = 0                        ; ACK
+            Nonce = system.Random
+            tcpOutBuf[12] = Nonce >> 24
+            tcpOutBuf[13] = Nonce >> 16             ; insert Nonce - just in case we are being called by AES mode 
+            tcpOutBuf[14] = Nonce >> 8
+            tcpOutBuf[15] = Nonce
+            tcpLength = 1
+            
+        case 0x38                       ; turn relays on which have a bit set in bytes 1-4. All other relays are unaffected. 
+            if Nonce == NonceIn then
+                if(tcpInBuf[4]&0x01) SetRelay(1,on)
+                if(tcpInBuf[4]&0x02) SetRelay(2,on)
+                if(tcpInBuf[4]&0x04) SetRelay(3,on)
+                if(tcpInBuf[4]&0x08) SetRelay(4,on) 
+                if(tcpInBuf[4]&0x10) SetRelay(5,on)
+                if(tcpInBuf[4]&0x20) SetRelay(6,on)
+                if(tcpInBuf[4]&0x40) SetRelay(7,on)
+                if(tcpInBuf[4]&0x80) SetRelay(8,on) 
+
+                if(tcpInBuf[3]&0x01) SetRelay(9,on)
+                if(tcpInBuf[3]&0x02) SetRelay(10,on)
+                if(tcpInBuf[3]&0x04) SetRelay(11,on)
+                if(tcpInBuf[3]&0x08) SetRelay(12,on)
+                if(tcpInBuf[3]&0x10) SetRelay(13,on)
+                if(tcpInBuf[3]&0x20) SetRelay(14,on)
+                if(tcpInBuf[3]&0x40) SetRelay(15,on)
+                if(tcpInBuf[3]&0x80) SetRelay(16,on)
+
+                if(tcpInBuf[2]&0x01) SetRelay(17,on)
+                if(tcpInBuf[2]&0x02) SetRelay(18,on)
+                if(tcpInBuf[2]&0x04) SetRelay(19,on)
+                if(tcpInBuf[2]&0x08) SetRelay(20,on)
+                if(tcpInBuf[2]&0x10) SetRelay(21,on)
+                if(tcpInBuf[2]&0x20) SetRelay(22,on)
+                if(tcpInBuf[2]&0x40) SetRelay(23,on)
+                if(tcpInBuf[2]&0x80) SetRelay(24,on)
+
+                if(tcpInBuf[1]&0x01) SetRelay(25,on)
+                if(tcpInBuf[1]&0x02) SetRelay(26,on)
+                if(tcpInBuf[1]&0x04) SetRelay(27,on)
+                if(tcpInBuf[1]&0x08) SetRelay(28,on)
+                if(tcpInBuf[1]&0x10) SetRelay(29,on)
+                if(tcpInBuf[1]&0x20) SetRelay(30,on)
+                if(tcpInBuf[1]&0x40) SetRelay(31,on)
+                if(tcpInBuf[1]&0x80) SetRelay(32,on)
+            endif
+            tcpOutBuf[0] = 0                        ; ACK
+            Nonce = system.Random
+            tcpOutBuf[12] = Nonce >> 24
+            tcpOutBuf[13] = Nonce >> 16             ; insert Nonce - just in case we are being called by AES mode 
+            tcpOutBuf[14] = Nonce >> 8
+            tcpOutBuf[15] = Nonce
+            tcpLength = 1
+
+        case 0x39                       ; turn relays off which have a bit set in bytes 1-4. All other relays are unaffected. 
+            if Nonce == NonceIn then
+                if(tcpInBuf[4]&0x01) SetRelay(1,off)
+                if(tcpInBuf[4]&0x02) SetRelay(2,off)
+                if(tcpInBuf[4]&0x04) SetRelay(3,off)
+                if(tcpInBuf[4]&0x08) SetRelay(4,off) 
+                if(tcpInBuf[4]&0x10) SetRelay(5,off)
+                if(tcpInBuf[4]&0x20) SetRelay(6,off)
+                if(tcpInBuf[4]&0x40) SetRelay(7,off)
+                if(tcpInBuf[4]&0x80) SetRelay(8,off) 
+
+                if(tcpInBuf[3]&0x01) SetRelay(9,off)
+                if(tcpInBuf[3]&0x02) SetRelay(10,off)
+                if(tcpInBuf[3]&0x04) SetRelay(11,off)
+                if(tcpInBuf[3]&0x08) SetRelay(12,off)
+                if(tcpInBuf[3]&0x10) SetRelay(13,off)
+                if(tcpInBuf[3]&0x20) SetRelay(14,off)
+                if(tcpInBuf[3]&0x40) SetRelay(15,off)
+                if(tcpInBuf[3]&0x80) SetRelay(16,off)
+
+                if(tcpInBuf[2]&0x01) SetRelay(17,off)
+                if(tcpInBuf[2]&0x02) SetRelay(18,off)
+                if(tcpInBuf[2]&0x04) SetRelay(19,off)
+                if(tcpInBuf[2]&0x08) SetRelay(20,off)
+                if(tcpInBuf[2]&0x10) SetRelay(21,off)
+                if(tcpInBuf[2]&0x20) SetRelay(22,off)
+                if(tcpInBuf[2]&0x40) SetRelay(23,off)
+                if(tcpInBuf[2]&0x80) SetRelay(24,off)
+
+                if(tcpInBuf[1]&0x01) SetRelay(25,off)
+                if(tcpInBuf[1]&0x02) SetRelay(26,off)
+                if(tcpInBuf[1]&0x04) SetRelay(27,off)
+                if(tcpInBuf[1]&0x08) SetRelay(28,off)
+                if(tcpInBuf[1]&0x10) SetRelay(29,off)
+                if(tcpInBuf[1]&0x20) SetRelay(30,off)
+                if(tcpInBuf[1]&0x40) SetRelay(31,off)
+                if(tcpInBuf[1]&0x80) SetRelay(32,off)
+            endif
+            tcpOutBuf[0] = 0                        ; ACK
+            Nonce = system.Random
+            tcpOutBuf[12] = Nonce >> 24
+            tcpOutBuf[13] = Nonce >> 16             ; insert Nonce - just in case we are being called by AES mode 
+            tcpOutBuf[14] = Nonce >> 8
+            tcpOutBuf[15] = Nonce
+            tcpLength = 1
+                        
+	endselect
+endfunction
+		
+function ModBus()
+	if tcpLength < 12 return										; 12 bytes is minimum frame size
+	cmdIdx = 0
+	mbTI = tcpInBuf.GetNumBinary(cmdIdx,2)							; read MBAP Header
+	mbPI = tcpInBuf.GetNumBinary(cmdIdx,2)
+	mbLen = tcpInBuf.GetNumBinary(cmdIdx,2)
+	mbUI = tcpInBuf.GetNumBinary(cmdIdx,1)
+	if mbPI != 0 return												; must be zero for modbus protocol
+	if mbLen < 6 return												; must have another 6 bytes minimum
+	if mbUI != System_ModbusUID then								; if not for this module, send downstream to additional modules.
+		ModBusRTU()
+		return
+	endif
+	mbFC = tcpInBuf.GetNumBinary(cmdIdx,1)							; read command, Function code
+	mbSA = tcpInBuf.GetNumBinary(cmdIdx,2)							; source address
+	mbNP = tcpInBuf.GetNumBinary(cmdIdx,2)							; number of points
+	
+	select mbFC
+		case 1														; read coils
+			ModBus_ReadCoils()
+		case 4														; read input registers
+			ModBus_ReadInputRegisters()
+		case 5														; write single coil
+			ModBus_WriteSingleCoil()
+		case 15														; write multiple coils
+			ModBus_WriteMultipleCoils()
+		else
+			ModBusErr(1)				
+	endselect
+endfunction
+
+function ModBus_ReadCoils()												; modbus function 01 (0x01
+	if mbSA > 48 then
+		ModBusErr(2)
+	elseif mbNP == 0 
+		ModBusErr(3)
+	elseif mbSA+mbNP > 49
+		ModBusErr(2)
+	else
+		cmdIdx = 9														; position of 1st packed data bytes
+		tcpInBuf[cmdIdx] = 0
+		mbX = 1
+		tcpInBuf[8] = 0													; returned byte count
+		do
+			if mbX == 1 tcpInBuf[8] += 1								; increment returned byte count
+			select mbSA
+				case  0 if Rly1==active tcpInBuf[cmdIdx] |= mbX			; insert coil/input status
+				case  1 if Rly2==active tcpInBuf[cmdIdx] |= mbX			; address 1 is coil 2/Relay 2
+				case  2 if Rly3==active tcpInBuf[cmdIdx] |= mbX	
+				case  3 if Rly4==active tcpInBuf[cmdIdx] |= mbX
+				case  4 if Rly5==active tcpInBuf[cmdIdx] |= mbX
+				case  5 if Rly6==active tcpInBuf[cmdIdx] |= mbX
+				case  6 if Rly7==active tcpInBuf[cmdIdx] |= mbX
+				case  7 if Rly8==active tcpInBuf[cmdIdx] |= mbX
+				case  8 if Rly9==active tcpInBuf[cmdIdx] |= mbX
+				case  9 if Rly10==active tcpInBuf[cmdIdx] |= mbX
+				case  10 if Rly11==active tcpInBuf[cmdIdx] |= mbX
+				case  11 if Rly12==active tcpInBuf[cmdIdx] |= mbX
+				case  12 if Rly13==active tcpInBuf[cmdIdx] |= mbX
+				case  13 if Rly14==active tcpInBuf[cmdIdx] |= mbX
+				case  14 if Rly15==active tcpInBuf[cmdIdx] |= mbX
+				case  15 if Rly16==active tcpInBuf[cmdIdx] |= mbX
+				case  16 if Rly17==active tcpInBuf[cmdIdx] |= mbX
+				case  17 if Rly18==active tcpInBuf[cmdIdx] |= mbX
+				case  18 if Rly19==active tcpInBuf[cmdIdx] |= mbX
+				case  19 if Rly20==active tcpInBuf[cmdIdx] |= mbX
+				case  20 if Rly21==active tcpInBuf[cmdIdx] |= mbX
+				case  21 if Rly22==active tcpInBuf[cmdIdx] |= mbX
+				case  22 if Rly23==active tcpInBuf[cmdIdx] |= mbX
+				case  23 if Rly24==active tcpInBuf[cmdIdx] |= mbX
+				case  24 if Rly25==active tcpInBuf[cmdIdx] |= mbX
+				case  25 if Rly26==active tcpInBuf[cmdIdx] |= mbX
+				case  26 if Rly27==active tcpInBuf[cmdIdx] |= mbX
+				case  27 if Rly28==active tcpInBuf[cmdIdx] |= mbX
+				case  28 if Rly29==active tcpInBuf[cmdIdx] |= mbX
+				case  29 if Rly30==active tcpInBuf[cmdIdx] |= mbX
+				case  30 if Rly31==active tcpInBuf[cmdIdx] |= mbX
+				case  31 if Rly32==active tcpInBuf[cmdIdx] |= mbX
+
+				case 40 if IO1==active  tcpInBuf[cmdIdx] |= mbX			; IO1-8 are remapped to coils 41-48
+				case 41 if IO2==active  tcpInBuf[cmdIdx] |= mbX			; address 41 is Coil 42/IO2
+				case 42 if IO3==active  tcpInBuf[cmdIdx] |= mbX
+				case 43 if IO4==active  tcpInBuf[cmdIdx] |= mbX
+				case 44 if IO5==active  tcpInBuf[cmdIdx] |= mbX
+				case 45 if IO6==active  tcpInBuf[cmdIdx] |= mbX
+				case 46 if IO7==active  tcpInBuf[cmdIdx] |= mbX
+				case 47 if IO8==active  tcpInBuf[cmdIdx] |= mbX
+			endselect
+			mbX <<= 1
+			if mbX == 0x100 then
+				mbX = 1
+				cmdIdx += 1
+				tcpInBuf[cmdIdx] = 0
+			endif
+			mbNP -= 1
+			mbSA += 1
+		loop while mbNP > 0
+		tcpInBuf[4] = 0
+		tcpInBuf[5] = tcpInBuf[8]+3										; place length in MBAP
+		tcpip.Write(tcpInBuf, tcpInBuf[8]+9)
+	endif
+endfunction
+
+function ModBus_ReadInputRegisters()									; modbus function 04 (0x04)
+	if mbSA > 40 then
+		ModBusErr(2)
+	elseif mbNP == 0 
+		ModBusErr(3)
+	elseif mbSA+mbNP > 41
+		ModBusErr(2)
+	else
+		cmdIdx = 9														; position of 1st packed data bytes
+		tcpInBuf[8] = 0													; returned byte count
+		do
+			tcpInBuf[8] += 2											; increment returned byte count
+			select mbSA
+				case  0 mbX = IO1										; insert analogue input reading
+						tcpInBuf[cmdIdx] = mbX >> 8
+						cmdIdx += 1
+						tcpInBuf[cmdIdx] = mbX & 0xff
+						cmdIdx += 1
+				case  1 mbX = IO2
+						tcpInBuf[cmdIdx] = mbX >> 8
+						cmdIdx += 1
+						tcpInBuf[cmdIdx] = mbX & 0xff
+						cmdIdx += 1
+				case  2 mbX = IO3
+						tcpInBuf[cmdIdx] = mbX >> 8
+						cmdIdx += 1
+						tcpInBuf[cmdIdx] = mbX & 0xff
+						cmdIdx += 1
+				case  3 mbX = IO4
+						tcpInBuf[cmdIdx] = mbX >> 8
+						cmdIdx += 1
+						tcpInBuf[cmdIdx] = mbX & 0xff
+						cmdIdx += 1
+				case  4 mbX = IO5
+						tcpInBuf[cmdIdx] = mbX >> 8
+						cmdIdx += 1
+						tcpInBuf[cmdIdx] = mbX & 0xff
+						cmdIdx += 1
+				case  5 mbX = IO6
+						tcpInBuf[cmdIdx] = mbX >> 8
+						cmdIdx += 1
+						tcpInBuf[cmdIdx] = mbX & 0xff
+						cmdIdx += 1
+				case  6 mbX = IO7
+						tcpInBuf[cmdIdx] = mbX >> 8
+						cmdIdx += 1
+						tcpInBuf[cmdIdx] = mbX & 0xff
+						cmdIdx += 1
+				case  7 mbX = IO8
+						tcpInBuf[cmdIdx] = mbX >> 8
+						cmdIdx += 1
+						tcpInBuf[cmdIdx] = mbX & 0xff
+						cmdIdx += 1
+				case  8	tcpInBuf[cmdIdx] = System_CtrVal1>>24
+						cmdIdx += 1
+						tcpInBuf[cmdIdx] = System_CtrVal1>>16
+						cmdIdx += 1
+				case 9	tcpInBuf[cmdIdx] = System_CtrVal1>>8
+						cmdIdx += 1
+						tcpInBuf[cmdIdx] = System_CtrVal1
+						cmdIdx += 1
+				case 10 tcpInBuf[cmdIdx] = System_CtrVal2>>24
+						cmdIdx += 1
+						tcpInBuf[cmdIdx] = System_CtrVal2>>16
+						cmdIdx += 1
+				case 11	tcpInBuf[cmdIdx] = System_CtrVal2>>8
+						cmdIdx += 1
+						tcpInBuf[cmdIdx] = System_CtrVal2
+						cmdIdx += 1
+				case 12 tcpInBuf[cmdIdx] = System_CtrVal3>>24
+						cmdIdx += 1
+						tcpInBuf[cmdIdx] = System_CtrVal3>>16
+						cmdIdx += 1
+				case 13	tcpInBuf[cmdIdx] = System_CtrVal3>>8
+						cmdIdx += 1
+						tcpInBuf[cmdIdx] = System_CtrVal3
+						cmdIdx += 1
+				case 14 tcpInBuf[cmdIdx] = System_CtrVal4>>24
+						cmdIdx += 1
+						tcpInBuf[cmdIdx] = System_CtrVal4>>16
+						cmdIdx += 1
+				case 15	tcpInBuf[cmdIdx] = System_CtrVal4>>8
+						cmdIdx += 1
+						tcpInBuf[cmdIdx] = System_CtrVal4
+						cmdIdx += 1
+				case 16 tcpInBuf[cmdIdx] = System_CtrVal5>>24
+						cmdIdx += 1
+						tcpInBuf[cmdIdx] = System_CtrVal5>>16
+						cmdIdx += 1
+				case 17	tcpInBuf[cmdIdx] = System_CtrVal5>>8
+						cmdIdx += 1
+						tcpInBuf[cmdIdx] = System_CtrVal5
+						cmdIdx += 1
+				case 18 tcpInBuf[cmdIdx] = System_CtrVal6>>24
+						cmdIdx += 1
+						tcpInBuf[cmdIdx] = System_CtrVal6>>16
+						cmdIdx += 1
+				case 19	tcpInBuf[cmdIdx] = System_CtrVal6>>8
+						cmdIdx += 1
+						tcpInBuf[cmdIdx] = System_CtrVal6
+						cmdIdx += 1
+				case 20 tcpInBuf[cmdIdx] = System_CtrVal7>>24
+						cmdIdx += 1
+						tcpInBuf[cmdIdx] = System_CtrVal7>>16
+						cmdIdx += 1
+				case 21	tcpInBuf[cmdIdx] = System_CtrVal7>>8
+						cmdIdx += 1
+						tcpInBuf[cmdIdx] = System_CtrVal7
+						cmdIdx += 1
+				case 22 tcpInBuf[cmdIdx] = System_CtrVal8>>24
+						cmdIdx += 1
+						tcpInBuf[cmdIdx] = System_CtrVal8>>16
+						cmdIdx += 1
+				case 23	tcpInBuf[cmdIdx] = System_CtrVal8>>8
+						cmdIdx += 1
+						tcpInBuf[cmdIdx] = System_CtrVal8
+						cmdIdx += 1
+						
+				case 24	tcpInBuf[cmdIdx] = System_CtrCapt1>>24
+						cmdIdx += 1
+						tcpInBuf[cmdIdx] = System_CtrCapt1>>16
+						cmdIdx += 1
+				case 25	tcpInBuf[cmdIdx] = System_CtrCapt1>>8
+						cmdIdx += 1
+						tcpInBuf[cmdIdx] = System_CtrCapt1
+						cmdIdx += 1
+				case 26 tcpInBuf[cmdIdx] = System_CtrCapt2>>24
+						cmdIdx += 1
+						tcpInBuf[cmdIdx] = System_CtrCapt2>>16
+						cmdIdx += 1
+				case 27	tcpInBuf[cmdIdx] = System_CtrCapt2>>8
+						cmdIdx += 1
+						tcpInBuf[cmdIdx] = System_CtrCapt2
+						cmdIdx += 1
+				case 28 tcpInBuf[cmdIdx] = System_CtrCapt3>>24
+						cmdIdx += 1
+						tcpInBuf[cmdIdx] = System_CtrCapt3>>16
+						cmdIdx += 1
+				case 29	tcpInBuf[cmdIdx] = System_CtrCapt3>>8
+						cmdIdx += 1
+						tcpInBuf[cmdIdx] = System_CtrCapt3
+						cmdIdx += 1
+				case 30 tcpInBuf[cmdIdx] = System_CtrCapt4>>24
+						cmdIdx += 1
+						tcpInBuf[cmdIdx] = System_CtrCapt4>>16
+						cmdIdx += 1
+				case 31	tcpInBuf[cmdIdx] = System_CtrCapt4>>8
+						cmdIdx += 1
+						tcpInBuf[cmdIdx] = System_CtrCapt4
+						cmdIdx += 1
+				case 32 tcpInBuf[cmdIdx] = System_CtrCapt5>>24
+						cmdIdx += 1
+						tcpInBuf[cmdIdx] = System_CtrCapt5>>16
+						cmdIdx += 1
+				case 33	tcpInBuf[cmdIdx] = System_CtrCapt5>>8
+						cmdIdx += 1
+						tcpInBuf[cmdIdx] = System_CtrCapt5
+						cmdIdx += 1
+				case 34 tcpInBuf[cmdIdx] = System_CtrCapt6>>24
+						cmdIdx += 1
+						tcpInBuf[cmdIdx] = System_CtrCapt6>>16
+						cmdIdx += 1
+				case 35	tcpInBuf[cmdIdx] = System_CtrCapt6>>8
+						cmdIdx += 1
+						tcpInBuf[cmdIdx] = System_CtrCapt6
+						cmdIdx += 1
+				case 36 tcpInBuf[cmdIdx] = System_CtrCapt7>>24
+						cmdIdx += 1
+						tcpInBuf[cmdIdx] = System_CtrCapt7>>16
+						cmdIdx += 1
+				case 37 tcpInBuf[cmdIdx] = System_CtrCapt7>>8
+						cmdIdx += 1
+						tcpInBuf[cmdIdx] = System_CtrCapt7
+						cmdIdx += 1
+				case 38 tcpInBuf[cmdIdx] = System_CtrCapt8>>24
+						cmdIdx += 1
+						tcpInBuf[cmdIdx] = System_CtrCapt8>>16
+						cmdIdx += 1
+				case 39	tcpInBuf[cmdIdx] = System_CtrCapt8>>8
+						cmdIdx += 1
+						tcpInBuf[cmdIdx] = System_CtrCapt8
+						cmdIdx += 1
+			endselect
+			mbNP -= 1
+			mbSA += 1
+		loop while mbNP > 0
+		tcpInBuf[4] = 0
+		tcpInBuf[5] = tcpInBuf[8]+3										; place length in MBAP
+		tcpip.Write(tcpInBuf, tcpInBuf[8]+9)
+	endif
+endfunction
+
+function ModBus_WriteSingleCoil()										; modbus function 05 (0x05)
+	if mbSA > 48 then
+		ModBusErr(2)
+	elseif mbNP != 0xff00 and mbNP != 0 then
+		ModBusErr(3)
+	else
+		select mbSA
+            case  0 if mbNP==0xff00 then SetRelay(1,on) else SetRelay(1,off) endif  ; write to selected coil (relay or IO)
+            case  1 if mbNP==0xff00 then SetRelay(2,on) else SetRelay(2,off) endif
+            case  2 if mbNP==0xff00 then SetRelay(3,on) else SetRelay(3,off) endif
+            case  3 if mbNP==0xff00 then SetRelay(4,on) else SetRelay(4,off) endif
+            case  4 if mbNP==0xff00 then SetRelay(5,on) else SetRelay(5,off) endif
+            case  5 if mbNP==0xff00 then SetRelay(6,on) else SetRelay(6,off) endif
+            case  6 if mbNP==0xff00 then SetRelay(7,on) else SetRelay(7,off) endif
+            case  7 if mbNP==0xff00 then SetRelay(8,on) else SetRelay(8,off) endif
+            case  8 if mbNP==0xff00 then SetRelay(9,on) else SetRelay(9,off) endif
+            case  9 if mbNP==0xff00 then SetRelay(10,on) else SetRelay(10,off) endif
+            case  10 if mbNP==0xff00 then SetRelay(11,on) else SetRelay(11,off) endif
+            case  11 if mbNP==0xff00 then SetRelay(12,on) else SetRelay(12,off) endif
+            case  12 if mbNP==0xff00 then SetRelay(13,on) else SetRelay(13,off) endif
+            case  13 if mbNP==0xff00 then SetRelay(14,on) else SetRelay(14,off) endif
+            case  14 if mbNP==0xff00 then SetRelay(15,on) else SetRelay(15,off) endif
+            case  15 if mbNP==0xff00 then SetRelay(16,on) else SetRelay(16,off) endif
+            case  16 if mbNP==0xff00 then SetRelay(17,on) else SetRelay(17,off) endif
+            case  17 if mbNP==0xff00 then SetRelay(18,on) else SetRelay(18,off) endif
+            case  18 if mbNP==0xff00 then SetRelay(19,on) else SetRelay(19,off) endif
+            case  19 if mbNP==0xff00 then SetRelay(20,on) else SetRelay(20,off) endif
+            case  20 if mbNP==0xff00 then SetRelay(21,on) else SetRelay(21,off) endif
+            case  21 if mbNP==0xff00 then SetRelay(22,on) else SetRelay(22,off) endif
+            case  22 if mbNP==0xff00 then SetRelay(23,on) else SetRelay(23,off) endif
+            case  23 if mbNP==0xff00 then SetRelay(24,on) else SetRelay(24,off) endif
+            case  24 if mbNP==0xff00 then SetRelay(25,on) else SetRelay(25,off) endif
+            case  25 if mbNP==0xff00 then SetRelay(26,on) else SetRelay(26,off) endif
+            case  26 if mbNP==0xff00 then SetRelay(27,on) else SetRelay(27,off) endif
+            case  27 if mbNP==0xff00 then SetRelay(28,on) else SetRelay(28,off) endif
+            case  28 if mbNP==0xff00 then SetRelay(29,on) else SetRelay(29,off) endif
+            case  29 if mbNP==0xff00 then SetRelay(30,on) else SetRelay(30,off) endif
+            case  30 if mbNP==0xff00 then SetRelay(31,on) else SetRelay(31,off) endif
+            case  31 if mbNP==0xff00 then SetRelay(32,on) else SetRelay(32,off) endif
+
+			case 40 if mbNP==0xff00 then IO1=on else IO1=off endif		; IO1-8 are remapped to coils 41-48
+			case 41 if mbNP==0xff00 then IO2=on else IO2=off endif
+			case 42 if mbNP==0xff00 then IO3=on else IO3=off endif
+			case 43 if mbNP==0xff00 then IO4=on else IO4=off endif
+			case 44 if mbNP==0xff00 then IO5=on else IO5=off endif
+			case 45 if mbNP==0xff00 then IO6=on else IO6=off endif
+			case 46 if mbNP==0xff00 then IO7=on else IO7=off endif
+			case 47 if mbNP==0xff00 then IO8=on else IO8=off endif
+		endselect
+		tcpInBuf[4] = 0
+		tcpInBuf[5] = 6													; place length in MBAP
+		tcpip.Write(tcpInBuf, 12)
+	endif
+endfunction
+		
+function ModBus_WriteMultipleCoils()
+	if mbSA > 48 then
+		ModBusErr(2)
+	elseif mbNP == 0 
+		ModBusErr(3)
+	elseif mbSA+mbNP > 49
+		ModBusErr(3)
+	else
+		cmdIdx = 13														; position of 1st packed data bytes
+		mbX = 1
+
+		do
+			select mbSA
+                case  0 if tcpInBuf[cmdIdx]&mbX then SetRelay(1,on) else SetRelay(1,off) endif  ; write to selected coil (relay or IO)
+                case  1 if tcpInBuf[cmdIdx]&mbX then SetRelay(2,on) else SetRelay(2,off) endif
+                case  2 if tcpInBuf[cmdIdx]&mbX then SetRelay(3,on) else SetRelay(3,off) endif
+                case  3 if tcpInBuf[cmdIdx]&mbX then SetRelay(4,on) else SetRelay(4,off) endif
+                case  4 if tcpInBuf[cmdIdx]&mbX then SetRelay(5,on) else SetRelay(5,off) endif
+                case  5 if tcpInBuf[cmdIdx]&mbX then SetRelay(6,on) else SetRelay(6,off) endif
+                case  6 if tcpInBuf[cmdIdx]&mbX then SetRelay(7,on) else SetRelay(7,off) endif
+                case  7 if tcpInBuf[cmdIdx]&mbX then SetRelay(8,on) else SetRelay(8,off) endif
+                case  8 if tcpInBuf[cmdIdx]&mbX then SetRelay(9,on) else SetRelay(9,off) endif
+                case  9 if tcpInBuf[cmdIdx]&mbX then SetRelay(10,on) else SetRelay(10,off) endif
+                case  10 if tcpInBuf[cmdIdx]&mbX then SetRelay(11,on) else SetRelay(11,off) endif
+                case  11 if tcpInBuf[cmdIdx]&mbX then SetRelay(12,on) else SetRelay(12,off) endif
+                case  12 if tcpInBuf[cmdIdx]&mbX then SetRelay(13,on) else SetRelay(13,off) endif
+                case  13 if tcpInBuf[cmdIdx]&mbX then SetRelay(14,on) else SetRelay(14,off) endif
+                case  14 if tcpInBuf[cmdIdx]&mbX then SetRelay(15,on) else SetRelay(15,off) endif
+                case  15 if tcpInBuf[cmdIdx]&mbX then SetRelay(16,on) else SetRelay(16,off) endif
+                case  16 if tcpInBuf[cmdIdx]&mbX then SetRelay(17,on) else SetRelay(17,off) endif
+                case  17 if tcpInBuf[cmdIdx]&mbX then SetRelay(18,on) else SetRelay(18,off) endif
+                case  18 if tcpInBuf[cmdIdx]&mbX then SetRelay(19,on) else SetRelay(19,off) endif
+                case  19 if tcpInBuf[cmdIdx]&mbX then SetRelay(20,on) else SetRelay(20,off) endif
+                case  20 if tcpInBuf[cmdIdx]&mbX then SetRelay(21,on) else SetRelay(21,off) endif
+                case  21 if tcpInBuf[cmdIdx]&mbX then SetRelay(22,on) else SetRelay(22,off) endif
+                case  22 if tcpInBuf[cmdIdx]&mbX then SetRelay(23,on) else SetRelay(23,off) endif
+                case  23 if tcpInBuf[cmdIdx]&mbX then SetRelay(24,on) else SetRelay(24,off) endif
+                case  24 if tcpInBuf[cmdIdx]&mbX then SetRelay(25,on) else SetRelay(25,off) endif
+                case  25 if tcpInBuf[cmdIdx]&mbX then SetRelay(26,on) else SetRelay(26,off) endif
+                case  26 if tcpInBuf[cmdIdx]&mbX then SetRelay(27,on) else SetRelay(27,off) endif
+                case  27 if tcpInBuf[cmdIdx]&mbX then SetRelay(28,on) else SetRelay(28,off) endif
+                case  28 if tcpInBuf[cmdIdx]&mbX then SetRelay(29,on) else SetRelay(29,off) endif
+                case  29 if tcpInBuf[cmdIdx]&mbX then SetRelay(30,on) else SetRelay(30,off) endif
+                case  30 if tcpInBuf[cmdIdx]&mbX then SetRelay(31,on) else SetRelay(31,off) endif
+                case  31 if tcpInBuf[cmdIdx]&mbX then SetRelay(32,on) else SetRelay(32,off) endif
+	
+				case 40 if tcpInBuf[cmdIdx]&mbX then IO1=on else IO1=off endif		; IO1-8 are remapped to coils 41-48
+				case 41 if tcpInBuf[cmdIdx]&mbX then IO2=on else IO2=off endif		; (addresses 40-47)
+				case 42 if tcpInBuf[cmdIdx]&mbX then IO3=on else IO3=off endif
+				case 43 if tcpInBuf[cmdIdx]&mbX then IO4=on else IO4=off endif
+				case 44 if tcpInBuf[cmdIdx]&mbX then IO5=on else IO5=off endif
+				case 45 if tcpInBuf[cmdIdx]&mbX then IO6=on else IO6=off endif
+				case 46 if tcpInBuf[cmdIdx]&mbX then IO7=on else IO7=off endif
+				case 47 if tcpInBuf[cmdIdx]&mbX then IO8=on else IO8=off endif
+			endselect
+			mbX <<= 1
+			if mbX == 0x100 then
+				mbX = 1
+				cmdIdx += 1
+			endif
+			mbNP -= 1
+			mbSA += 1
+		loop while mbNP > 0
+		
+		tcpInBuf[4] = 0
+		tcpInBuf[5] = 6													; place length in MBAP
+		tcpip.Write(tcpInBuf, 12)
+	endif
+endfunction
+	
+function ModBusErr(int8 mbErr) 
+	tcpInBuf[4] = 0
+	tcpInBuf[5] = 3														; count of following bytes
+	tcpInBuf[7] |= 0x80													; merge error flag with function code
+	tcpInBuf[8] = mbErr													; error code
+	tcpip.Write(tcpInBuf, 9)											; send the modified input buffer
+endfunction
+
+function waitModbusResponse()
+int32 i
+    for i = 1 to 10
+        if RS485.BytesToRead>0 return
+        threadsleep 10                                                  ;wait up to 100mS for intial Modbus response
+    next
+endfunction
+
+function ModBusRTU()
+    do while RS485.BytesToRead>0 RS485.Read(rtu, 0, 1) loop             ; clear recieve buffer before starting
+    for mbX=0 to mbLen rtu[mbX] = tcpInBuf[mbX+6] next                  ; extract the address and PDU from the ADU
+    crc = rtu.CRC(mbLen)                                                ; calculate the CRC
+    rtu[mbLen] = crc&255                                                ; and append it to the frame
+    rtu[mbLen+1] = crc>>8
+    RS485.Write(rtu, 0, mbLen+2)                                        ; send RTU frame to downstream module
+    threadsleep 2*mbLen                                                 ; allow time to transmit the frame and start getting the response
+    waitModbusResponse()                                                ; wait for 1st data to arrive
+    do
+        crc = RS485.BytesToRead                                         ; crc is just used to hold data byte count
+        threadsleep 2                                                   ; 2mS with no further bytes coming in is assumed to be end of data
+    loop while RS485.BytesToRead>crc
+    if crc == 0 then
+        ModBusErr(0x0b)                                                 ; gateway target faild to respond
+        return
+    endif
+    RS485.Read(tcpInBuf, 6, crc)
+    crc -= 2                                                            ; strip CRC from the RTU message, as TCP has its own CRC
+    tcpInBuf[4] = crc>>8                                                ; count of following bytes
+    tcpInBuf[5] = crc&255
+    tcpip.Write(tcpInBuf, crc+6)                                        ; send the modified input buffer
+    return  
+endthread
+
+
+thread P2P(const)                                                       ; Peer to Peer remote relay control and notifications
+int32 x
+    do          
+        if(notiFlg) then
+            notiFlg -= 0x100                                            ; remove flag, leave port number
+            if System_Noti_Port > 0 then                                ; Notification is valid
+                msg = {D02} notiFlg                                     ; add the event number
+                x = GetIO(notiFlg)
+                msg = msg ~ " " ~ x                                     ; the event state, 0 (inactive) or 1 (active)
+                select notiFlg
+                    case 1 to 32
+                        msg = msg ~ " R" ~ notiFlg                      ; and the event in human readable form
+                    case 41 to 80
+                        msg = msg ~ " D" ~ notiFlg-40
+                    else
+                        msg = msg ~ " D" ~ notiFlg
+                endselect
+                msg = msg ~ CR
+                generateNotiMsg()                                       ; add further info to the message
+                Noti.Write(msg, msg.Length, msg, x)                     ; and send it
+                threadsleep 300
+            endif 
+            notiFlg = 0;
+        endif
+															            ; Peer to Peer, remote relay control
+		if System_P2P_Port1 > 0 then									; Entry is valid
+			P2Pbool = System_P2P_Input1.BooleanEval() 	
+			if P2Pbool != P2Pbool1 then		
+				P2Pcmd[0] = 0x31
+				P2Pcmd[1] = System_P2P_Relay1
+				P2Pcmd[2] = P2Pbool
+				P2Pcmd[3] = 0
+				P2Pcmd[4] = 0
+				P2Pcmd[5] = 0
+				P2Pcmd[6] = 0
+				select 	System_P2P_Action1
+					case 1												; follow me
+						SendP2P1()
+					case 2												; set relay
+						if P2Pbool then 
+							P2Pcmd[2] = 1
+							SendP2P1()
+						else
+							P2Pbool1 = P2Pbool 
+						endif						
+					case 3												; reset relay
+						if P2Pbool then 
+							P2Pcmd[2] = 0
+							SendP2P1()
+						else
+							P2Pbool1 = P2Pbool 
+						endif									
+					case 4												; toggle relay
+						if P2Pbool then 
+							P2Pcmd[2] = 3
+							SendP2P1()
+						else 
+							P2Pbool1 = P2Pbool 
+						endif
+					else
+						if P2Pbool then 
+							if System_P2P_Action1>MinRelayPulse then					; 100+ pulse relay
+								P2Pcmd[3] = System_P2P_Action1>>24
+								P2Pcmd[4] = System_P2P_Action1>>16
+								P2Pcmd[5] = System_P2P_Action1>>8
+								P2Pcmd[6] = System_P2P_Action1
+								SendP2P1()							
+								P2Pbool1 = P2Pbool 
+							endif
+						else 
+							P2Pbool1 = P2Pbool 
+						endif							
+				endselect
+			endif
+		endif
+		
+		if System_P2P_Port2 > 0 then									; Entry is valid
+			P2Pbool = System_P2P_Input2.BooleanEval() 	
+			if P2Pbool != P2Pbool2 then		
+				P2Pcmd[0] = 0x31
+				P2Pcmd[1] = System_P2P_Relay2
+				P2Pcmd[2] = P2Pbool
+				P2Pcmd[3] = 0
+				P2Pcmd[4] = 0
+				P2Pcmd[5] = 0
+				P2Pcmd[6] = 0
+				select 	System_P2P_Action2
+					case 1												; follow me
+							SendP2P2()
+					case 2												; set relay
+						if P2Pbool then 
+							P2Pcmd[2] = 1
+							SendP2P2()
+						else
+							P2Pbool2 = P2Pbool 
+						endif						
+					case 3												; reset relay
+						if P2Pbool then 
+							P2Pcmd[2] = 0
+							SendP2P2()
+						else
+							P2Pbool2 = P2Pbool 
+						endif									
+					case 4												; toggle relay
+						if P2Pbool then 
+							P2Pcmd[2] = 3
+							SendP2P2()
+						else 
+							P2Pbool2 = P2Pbool 
+						endif
+					else
+						if P2Pbool then 
+							if System_P2P_Action2>MinRelayPulse then					; 100+ pulse relay
+								P2Pcmd[3] = System_P2P_Action2>>24
+								P2Pcmd[4] = System_P2P_Action2>>16
+								P2Pcmd[5] = System_P2P_Action2>>8
+								P2Pcmd[6] = System_P2P_Action2
+								SendP2P2()							
+								P2Pbool2 = P2Pbool 
+							endif
+						else 
+							P2Pbool2 = P2Pbool 
+						endif							
+				endselect
+			endif
+		endif
+		
+		if System_P2P_Port3 > 0 then									; Entry is valid
+			P2Pbool = System_P2P_Input3.BooleanEval() 	
+			if P2Pbool != P2Pbool3 then		
+				P2Pcmd[0] = 0x31
+				P2Pcmd[1] = System_P2P_Relay3
+				P2Pcmd[2] = P2Pbool
+				P2Pcmd[3] = 0
+				P2Pcmd[4] = 0
+				P2Pcmd[5] = 0
+				P2Pcmd[6] = 0
+				select 	System_P2P_Action3
+					case 1												; follow me
+							SendP2P3()
+					case 2												; set relay
+						if P2Pbool then 
+							P2Pcmd[2] = 1
+							SendP2P3()
+						else
+							P2Pbool3 = P2Pbool 
+						endif						
+					case 3												; reset relay
+						if P2Pbool then 
+							P2Pcmd[2] = 0
+							SendP2P3()
+						else
+							P2Pbool3 = P2Pbool 
+						endif									
+					case 4												; toggle relay
+						if P2Pbool then 
+							P2Pcmd[2] = 3
+							SendP2P3()
+						else 
+							P2Pbool3 = P2Pbool 
+						endif
+					else
+						if P2Pbool then 
+							if System_P2P_Action3>MinRelayPulse then					; 100+ pulse relay
+								P2Pcmd[3] = System_P2P_Action3>>24
+								P2Pcmd[4] = System_P2P_Action3>>16
+								P2Pcmd[5] = System_P2P_Action3>>8
+								P2Pcmd[6] = System_P2P_Action3
+								SendP2P3()							
+								P2Pbool3 = P2Pbool 
+							endif
+						else 
+							P2Pbool3 = P2Pbool 
+						endif							
+				endselect
+			endif
+		endif
+				
+		if System_P2P_Port4 > 0 then									; Entry is valid
+			P2Pbool = System_P2P_Input4.BooleanEval() 	
+			if P2Pbool != P2Pbool4 then		
+				P2Pcmd[0] = 0x31
+				P2Pcmd[1] = System_P2P_Relay4
+				P2Pcmd[2] = P2Pbool
+				P2Pcmd[3] = 0
+				P2Pcmd[4] = 0
+				P2Pcmd[5] = 0
+				P2Pcmd[6] = 0
+				select 	System_P2P_Action4
+					case 1												; follow me
+							SendP2P4()
+					case 2												; set relay
+						if P2Pbool then 
+							P2Pcmd[2] = 1
+							SendP2P4()
+						else
+							P2Pbool4 = P2Pbool 
+						endif						
+					case 3												; reset relay
+						if P2Pbool then 
+							P2Pcmd[2] = 0
+							SendP2P4()
+						else
+							P2Pbool4 = P2Pbool 
+						endif									
+					case 4												; toggle relay
+						if P2Pbool then 
+							P2Pcmd[2] = 3
+							SendP2P4()
+						else 
+							P2Pbool4 = P2Pbool 
+						endif
+					else
+						if P2Pbool then 
+							if System_P2P_Action4>MinRelayPulse then					; 100+ pulse relay
+								P2Pcmd[3] = System_P2P_Action4>>24
+								P2Pcmd[4] = System_P2P_Action4>>16
+								P2Pcmd[5] = System_P2P_Action4>>8
+								P2Pcmd[6] = System_P2P_Action4
+								SendP2P4()							
+								P2Pbool4 = P2Pbool 
+							endif
+						else 
+							P2Pbool4 = P2Pbool 
+						endif							
+				endselect
+			endif
+		endif
+				
+		if System_P2P_Port5 > 0 then									; Entry is valid
+			P2Pbool = System_P2P_Input5.BooleanEval() 	
+			if P2Pbool != P2Pbool5 then		
+				P2Pcmd[0] = 0x31
+				P2Pcmd[1] = System_P2P_Relay5
+				P2Pcmd[2] = P2Pbool
+				P2Pcmd[3] = 0
+				P2Pcmd[4] = 0
+				P2Pcmd[5] = 0
+				P2Pcmd[6] = 0
+				select 	System_P2P_Action5
+					case 1												; follow me
+							SendP2P5()
+					case 2												; set relay
+						if P2Pbool then 
+							P2Pcmd[2] = 1
+							SendP2P5()
+						else
+							P2Pbool5 = P2Pbool 
+						endif						
+					case 3												; reset relay
+						if P2Pbool then 
+							P2Pcmd[2] = 0
+							SendP2P5()
+						else
+							P2Pbool5 = P2Pbool 
+						endif									
+					case 4												; toggle relay
+						if P2Pbool then 
+							P2Pcmd[2] = 3
+							SendP2P5()
+						else 
+							P2Pbool5 = P2Pbool 
+						endif
+					else
+						if P2Pbool then 
+							if System_P2P_Action5>MinRelayPulse then					; 100+ pulse relay
+								P2Pcmd[3] = System_P2P_Action5>>24
+								P2Pcmd[4] = System_P2P_Action5>>16
+								P2Pcmd[5] = System_P2P_Action5>>8
+								P2Pcmd[6] = System_P2P_Action5
+								SendP2P5()							
+								P2Pbool5 = P2Pbool 
+							endif
+						else 
+							P2Pbool5 = P2Pbool 
+						endif							
+				endselect
+			endif
+		endif
+				
+		if System_P2P_Port6 > 0 then									; Entry is valid
+			P2Pbool = System_P2P_Input6.BooleanEval() 	
+			if P2Pbool != P2Pbool6 then		
+				P2Pcmd[0] = 0x31
+				P2Pcmd[1] = System_P2P_Relay6
+				P2Pcmd[2] = P2Pbool
+				P2Pcmd[3] = 0
+				P2Pcmd[4] = 0
+				P2Pcmd[5] = 0
+				P2Pcmd[6] = 0
+				select 	System_P2P_Action6
+					case 1												; follow me
+							SendP2P6()
+					case 2												; set relay
+						if P2Pbool then 
+							P2Pcmd[2] = 1
+							SendP2P6()
+						else
+							P2Pbool6 = P2Pbool 
+						endif						
+					case 3												; reset relay
+						if P2Pbool then 
+							P2Pcmd[2] = 0
+							SendP2P6()
+						else
+							P2Pbool6 = P2Pbool 
+						endif									
+					case 4												; toggle relay
+						if P2Pbool then 
+							P2Pcmd[2] = 3
+							SendP2P6()
+						else 
+							P2Pbool6 = P2Pbool 
+						endif
+					else
+						if P2Pbool then 
+							if System_P2P_Action6>MinRelayPulse then					; 100+ pulse relay
+								P2Pcmd[3] = System_P2P_Action6>>24
+								P2Pcmd[4] = System_P2P_Action6>>16
+								P2Pcmd[5] = System_P2P_Action6>>8
+								P2Pcmd[6] = System_P2P_Action6
+								SendP2P6()							
+								P2Pbool6 = P2Pbool 
+							endif
+						else 
+							P2Pbool6 = P2Pbool 
+						endif							
+				endselect
+			endif
+		endif
+				
+		if System_P2P_Port7 > 0 then									; Entry is valid
+			P2Pbool = System_P2P_Input7.BooleanEval() 	
+			if P2Pbool != P2Pbool7 then		
+				P2Pcmd[0] = 0x31
+				P2Pcmd[1] = System_P2P_Relay7
+				P2Pcmd[2] = P2Pbool
+				P2Pcmd[3] = 0
+				P2Pcmd[4] = 0
+				P2Pcmd[5] = 0
+				P2Pcmd[6] = 0
+				select 	System_P2P_Action7
+					case 1												; follow me
+							SendP2P7()
+					case 2												; set relay
+						if P2Pbool then 
+							P2Pcmd[2] = 1
+							SendP2P7()
+						else
+							P2Pbool7 = P2Pbool 
+						endif						
+					case 3												; reset relay
+						if P2Pbool then 
+							P2Pcmd[2] = 0
+							SendP2P7()
+						else
+							P2Pbool7 = P2Pbool 
+						endif									
+					case 4												; toggle relay
+						if P2Pbool then 
+							P2Pcmd[2] = 3
+							SendP2P7()
+						else 
+							P2Pbool7 = P2Pbool 
+						endif
+					else
+						if P2Pbool then 
+							if System_P2P_Action7>MinRelayPulse then					; 100+ pulse relay
+								P2Pcmd[3] = System_P2P_Action7>>24
+								P2Pcmd[4] = System_P2P_Action7>>16
+								P2Pcmd[5] = System_P2P_Action7>>8
+								P2Pcmd[6] = System_P2P_Action7
+								SendP2P7()							
+								P2Pbool7 = P2Pbool 
+							endif
+						else 
+							P2Pbool7 = P2Pbool 
+						endif							
+				endselect
+			endif
+		endif
+				
+		if System_P2P_Port8 > 0 then									; Entry is valid
+			P2Pbool = System_P2P_Input8.BooleanEval() 	
+			if P2Pbool != P2Pbool8 then		
+				P2Pcmd[0] = 0x31
+				P2Pcmd[1] = System_P2P_Relay8
+				P2Pcmd[2] = P2Pbool
+				P2Pcmd[3] = 0
+				P2Pcmd[4] = 0
+				P2Pcmd[5] = 0
+				P2Pcmd[6] = 0
+				select 	System_P2P_Action8
+					case 1												; follow me
+							SendP2P8()
+					case 2												; set relay
+						if P2Pbool then 
+							P2Pcmd[2] = 1
+							SendP2P8()
+						else
+							P2Pbool8 = P2Pbool 
+						endif						
+					case 3												; reset relay
+						if P2Pbool then 
+							P2Pcmd[2] = 0
+							SendP2P8()
+						else
+							P2Pbool8 = P2Pbool 
+						endif									
+					case 4												; toggle relay
+						if P2Pbool then 
+							P2Pcmd[2] = 3
+							SendP2P8()
+						else 
+							P2Pbool8 = P2Pbool 
+						endif
+					else
+						if P2Pbool then 
+							if System_P2P_Action8>MinRelayPulse then					; 100+ pulse relay
+								P2Pcmd[3] = System_P2P_Action8>>24
+								P2Pcmd[4] = System_P2P_Action8>>16
+								P2Pcmd[5] = System_P2P_Action8>>8
+								P2Pcmd[6] = System_P2P_Action8
+								SendP2P8()							
+								P2Pbool8 = P2Pbool 
+							endif
+						else 
+							P2Pbool8 = P2Pbool 
+						endif							
+				endselect
+			endif
+		endif				
+	loop
+endthread
+
+function GetNonce()
+	nonce[0] = 0x30
+	aes.encrypt(nonce, 16)
+	p2p1.Write(nonce, 32, nonce, P2Plength)
+	aes.decrypt(nonce, 16)
+	P2Pcmd[12] = nonce[12]
+	P2Pcmd[13] = nonce[13]
+	P2Pcmd[14] = nonce[14]
+	P2Pcmd[15] = nonce[15]
+	threadsleep 300
+	return
+endfunction
+
+function SendP2P1()
+	if System_P2P_AES & 0x01 then
+		GetNonce()
+		aes.encrypt(P2Pcmd, 16)
+		p2p1.Write(P2Pcmd, 32, P2Pcmd, P2Plength)
+		aes.decrypt(P2Pcmd, 16)
+	else
+		p2p1.Write(P2Pcmd, 32, P2Pcmd, P2Plength)
+	endif	
+	if P2Plength>0 then
+		if P2Pcmd[0]==0 then 
+			P2Pbool1 = P2Pbool 
+		endif
+	endif
+	threadsleep 300
+endfunction	
+
+function SendP2P2()
+	if System_P2P_AES & 0x02 then
+		GetNonce()
+		aes.encrypt(P2Pcmd, 16)
+		p2p2.Write(P2Pcmd, 32, P2Pcmd, P2Plength)
+		aes.decrypt(P2Pcmd, 16)
+	else
+		p2p2.Write(P2Pcmd, 32, P2Pcmd, P2Plength)
+	endif
+	if P2Plength>0 then
+		if P2Pcmd[0]==0 then 
+			P2Pbool2 = P2Pbool 
+		endif
+	endif
+	threadsleep 300
+endfunction		
+
+function SendP2P3()
+	if System_P2P_AES & 0x04 then
+		GetNonce()
+		aes.encrypt(P2Pcmd, 16)
+		p2p3.Write(P2Pcmd, 32, P2Pcmd, P2Plength)
+		aes.decrypt(P2Pcmd, 16)
+	else
+		p2p3.Write(P2Pcmd, 32, P2Pcmd, P2Plength)
+	endif
+	if P2Plength>0 then
+		if P2Pcmd[0]==0 then 
+			P2Pbool3 = P2Pbool 
+		endif
+	endif
+	threadsleep 300
+endfunction		
+
+function SendP2P4()
+	if System_P2P_AES & 0x08 then
+		GetNonce()
+		aes.encrypt(P2Pcmd, 16)
+		p2p4.Write(P2Pcmd, 32, P2Pcmd, P2Plength)
+		aes.decrypt(P2Pcmd, 16)
+	else
+		p2p4.Write(P2Pcmd, 32, P2Pcmd, P2Plength)
+	endif
+	if P2Plength>0 then
+		if P2Pcmd[0]==0 then 
+			P2Pbool4 = P2Pbool 
+		endif
+	endif
+	threadsleep 300
+endfunction		
+
+function SendP2P5()
+	if System_P2P_AES & 0x10 then
+		GetNonce()
+		aes.encrypt(P2Pcmd, 16)
+		p2p5.Write(P2Pcmd, 32, P2Pcmd, P2Plength)
+		aes.decrypt(P2Pcmd, 16)
+	else
+		p2p5.Write(P2Pcmd, 32, P2Pcmd, P2Plength)
+	endif
+	if P2Plength>0 then
+		if P2Pcmd[0]==0 then 
+			P2Pbool5 = P2Pbool 
+		endif
+	endif
+	threadsleep 300
+endfunction		
+
+function SendP2P6()
+	if System_P2P_AES & 0x20 then
+		GetNonce()
+		aes.encrypt(P2Pcmd, 16)
+		p2p6.Write(P2Pcmd, 32, P2Pcmd, P2Plength)
+		aes.decrypt(P2Pcmd, 16)
+	else
+		p2p6.Write(P2Pcmd, 32, P2Pcmd, P2Plength)
+	endif
+	if P2Plength>0 then
+		if P2Pcmd[0]==0 then 
+			P2Pbool6 = P2Pbool 
+		endif
+	endif
+	threadsleep 300
+endfunction		
+
+function SendP2P7()
+	if System_P2P_AES & 0x40 then
+		GetNonce()
+		aes.encrypt(P2Pcmd, 16)
+		p2p7.Write(P2Pcmd, 32, P2Pcmd, P2Plength)
+		aes.decrypt(P2Pcmd, 16)
+	else
+		p2p7.Write(P2Pcmd, 32, P2Pcmd, P2Plength)
+	endif
+	if P2Plength>0 then
+		if P2Pcmd[0]==0 then 
+			P2Pbool7 = P2Pbool 
+		endif
+	endif
+	threadsleep 300
+endfunction		
+
+function SendP2P8()
+	if System_P2P_AES & 0x80 then
+		GetNonce()
+		aes.encrypt(P2Pcmd, 16)
+		p2p8.Write(P2Pcmd, 32, P2Pcmd, P2Plength)
+		aes.decrypt(P2Pcmd, 16)
+	else
+		p2p8.Write(P2Pcmd, 32, P2Pcmd, P2Plength)
+	endif
+	if P2Plength>0 then
+		if P2Pcmd[0]==0 then 
+			P2Pbool8 = P2Pbool 
+		endif
+	endif
+	threadsleep 300
+endfunction			 
+
+
+	

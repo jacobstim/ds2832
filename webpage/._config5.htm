@@ -1,0 +1,1088 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8"/>
+    <title>Configuration</title>
+    <link rel="stylesheet" type="text/css" href="dscript.css">
+ </head>
+
+<body onload="startAJAX()">
+    <div id="container">
+            <p id="ModuleName"> ~Module~ <span style="font-size: 40%">  System Configuration </span> </p>
+            <p id="devantech"> Devantech Ltd </p>
+          <br>
+        <div id="hr"> <hr style="width: 100%; height: 1px; background-color: #FFFFFF; border: none">  </div>
+
+          <div id="menubar">
+            <ul>
+                <div onmouseover="StatusText(this)" onmouseout="RelayText(this)"> <li><a href="_config.htm">Status</a></li> </div>
+                <div onmouseover="NetworkText(this)" onmouseout="RelayText(this)"><li><a href="_config2.htm">Network</a></li> </div>
+                <div onmouseover="TCPIPText(this)" onmouseout="RelayText(this)"> <li><a href="_config3.htm">TCP/IP</a></li> </div>
+                <div onmouseover="RelayText(this)"> <li><a style="background-color: #8090a0;" href="_config5.htm">Relays</a></li> </div>
+                <div onmouseover="IOText(this)" onmouseout="RelayText(this)"> <li><a href="_config7.htm">Input/Output</a></li> </div>
+                <div onmouseover="dSxText(this)" onmouseout="RelayText(this)"> <li><a href="_config6.htm">dSx Config</a></li> </div>
+                <div onmouseover="SequenceText(this)" onmouseout="RelayText(this)"> <li><a href="_config14.htm">Sequencer</a></li> </div>
+                <div onmouseover="ScheduleText(this)" onmouseout="RelayText(this)"> <li><a href="_config11.htm">Scheduler</a></li> </div>
+                <div onmouseover="CounterText(this)" onmouseout="RelayText(this)"> <li><a href="_config12.htm">Counter/Timer</a></li> </div>
+                <div onmouseover="NotifyText(this)" onmouseout="RelayText(this)"> <li><a href="_config4.htm">Event Notification</a></li> </div>
+                <div onmouseover="P2PText(this)" onmouseout="RelayText(this)"> <li><a href="_config10.htm">Peer to Peer</a></li> </div>
+                <div onmouseover="EasyMailText(this)" onmouseout="RelayText(this)"> <li><a href="_config9.htm">Email</a></li> </div>
+                <div onmouseover="PingText(this)" onmouseout="RelayText(this)"> <li><a href="_config8.htm">Ping</a></li> </div>
+                <div onmouseover="AppText(this)" onmouseout="RelayText(this)"> <li><a href="index.htm">Application Page</a></li> </div>
+            </ul>
+        </div>
+
+        <div id="centerblock">
+                <div onmouseover="RelayNoText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Relay No. </div>
+                        <select id="RlyNum" onChange="SelectRelay();">
+                          <option value="1">1</option>
+                        </select>
+                </div>  <br>
+            <div id="rl1" style="display:block">
+                <div>
+                    <div class="item-line"> Relay Name </div>
+                    <input type="text" value = "~System_Rly1Name~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly1Name='+this.value);">
+                </div>
+                <div onmouseover="AutomationText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Pulse/Follow </div>
+                    <input type="text" value = "~System_Rly1Bool~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly1Bool='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="SetRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Set Relay </div>
+                    <input type="text" value = "~System_Rly1Set~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly1Set='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="ResetRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Reset Relay </div>
+                    <input type="text" value = "~System_Rly1Rst~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly1Rst='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="ToggleRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Toggle Relay </div>
+                    <input type="text" value = "~System_Rly1Tog~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly1Tog='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="RlyRestoreText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line2"> Power-up Restore </div>
+                    <input id="PUR1" type="checkbox" onclick="newAJAXCommand('dscript.cgi?RLY_PUR=1')">
+                </div>
+                <p id="Loading"> Loading Relay Data >------------------------------</p>
+            </div>
+
+            <div id="rl2" style="display:none">
+                <div>
+                    <div class="item-line"> Relay Name </div>
+                    <input type="text" value = "~System_Rly2Name~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly2Name='+this.value);">
+                </div>
+                <div onmouseover="AutomationText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Pulse/Follow </div>
+                    <input type="text" value = "~System_Rly2Bool~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly2Bool='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="SetRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Set Relay </div>
+                    <input type="text" value = "~System_Rly2Set~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly2Set='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="ResetRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Reset Relay </div>
+                    <input type="text" value = "~System_Rly2Rst~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly2Rst='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="ToggleRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Toggle Relay </div>
+                    <input type="text" value = "~System_Rly2Tog~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly2Tog='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="RlyRestoreText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line2"> Power-up Restore </div>
+                    <input id="PUR2" type="checkbox" onclick="newAJAXCommand('dscript.cgi?RLY_PUR=2')">
+                </div>
+                <script> document.getElementById('Loading').innerHTML = "Loading Relay Data ->-----------------------------"; </script>
+            </div>
+            <div id="rl3" style="display:none">
+                <div>
+                    <div class="item-line"> Relay Name </div>
+                    <input type="text" value = "~System_Rly3Name~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly3Name='+this.value);">
+                </div>
+                <div onmouseover="AutomationText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Pulse/Follow </div>
+                    <input type="text" value = "~System_Rly3Bool~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly3Bool='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="SetRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Set Relay </div>
+                    <input type="text" value = "~System_Rly3Set~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly3Set='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="ResetRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Reset Relay </div>
+                    <input type="text" value = "~System_Rly3Rst~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly3Rst='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="ToggleRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Toggle Relay </div>
+                    <input type="text" value = "~System_Rly3Tog~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly3Tog='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="RlyRestoreText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line2"> Power-up Restore </div>
+                    <input id="PUR3" type="checkbox" onclick="newAJAXCommand('dscript.cgi?RLY_PUR=3')">
+                </div>
+                <script> document.getElementById('Loading').innerHTML = "Loading Relay Data -->----------------------------"; </script>
+            </div>
+            <div id="rl4" style="display:none">
+                <div>
+                    <div class="item-line"> Relay Name </div>
+                    <input type="text" value = "~System_Rly4Name~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly4Name='+this.value);">
+                </div>
+                <div onmouseover="AutomationText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Pulse/Follow </div>
+                    <input type="text" value = "~System_Rly4Bool~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly4Bool='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="SetRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Set Relay </div>
+                    <input type="text" value = "~System_Rly4Set~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly4Set='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="ResetRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Reset Relay </div>
+                    <input type="text" value = "~System_Rly4Rst~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly4Rst='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="ToggleRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Toggle Relay </div>
+                    <input type="text" value = "~System_Rly4Tog~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly4Tog='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="RlyRestoreText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line2"> Power-up Restore </div>
+                    <input id="PUR4" type="checkbox" onclick="newAJAXCommand('dscript.cgi?RLY_PUR=4')">
+                </div>
+                <script> document.getElementById('Loading').innerHTML = "Loading Relay Data --->---------------------------"; </script>
+            </div>
+            <div id="rl5" style="display:none">
+                <div>
+                    <div class="item-line"> Relay Name </div>
+                    <input type="text" value = "~System_Rly5Name~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly5Name='+this.value);">
+                </div>
+                <div onmouseover="AutomationText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Pulse/Follow </div>
+                    <input type="text" value = "~System_Rly5Bool~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly5Bool='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="SetRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Set Relay </div>
+                    <input type="text" value = "~System_Rly5Set~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly5Set='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="ResetRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Reset Relay </div>
+                    <input type="text" value = "~System_Rly5Rst~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly5Rst='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="ToggleRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Toggle Relay </div>
+                    <input type="text" value = "~System_Rly5Tog~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly5Tog='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="RlyRestoreText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line2"> Power-up Restore </div>
+                    <input id="PUR5" type="checkbox" onclick="newAJAXCommand('dscript.cgi?RLY_PUR=5')">
+                </div>
+                <script> document.getElementById('Loading').innerHTML = "Loading Relay Data ---->--------------------------"; </script>
+            </div>
+            <div id="rl6" style="display:none">
+                <div>
+                    <div class="item-line"> Relay Name </div>
+                    <input type="text" value = "~System_Rly6Name~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly6Name='+this.value);">
+                </div>
+                <div onmouseover="AutomationText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Pulse/Follow </div>
+                    <input type="text" value = "~System_Rly6Bool~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly6Bool='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="SetRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Set Relay </div>
+                    <input type="text" value = "~System_Rly6Set~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly6Set='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="ResetRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Reset Relay </div>
+                    <input type="text" value = "~System_Rly6Rst~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly6Rst='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="ToggleRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Toggle Relay </div>
+                    <input type="text" value = "~System_Rly6Tog~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly6Tog='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="RlyRestoreText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line2"> Power-up Restore </div>
+                    <input id="PUR6" type="checkbox" onclick="newAJAXCommand('dscript.cgi?RLY_PUR=6')">
+                </div>
+                <script> document.getElementById('Loading').innerHTML = "Loading Relay Data ----->-------------------------"; </script>
+            </div>
+            <div id="rl7" style="display:none">
+                <div>
+                    <div class="item-line"> Relay Name </div>
+                    <input type="text" value = "~System_Rly7Name~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly7Name='+this.value);">
+                </div>
+                <div onmouseover="AutomationText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Pulse/Follow </div>
+                    <input type="text" value = "~System_Rly7Bool~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly7Bool='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="SetRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Set Relay </div>
+                    <input type="text" value = "~System_Rly7Set~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly7Set='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="ResetRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Reset Relay </div>
+                    <input type="text" value = "~System_Rly7Rst~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly7Rst='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="ToggleRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Toggle Relay </div>
+                    <input type="text" value = "~System_Rly7Tog~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly7Tog='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="RlyRestoreText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line2"> Power-up Restore </div>
+                    <input id="PUR7" type="checkbox" onclick="newAJAXCommand('dscript.cgi?RLY_PUR=7')">
+                </div>
+                <script> document.getElementById('Loading').innerHTML = "Loading Relay Data ------>------------------------"; </script>
+            </div>
+            <div id="rl8" style="display:none">
+                <div>
+                    <div class="item-line"> Relay Name </div>
+                    <input type="text" value = "~System_Rly8Name~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly8Name='+this.value);">
+                </div>
+                <div onmouseover="AutomationText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Pulse/Follow </div>
+                    <input type="text" value = "~System_Rly8Bool~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly8Bool='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="SetRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Set Relay </div>
+                    <input type="text" value = "~System_Rly8Set~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly8Set='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="ResetRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Reset Relay </div>
+                    <input type="text" value = "~System_Rly8Rst~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly8Rst='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="ToggleRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Toggle Relay </div>
+                    <input type="text" value = "~System_Rly8Tog~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly8Tog='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="RlyRestoreText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line2"> Power-up Restore </div>
+                    <input id="PUR8" type="checkbox" onclick="newAJAXCommand('dscript.cgi?RLY_PUR=8')">
+                </div>
+                <script> document.getElementById('Loading').innerHTML = "Loading Relay Data ------->-----------------------"; </script>
+            </div>
+            <div id="rl9" style="display:none">
+                <div>
+                    <div class="item-line"> Relay Name </div>
+                    <input type="text" value = "~System_Rly9Name~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly9Name='+this.value);">
+                </div>
+                <div onmouseover="AutomationText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Pulse/Follow </div>
+                    <input type="text" value = "~System_Rly9Bool~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly9Bool='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="SetRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Set Relay </div>
+                    <input type="text" value = "~System_Rly9Set~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly9Set='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="ResetRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Reset Relay </div>
+                    <input type="text" value = "~System_Rly9Rst~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly9Rst='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="ToggleRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Toggle Relay </div>
+                    <input type="text" value = "~System_Rly9Tog~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly9Tog='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="RlyRestoreText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line2"> Power-up Restore </div>
+                    <input id="PUR9" type="checkbox" onclick="newAJAXCommand('dscript.cgi?RLY_PUR=9')">
+                </div>
+                <script> document.getElementById('Loading').innerHTML = "Loading Relay Data -------->----------------------"; </script>
+            </div>
+            <div id="rl10" style="display:none">
+                <div>
+                    <div class="item-line"> Relay Name </div>
+                    <input type="text" value = "~System_Rly10Name~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly10Name='+this.value);">
+                </div>
+                <div onmouseover="AutomationText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Pulse/Follow </div>
+                    <input type="text" value = "~System_Rly10Bool~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly10Bool='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="SetRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Set Relay </div>
+                    <input type="text" value = "~System_Rly10Set~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly10Set='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="ResetRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Reset Relay </div>
+                    <input type="text" value = "~System_Rly10Rst~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly10Rst='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="ToggleRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Toggle Relay </div>
+                    <input type="text" value = "~System_Rly10Tog~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly10Tog='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="RlyRestoreText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line2"> Power-up Restore </div>
+                    <input id="PUR10" type="checkbox" onclick="newAJAXCommand('dscript.cgi?RLY_PUR=10')">
+                </div>
+                <script> document.getElementById('Loading').innerHTML = "Loading Relay Data --------->---------------------"; </script>
+            </div>
+            <div id="rl11" style="display:none">
+                <div>
+                    <div class="item-line"> Relay Name </div>
+                    <input type="text" value = "~System_Rly11Name~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly11Name='+this.value);">
+                </div>
+                <div onmouseover="AutomationText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Pulse/Follow </div>
+                    <input type="text" value = "~System_Rly11Bool~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly11Bool='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="SetRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Set Relay </div>
+                    <input type="text" value = "~System_Rly11Set~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly11Set='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="ResetRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Reset Relay </div>
+                    <input type="text" value = "~System_Rly11Rst~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly11Rst='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="ToggleRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Toggle Relay </div>
+                    <input type="text" value = "~System_Rly11Tog~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly11Tog='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="RlyRestoreText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line2"> Power-up Restore </div>
+                    <input id="PUR11" type="checkbox" onclick="newAJAXCommand('dscript.cgi?RLY_PUR=11')">
+                </div>
+                <script> document.getElementById('Loading').innerHTML = "Loading Relay Data ---------->--------------------"; </script>
+            </div>
+            <div id="rl12" style="display:none">
+                <div>
+                    <div class="item-line"> Relay Name </div>
+                    <input type="text" value = "~System_Rly12Name~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly12Name='+this.value);">
+                </div>
+                <div onmouseover="AutomationText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Pulse/Follow </div>
+                    <input type="text" value = "~System_Rly12Bool~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly12Bool='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="SetRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Set Relay </div>
+                    <input type="text" value = "~System_Rly12Set~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly12Set='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="ResetRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Reset Relay </div>
+                    <input type="text" value = "~System_Rly12Rst~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly12Rst='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="ToggleRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Toggle Relay </div>
+                    <input type="text" value = "~System_Rly12Tog~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly12Tog='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="RlyRestoreText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line2"> Power-up Restore </div>
+                    <input id="PUR12" type="checkbox" onclick="newAJAXCommand('dscript.cgi?RLY_PUR=12')">
+                </div>
+                <script> document.getElementById('Loading').innerHTML = "Loading Relay Data ----------->-------------------"; </script>
+            </div>
+            <div id="rl13" style="display:none">
+                <div>
+                    <div class="item-line"> Relay Name </div>
+                    <input type="text" value = "~System_Rly13Name~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly13Name='+this.value);">
+                </div>
+                <div onmouseover="AutomationText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Pulse/Follow </div>
+                    <input type="text" value = "~System_Rly13Bool~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly13Bool='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="SetRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Set Relay </div>
+                    <input type="text" value = "~System_Rly13Set~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly13Set='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="ResetRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Reset Relay </div>
+                    <input type="text" value = "~System_Rly13Rst~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly13Rst='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="ToggleRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Toggle Relay </div>
+                    <input type="text" value = "~System_Rly13Tog~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly13Tog='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="RlyRestoreText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line2"> Power-up Restore </div>
+                    <input id="PUR13" type="checkbox" onclick="newAJAXCommand('dscript.cgi?RLY_PUR=13')">
+                </div>
+                <script> document.getElementById('Loading').innerHTML = "Loading Relay Data ------------>------------------"; </script>
+            </div>
+            <div id="rl14" style="display:none">
+                <div>
+                    <div class="item-line"> Relay Name </div>
+                    <input type="text" value = "~System_Rly14Name~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly14Name='+this.value);">
+                </div>
+                <div onmouseover="AutomationText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Pulse/Follow </div>
+                    <input type="text" value = "~System_Rly14Bool~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly14Bool='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="SetRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Set Relay </div>
+                    <input type="text" value = "~System_Rly14Set~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly14Set='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="ResetRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Reset Relay </div>
+                    <input type="text" value = "~System_Rly14Rst~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly14Rst='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="ToggleRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Toggle Relay </div>
+                    <input type="text" value = "~System_Rly14Tog~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly14Tog='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="RlyRestoreText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line2"> Power-up Restore </div>
+                    <input id="PUR14" type="checkbox" onclick="newAJAXCommand('dscript.cgi?RLY_PUR=14')">
+                </div>
+                <script> document.getElementById('Loading').innerHTML = "Loading Relay Data ------------->-----------------"; </script>
+            </div>
+            <div id="rl15" style="display:none">
+                <div>
+                    <div class="item-line"> Relay Name </div>
+                    <input type="text" value = "~System_Rly15Name~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly15Name='+this.value);">
+                </div>
+                <div onmouseover="AutomationText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Pulse/Follow </div>
+                    <input type="text" value = "~System_Rly15Bool~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly15Bool='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="SetRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Set Relay </div>
+                    <input type="text" value = "~System_Rly15Set~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly15Set='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="ResetRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Reset Relay </div>
+                    <input type="text" value = "~System_Rly15Rst~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly15Rst='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="ToggleRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Toggle Relay </div>
+                    <input type="text" value = "~System_Rly15Tog~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly15Tog='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="RlyRestoreText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line2"> Power-up Restore </div>
+                    <input id="PUR15" type="checkbox" onclick="newAJAXCommand('dscript.cgi?RLY_PUR=15')">
+                </div>
+                <script> document.getElementById('Loading').innerHTML = "Loading Relay Data -------------->----------------"; </script>
+            </div>
+            <div id="rl16" style="display:none">
+                <div>
+                    <div class="item-line"> Relay Name </div>
+                    <input type="text" value = "~System_Rly16Name~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly16Name='+this.value);">
+                </div>
+                <div onmouseover="AutomationText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Pulse/Follow </div>
+                    <input type="text" value = "~System_Rly16Bool~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly16Bool='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="SetRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Set Relay </div>
+                    <input type="text" value = "~System_Rly16Set~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly16Set='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="ResetRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Reset Relay </div>
+                    <input type="text" value = "~System_Rly16Rst~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly16Rst='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="ToggleRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Toggle Relay </div>
+                    <input type="text" value = "~System_Rly16Tog~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly16Tog='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="RlyRestoreText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line2"> Power-up Restore </div>
+                    <input id="PUR16" type="checkbox" onclick="newAJAXCommand('dscript.cgi?RLY_PUR=16')">
+                </div>
+                <script> document.getElementById('Loading').innerHTML = "Loading Relay Data --------------->---------------"; </script>
+            </div>
+            <div id="rl17" style="display:none">
+                <div>
+                    <div class="item-line"> Relay Name </div>
+                    <input type="text" value = "~System_Rly17Name~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly17Name='+this.value);">
+                </div>
+                <div onmouseover="AutomationText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Pulse/Follow </div>
+                    <input type="text" value = "~System_Rly17Bool~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly17Bool='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="SetRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Set Relay </div>
+                    <input type="text" value = "~System_Rly17Set~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly17Set='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="ResetRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Reset Relay </div>
+                    <input type="text" value = "~System_Rly17Rst~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly17Rst='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="ToggleRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Toggle Relay </div>
+                    <input type="text" value = "~System_Rly17Tog~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly17Tog='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="RlyRestoreText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line2"> Power-up Restore </div>
+                    <input id="PUR17" type="checkbox" onclick="newAJAXCommand('dscript.cgi?RLY_PUR=17')">
+                </div>
+                <script> document.getElementById('Loading').innerHTML = "Loading Relay Data ---------------->--------------"; </script>
+            </div>
+            <div id="rl18" style="display:none">
+                <div>
+                    <div class="item-line"> Relay Name </div>
+                    <input type="text" value = "~System_Rly18Name~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly18Name='+this.value);">
+                </div>
+                <div onmouseover="AutomationText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Pulse/Follow </div>
+                    <input type="text" value = "~System_Rly18Bool~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly18Bool='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="SetRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Set Relay </div>
+                    <input type="text" value = "~System_Rly18Set~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly18Set='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="ResetRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Reset Relay </div>
+                    <input type="text" value = "~System_Rly18Rst~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly18Rst='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="ToggleRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Toggle Relay </div>
+                    <input type="text" value = "~System_Rly18Tog~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly18Tog='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="RlyRestoreText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line2"> Power-up Restore </div>
+                    <input id="PUR18" type="checkbox" onclick="newAJAXCommand('dscript.cgi?RLY_PUR=18')">
+                </div>
+                <script> document.getElementById('Loading').innerHTML = "Loading Relay Data ----------------->-------------"; </script>
+            </div>
+            <div id="rl19" style="display:none">
+                <div>
+                    <div class="item-line"> Relay Name </div>
+                    <input type="text" value = "~System_Rly19Name~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly19Name='+this.value);">
+                </div>
+                <div onmouseover="AutomationText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Pulse/Follow </div>
+                    <input type="text" value = "~System_Rly19Bool~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly19Bool='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="SetRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Set Relay </div>
+                    <input type="text" value = "~System_Rly19Set~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly19Set='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="ResetRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Reset Relay </div>
+                    <input type="text" value = "~System_Rly19Rst~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly19Rst='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="ToggleRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Toggle Relay </div>
+                    <input type="text" value = "~System_Rly19Tog~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly19Tog='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="RlyRestoreText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line2"> Power-up Restore </div>
+                    <input id="PUR19" type="checkbox" onclick="newAJAXCommand('dscript.cgi?RLY_PUR=19')">
+                </div>
+                <script> document.getElementById('Loading').innerHTML = "Loading Relay Data ------------------>------------"; </script>
+            </div>
+            <div id="rl20" style="display:none">
+                <div>
+                    <div class="item-line"> Relay Name </div>
+                    <input type="text" value = "~System_Rly20Name~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly20Name='+this.value);">
+                </div>
+                <div onmouseover="AutomationText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Pulse/Follow </div>
+                    <input type="text" value = "~System_Rly20Bool~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly20Bool='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="SetRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Set Relay </div>
+                    <input type="text" value = "~System_Rly20Set~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly20Set='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="ResetRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Reset Relay </div>
+                    <input type="text" value = "~System_Rly20Rst~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly20Rst='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="ToggleRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Toggle Relay </div>
+                    <input type="text" value = "~System_Rly20Tog~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly20Tog='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="RlyRestoreText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line2"> Power-up Restore </div>
+                    <input id="PUR20" type="checkbox" onclick="newAJAXCommand('dscript.cgi?RLY_PUR=20')">
+                </div>
+                <script> document.getElementById('Loading').innerHTML = "Loading Relay Data ------------------->-----------"; </script>
+            </div>
+            <div id="rl21" style="display:none">
+                <div>
+                    <div class="item-line"> Relay Name </div>
+                    <input type="text" value = "~System_Rly21Name~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly21Name='+this.value);">
+                </div>
+                <div onmouseover="AutomationText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Pulse/Follow </div>
+                    <input type="text" value = "~System_Rly21Bool~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly21Bool='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="SetRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Set Relay </div>
+                    <input type="text" value = "~System_Rly21Set~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly21Set='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="ResetRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Reset Relay </div>
+                    <input type="text" value = "~System_Rly21Rst~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly21Rst='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="ToggleRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Toggle Relay </div>
+                    <input type="text" value = "~System_Rly21Tog~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly21Tog='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="RlyRestoreText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line2"> Power-up Restore </div>
+                    <input id="PUR21" type="checkbox" onclick="newAJAXCommand('dscript.cgi?RLY_PUR=21')">
+                </div>
+                <script> document.getElementById('Loading').innerHTML = "Loading Relay Data -------------------->----------"; </script>
+            </div>
+            <div id="rl22" style="display:none">
+                <div>
+                    <div class="item-line"> Relay Name </div>
+                    <input type="text" value = "~System_Rly22Name~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly22Name='+this.value);">
+                </div>
+                <div onmouseover="AutomationText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Pulse/Follow </div>
+                    <input type="text" value = "~System_Rly22Bool~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly22Bool='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="SetRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Set Relay </div>
+                    <input type="text" value = "~System_Rly22Set~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly22Set='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="ResetRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Reset Relay </div>
+                    <input type="text" value = "~System_Rly22Rst~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly22Rst='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="ToggleRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Toggle Relay </div>
+                    <input type="text" value = "~System_Rly22Tog~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly22Tog='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="RlyRestoreText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line2"> Power-up Restore </div>
+                    <input id="PUR22" type="checkbox" onclick="newAJAXCommand('dscript.cgi?RLY_PUR=22')">
+                </div>
+                <script> document.getElementById('Loading').innerHTML = "Loading Relay Data --------------------->---------"; </script>
+            </div>
+            <div id="rl23" style="display:none">
+                <div>
+                    <div class="item-line"> Relay Name </div>
+                    <input type="text" value = "~System_Rly23Name~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly23Name='+this.value);">
+                </div>
+                <div onmouseover="AutomationText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Pulse/Follow </div>
+                    <input type="text" value = "~System_Rly23Bool~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly23Bool='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="SetRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Set Relay </div>
+                    <input type="text" value = "~System_Rly23Set~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly23Set='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="ResetRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Reset Relay </div>
+                    <input type="text" value = "~System_Rly23Rst~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly23Rst='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="ToggleRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Toggle Relay </div>
+                    <input type="text" value = "~System_Rly23Tog~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly23Tog='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="RlyRestoreText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line2"> Power-up Restore </div>
+                    <input id="PUR23" type="checkbox" onclick="newAJAXCommand('dscript.cgi?RLY_PUR=23')">
+                </div>
+                <script> document.getElementById('Loading').innerHTML = "Loading Relay Data ---------------------->--------"; </script>
+            </div>
+            <div id="rl24" style="display:none">
+                <div>
+                    <div class="item-line"> Relay Name </div>
+                    <input type="text" value = "~System_Rly24Name~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly24Name='+this.value);">
+                </div>
+                <div onmouseover="AutomationText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Pulse/Follow </div>
+                    <input type="text" value = "~System_Rly24Bool~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly24Bool='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="SetRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Set Relay </div>
+                    <input type="text" value = "~System_Rly24Set~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly24Set='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="ResetRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Reset Relay </div>
+                    <input type="text" value = "~System_Rly24Rst~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly24Rst='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="ToggleRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Toggle Relay </div>
+                    <input type="text" value = "~System_Rly24Tog~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly24Tog='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="RlyRestoreText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line2"> Power-up Restore </div>
+                    <input id="PUR24" type="checkbox" onclick="newAJAXCommand('dscript.cgi?RLY_PUR=24')">
+                </div>
+                <script> document.getElementById('Loading').innerHTML = "Loading Relay Data ----------------------->-------"; </script>
+            </div>
+            <div id="rl25" style="display:none">
+                <div>
+                    <div class="item-line"> Relay Name </div>
+                    <input type="text" value = "~System_Rly25Name~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly25Name='+this.value);">
+                </div>
+                <div onmouseover="AutomationText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Pulse/Follow </div>
+                    <input type="text" value = "~System_Rly25Bool~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly25Bool='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="SetRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Set Relay </div>
+                    <input type="text" value = "~System_Rly25Set~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly25Set='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="ResetRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Reset Relay </div>
+                    <input type="text" value = "~System_Rly25Rst~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly25Rst='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="ToggleRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Toggle Relay </div>
+                    <input type="text" value = "~System_Rly25Tog~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly25Tog='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="RlyRestoreText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line2"> Power-up Restore </div>
+                    <input id="PUR25" type="checkbox" onclick="newAJAXCommand('dscript.cgi?RLY_PUR=25')">
+                </div>
+                <script> document.getElementById('Loading').innerHTML = "Loading Relay Data ------------------------>------"; </script>
+            </div>
+            <div id="rl26" style="display:none">
+                <div>
+                    <div class="item-line"> Relay Name </div>
+                    <input type="text" value = "~System_Rly26Name~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly26Name='+this.value);">
+                </div>
+                <div onmouseover="AutomationText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Pulse/Follow </div>
+                    <input type="text" value = "~System_Rly26Bool~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly26Bool='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="SetRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Set Relay </div>
+                    <input type="text" value = "~System_Rly26Set~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly26Set='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="ResetRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Reset Relay </div>
+                    <input type="text" value = "~System_Rly26Rst~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly26Rst='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="ToggleRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Toggle Relay </div>
+                    <input type="text" value = "~System_Rly26Tog~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly26Tog='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="RlyRestoreText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line2"> Power-up Restore </div>
+                    <input id="PUR26" type="checkbox" onclick="newAJAXCommand('dscript.cgi?RLY_PUR=26')">
+                </div>
+                <script> document.getElementById('Loading').innerHTML = "Loading Relay Data ------------------------->-----"; </script>
+            </div>
+            <div id="rl27" style="display:none">
+                <div>
+                    <div class="item-line"> Relay Name </div>
+                    <input type="text" value = "~System_Rly27Name~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly27Name='+this.value);">
+                </div>
+                <div onmouseover="AutomationText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Pulse/Follow </div>
+                    <input type="text" value = "~System_Rly27Bool~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly27Bool='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="SetRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Set Relay </div>
+                    <input type="text" value = "~System_Rly27Set~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly27Set='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="ResetRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Reset Relay </div>
+                    <input type="text" value = "~System_Rly27Rst~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly27Rst='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="ToggleRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Toggle Relay </div>
+                    <input type="text" value = "~System_Rly27Tog~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly27Tog='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="RlyRestoreText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line2"> Power-up Restore </div>
+                    <input id="PUR27" type="checkbox" onclick="newAJAXCommand('dscript.cgi?RLY_PUR=27')">
+                </div>
+                <script> document.getElementById('Loading').innerHTML = "Loading Relay Data -------------------------->----"; </script>
+            </div>
+            <div id="rl28" style="display:none">
+                <div>
+                    <div class="item-line"> Relay Name </div>
+                    <input type="text" value = "~System_Rly28Name~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly28Name='+this.value);">
+                </div>
+                <div onmouseover="AutomationText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Pulse/Follow </div>
+                    <input type="text" value = "~System_Rly28Bool~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly28Bool='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="SetRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Set Relay </div>
+                    <input type="text" value = "~System_Rly28Set~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly28Set='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="ResetRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Reset Relay </div>
+                    <input type="text" value = "~System_Rly28Rst~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly28Rst='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="ToggleRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Toggle Relay </div>
+                    <input type="text" value = "~System_Rly28Tog~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly28Tog='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="RlyRestoreText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line2"> Power-up Restore </div>
+                    <input id="PUR28" type="checkbox" onclick="newAJAXCommand('dscript.cgi?RLY_PUR=28')">
+                </div>
+                <script> document.getElementById('Loading').innerHTML = "Loading Relay Data --------------------------->---"; </script>
+            </div>
+            <div id="rl29" style="display:none">
+                <div>
+                    <div class="item-line"> Relay Name </div>
+                    <input type="text" value = "~System_Rly29Name~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly29Name='+this.value);">
+                </div>
+                <div onmouseover="AutomationText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Pulse/Follow </div>
+                    <input type="text" value = "~System_Rly29Bool~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly29Bool='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="SetRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Set Relay </div>
+                    <input type="text" value = "~System_Rly29Set~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly29Set='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="ResetRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Reset Relay </div>
+                    <input type="text" value = "~System_Rly29Rst~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly29Rst='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="ToggleRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Toggle Relay </div>
+                    <input type="text" value = "~System_Rly29Tog~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly29Tog='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="RlyRestoreText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line2"> Power-up Restore </div>
+                    <input id="PUR29" type="checkbox" onclick="newAJAXCommand('dscript.cgi?RLY_PUR=29')">
+                </div>
+                <script> document.getElementById('Loading').innerHTML = "Loading Relay Data ---------------------------->--"; </script>
+            </div>
+            <div id="rl30" style="display:none">
+                <div>
+                    <div class="item-line"> Relay Name </div>
+                    <input type="text" value = "~System_Rly30Name~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly30Name='+this.value);">
+                </div>
+                <div onmouseover="AutomationText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Pulse/Follow </div>
+                    <input type="text" value = "~System_Rly30Bool~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly30Bool='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="SetRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Set Relay </div>
+                    <input type="text" value = "~System_Rly30Set~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly30Set='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="ResetRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Reset Relay </div>
+                    <input type="text" value = "~System_Rly30Rst~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly30Rst='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="ToggleRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Toggle Relay </div>
+                    <input type="text" value = "~System_Rly30Tog~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly30Tog='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="RlyRestoreText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line2"> Power-up Restore </div>
+                    <input id="PUR30" type="checkbox" onclick="newAJAXCommand('dscript.cgi?RLY_PUR=30')">
+                </div>
+                <script> document.getElementById('Loading').innerHTML = "Loading Relay Data ----------------------------->-"; </script>
+            </div>
+            <div id="rl31" style="display:none">
+                <div>
+                    <div class="item-line"> Relay Name </div>
+                    <input type="text" value = "~System_Rly31Name~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly31Name='+this.value);">
+                </div>
+                <div onmouseover="AutomationText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Pulse/Follow </div>
+                    <input type="text" value = "~System_Rly31Bool~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly31Bool='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="SetRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Set Relay </div>
+                    <input type="text" value = "~System_Rly31Set~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly31Set='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="ResetRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Reset Relay </div>
+                    <input type="text" value = "~System_Rly31Rst~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly31Rst='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="ToggleRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Toggle Relay </div>
+                    <input type="text" value = "~System_Rly31Tog~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly31Tog='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="RlyRestoreText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line2"> Power-up Restore </div>
+                    <input id="PUR31" type="checkbox" onclick="newAJAXCommand('dscript.cgi?RLY_PUR=31')">
+                </div>
+                <script> document.getElementById('Loading').innerHTML = "Loading Relay Data ------------------------------>"; </script>
+            </div>
+            <div id="rl32" style="display:none">
+                <div>
+                    <div class="item-line"> Relay Name </div>
+                    <input type="text" value = "~System_Rly32Name~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly32Name='+this.value);">
+                </div>
+                <div onmouseover="AutomationText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Pulse/Follow </div>
+                    <input type="text" value = "~System_Rly32Bool~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly32Bool='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="SetRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Set Relay </div>
+                    <input type="text" value = "~System_Rly32Set~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly32Set='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="ResetRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Reset Relay </div>
+                    <input type="text" value = "~System_Rly32Rst~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly32Rst='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="ToggleRlyText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line"> Toggle Relay </div>
+                    <input type="text" value = "~System_Rly32Tog~" onkeyup="newAJAXCommand('dscript.cgi?System_Rly32Tog='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="RlyRestoreText(this)" onmouseout="RelayText(this)">
+                    <div class="item-line2"> Power-up Restore </div>
+                    <input id="PUR32" type="checkbox" onclick="newAJAXCommand('dscript.cgi?RLY_PUR=32')">
+                </div>
+            </div>
+
+<script>
+
+    checked = ~System_RLY_PUR~;
+    if(checked&0x01) document.getElementById("PUR1").checked = true;
+    if(checked&0x02) document.getElementById("PUR2").checked = true;
+    if(checked&0x04) document.getElementById("PUR3").checked = true;
+    if(checked&0x08) document.getElementById("PUR4").checked = true;
+    if(checked&0x10) document.getElementById("PUR5").checked = true;
+    if(checked&0x20) document.getElementById("PUR6").checked = true;
+    if(checked&0x40) document.getElementById("PUR7").checked = true;
+    if(checked&0x80) document.getElementById("PUR8").checked = true;
+    if(checked&0x0100) document.getElementById("PUR9").checked = true;
+    if(checked&0x0200) document.getElementById("PUR10").checked = true;
+    if(checked&0x0400) document.getElementById("PUR11").checked = true;
+    if(checked&0x0800) document.getElementById("PUR12").checked = true;
+    if(checked&0x1000) document.getElementById("PUR13").checked = true;
+    if(checked&0x2000) document.getElementById("PUR14").checked = true;
+    if(checked&0x4000) document.getElementById("PUR15").checked = true;
+    if(checked&0x8000) document.getElementById("PUR16").checked = true;
+    if(checked&0x10000) document.getElementById("PUR17").checked = true;
+    if(checked&0x20000) document.getElementById("PUR18").checked = true;
+    if(checked&0x40000) document.getElementById("PUR19").checked = true;
+    if(checked&0x80000) document.getElementById("PUR20").checked = true;
+    if(checked&0x100000) document.getElementById("PUR21").checked = true;
+    if(checked&0x200000) document.getElementById("PUR22").checked = true;
+    if(checked&0x400000) document.getElementById("PUR23").checked = true;
+    if(checked&0x800000) document.getElementById("PUR24").checked = true;
+    if(checked&0x1000000) document.getElementById("PUR25").checked = true;
+    if(checked&0x2000000) document.getElementById("PUR26").checked = true;
+    if(checked&0x4000000) document.getElementById("PUR27").checked = true;
+    if(checked&0x8000000) document.getElementById("PUR28").checked = true;
+    if(checked&0x10000000) document.getElementById("PUR29").checked = true;
+    if(checked&0x20000000) document.getElementById("PUR30").checked = true;
+    if(checked&0x40000000) document.getElementById("PUR31").checked = true;
+    if(checked&0x80000000) document.getElementById("PUR32").checked = true;
+
+    var sel = document.getElementById('RlyNum');
+    for(var i = 2; i < 33; i++) {
+        var opt = document.createElement('option');
+        opt.innerHTML = i;
+        opt.value = i;
+        sel.appendChild(opt);
+    }
+    document.getElementById('Loading').innerHTML = "";
+</script>
+
+        </div>
+
+        <div id="helpblock">
+            <div ID="help">
+            </div>
+            <div>
+                <div class='Indicator1'>  <img class='IO' id='Pend' src='DarkOff.png'/> Update Pending </div>
+            </div>
+        </div>
+    </div>
+
+
+ <script>
+
+RelayText(0);
+
+function SelectRelay()
+{
+    selection = document.getElementById('RlyNum');
+    k = selection.options[selection.selectedIndex].value;
+    for(x=1; x<33; x++) {
+        if(k==x) {
+            document.getElementById('rl'+x).style.display = 'block';
+        }
+        else {
+            document.getElementById("rl"+x).style.display = "none";
+        }
+    }
+}
+
+function dSxText(x) {
+    document.getElementById('help').innerHTML = "<br>dSx Extension Modules.<br><br>Configure dSx I/O extension modules that are connected down stream on the RS485 port.";
+}
+
+function PingText(x) {
+    document.getElementById('help').innerHTML = "<br>Ping<br><br>Ping to up to two remote hosts.<br><br> Used to to test if a remote system is alive and well.<br><br>";
+}
+
+function CounterText(x) {
+    document.getElementById('help').innerHTML = "<br>Counter/Timers<br><br>Eight Counter/Timers.<br> Used as Counters when the count input is connected to an Input <br><br>Used as Timers when connected to the internal 1Hz clock, T1.<br><br>The 32-bit counter counts up from zero to a maximum of 2,147,483,647.";
+}
+
+function ScheduleText(x) {
+    document.getElementById('help').innerHTML = "<br>Scheduler<br><br>Schedule daily events with 8 schedules, 2 events per schedule and a week day mask.";
+}
+
+function P2PText(x) {
+    document.getElementById('help').innerHTML = "<br>Peer to Peer<br><br>Use inputs on this module to control relays on other dSxxxx modules which can be on your local LAN or across the internet.<br>";
+}
+
+function AutomationText()
+{
+ document.getElementById('help').innerHTML = "<br>Relay Pulse/Follow automation<br><br>Enter number for pulse time in mS.<br>0 for continuous operation<br>1000 for 1 sec pulse time<br><br>Or enter boolean expression, the relay will continuously follow the result.<br>R1 = Relay 1 (active)<br>!R1 = Relay 1 (inactive)<br>D1 = Digital Input 1<br>A2 = Analogue input 2<br><br>Example for Relay 1:<br>(A1<1000&!R1)|(A1<1234&R1)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;See Manual for full details.";
+}
+
+function SetRlyText(x) {
+    document.getElementById('help').innerHTML = '<br>Set Relay<br><br>The "Pulse/Follow" box must be 0 or contain a pulse time for Set Relay to be enabled.<br><br>This is a transient (edge triggered) expression, it sets the relay when the expression goes from inactive to active.<br><br>Leave blank if unused.';
+}
+
+function ResetRlyText(x) {
+    document.getElementById('help').innerHTML = '<br>Reset Relay<br><br>The "Pulse/Follow" box must be 0 or contain a pulse time for Reset Relay to be enabled.<br><br>This is a transient (edge triggered) expression, it resets the relay when the expression goes from inactive to active.<br><br>Leave blank if unused.';
+}
+
+function ToggleRlyText(x) {
+    document.getElementById('help').innerHTML = '<br>Toggle Relay<br><br>The "Pulse/Follow" box must be 0 or contain a pulse time for Toggle Relay to be enabled.<br><br>This is a transient (edge triggered) expression, it toggles the relay when the expression goes from inactive to active.<br><br>Leave blank if unused.';
+}
+
+function RlyRestoreText(x) {
+    document.getElementById('help').innerHTML = '<br>Restore Relay on Power-up<br><br>Check the box to restore the previous relay state after a power outage.<br><br>';
+}
+
+function RelayNoText(x) {
+    document.getElementById('help').innerHTML = '<br>Relay Number<br><br>Select the Relay to set up.<br><br>All 32 "relays" are available, but only relays 1-2 are physical relays on the module. <br><br>The remaining relays are virtual relays which exist in the controllers memory.<br>They may be used to build up complex expressions to trigger other events, or just as memories.';
+}
+
+function HostText(x) {
+    document.getElementById('help').innerHTML = "<br>Host Name<br><br>A unique name for the device on your network. Use plain text such as:<br>MYMODULE";
+}
+
+function RelayText(x) {
+    document.getElementById('help').innerHTML = "<br>Relay Names<br><br>These are the labels on the relay buttons on the aplication page to give each relay a unique and descriptive name. <br><br>Maximum 20 characters.";
+}
+
+function IOText(x) {
+    document.getElementById('help').innerHTML = "<br>I/O Names<br><br>These are the I/O labels on the aplication page to give each I/O a unique and descriptive name. <br><br>Maximum 20 characters.";
+}
+
+function IOType(x) {
+    document.getElementById('help').innerHTML = "<br>I/O Types<br><br>Configure Digital I/O with or without pull-up resistors, or analogue inputs with 4.096v or 5v reference.";
+}
+
+function EasyMailText(x) {
+    document.getElementById('help').innerHTML = "<br>Easy Mail<br><br>Send secure emails in response to selected events.";
+}
+
+function StatusText(x) {
+    document.getElementById('help').innerHTML = "<br>Status<br><br>Shows the current status of the module.";
+}
+
+function NetworkText(x) {
+    document.getElementById('help').innerHTML = "<br>Network<br><br>Configure network IP address and associated parameters.";
+}
+
+function TCPIPText(x) {
+    document.getElementById('help').innerHTML = "<br>TCP/IP<br><br>Configure the TCP/IP port and command set.";
+}
+
+function AppText(x) {
+    document.getElementById('help').innerHTML = "<br>Application<br><br>Jumps to the application webpage.";
+}
+
+function printDHCPhelp()
+{
+    document.getElementById('help').innerHTML = "<br>Static IP is disabled because DHCP is enabled.<br><br>Uncheck DHCP to allow static IP addresses.";
+}
+
+function SequenceText(x) {
+    document.getElementById('help').innerHTML = "<br>Sequencer<br><br>A 120 step, 12 output sequencer<br><br>Delay in mS, Seconds, Minutes, Hours or Random Seconds.<br><br>Wait for specified time.<br><br>Jump, Call & Return.<br><br>Branch on Relay, Digital Input or Schedule active.";
+}
+
+
+</script>
+
+<script>
+function ajaxUpdate()
+{
+    LedStatus = getValue('FlashWritePending');
+    if(LedStatus>0) document.getElementById('Pend').src = 'RedOn.png';
+    else document.getElementById('Pend').src = 'DarkOff.png';
+}
+</script>
+
+</body>
+</html>
+

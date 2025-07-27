@@ -1,0 +1,404 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8"/>
+    <title>Configuration</title>
+    <link rel="stylesheet" type="text/css" href="dscript.css">
+ </head>
+
+<body onload="startAJAX()">
+    <div id="container">
+            <p id="ModuleName"> ~Module~ <span style="font-size: 40%">  System Configuration </span> </p>
+            <p id="devantech"> Devantech Ltd </p>
+          <br>
+        <div id="hr"> <hr style="width: 100%; height: 1px; background-color: #FFFFFF; border: none">  </div>
+          <div id="menubar">
+            <ul>
+                <div onmouseover="StatusText(this)" onmouseout="PingText(this)"> <li><a href="_config.htm">Status</a></li> </div>
+                <div onmouseover="NetworkText(this)" onmouseout="PingText(this)"> <li><a href="_config2.htm">Network</a></li> </div>
+                <div onmouseover="TCPIPText(this)" onmouseout="PingText(this)"> <li><a href="_config3.htm">TCP/IP</a></li> </div>
+                <div onmouseover="RelayText(this)" onmouseout="PingText(this)"> <li><a href="_config5.htm">Relays</a></li> </div>
+                <div onmouseover="IOText(this)" onmouseout="PingText(this)"> <li><a href="_config7.htm">Input/Output</a></li> </div>
+                <div onmouseover="dSxText(this)" onmouseout="PingText(this)"> <li><a href="_config6.htm">dSx Config</a></li> </div>
+                <div onmouseover="SequenceText(this)" onmouseout="PingText(this)"> <li><a href="_config14.htm">Sequencer</a></li> </div>
+                <div onmouseover="ScheduleText(this)" onmouseout="PingText(this)"> <li><a href="_config11.htm">Scheduler</a></li> </div>
+                <div onmouseover="CounterText(this)" onmouseout="PingText(this)"> <li><a href="_config12.htm">Counter/Timer</a></li> </div>
+                <div onmouseover="NotifyText(this)" onmouseout="PingText(this)"> <li><a href="_config4.htm">Event Notification</a></li> </div>
+                <div onmouseover="P2PText(this)" onmouseout="PingText(this)"> <li><a href="_config10.htm">Peer to Peer</a></li> </div>
+                <div onmouseover="EasyMailText(this)" onmouseout="PingText(this)"> <li><a href="_config9.htm">Email</a></li> </div>
+                <div onmouseover="PingText(this)"> <li><a style="background-color: #8090a0;" href="_config8.htm">Ping</a></li> </div>
+                <div onmouseover="AppText(this)" onmouseout="PingText(this)"> <li><a href="index.htm">Application Page</a></li> </div>
+            </ul>
+        </div>
+        <div id="centerblock">
+            <div id="center">
+                <div onmouseover="SchNoText(this)" onmouseout="PingText(this)">
+                    <div class="item-line"> Ping No. </div>
+                    <select id="PingNum" onChange="SelectPing();">
+                        <option value="1">1,2</option>
+                    </select>
+                </div>  <br>
+                <div id="ping1" style="display:block">
+                     <div onmouseover="RemoteText(this)" onmouseout="PingText(this)">
+                        <div class="item-line"> Remote Host </div>
+                        <input type="text" value = "~System_PingHost1~" onkeyup="newAJAXCommand('dscript.cgi?System_PingHost1='+this.value);">
+                    </div>
+                    <div onmouseover="RepeatText(this)" onmouseout="PingText(this)">
+                        <div class="item-line"> Repeat Time </div>
+                        <input type="text" id="SystemPingRepeat1" value = "~System_PingRepeat1~" onkeyup="newAJAXCommand('dscript.cgi?System_PingRepeat1='+encodeURIComponent(this.value));">
+                    </div>
+                    <div onmouseover="AttemptsText(this)" onmouseout="PingText(this)">
+                        <div class="item-line"> Attempts </div>
+                        <input type="text" id="SystemPingAttempts1" value = "~System_PingAttempts1~" onkeyup="newAJAXCommand('dscript.cgi?System_PingAttempts1='+encodeURIComponent(this.value));">
+                    </div>
+                    <div onmouseover="DelayText(this)" onmouseout="PingText(this)">
+                        <div class="item-line"> Delay </div>
+                        <input type="text" id="SystemPingDelay1" value = "~System_PingDelay1~" onkeyup="newAJAXCommand('dscript.cgi?System_PingDelay1='+encodeURIComponent(this.value));">
+                    </div>
+                    <div onmouseover="TimeText(this)" onmouseout="PingText(this)">
+                        <div class="item-line"> Time uS </div>
+                        <input type="text" id="PN1" value = "~PingTime1~" onkeyup="newAJAXCommand('dscript.cgi?PingTime1='+encodeURIComponent(this.value));">
+                    </div>
+                    <br>
+                    <br>
+                    <div onmouseover="RemoteText(this)" onmouseout="PingText(this)">
+                        <div class="item-line"> Remote Host </div>
+                        <input type="text" value = "~System_PingHost2~" onkeyup="newAJAXCommand('dscript.cgi?System_PingHost2='+this.value);">
+                    </div>
+                    <div onmouseover="RepeatText(this)" onmouseout="PingText(this)">
+                        <div class="item-line"> Repeat Time </div>
+                        <input type="text" id="SystemPingRepeat2" value = "~System_PingRepeat2~" onkeyup="newAJAXCommand('dscript.cgi?System_PingRepeat2='+encodeURIComponent(this.value));">
+                    </div>
+                    <div onmouseover="AttemptsText(this)" onmouseout="PingText(this)">
+                        <div class="item-line"> Attempts </div>
+                        <input type="text" id="SystemPingAttempts2" value = "~System_PingAttempts2~" onkeyup="newAJAXCommand('dscript.cgi?System_PingAttempts2='+encodeURIComponent(this.value));">
+                    </div>
+                    <div onmouseover="DelayText(this)" onmouseout="PingText(this)">
+                        <div class="item-line"> Delay </div>
+                        <input type="text" id="SystemPingDelay2" value = "~System_PingDelay2~" onkeyup="newAJAXCommand('dscript.cgi?System_PingDelay2='+encodeURIComponent(this.value));">
+                    </div>
+                    <div onmouseover="TimeText(this)" onmouseout="PingText(this)">
+                        <div class="item-line"> Time uS </div>
+                        <input type="text" id="PN2" value = "~PingTime2~" onkeyup="newAJAXCommand('dscript.cgi?PingTime2='+encodeURIComponent(this.value));">
+                    </div>
+                </div>
+                <div id="ping2" style="display:none">
+                     <div onmouseover="RemoteText(this)" onmouseout="PingText(this)">
+                        <div class="item-line"> Remote Host </div>
+                        <input type="text" value = "~System_PingHost3~" onkeyup="newAJAXCommand('dscript.cgi?System_PingHost3='+this.value);">
+                    </div>
+                    <div onmouseover="RepeatText(this)" onmouseout="PingText(this)">
+                        <div class="item-line"> Repeat Time </div>
+                        <input type="text" id="SystemPingRepeat3" value = "~System_PingRepeat3~" onkeyup="newAJAXCommand('dscript.cgi?System_PingRepeat3='+encodeURIComponent(this.value));">
+                    </div>
+                    <div onmouseover="AttemptsText(this)" onmouseout="PingText(this)">
+                        <div class="item-line"> Attempts </div>
+                        <input type="text" id="SystemPingAttempts3" value = "~System_PingAttempts3~" onkeyup="newAJAXCommand('dscript.cgi?System_PingAttempts3='+encodeURIComponent(this.value));">
+                    </div>
+                    <div onmouseover="DelayText(this)" onmouseout="PingText(this)">
+                        <div class="item-line"> Delay </div>
+                        <input type="text" id="SystemPingDelay3" value = "~System_PingDelay3~" onkeyup="newAJAXCommand('dscript.cgi?System_PingDelay3='+encodeURIComponent(this.value));">
+                    </div>
+                    <div onmouseover="TimeText(this)" onmouseout="PingText(this)">
+                        <div class="item-line"> Time uS </div>
+                        <input type="text" id="PN3" value = "~PingTime3~" onkeyup="newAJAXCommand('dscript.cgi?PingTime3='+encodeURIComponent(this.value));">
+                    </div>
+                    <br>
+                    <br>
+                    <div onmouseover="RemoteText(this)" onmouseout="PingText(this)">
+                        <div class="item-line"> Remote Host </div>
+                        <input type="text" value = "~System_PingHost4~" onkeyup="newAJAXCommand('dscript.cgi?System_PingHost4='+this.value);">
+                    </div>
+                    <div onmouseover="RepeatText(this)" onmouseout="PingText(this)">
+                        <div class="item-line"> Repeat Time </div>
+                        <input type="text" id="SystemPingRepeat4" value = "~System_PingRepeat4~" onkeyup="newAJAXCommand('dscript.cgi?System_PingRepeat4='+encodeURIComponent(this.value));">
+                    </div>
+                    <div onmouseover="AttemptsText(this)" onmouseout="PingText(this)">
+                        <div class="item-line"> Attempts </div>
+                        <input type="text" id="SystemPingAttempts4" value = "~System_PingAttempts4~" onkeyup="newAJAXCommand('dscript.cgi?System_PingAttempts4='+encodeURIComponent(this.value));">
+                    </div>
+                    <div onmouseover="DelayText(this)" onmouseout="PingText(this)">
+                        <div class="item-line"> Delay </div>
+                        <input type="text" id="SystemPingDelay4" value = "~System_PingDelay4~" onkeyup="newAJAXCommand('dscript.cgi?System_PingDelay4='+encodeURIComponent(this.value));">
+                    </div>
+                    <div onmouseover="TimeText(this)" onmouseout="PingText(this)">
+                        <div class="item-line"> Time uS </div>
+                        <input type="text" id="PN4" value = "~PingTime4~" onkeyup="newAJAXCommand('dscript.cgi?PingTime4='+encodeURIComponent(this.value));">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="helpblock">
+            <div ID="help">
+            </div>
+            <div>
+                <div class='Indicator1'>  <img class='IO' id='Pend' src='DarkOff.png'/> Update Pending </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+PingText();
+document.getElementById('PN1').disabled = true;
+document.getElementById('PN2').disabled = true;
+document.getElementById('PN3').disabled = true;
+document.getElementById('PN4').disabled = true;
+
+var sel = document.getElementById('PingNum');
+for(var i = 2; i < 3; i++) {
+    var opt = document.createElement('option');
+    var x = (((i-1)*2)+1)
+    opt.innerHTML = x + "," + (x+1);
+    opt.value = i;
+    sel.appendChild(opt);
+}
+
+function SelectPing()
+{
+    selection = document.getElementById('PingNum');
+    k = selection.options[selection.selectedIndex].value;
+    for(x=1; x<5; x++) {
+        if(k==x) {
+            document.getElementById('ping'+x).style.display = 'block';
+        }
+        else {
+            document.getElementById("ping"+x).style.display = "none";
+        }
+    }
+}
+
+
+if(document.getElementById("ModBusChkBox").checked == true) { 
+    document.getElementById('SystemAESkey').disabled = true;
+    document.getElementById('SystemPINnumber').disabled = true;
+}
+
+if(document.getElementById("AsciiChkBox").checked == true) {
+        document.getElementById('SystemAESkey').disabled = true;
+        document.getElementById('SystemPINnumber').disabled = true;
+}
+
+if(document.getElementById("BinaryChkBox").checked == true) {
+        document.getElementById('SystemAESkey').disabled = true;
+        document.getElementById('SystemPINnumber').disabled = true;
+}
+
+if(document.getElementById("AESChkBox").checked == true) {
+        document.getElementById('SystemPINnumber').disabled = true;
+}
+
+if(document.getElementById("PhoneChkBox").checked == true) {
+        document.getElementById('SystemAESkey').disabled = true;
+}
+
+function dSxText(x) {
+    document.getElementById('help').innerHTML = "<br>dSx Extension Modules.<br><br>Configure dSx I/O extension modules that are connected down stream on the RS485 port.";
+}
+
+function PingText(x) {
+    document.getElementById('help').innerHTML = "<br>Ping<br><br>Ping to up to two remote hosts.<br><br> Used to to test if a remote system is alive and well.<br><br>";
+}
+
+function PhoneText(x) {
+    document.getElementById('help').innerHTML = "<br>Phone App<br><br> Enables the smartphone app. <br> Set the Password to match the Password on the phone APP";
+}
+
+function CounterText(x) {
+    document.getElementById('help').innerHTML = "<br>Counter/Timers<br><br>Eight Counter/Timers.<br> Used as Counters when the count input is connected to an Input <br><br>Used as Timers when connected to the internal 1Hz clock, T1.<br><br>The 32-bit counter counts up from zero to a maximum of 2,147,483,647.";
+}
+
+function ScheduleText(x) {
+    document.getElementById('help').innerHTML = "<br>Scheduler<br><br>Schedule daily events with 8 schedules, 2 events per schedule and a week day mask.";
+}
+
+function P2PText(x) {
+    document.getElementById('help').innerHTML = "<br>Peer to Peer<br><br>Use inputs on this module to control relays on other dSxxxx modules which can be on your local LAN or across the internet.<br>";
+}
+
+function AESText(x) {
+    document.getElementById('help').innerHTML = "<br>Enable AES Encryption<br><br>This uses the same commands as the binary command set, but uses AES256 encryption for the commands and the response.";
+}
+
+function RepeatText(x) {
+    document.getElementById('help').innerHTML = "<br>Repeat Time<br><br>This is the time in seconds to repeat the ping. <br>Set to zero to disable pinging.<br><br>";
+}
+
+function RelayText(x) {
+    document.getElementById('help').innerHTML = "<br>Relay Names<br><br>These are the labels on the relay buttons on the aplication page to give each relay a unique and descriptive name. <br><br>Maximum 20 characters.";
+}
+
+function IOText(x) {
+    document.getElementById('help').innerHTML = "<br>I/O Names<br><br>These are the I/O labels on the aplication page to give each I/O a unique and descriptive name. <br><br>Maximum 20 characters.";
+}
+
+function EasyMailText(x) {
+    document.getElementById('help').innerHTML = "<br>Easy Mail<br><br>Send secure emails in response to selected events.";
+}
+
+function DelayText(x) {
+    document.getElementById('help').innerHTML = "<br>Delay<br><br>This is the time in seconds before starting the pings after a power-up, or restarting the pinging after a failure is triggered. It is to give any devce that is restarted time to reboot and come back online.<br><br>For example:<br>Setting this to 600 will give the remote device 10 minutes to reboot.";
+}
+
+function AttemptsText(x) {
+    document.getElementById('help').innerHTML = "<br>Retry Attempts<br><br>This is the number of consecutive missed responses before a Ping failure is triggered.<br><br>If set to 1, it will trigger on all missed ping responses.<br><br>If set to 5 it will trigger when 5 consecutive missed responses are encountered. If it gets a response (for example, on the 3rd try) the counter is reset to 5.<br>";
+}
+
+function TimeText(x) {
+    document.getElementById('help').innerHTML = "<br>Ping Time<br><br>This is the time in uS from the Ping to the echo being received.<br><br>If no echoes are received after the requested number of attempts, this will be set to zero.<br>Use P1 (or P2) in boolean expressions to control relays.<br><br>For example, in Relay 1 Pulse/Follow box enter:<br>(P1<1)<br>This will turn on Relay 1 when Ping1 fails.";
+}
+
+function RemoteText(x) {
+    document.getElementById('help').innerHTML = "<br>The remote host to ping.<br><br>This may be an IP address such as:<br>192.168.1.123<br><br>Or a domain name such as:<br>example.com";
+}
+
+function StatusText(x) {
+    document.getElementById('help').innerHTML = "<br>Status<br><br>Shows the current status of the module.";
+}
+
+function AppText(x) {
+    document.getElementById('help').innerHTML = "<br>Application<br><br>Jumps to the application webpage.";
+}
+
+function PingText(x) {
+    document.getElementById('help').innerHTML = "<br>Ping<br><br>Ping to up to four remote hosts.<br><br> Used to to test if a remote system is alive and responding.<br><br>";
+}
+
+function TCPIPText(x) {
+    document.getElementById('help').innerHTML = "<br>TCP/IP<br><br>Configure the TCP/IP port and command set.";
+}
+
+function NetworkText(x) {
+    document.getElementById('help').innerHTML = "<br>Network<br><br>Configure network IP address and associated parameters.";
+}
+
+function SequenceText(x) {
+    document.getElementById('help').innerHTML = "<br>Sequencer<br><br>A 120 step, 12 output sequencer<br><br>Delay in mS, Seconds, Minutes, Hours or Random Seconds.<br><br>Wait for specified time.<br><br>Jump, Call & Return.<br><br>Branch on Relay, Digital Input or Schedule active.";
+}
+
+
+function handlePhone(cb) {
+    if(cb.checked) {
+        newAJAXCommand('dscript.cgi?System_Cmd=5');
+        newAJAXCommand('dscript.cgi?SystemCmdUpdated=1');
+        document.getElementById('SystemTcpPort').disabled = false;
+        document.getElementById('ModBusChkBox').checked = false;
+        document.getElementById('AsciiChkBox').checked = false;
+        document.getElementById('BinaryChkBox').checked = false;
+        document.getElementById('AESChkBox').checked = false;
+        document.getElementById('SystemPINnumber').disabled = false;
+        document.getElementById('SystemAESkey').disabled = true;
+    }
+    else {
+        newAJAXCommand('dscript.cgi?System_Cmd=0');
+        newAJAXCommand('dscript.cgi?SystemCmdUpdated=1');
+        document.getElementById('SystemAESkey').disabled = true;
+        if(document.getElementById('AsciiChkBox').checked == false && document.getElementById('ModBusChkBox').checked == false && document.getElementById('BinaryChkBox').checked == false) document.getElementById('SystemTcpPort').disabled = true;
+    }
+}
+
+function handleAES(cb) {
+    if(cb.checked) {
+        newAJAXCommand('dscript.cgi?System_Cmd=4');
+        newAJAXCommand('dscript.cgi?SystemCmdUpdated=1');
+        document.getElementById('SystemTcpPort').disabled = false;
+        document.getElementById('ModBusChkBox').checked = false;
+        document.getElementById('AsciiChkBox').checked = false;
+        document.getElementById('BinaryChkBox').checked = false;
+        document.getElementById('PhoneChkBox').checked = false;
+        document.getElementById('SystemAESkey').disabled = false;
+        document.getElementById('SystemPINnumber').disabled = true;
+        document.getElementById('SystemPINnumber').disabled = true;
+    }
+    else {
+        newAJAXCommand('dscript.cgi?System_Cmd=0');
+        newAJAXCommand('dscript.cgi?SystemCmdUpdated=1');
+        document.getElementById('SystemAESkey').disabled = true;
+        if(document.getElementById('AsciiChkBox').checked == false && document.getElementById('ModBusChkBox').checked == false && document.getElementById('BinaryChkBox').checked == false) document.getElementById('SystemTcpPort').disabled = true;
+    }
+}
+
+function handleBinary(cb) {
+    if(cb.checked) {
+        newAJAXCommand('dscript.cgi?System_Cmd=3');
+        newAJAXCommand('dscript.cgi?SystemCmdUpdated=1');
+        document.getElementById('SystemTcpPort').disabled = false;
+        document.getElementById('ModBusChkBox').checked = false;
+        document.getElementById('AsciiChkBox').checked = false;
+        document.getElementById('AESChkBox').checked = false;
+        document.getElementById('PhoneChkBox').checked = false;
+        document.getElementById('SystemAESkey').disabled = true;
+        document.getElementById('SystemPINnumber').disabled = true;
+        document.getElementById('SystemPINnumber').disabled = true;
+    }
+    else {
+        newAJAXCommand('dscript.cgi?System_Cmd=0');
+        newAJAXCommand('dscript.cgi?SystemCmdUpdated=1');
+        if(document.getElementById('AsciiChkBox').checked == false && document.getElementById('ModBusChkBox').checked == false && document.getElementById('AESChkBox').checked == false) document.getElementById('SystemTcpPort').disabled = true;
+    }
+}
+
+function handleASCII(cb) {
+    if(cb.checked) {
+        newAJAXCommand('dscript.cgi?System_Cmd=2');
+        newAJAXCommand('dscript.cgi?SystemCmdUpdated=1');
+        document.getElementById('SystemTcpPort').disabled = false;
+        document.getElementById('ModBusChkBox').checked = false;
+        document.getElementById('BinaryChkBox').checked = false;
+        document.getElementById('AESChkBox').checked = false;
+        document.getElementById('PhoneChkBox').checked = false;
+        document.getElementById('SystemAESkey').disabled = true;
+        document.getElementById('SystemPINnumber').disabled = true;
+    }
+    else {
+        newAJAXCommand('dscript.cgi?System_Cmd=0');
+        newAJAXCommand('dscript.cgi?SystemCmdUpdated=1');
+        if(document.getElementById('ModBusChkBox').checked == false && document.getElementById('BinaryChkBox').checked == false && document.getElementById('AESChkBox').checked == false) document.getElementById('SystemTcpPort').disabled = true;
+    }
+}
+
+function handleModBus(cb) {
+    if(cb.checked) {
+        newAJAXCommand('dscript.cgi?System_Cmd=1');
+        newAJAXCommand('dscript.cgi?SystemCmdUpdated=1');
+        document.getElementById('SystemTcpPort').disabled = false;
+        document.getElementById('AsciiChkBox').checked = false;
+        document.getElementById('BinaryChkBox').checked = false;
+        document.getElementById('AESChkBox').checked = false;
+        document.getElementById('PhoneChkBox').checked = false;
+        document.getElementById('SystemAESkey').disabled = true;
+        document.getElementById('SystemPINnumber').disabled = true;
+        document.getElementById('SystemPINnumber').disabled = true;
+    }
+    else {
+        newAJAXCommand('dscript.cgi?System_Cmd=0');
+        newAJAXCommand('dscript.cgi?SystemCmdUpdated=1');
+        if(document.getElementById('AsciiChkBox').checked == false && document.getElementById('BinaryChkBox').checked == false && document.getElementById('AESChkBox').checked == false) document.getElementById('SystemTcpPort').disabled = true;
+    }
+}
+
+
+function ajaxUpdate()
+{
+    LedStatus = getValue('FlashWritePending');
+    if(LedStatus>0) document.getElementById('Pend').src = 'RedOn.png';
+    else document.getElementById('Pend').src = 'DarkOff.png';
+    selection = document.getElementById('PingNum');
+    k = selection.options[selection.selectedIndex].value;
+    switch(k) {
+        case '2':
+            document.getElementById('PN3').value = getValue('PingTime3');
+            document.getElementById('PN4').value = getValue('PingTime4');
+            break;
+        default:
+            document.getElementById('PN1').value = getValue('PingTime1');
+            document.getElementById('PN2').value = getValue('PingTime2');
+            break;
+    }
+}
+</script>
+
+</body>
+</html>
+

@@ -1,0 +1,282 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8"/>
+    <title>Configuration</title>
+    <link rel="stylesheet" type="text/css" href="dscript.css">
+ </head>
+
+<body onload="startAJAX()">
+    <div id="container">
+            <p id="ModuleName"> ~Module~ <span style="font-size: 40%">  System Configuration </span> </p>
+            <p id="devantech"> Devantech Ltd </p>
+          <br>
+        <div id="hr"> <hr style="width: 100%; height: 1px; background-color: #FFFFFF; border: none">  </div>
+
+          <div id="menubar2">
+            <ul>
+                <div onmouseover="StatusText(this)" onmouseout="IOText(this)"> <li><a href="_config.htm">Status</a></li> </div>
+                <div onmouseover="NetworkText(this)" onmouseout="IOText(this)"><li><a href="_config2.htm">Network</a></li> </div>
+                <div onmouseover="TCPIPText(this)" onmouseout="IOText(this)"> <li><a href="_config3.htm">TCP/IP</a></li> </div>
+                <div onmouseover="RelayText(this)" onmouseout="IOText(this)"> <li><a href="_config5.htm">Relays</a></li> </div>
+                <div onmouseover="IOText(this)"> <li><a style="background-color: #8090a0;" href="_config7.htm">Input/Output</a></li> </div>
+                <div onmouseover="dSxText(this)" onmouseout="IOText(this)"> <li><a href="_config6.htm">dSx Config</a></li> </div>
+                <div onmouseover="SequenceText(this)" onmouseout="IOText(this)"> <li><a href="_config14.htm">Sequencer</a></li> </div>
+                <div onmouseover="ScheduleText(this)" onmouseout="IOText(this)"> <li><a href="_config11.htm">Scheduler</a></li> </div>
+                <div onmouseover="CounterText(this)" onmouseout="IOText(this)"> <li><a href="_config12.htm">Counter/Timer</a></li> </div>
+                <div onmouseover="NotifyText(this)" onmouseout="IOText(this)"> <li><a href="_config4.htm">Event Notification</a></li> </div>
+                <div onmouseover="P2PText(this)" onmouseout="IOText(this)"> <li><a href="_config10.htm">Peer to Peer</a></li> </div>
+                <div onmouseover="EasyMailText(this)" onmouseout="IOText(this)"> <li><a href="_config9.htm">Email</a></li> </div>
+                <div onmouseover="PingText(this)" onmouseout="IOText(this)"> <li><a href="_config8.htm">Ping</a></li> </div>
+                <div onmouseover="AppText(this)" onmouseout="IOText(this)"> <li><a href="index.htm">Application Page</a></li> </div>
+            </ul>
+        </div>
+        <div id="centerblock2">
+            <div>
+                <div class="item-line"> I/O 1 </div>
+                <input type="text" value = "~System_IO1Name~" onkeyup="newAJAXCommand('dscript.cgi?System_IO1Name='+document.getElementById('IO1Name').value);" id="IO1Name">
+                <select id='IO1' onchange="newAJAXCommand('dscript.cgi?System_IO1Type='+this.value);">
+                    <option value='0'>Digital No-Pullup</option>
+                    <option value='1'>Digital With Pullup</option>
+                    <option value='4'>Analog Ref4</option>
+                    <option value='5'>Analog Ref5</option>
+                </select>
+                <select id="IO1Rly" onChange="newAJAXCommand('dscript.cgi?System_IO1AttachedRly='+encodeURIComponent(this.value));" onmouseover="AttachedRlyText(this)" onmouseout="IOText(this)">
+                  <option value="0">None</option>
+                </select>
+            </div>
+            <div>
+                <div class="item-line"> I/O 2 </div>
+                <input type="text" value = "~System_IO2Name~" onkeyup="newAJAXCommand('dscript.cgi?System_IO2Name='+document.getElementById('IO2Name').value);" id="IO2Name">
+                <select id='IO2' onchange="newAJAXCommand('dscript.cgi?System_IO2Type='+this.value);">
+                    <option value='0'>Digital No-Pullup</option>
+                    <option value='1'>Digital With Pullup</option>
+                    <option value='4'>Analog Ref4</option>
+                    <option value='5'>Analog Ref5</option>
+                </select>
+                <select id="IO2Rly" onChange="newAJAXCommand('dscript.cgi?System_IO2AttachedRly='+encodeURIComponent(this.value));" onmouseover="AttachedRlyText(this)" onmouseout="IOText(this)">
+                  <option value="0">None</option>
+                </select>
+            </div>
+            <div>
+                <div class="item-line"> I/O 3 </div>
+                <input type="text" value = "~System_IO3Name~" onkeyup="newAJAXCommand('dscript.cgi?System_IO3Name='+document.getElementById('IO3Name').value);" id="IO3Name">
+                <select id='IO3' onchange="newAJAXCommand('dscript.cgi?System_IO3Type='+this.value);">
+                    <option value='0'>Digital No-Pullup</option>
+                    <option value='1'>Digital With Pullup</option>
+                    <option value='4'>Analog Ref4</option>
+                    <option value='5'>Analog Ref5</option>
+                </select>
+                <select id="IO3Rly" onChange="newAJAXCommand('dscript.cgi?System_IO3AttachedRly='+encodeURIComponent(this.value));" onmouseover="AttachedRlyText(this)" onmouseout="IOText(this)">
+                  <option value="0">None</option>
+                </select>
+            </div>
+            <div>
+                <div class="item-line"> I/O 4 </div>
+                <input type="text" value = "~System_IO4Name~" onkeyup="newAJAXCommand('dscript.cgi?System_IO4Name='+document.getElementById('IO4Name').value);" id="IO4Name">
+                <select id='IO4' onchange="newAJAXCommand('dscript.cgi?System_IO4Type='+this.value);">
+                    <option value='0'>Digital No-Pullup</option>
+                    <option value='1'>Digital With Pullup</option>
+                    <option value='4'>Analog Ref4</option>
+                    <option value='5'>Analog Ref5</option>
+                </select>
+                <select id="IO4Rly" onChange="newAJAXCommand('dscript.cgi?System_IO4AttachedRly='+encodeURIComponent(this.value));" onmouseover="AttachedRlyText(this)" onmouseout="IOText(this)">
+                  <option value="0">None</option>
+                </select>
+            </div>
+            <div>
+                <div class="item-line"> I/O 5 </div>
+                <input type="text" value = "~System_IO5Name~" onkeyup="newAJAXCommand('dscript.cgi?System_IO5Name='+document.getElementById('IO5Name').value);" id="IO5Name">
+                <select id='IO5' onchange="newAJAXCommand('dscript.cgi?System_IO5Type='+this.value);">
+                    <option value='0'>Digital No-Pullup</option>
+                    <option value='1'>Digital With Pullup</option>
+                    <option value='4'>Analog Ref4</option>
+                    <option value='5'>Analog Ref5</option>
+                </select>
+                <select id="IO5Rly" onChange="newAJAXCommand('dscript.cgi?System_IO5AttachedRly='+encodeURIComponent(this.value));" onmouseover="AttachedRlyText(this)" onmouseout="IOText(this)">
+                  <option value="0">None</option>
+                </select>
+            </div>
+            <div>
+                <div class="item-line"> I/O 6 </div>
+                <input type="text" value = "~System_IO6Name~" onkeyup="newAJAXCommand('dscript.cgi?System_IO6Name='+document.getElementById('IO6Name').value);" id="IO6Name">
+                <select id='IO6' onchange="newAJAXCommand('dscript.cgi?System_IO6Type='+this.value);">
+                    <option value='0'>Digital No-Pullup</option>
+                    <option value='1'>Digital With Pullup</option>
+                    <option value='4'>Analog Ref4</option>
+                    <option value='5'>Analog Ref5</option>
+                </select>
+                <select id="IO6Rly" onChange="newAJAXCommand('dscript.cgi?System_IO6AttachedRly='+encodeURIComponent(this.value));" onmouseover="AttachedRlyText(this)" onmouseout="IOText(this)">
+                  <option value="0">None</option>
+                </select>
+            </div>
+            <div>
+                <div class="item-line"> I/O 7 </div>
+                <input type="text" value = "~System_IO7Name~" onkeyup="newAJAXCommand('dscript.cgi?System_IO7Name='+document.getElementById('IO7Name').value);" id="IO7Name">
+                <select id='IO7' onchange="newAJAXCommand('dscript.cgi?System_IO7Type='+this.value);">
+                    <option value='0'>Digital No-Pullup</option>
+                    <option value='1'>Digital With Pullup</option>
+                    <option value='4'>Analog Ref4</option>
+                    <option value='5'>Analog Ref5</option>
+                </select>
+                <select id="IO7Rly" onChange="newAJAXCommand('dscript.cgi?System_IO7AttachedRly='+encodeURIComponent(this.value));" onmouseover="AttachedRlyText(this)" onmouseout="IOText(this)">
+                  <option value="0">None</option>
+                </select>
+            </div>
+            <div>
+                <div class="item-line"> I/O 8 </div>
+                <input type="text" value = "~System_IO8Name~" onkeyup="newAJAXCommand('dscript.cgi?System_IO8Name='+document.getElementById('IO8Name').value);" id="IO8Name">
+                <select id='IO8' onchange="newAJAXCommand('dscript.cgi?System_IO8Type='+this.value);">
+                    <option value='0'>Digital No-Pullup</option>
+                    <option value='1'>Digital With Pullup</option>
+                    <option value='4'>Analog Ref4</option>
+                    <option value='5'>Analog Ref5</option>
+                </select>
+                <select id="IO8Rly" onChange="newAJAXCommand('dscript.cgi?System_IO8AttachedRly='+encodeURIComponent(this.value));" onmouseover="AttachedRlyText(this)" onmouseout="IOText(this)">
+                  <option value="0">None</option>
+                </select>
+            </div>
+<script>
+    document.getElementById('IO1').value = ~System_IO1Type~;
+    document.getElementById('IO2').value = ~System_IO2Type~;
+    document.getElementById('IO3').value = ~System_IO3Type~;
+    document.getElementById('IO4').value = ~System_IO4Type~;
+    document.getElementById('IO5').value = ~System_IO5Type~;
+    document.getElementById('IO6').value = ~System_IO6Type~;
+    document.getElementById('IO7').value = ~System_IO7Type~;
+    document.getElementById('IO8').value = ~System_IO8Type~;
+</script>
+        </div>
+
+        <div id="helpblock">
+            <div ID="help">
+            </div>
+            <div>
+                <div class='Indicator1'>  <img class='IO' id='Pend' src='DarkOff.png'/> Update Pending </div>
+            </div>
+        </div>
+    </div>
+
+ <script>
+
+var IOx = document.getElementById('IO1Rly');
+FillRelaySelection(IOx);
+IOx.value =	~System_IO1AttachedRly~;
+IOx = document.getElementById('IO2Rly');
+FillRelaySelection(IOx);
+IOx.value =	~System_IO2AttachedRly~;
+IOx = document.getElementById('IO3Rly');
+FillRelaySelection(IOx);
+IOx.value =	~System_IO3AttachedRly~;
+IOx = document.getElementById('IO4Rly');
+FillRelaySelection(IOx);
+IOx.value =	~System_IO4AttachedRly~;
+IOx = document.getElementById('IO5Rly');
+FillRelaySelection(IOx);
+IOx.value =	~System_IO5AttachedRly~;
+IOx = document.getElementById('IO6Rly');
+FillRelaySelection(IOx);
+IOx.value =	~System_IO6AttachedRly~;
+IOx = document.getElementById('IO7Rly');
+FillRelaySelection(IOx);
+IOx.value =	~System_IO7AttachedRly~;
+IOx = document.getElementById('IO8Rly');
+FillRelaySelection(IOx);
+IOx.value =	~System_IO8AttachedRly~;
+
+function FillRelaySelection(sel) {
+    for(var i = 1; i < 33; i++) {
+        var opt = document.createElement('option');
+        opt.innerHTML = i;
+        opt.value = i;
+        sel.appendChild(opt);
+    }
+}
+
+IOText(0);
+
+function dSxText(x) {
+    document.getElementById('help').innerHTML = "<br>dSx Extension Modules.<br><br>Configure dSx I/O extension modules that are connected down stream on the RS485 port.";
+}
+
+function PingText(x) {
+    document.getElementById('help').innerHTML = "<br>Ping<br><br>Ping to up to two remote hosts.<br><br> Used to to test if a remote system is alive and well.<br><br>";
+}
+
+function SequenceText(x) {
+    document.getElementById('help').innerHTML = "<br>Sequencer<br><br>A 120 step, 12 output sequencer<br><br>Delay in mS, Seconds, Minutes, Hours or Random Seconds.<br><br>Wait for specified time.<br><br>Jump, Call & Return.<br><br>Branch on Relay, Digital Input or Schedule active.";
+}
+
+function ScheduleText(x) {
+    document.getElementById('help').innerHTML = "<br>Scheduler<br><br>Schedule daily events with 8 schedules, 2 events per schedule and a week day mask.";
+}
+
+function CounterText(x) {
+    document.getElementById('help').innerHTML = "<br>Counter/Timers<br><br>Eight Counter/Timers.<br> Used as Counters when the count input is connected to an Input <br><br>Used as Timers when connected to the internal 1Hz clock, T1.<br><br>The 32-bit counter counts up from zero to a maximum of 2,147,483,647.";
+}
+
+function P2PText(x) {
+    document.getElementById('help').innerHTML = "<br>Peer to Peer<br><br>Use inputs on this module to control relays on other dSxxxx modules which can be on your local LAN or across the internet.<br>";
+}
+
+function HostText(x) {
+    document.getElementById('help').innerHTML = "<br>Host Name<br><br>A unique name for the device on your network. Use plain text such as:<br>MYMODULE";
+}
+
+function RelayText(x) {
+    document.getElementById('help').innerHTML = "<br>Relay Names<br><br>These are the labels on the relay buttons on the aplication page to give each relay a unique and descriptive name. <br><br>Maximum 20 characters.";
+}
+
+function IOText(x) {
+    document.getElementById('help').innerHTML = "<br>I/O Configuration<br><br>Names.<br>These are the I/O labels on the application page to give each I/O a unique and descriptive name. <br>Maximum 20 characters.<br><br>Types.<br>Configure Digital I/O with or without pull-up resistors, or analogue inputs with 0-3.3v input.<br><br>Note, changes do not take effect until after the next re-boot.";
+}
+
+function AttachedRlyText(x) {
+    document.getElementById('help').innerHTML = "<br>Attached Relay Number<br><br>Digital I/O can optionally be attached to a relay. Normally use relays 25-32 for this as they are not physical relays. <br><br>This gives digital outputs the same control features as relays.";
+}
+
+function IOType(x) {
+    document.getElementById('help').innerHTML = "<br>I/O Types<br><br>Configure Digital I/O with or without pull-up resistors, or analogue inputs with 4.096v or 5v reference.";
+}
+
+function EasyMailText(x) {
+    document.getElementById('help').innerHTML = "<br>Easy Mail<br><br>Send secure emails in response to selected events.";
+}
+
+function StatusText(x) {
+    document.getElementById('help').innerHTML = "<br>Status<br><br>Shows the current status of the module.";
+}
+
+function NetworkText(x) {
+    document.getElementById('help').innerHTML = "<br>Network<br><br>Configure network IP address and associated parameters.";
+}
+
+function TCPIPText(x) {
+    document.getElementById('help').innerHTML = "<br>TCP/IP<br><br>Configure the TCP/IP port and command set.";
+}
+
+function AppText(x) {
+    document.getElementById('help').innerHTML = "<br>Application<br><br>Jumps to the application webpage.";
+}
+
+function printDHCPhelp()
+{
+    document.getElementById('help').innerHTML = "<br>Static IP is disabled because DHCP is enabled.<br><br>Uncheck DHCP to allow static IP addresses.";
+}
+
+
+</script>
+
+<script>
+function ajaxUpdate()
+{
+    LedStatus = getValue('FlashWritePending');
+    if(LedStatus>0) document.getElementById('Pend').src = 'RedOn.png';
+    else document.getElementById('Pend').src = 'DarkOff.png';
+}
+</script>
+
+</body>
+</html>
+

@@ -1,0 +1,458 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8"/>
+    <title>Configuration</title>
+    <link rel="stylesheet" type="text/css" href="dscript.css">
+ </head>
+
+<body onload="startAJAX()">
+    <div id="container">
+            <p id="ModuleName"> ~Module~ <span style="font-size: 40%">  System Configuration </span> </p>
+            <p id="devantech"> Devantech Ltd </p>
+          <br>
+        <div id="hr"> <hr style="width: 100%; height: 1px; background-color: #FFFFFF; border: none">  </div>
+
+          <div id="menubar"> 
+            <ul>
+                <div onmouseover="StatusText(this)" onmouseout="P2PText(this)"> <li><a href="_config.htm">Status</a></li> </div>
+                <div onmouseover="NetworkText(this)" onmouseout="P2PText(this)"><li><a href="_config2.htm">Network</a></li> </div>
+                <div onmouseover="TCPIPText(this)" onmouseout="P2PText(this)"> <li><a href="_config3.htm">TCP/IP</a></li> </div>
+                <div onmouseover="RelayText(this)" onmouseout="P2PText(this)"> <li><a href="_config5.htm">Relays</a></li> </div>
+                <div onmouseover="IOText(this)" onmouseout="P2PText(this)"> <li><a href="_config7.htm">Input/Output</a></li> </div>
+                <div onmouseover="dSxText(this)" onmouseout="P2PText(this)"> <li><a href="_config6.htm">dSx Config</a></li> </div>
+                <div onmouseover="SequenceText(this)" onmouseout="P2PText(this)"> <li><a href="_config14.htm">Sequencer</a></li> </div>
+                <div onmouseover="ScheduleText(this)" onmouseout="P2PText(this)"> <li><a href="_config11.htm">Scheduler</a></li> </div>
+                <div onmouseover="CounterText(this)" onmouseout="P2PText(this)"> <li><a href="_config12.htm">Counter/Timer</a></li> </div>
+                <div onmouseover="NotifyText(this)" onmouseout="P2PText(this)"> <li><a href="_config4.htm">Event Notification</a></li> </div>
+                <div onmouseover="P2PText(this)"> <li><a style="background-color: #8090a0;" href="_config10.htm">Peer to Peer</a></li> </div>
+                <div onmouseover="EasyMailText(this)" onmouseout="P2PText(this)"> <li><a href="_config9.htm">Email</a></li> </div>
+                <div onmouseover="PingText(this)" onmouseout="P2PText(this)"> <li><a href="_config8.htm">Ping</a></li> </div>
+                <div onmouseover="AppText(this)" onmouseout="P2PText(this)"> <li><a href="index.htm">Application Page</a></li> </div>
+            </ul>
+        </div>
+
+       <div id="centerblock">
+            <div onmouseover="P2PNoText(this)" onmouseout="P2PText(this)">
+                <div class="item-line"> P2P No. </div>
+                    <select id="P2PNum" onChange="SelectP2P();">
+                      <option value="1">1</option>
+                    </select>
+            </div>  <br>
+            <div id="p2p1" style="display:block">
+                <div onmouseover="P2PinputText(this)" onmouseout="P2PText(this)">
+                    <div class="item-line"> Input </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_P2P_Input1~" onkeyup="newAJAXCommand('dscript.cgi?System_P2P_Input1='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="P2PIPText(this)" onmouseout="P2PText(this)">
+                    <div class="item-line"> Target IP </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_P2P_IP1~" onkeyup="newAJAXCommand('dscript.cgi?System_P2P_IP1='+document.getElementById('IP1').value);" id="IP1">
+                </div>
+                <div onmouseover="P2PportText(this)" onmouseout="P2PText(this)">
+                    <div class="item-line"> Target Port </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_P2P_Port1~" onkeyup="newAJAXCommand('dscript.cgi?System_P2P_Port1='+encodeURIComponent(document.getElementById('Port1').value));" id="Port1">
+                </div>
+                <div onmouseover="P2PrelayText(this)" onmouseout="P2PText(this)">
+                    <div class="item-line"> Target Relay No. </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_P2P_Relay1~" onkeyup="newAJAXCommand('dscript.cgi?System_P2P_Relay1='+encodeURIComponent(document.getElementById('Relay1').value));" id="Relay1">
+                </div>
+                <div onmouseover="P2PactionText(this)" onmouseout="P2PText(this)">
+                    <div class="item-line"> Target Action. </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_P2P_Action1~" onkeyup="newAJAXCommand('dscript.cgi?System_P2P_Action1='+encodeURIComponent(document.getElementById('Action1').value));" id="Action1">
+                </div>
+                <div onmouseover="P2PtimeoutText(this)" onmouseout="P2PText(this)">
+                    <div class="item-line"> TCP/IP Timeout. </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_P2P_Timeout1~" onkeyup="newAJAXCommand('dscript.cgi?System_P2P_Timeout1='+encodeURIComponent(document.getElementById('Timeout1').value));" id="Timeout1">
+                </div>
+                <div onmouseover="P2PAESText(this)" onmouseout="P2PText(this)">
+                    <div class="item-line2"> Use AES </div>
+                    <input id="AES1" type="checkbox" onclick="newAJAXCommand('dscript.cgi?P2P_AES=1')">
+                </div>
+                <p id="Loading"> Loading P2P Data >------</p>
+            </div>
+            <div id="p2p2" style="display:none">
+                <div onmouseover="P2PinputText(this)" onmouseout="P2PText(this)">
+                    <div class="item-line"> Input </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_P2P_Input2~" onkeyup="newAJAXCommand('dscript.cgi?System_P2P_Input2='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="P2PIPText(this)" onmouseout="P2PText(this)">
+                    <div class="item-line"> Target IP </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_P2P_IP2~" onkeyup="newAJAXCommand('dscript.cgi?System_P2P_IP2='+document.getElementById('IP2').value);" id="IP2">
+                </div>
+                <div onmouseover="P2PportText(this)" onmouseout="P2PText(this)">
+                    <div class="item-line"> Target Port </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_P2P_Port2~" onkeyup="newAJAXCommand('dscript.cgi?System_P2P_Port2='+encodeURIComponent(document.getElementById('Port2').value));" id="Port2">
+                </div>
+                <div onmouseover="P2PrelayText(this)" onmouseout="P2PText(this)">
+                    <div class="item-line"> Target Relay No. </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_P2P_Relay2~" onkeyup="newAJAXCommand('dscript.cgi?System_P2P_Relay2='+encodeURIComponent(document.getElementById('Relay2').value));" id="Relay2">
+                </div>
+                <div onmouseover="P2PactionText(this)" onmouseout="P2PText(this)">
+                    <div class="item-line"> Target Action. </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_P2P_Action2~" onkeyup="newAJAXCommand('dscript.cgi?System_P2P_Action2='+encodeURIComponent(document.getElementById('Action2').value));" id="Action2">
+                </div>
+                <div onmouseover="P2PtimeoutText(this)" onmouseout="P2PText(this)">
+                    <div class="item-line"> TCP/IP Timeout. </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_P2P_Timeout2~" onkeyup="newAJAXCommand('dscript.cgi?System_P2P_Timeout2='+encodeURIComponent(document.getElementById('Timeout2').value));" id="Timeout2">
+                </div>
+                <div onmouseover="P2PAESText(this)" onmouseout="P2PText(this)">
+                    <div class="item-line2"> Use AES </div>
+                    <input id="AES2" type="checkbox" onclick="newAJAXCommand('dscript.cgi?P2P_AES=2')">
+                </div>
+                <script> document.getElementById('Loading').innerHTML = "Loading P2P Data ->-----"; </script>
+            </div>
+            <div id="p2p3" style="display:none">
+                <div onmouseover="P2PinputText(this)" onmouseout="P2PText(this)">
+                    <div class="item-line"> Input </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_P2P_Input3~" onkeyup="newAJAXCommand('dscript.cgi?System_P2P_Input3='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="P2PIPText(this)" onmouseout="P2PText(this)">
+                    <div class="item-line"> Target IP </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_P2P_IP3~" onkeyup="newAJAXCommand('dscript.cgi?System_P2P_IP3='+document.getElementById('IP3').value);" id="IP3">
+                </div>
+                <div onmouseover="P2PportText(this)" onmouseout="P2PText(this)">
+                    <div class="item-line"> Target Port </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_P2P_Port3~" onkeyup="newAJAXCommand('dscript.cgi?System_P2P_Port3='+encodeURIComponent(document.getElementById('Port3').value));" id="Port3">
+                </div>
+                <div onmouseover="P2PrelayText(this)" onmouseout="P2PText(this)">
+                    <div class="item-line"> Target Relay No. </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_P2P_Relay3~" onkeyup="newAJAXCommand('dscript.cgi?System_P2P_Relay3='+encodeURIComponent(document.getElementById('Relay3').value));" id="Relay3">
+                </div>
+                <div onmouseover="P2PactionText(this)" onmouseout="P2PText(this)">
+                    <div class="item-line"> Target Action. </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_P2P_Action3~" onkeyup="newAJAXCommand('dscript.cgi?System_P2P_Action3='+encodeURIComponent(document.getElementById('Action3').value));" id="Action3">
+                </div>
+                <div onmouseover="P2PtimeoutText(this)" onmouseout="P2PText(this)">
+                    <div class="item-line"> TCP/IP Timeout. </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_P2P_Timeout3~" onkeyup="newAJAXCommand('dscript.cgi?System_P2P_Timeout3='+encodeURIComponent(document.getElementById('Timeout3').value));" id="Timeout3">
+                </div>
+                <div onmouseover="P2PAESText(this)" onmouseout="P2PText(this)">
+                    <div class="item-line2"> Use AES </div>
+                    <input id="AES3" type="checkbox" onclick="newAJAXCommand('dscript.cgi?P2P_AES=3')">
+                </div>
+                <script> document.getElementById('Loading').innerHTML = "Loading P2P Data -->----"; </script>
+           </div>
+            <div id="p2p4" style="display:none">
+                 <div onmouseover="P2PinputText(this)" onmouseout="P2PText(this)">
+                    <div class="item-line"> Input </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_P2P_Input4~" onkeyup="newAJAXCommand('dscript.cgi?System_P2P_Input4='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="P2PIPText(this)" onmouseout="P2PText(this)">
+                    <div class="item-line"> Target IP </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_P2P_IP4~" onkeyup="newAJAXCommand('dscript.cgi?System_P2P_IP4='+document.getElementById('IP4').value);" id="IP4">
+                </div>
+                <div onmouseover="P2PportText(this)" onmouseout="P2PText(this)">
+                    <div class="item-line"> Target Port </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_P2P_Port4~" onkeyup="newAJAXCommand('dscript.cgi?System_P2P_Port4='+encodeURIComponent(document.getElementById('Port4').value));" id="Port4">
+                </div>
+                <div onmouseover="P2PrelayText(this)" onmouseout="P2PText(this)">
+                    <div class="item-line"> Target Relay No. </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_P2P_Relay4~" onkeyup="newAJAXCommand('dscript.cgi?System_P2P_Relay4='+encodeURIComponent(document.getElementById('Relay4').value));" id="Relay4">
+                </div>
+                <div onmouseover="P2PactionText(this)" onmouseout="P2PText(this)">
+                    <div class="item-line"> Target Action. </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_P2P_Action4~" onkeyup="newAJAXCommand('dscript.cgi?System_P2P_Action4='+encodeURIComponent(document.getElementById('Action4').value));" id="Action4">
+                </div>
+                <div onmouseover="P2PtimeoutText(this)" onmouseout="P2PText(this)">
+                    <div class="item-line"> TCP/IP Timeout. </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_P2P_Timeout4~" onkeyup="newAJAXCommand('dscript.cgi?System_P2P_Timeout4='+encodeURIComponent(document.getElementById('Timeout4').value));" id="Timeout4">
+                </div>
+                <div onmouseover="P2PAESText(this)" onmouseout="P2PText(this)">
+                    <div class="item-line2"> Use AES </div>
+                    <input id="AES4" type="checkbox" onclick="newAJAXCommand('dscript.cgi?P2P_AES=4')">
+                </div>
+                <script> document.getElementById('Loading').innerHTML = "Loading P2P Data --->---"; </script>
+            </div>
+            <div id="p2p5" style="display:none">
+                <div onmouseover="P2PinputText(this)" onmouseout="P2PText(this)">
+                    <div class="item-line"> Input </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_P2P_Input5~" onkeyup="newAJAXCommand('dscript.cgi?System_P2P_Input5='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="P2PIPText(this)" onmouseout="P2PText(this)">
+                    <div class="item-line"> Target IP </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_P2P_IP5~" onkeyup="newAJAXCommand('dscript.cgi?System_P2P_IP5='+document.getElementById('IP5').value);" id="IP5">
+                </div>
+                <div onmouseover="P2PportText(this)" onmouseout="P2PText(this)">
+                    <div class="item-line"> Target Port </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_P2P_Port5~" onkeyup="newAJAXCommand('dscript.cgi?System_P2P_Port5='+encodeURIComponent(document.getElementById('Port5').value));" id="Port5">
+                </div>
+                <div onmouseover="P2PrelayText(this)" onmouseout="P2PText(this)">
+                    <div class="item-line"> Target Relay No. </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_P2P_Relay5~" onkeyup="newAJAXCommand('dscript.cgi?System_P2P_Relay5='+encodeURIComponent(document.getElementById('Relay5').value));" id="Relay5">
+                </div>
+                <div onmouseover="P2PactionText(this)" onmouseout="P2PText(this)">
+                    <div class="item-line"> Target Action. </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_P2P_Action5~" onkeyup="newAJAXCommand('dscript.cgi?System_P2P_Action5='+encodeURIComponent(document.getElementById('Action5').value));" id="Action5">
+                </div>
+                <div onmouseover="P2PtimeoutText(this)" onmouseout="P2PText(this)">
+                    <div class="item-line"> TCP/IP Timeout. </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_P2P_Timeout5~" onkeyup="newAJAXCommand('dscript.cgi?System_P2P_Timeout5='+encodeURIComponent(document.getElementById('Timeout5').value));" id="Timeout5">
+                </div>
+                <div onmouseover="P2PAESText(this)" onmouseout="P2PText(this)">
+                    <div class="item-line2"> Use AES </div>
+                    <input id="AES5" type="checkbox" onclick="newAJAXCommand('dscript.cgi?P2P_AES=5')">
+                </div>
+                <script> document.getElementById('Loading').innerHTML = "Loading P2P Data ---->--"; </script>
+            </div>
+            <div id="p2p6" style="display:none">
+                <div onmouseover="P2PinputText(this)" onmouseout="P2PText(this)">
+                    <div class="item-line"> Input </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_P2P_Input6~" onkeyup="newAJAXCommand('dscript.cgi?System_P2P_Input6='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="P2PIPText(this)" onmouseout="P2PText(this)">
+                    <div class="item-line"> Target IP </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_P2P_IP6~" onkeyup="newAJAXCommand('dscript.cgi?System_P2P_IP6='+document.getElementById('IP6').value);" id="IP6">
+                </div>
+                <div onmouseover="P2PportText(this)" onmouseout="P2PText(this)">
+                    <div class="item-line"> Target Port </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_P2P_Port6~" onkeyup="newAJAXCommand('dscript.cgi?System_P2P_Port6='+encodeURIComponent(document.getElementById('Port6').value));" id="Port6">
+                </div>
+                <div onmouseover="P2PrelayText(this)" onmouseout="P2PText(this)">
+                    <div class="item-line"> Target Relay No. </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_P2P_Relay6~" onkeyup="newAJAXCommand('dscript.cgi?System_P2P_Relay6='+encodeURIComponent(document.getElementById('Relay6').value));" id="Relay6">
+                </div>
+                <div onmouseover="P2PactionText(this)" onmouseout="P2PText(this)">
+                    <div class="item-line"> Target Action. </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_P2P_Action6~" onkeyup="newAJAXCommand('dscript.cgi?System_P2P_Action6='+encodeURIComponent(document.getElementById('Action6').value));" id="Action6">
+                </div>
+                <div onmouseover="P2PtimeoutText(this)" onmouseout="P2PText(this)">
+                    <div class="item-line"> TCP/IP Timeout. </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_P2P_Timeout6~" onkeyup="newAJAXCommand('dscript.cgi?System_P2P_Timeout6='+encodeURIComponent(document.getElementById('Timeout6').value));" id="Timeout6">
+                </div>
+                <div onmouseover="P2PAESText(this)" onmouseout="P2PText(this)">
+                    <div class="item-line2"> Use AES </div>
+                    <input id="AES6" type="checkbox" onclick="newAJAXCommand('dscript.cgi?P2P_AES=6')">
+                </div>
+                <script> document.getElementById('Loading').innerHTML = "Loading P2P Data ----->-"; </script>
+            </div>
+            <div id="p2p7" style="display:none">
+                <div onmouseover="P2PinputText(this)" onmouseout="P2PText(this)">
+                    <div class="item-line"> Input </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_P2P_Input7~" onkeyup="newAJAXCommand('dscript.cgi?System_P2P_Input7='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="P2PIPText(this)" onmouseout="P2PText(this)">
+                    <div class="item-line"> Target IP </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_P2P_IP7~" onkeyup="newAJAXCommand('dscript.cgi?System_P2P_IP7='+document.getElementById('IP7').value);" id="IP7">
+                </div>
+                <div onmouseover="P2PportText(this)" onmouseout="P2PText(this)">
+                    <div class="item-line"> Target Port </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_P2P_Port7~" onkeyup="newAJAXCommand('dscript.cgi?System_P2P_Port7='+encodeURIComponent(document.getElementById('Port7').value));" id="Port7">
+                </div>
+                <div onmouseover="P2PrelayText(this)" onmouseout="P2PText(this)">
+                    <div class="item-line"> Target Relay No. </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_P2P_Relay7~" onkeyup="newAJAXCommand('dscript.cgi?System_P2P_Relay7='+encodeURIComponent(document.getElementById('Relay7').value));" id="Relay7">
+                </div>
+                <div onmouseover="P2PactionText(this)" onmouseout="P2PText(this)">
+                    <div class="item-line"> Target Action. </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_P2P_Action7~" onkeyup="newAJAXCommand('dscript.cgi?System_P2P_Action7='+encodeURIComponent(document.getElementById('Action7').value));" id="Action7">
+                </div>
+                <div onmouseover="P2PtimeoutText(this)" onmouseout="P2PText(this)">
+                    <div class="item-line"> TCP/IP Timeout. </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_P2P_Timeout7~" onkeyup="newAJAXCommand('dscript.cgi?System_P2P_Timeout7='+encodeURIComponent(document.getElementById('Timeout7').value));" id="Timeout7">
+                </div>
+                <div onmouseover="P2PAESText(this)" onmouseout="P2PText(this)">
+                    <div class="item-line2"> Use AES </div>
+                    <input id="AES7" type="checkbox" onclick="newAJAXCommand('dscript.cgi?P2P_AES=7')">
+                </div>
+                <script> document.getElementById('Loading').innerHTML = "Loading P2P Data ------>"; </script>
+            </div>
+            <div id="p2p8" style="display:none">
+                <div onmouseover="P2PinputText(this)" onmouseout="P2PText(this)">
+                    <div class="item-line"> Input </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_P2P_Input8~" onkeyup="newAJAXCommand('dscript.cgi?System_P2P_Input8='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="P2PIPText(this)" onmouseout="P2PText(this)">
+                    <div class="item-line"> Target IP </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_P2P_IP8~" onkeyup="newAJAXCommand('dscript.cgi?System_P2P_IP8='+document.getElementById('IP8').value);" id="IP8">
+                </div>
+                <div onmouseover="P2PportText(this)" onmouseout="P2PText(this)">
+                    <div class="item-line"> Target Port </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_P2P_Port8~" onkeyup="newAJAXCommand('dscript.cgi?System_P2P_Port8='+encodeURIComponent(document.getElementById('Port8').value));" id="Port8">
+                </div>
+                <div onmouseover="P2PrelayText(this)" onmouseout="P2PText(this)">
+                    <div class="item-line"> Target Relay No. </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_P2P_Relay8~" onkeyup="newAJAXCommand('dscript.cgi?System_P2P_Relay8='+encodeURIComponent(document.getElementById('Relay8').value));" id="Relay8">
+                </div>
+                <div onmouseover="P2PactionText(this)" onmouseout="P2PText(this)">
+                    <div class="item-line"> Target Action. </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_P2P_Action8~" onkeyup="newAJAXCommand('dscript.cgi?System_P2P_Action8='+encodeURIComponent(document.getElementById('Action8').value));" id="Action8">
+                </div>
+                <div onmouseover="P2PtimeoutText(this)" onmouseout="P2PText(this)">
+                    <div class="item-line"> TCP/IP Timeout. </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_P2P_Timeout8~" onkeyup="newAJAXCommand('dscript.cgi?System_P2P_Timeout8='+encodeURIComponent(document.getElementById('Timeout8').value));" id="Timeout8">
+                </div>
+                <div onmouseover="P2PAESText(this)" onmouseout="P2PText(this)">
+                    <div class="item-line2"> Use AES </div>
+                    <input id="AES8" type="checkbox" onclick="newAJAXCommand('dscript.cgi?P2P_AES=8')">
+                </div>
+            </div>
+
+<script>
+    checked = ~System_P2P_AES~;
+    if(checked&0x01) document.getElementById("AES1").checked = true;
+    if(checked&0x02) document.getElementById("AES2").checked = true;
+    if(checked&0x04) document.getElementById("AES3").checked = true;
+    if(checked&0x08) document.getElementById("AES4").checked = true;
+    if(checked&0x10) document.getElementById("AES5").checked = true;
+    if(checked&0x20) document.getElementById("AES6").checked = true;
+    if(checked&0x40) document.getElementById("AES7").checked = true;
+    if(checked&0x80) document.getElementById("AES8").checked = true;
+
+</script>
+            <br><br>
+        </div>
+
+        <div id="helpblock">
+            <div ID="help">
+            </div>
+            <div>
+                <div class='Indicator1'>  <img class='IO' id='Pend' src='DarkOff.png'/> Update Pending </div>
+            </div>
+        </div>
+
+    </div>
+
+ <script>
+
+P2PText(0);
+
+var sel = document.getElementById('P2PNum');
+for(var i = 2; i < 9; i++) {
+    var opt = document.createElement('option');
+    opt.innerHTML = i;
+    opt.value = i;
+    sel.appendChild(opt);
+}
+document.getElementById('Loading').innerHTML = "";
+
+function SelectP2P(k)
+{
+    selection = document.getElementById('P2PNum');
+    k = selection.options[selection.selectedIndex].value;
+    for(x=1; x<9; x++) {
+        if(k==x) {
+            document.getElementById('p2p'+x).style.display = 'block';
+        }
+        else {
+            document.getElementById("p2p"+x).style.display = "none";
+        }
+    }
+}
+
+function NotifyText(x) {
+    document.getElementById('help').innerHTML = "<br>Event Notification<br><br>Send an event notification to a server when any specified Relay or Input changes state.<br><br>";
+}
+
+function dSxText(x) {
+    document.getElementById('help').innerHTML = "<br>dSx Extension Modules.<br><br>Configure dSx I/O extension modules that are connected down stream on the RS485 port.";
+}
+
+function PingText(x) {
+    document.getElementById('help').innerHTML = "<br>Ping<br><br>Ping to up to two remote hosts.<br><br> Used to to test if a remote system is alive and well.<br><br>";
+}
+
+function CounterText(x) {
+    document.getElementById('help').innerHTML = "<br>Counter/Timers<br><br>Eight Counter/Timers.<br> Used as Counters when the count input is connected to an Input <br><br>Used as Timers when connected to the internal 1Hz clock, T1.<br><br>The 32-bit counter counts up from zero to a maximum of 2,147,483,647.";
+}
+
+function ScheduleText(x) {
+    document.getElementById('help').innerHTML = "<br>Scheduler<br><br>Schedule daily events with 8 schedules, 2 events per schedule and a week day mask.";
+}
+
+function P2PText(x) {
+    document.getElementById('help').innerHTML = "<br>Peer to Peer<br><br>Use inputs on this module to control relays on other dSxxxx modules which can be on your local LAN or across the internet.<br>";
+}
+
+function HostText(x) {
+    document.getElementById('help').innerHTML = "<br>Host Name<br><br>A unique name for the device on your network. Use plain text such as:<br>MYMODULE";
+}
+
+function EasyMailText(x) {
+    document.getElementById('help').innerHTML = "<br>Easy Mail<br><br>Send secure emails in response to selected events.";
+}
+
+function P2PtimeoutText(x) {
+    document.getElementById('help').innerHTML = "<br>Communications Timeout<br><br>If there is no response from the remote device then communications will terminate after this time period.<br><br>5000 (5000mS = 5 Seconds) is a suitable value for a device on the LAN. <br><br>10000 for the WAN <br><br>15000 is better if going over 3G or 4G networks.";
+}
+
+function P2PNoText(x) {
+    document.getElementById('help').innerHTML = "<br>Peer to Peer event number<br><br>Select one of eight Peer to Peer events to configure.";
+}
+
+function P2PinputText(x) {
+    document.getElementById('help').innerHTML = "<br>Input Event<br><br>Enter $ followed by boolean expression.<br><br>D1 for Digital input 1 active.<br>R1 for Relay 1 active.<br>D1&D2 for both active.<br>D1|D2 for either active.<br>A1<1234 analog input less than.<br>A1>1234 greater than.<br>(D1&D2)|A3>1234.<br><br>&nbsp&nbsp&nbsp&nbsp50 characters max.<br>&nbsp&nbsp&nbsp&nbspSee manual for full documentation";
+}
+
+function P2PIPText(x) {
+    document.getElementById('help').innerHTML = "<br>Target IP address<br><br>This can be an IP address on your local network (LAN) or on the wider Internet.";
+}
+
+function P2PportText(x) {
+    document.getElementById('help').innerHTML = "<br>Port Number<br><br>This is the TCP/IP port number of the target module.";
+}
+
+function P2PrelayText(x) {
+    document.getElementById('help').innerHTML = "<br>Relay Number<br><br>This is the Relay number of the relay on the target module.";
+}
+
+function P2PactionText(x) {
+    document.getElementById('help').innerHTML = "<br>Remote Relay Action<br><br>0 No Action - event is disabled.<br>1 Follow me.<br>2 Set Relay.<br>3 Reset Relay.<br>4 Toggle Relay.<br>100+ Pulse Relay.<br><br>Pulse times are mS.<br>1000mS = 1 Second.<br><br>5-99 No Action.";
+}
+
+function P2PAESText(x) {
+    document.getElementById('help').innerHTML = "<br>Use AES encryption<br><br>The target module must be set to use either Binary or AES Binary TCP/IP commands.<br><br>Set this checkbox the same.";
+}
+
+function RelayText(x) {
+    document.getElementById('help').innerHTML = "<br>Relay Names<br><br>These are the labels on the relay buttons on the aplication page to give each relay a unique and descriptive name. <br><br>Maximum 20 characters.";
+}
+
+function IOText(x) {
+    document.getElementById('help').innerHTML = "<br>I/O Names<br><br>These are the I/O labels on the aplication page to give each I/O a unique and descriptive name. <br><br>Maximum 20 characters.";
+}
+
+function IOType(x) {
+    document.getElementById('help').innerHTML = "<br>I/O Types<br><br>Configure Digital I/O with or without pull-up resistors, or analogue inputs with 4.096v or 5v reference.";
+}
+
+function StatusText(x) {
+    document.getElementById('help').innerHTML = "<br>Status<br><br>Shows the current status of the module.";
+}
+
+function NetworkText(x) {
+    document.getElementById('help').innerHTML = "<br>Network<br><br>Configure network IP address and associated parameters.";
+}
+
+function TCPIPText(x) {
+    document.getElementById('help').innerHTML = "<br>TCP/IP<br><br>Configure the TCP/IP port and command set.";
+}
+
+function AppText(x) {
+    document.getElementById('help').innerHTML = "<br>Application<br><br>Jumps to the application webpage.";
+}
+
+function printDHCPhelp()
+{
+    document.getElementById('help').innerHTML = "<br>Static IP is disabled because DHCP is enabled.<br><br>Uncheck DHCP to allow static IP addresses.";
+}
+
+function SequenceText(x) {
+    document.getElementById('help').innerHTML = "<br>Sequencer<br><br>A 120 step, 12 output sequencer<br><br>Delay in mS, Seconds, Minutes, Hours or Random Seconds.<br><br>Wait for specified time.<br><br>Jump, Call & Return.<br><br>Branch on Relay, Digital Input or Schedule active.";
+}
+
+
+</script>
+
+<script>
+function ajaxUpdate()
+{
+    LedStatus = getValue('FlashWritePending');
+    if(LedStatus>0) document.getElementById('Pend').src = 'RedOn.png';
+    else document.getElementById('Pend').src = 'DarkOff.png';
+}
+</script>
+
+</body>
+</html>
+

@@ -1,0 +1,418 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8"/>
+    <title>Configuration</title>
+    <link rel="stylesheet" type="text/css" href="dscript.css">
+ </head>
+
+<body onload="startAJAX()">
+    <div id="container">
+            <p id="ModuleName"> ~Module~ <span style="font-size: 40%">  System Configuration </span> </p>
+            <p id="devantech"> Devantech Ltd </p>
+          <br>
+        <div id="hr"> <hr style="width: 100%; height: 1px; background-color: #FFFFFF; border: none">  </div>
+
+          <div id="menubar">
+            <ul>
+                <div onmouseover="StatusText(this)" onmouseout="CounterText(this)"> <li><a href="_config.htm">Status</a></li> </div>
+                <div onmouseover="NetworkText(this)" onmouseout="CounterText(this)"><li><a href="_config2.htm">Network</a></li> </div>
+                <div onmouseover="TCPIPText(this)" onmouseout="CounterText(this)"> <li><a href="_config3.htm">TCP/IP</a></li> </div>
+                <div onmouseover="RelayText(this)" onmouseout="CounterText(this)"> <li><a href="_config5.htm">Relays</a></li> </div>
+                <div onmouseover="IOText(this)" onmouseout="CounterText(this)"> <li><a href="_config7.htm">Input/Output</a></li> </div>
+                <div onmouseover="dSxText(this)" onmouseout="CounterText(this)"> <li><a href="_config6.htm">dSx Config</a></li> </div>
+                <div onmouseover="SequenceText(this)" onmouseout="CounterText(this)"> <li><a href="_config14.htm">Sequencer</a></li> </div>
+                <div onmouseover="ScheduleText(this)" onmouseout="CounterText(this)"> <li><a href="_config11.htm">Scheduler</a></li> </div>
+                <div onmouseover="CounterText(this)"> <li><a style="background-color: #8090a0;" href="_config12.htm">Counter/Timer</a></li> </div>
+                <div onmouseover="NotifyText(this)" onmouseout="CounterText(this)"> <li><a href="_config4.htm">Event Notification</a></li> </div>
+                <div onmouseover="P2PText(this)"onmouseout="CounterText"> <li><a href="_config10.htm">Peer to Peer</a></li> </div>
+                <div onmouseover="EasyMailText(this)" onmouseout="CounterText"> <li><a href="_config9.htm">Email</a></li> </div>
+                <div onmouseover="PingText(this)" onmouseout="CounterText(this)"> <li><a href="_config8.htm">Ping</a></li> </div>
+                <div onmouseover="AppText(this)" onmouseout="CounterText(this)"> <li><a href="index.htm">Application Page</a></li> </div>
+            </ul>
+        </div>
+
+       <div id="centerblock">
+            <div onmouseover="CounterNoText(this)" onmouseout="CounterText(this)">
+                <div class="item-line"> Counter No. </div>
+                <select id="CtrNum" onChange="SelectCtr();">
+                    <option value="1">1</option>
+                </select>
+            </div>  <br>
+            <div id="ct1" style="display:block">
+                <div onmouseover="CounterNameText(this)" onmouseout="CounterText(this)">
+                    <div class="item-line"> Counter Name</div>
+                    <input style="margin:5px; width:250px;" type="text" value = "~System_CtrName1~" onkeyup="newAJAXCommand('dscript.cgi?System_CtrName1='+document.getElementById('CN1').value);" id="CN1">
+                </div>
+                <div  onmouseover="CounterCountText(this)" onmouseout="CounterText(this)">
+                    <div class="item-line"> Count Input</div>
+                    <input style="margin:5px; width:250px;" type="text" value = "~System_CtrCount1~" onkeyup="newAJAXCommand('dscript.cgi?System_CtrCount1='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="CounterCapText(this)" onmouseout="CounterText(this)">
+                    <div class="item-line"> Capture Input</div>
+                    <input style="margin:5px; width:250px;" type="text" value = "~System_CtrCap1~" onkeyup="newAJAXCommand('dscript.cgi?System_CtrCap1='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="CounterResetText(this)" onmouseout="CounterText(this)">
+                    <div class="item-line"> Reset Input</div>
+                    <input style="margin:5px; width:250px;" type="text" value = "~System_CtrReset1~" onkeyup="newAJAXCommand('dscript.cgi?System_CtrReset1='+encodeURIComponent(this.value));">
+                </div>
+                <div  style="margin-top:5px" onmouseover="CounterValueText(this)" onmouseout="CounterText(this)">
+                    <div class="item-line"> Current Value</div>
+                    <input style="margin:5px; width:250px;" readonly type="text" value = "~System_CtrVal1~" onkeyup="newAJAXCommand('dscript.cgi?System_CtrVal1='+document.getElementById('CV1').value);" id="CV1">
+                </div>
+                <div  onmouseover="CounterCaptureText(this)" onmouseout="CounterText(this)">
+                    <div class="item-line"> Captured Value</div>
+                    <input style="margin:5px; width:250px;" readonly type="text" value = "~System_CtrCapt1~" onkeyup="newAJAXCommand('dscript.cgi?System_CtrCapt1='+document.getElementById('CC1').value);" id="CC1">
+                </div>
+                <p id="Loading"> Loading Counter Data >------</p>
+            </div>
+
+            <div id="ct2" style="display:none">
+                <div onmouseover="CounterNameText(this)" onmouseout="CounterText(this)">
+                    <div class="item-line"> Counter Name</div>
+                    <input style="margin:5px; width:250px;" type="text" value = "~System_CtrName2~" onkeyup="newAJAXCommand('dscript.cgi?System_CtrName2='+document.getElementById('CN2').value);" id="CN2">
+                </div>
+                <div  onmouseover="CounterCountText(this)" onmouseout="CounterText(this)">
+                    <div class="item-line"> Count Input</div>
+                    <input style="margin:5px; width:250px;" type="text" value = "~System_CtrCount2~" onkeyup="newAJAXCommand('dscript.cgi?System_CtrCount2='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="CounterCapText(this)" onmouseout="CounterText(this)">
+                    <div class="item-line"> Capture Input</div>
+                    <input style="margin:5px; width:250px;" type="text" value = "~System_CtrCap2~" onkeyup="newAJAXCommand('dscript.cgi?System_CtrCap2='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="CounterResetText(this)" onmouseout="CounterText(this)">
+                    <div class="item-line"> Reset Input</div>
+                    <input style="margin:5px; width:250px;" type="text" value = "~System_CtrReset2~" onkeyup="newAJAXCommand('dscript.cgi?System_CtrReset2='+encodeURIComponent(this.value));">
+                </div>
+                <div  style="margin-top:5px" onmouseover="CounterValueText(this)" onmouseout="CounterText(this)">
+                    <div class="item-line"> Current Value</div>
+                    <input style="margin:5px; width:250px;" readonly type="text" value = "~System_CtrVal2~" onkeyup="newAJAXCommand('dscript.cgi?System_CtrVal2='+document.getElementById('CV2').value);" id="CV2">
+                </div>
+                <div  onmouseover="CounterCaptureText(this)" onmouseout="CounterText(this)">
+                    <div class="item-line"> Captured Value</div>
+                    <input style="margin:5px; width:250px;" readonly type="text" value = "~System_CtrCapt2~" onkeyup="newAJAXCommand('dscript.cgi?System_CtrCap2='+document.getElementById('CC2').value);" id="CC2">
+                </div>
+                <script> document.getElementById('Loading').innerHTML = "Loading Counter Data ->-----"; </script>
+            </div>
+            <div id="ct3" style="display:none">
+                <div onmouseover="CounterNameText(this)" onmouseout="CounterText(this)">
+                    <div class="item-line"> Counter Name</div>
+                    <input style="margin:5px; width:250px;" type="text" value = "~System_CtrName3~" onkeyup="newAJAXCommand('dscript.cgi?System_CtrName3='+document.getElementById('CN3').value);" id="CN3">
+                </div>
+                <div  onmouseover="CounterCountText(this)" onmouseout="CounterText(this)">
+                    <div class="item-line"> Count Input</div>
+                    <input style="margin:5px; width:250px;" type="text" value = "~System_CtrCount3~" onkeyup="newAJAXCommand('dscript.cgi?System_CtrCount3='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="CounterCapText(this)" onmouseout="CounterText(this)">
+                    <div class="item-line"> Capture Input</div>
+                    <input style="margin:5px; width:250px;" type="text" value = "~System_CtrCap3~" onkeyup="newAJAXCommand('dscript.cgi?System_CtrCap3='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="CounterResetText(this)" onmouseout="CounterText(this)">
+                    <div class="item-line"> Reset Input</div>
+                    <input style="margin:5px; width:250px;" type="text" value = "~System_CtrReset3~" onkeyup="newAJAXCommand('dscript.cgi?System_CtrReset3='+encodeURIComponent(this.value));">
+                </div>
+                <div  style="margin-top:5px" onmouseover="CounterValueText(this)" onmouseout="CounterText(this)">
+                    <div class="item-line"> Current Value</div>
+                    <input style="margin:5px; width:250px;" readonly type="text" value = "~System_CtrVal3~" onkeyup="newAJAXCommand('dscript.cgi?System_CtrVal3='+document.getElementById('CV3').value);" id="CV3">
+                </div>
+                <div  onmouseover="CounterCaptureText(this)" onmouseout="CounterText(this)">
+                    <div class="item-line"> Captured Value</div>
+                    <input style="margin:5px; width:250px;" readonly type="text" value = "~System_CtrCap3~" onkeyup="newAJAXCommand('dscript.cgi?System_CtrVal3='+document.getElementById('CC3').value);" id="CC3">
+                </div>
+                <script> document.getElementById('Loading').innerHTML = "Loading Counter Data -->----"; </script>
+            </div>
+            <div id="ct4" style="display:none">
+                <div onmouseover="CounterNameText(this)" onmouseout="CounterText(this)">
+                    <div class="item-line"> Counter Name</div>
+                    <input style="margin:5px; width:250px;" type="text" value = "~System_CtrName4~" onkeyup="newAJAXCommand('dscript.cgi?System_CtrName4='+document.getElementById('CN4').value);" id="CN4">
+                </div>
+                <div  onmouseover="CounterCountText(this)" onmouseout="CounterText(this)">
+                    <div class="item-line"> Count Input</div>
+                    <input style="margin:5px; width:250px;" type="text" value = "~System_CtrCount4~" onkeyup="newAJAXCommand('dscript.cgi?System_CtrCount4='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="CounterCapText(this)" onmouseout="CounterText(this)">
+                    <div class="item-line"> Capture Input</div>
+                    <input style="margin:5px; width:250px;" type="text" value = "~System_CtrCap4~" onkeyup="newAJAXCommand('dscript.cgi?System_CtrCap4='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="CounterResetText(this)" onmouseout="CounterText(this)">
+                    <div class="item-line"> Reset Input</div>
+                    <input style="margin:5px; width:250px;" type="text" value = "~System_CtrReset4~" onkeyup="newAJAXCommand('dscript.cgi?System_CtrReset4='+encodeURIComponent(this.value));">
+                </div>
+                <div  style="margin-top:5px" onmouseover="CounterValueText(this)" onmouseout="CounterText(this)">
+                    <div class="item-line"> Current Value</div>
+                    <input style="margin:5px; width:250px;" readonly type="text" value = "~System_CtrVal4~" onkeyup="newAJAXCommand('dscript.cgi?System_CtrVal4='+document.getElementById('CV4').value);" id="CV4">
+                </div>
+                <div  onmouseover="CounterCaptureText(this)" onmouseout="CounterText(this)">
+                    <div class="item-line"> Captured Value</div>
+                    <input style="margin:5px; width:250px;" readonly type="text" value = "~System_CtrCapt4~" onkeyup="newAJAXCommand('dscript.cgi?System_CtrVal4='+document.getElementById('CC4').value);" id="CC4">
+                </div>
+                <script> document.getElementById('Loading').innerHTML = "Loading Counter Data --->---"; </script>
+            </div>
+            <div id="ct5" style="display:none">
+                <div onmouseover="CounterNameText(this)" onmouseout="CounterText(this)">
+                    <div class="item-line"> Counter Name</div>
+                    <input style="margin:5px; width:250px;" type="text" value = "~System_CtrName5~" onkeyup="newAJAXCommand('dscript.cgi?System_CtrName5='+document.getElementById('CN5').value);" id="CN5">
+                </div>
+                <div  onmouseover="CounterCountText(this)" onmouseout="CounterText(this)">
+                    <div class="item-line"> Count Input</div>
+                    <input style="margin:5px; width:250px;" type="text" value = "~System_CtrCount5~" onkeyup="newAJAXCommand('dscript.cgi?System_CtrCount5='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="CounterCapText(this)" onmouseout="CounterText(this)">
+                    <div class="item-line"> Capture Input</div>
+                    <input style="margin:5px; width:250px;" type="text" value = "~System_CtrCap5~" onkeyup="newAJAXCommand('dscript.cgi?System_CtrCap5='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="CounterResetText(this)" onmouseout="CounterText(this)">
+                    <div class="item-line"> Reset Input</div>
+                    <input style="margin:5px; width:250px;" type="text" value = "~System_CtrReset5~" onkeyup="newAJAXCommand('dscript.cgi?System_CtrReset5='+encodeURIComponent(this.value));">
+                </div>
+                <div  style="margin-top:5px" onmouseover="CounterValueText(this)" onmouseout="CounterText(this)">
+                    <div class="item-line"> Current Value</div>
+                    <input style="margin:5px; width:250px;" readonly type="text" value = "~System_CtrVal5~" onkeyup="newAJAXCommand('dscript.cgi?System_CtrVal5='+document.getElementById('CV5').value);" id="CV5">
+                </div>
+                <div  onmouseover="CounterCaptureText(this)" onmouseout="CounterText(this)">
+                    <div class="item-line"> Captured Value</div>
+                    <input style="margin:5px; width:250px;" readonly type="text" value = "~System_CtrCapt5~" onkeyup="newAJAXCommand('dscript.cgi?System_CtrVal5='+document.getElementById('CC5').value);" id="CC5">
+                </div>
+                <script> document.getElementById('Loading').innerHTML = "Loading Counter Data ---->--"; </script>
+            </div>
+            <div id="ct6" style="display:none">
+                <div onmouseover="CounterNameText(this)" onmouseout="CounterText(this)">
+                    <div class="item-line"> Counter Name</div>
+                    <input style="margin:5px; width:250px;" type="text" value = "~System_CtrName6~" onkeyup="newAJAXCommand('dscript.cgi?System_CtrName6='+document.getElementById('CN6').value);" id="CN6">
+                </div>
+                <div  onmouseover="CounterCountText(this)" onmouseout="CounterText(this)">
+                    <div class="item-line"> Count Input</div>
+                    <input style="margin:5px; width:250px;" type="text" value = "~System_CtrCount6~" onkeyup="newAJAXCommand('dscript.cgi?System_CtrCount6='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="CounterCapText(this)" onmouseout="CounterText(this)">
+                    <div class="item-line"> Capture Input</div>
+                    <input style="margin:5px; width:250px;" type="text" value = "~System_CtrCap6~" onkeyup="newAJAXCommand('dscript.cgi?System_CtrCap6='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="CounterResetText(this)" onmouseout="CounterText(this)">
+                    <div class="item-line"> Reset Input</div>
+                    <input style="margin:5px; width:250px;" type="text" value = "~System_CtrReset6~" onkeyup="newAJAXCommand('dscript.cgi?System_CtrReset6='+encodeURIComponent(this.value));">
+                </div>
+                <div  style="margin-top:5px" onmouseover="CounterValueText(this)" onmouseout="CounterText(this)">
+                    <div class="item-line"> Current Value</div>
+                    <input style="margin:5px; width:250px;" readonly type="text" value = "~System_CtrVal6~" onkeyup="newAJAXCommand('dscript.cgi?System_CtrVal6='+document.getElementById('CV6').value);" id="CV6">
+                </div>
+                <div  onmouseover="CounterCaptureText(this)" onmouseout="CounterText(this)">
+                    <div class="item-line"> Captured Value</div>
+                    <input style="margin:5px; width:250px;" readonly type="text" value = "~System_CtrCapt6~" onkeyup="newAJAXCommand('dscript.cgi?System_CtrVal6='+document.getElementById('CC6').value);" id="CC6">
+                </div>
+                <script> document.getElementById('Loading').innerHTML = "Loading Counter Data ----->-"; </script>
+            </div>
+            <div id="ct7" style="display:none">
+                <div onmouseover="CounterNameText(this)" onmouseout="CounterText(this)">
+                    <div class="item-line"> Counter Name</div>
+                    <input style="margin:5px; width:250px;" type="text" value = "~System_CtrName7~" onkeyup="newAJAXCommand('dscript.cgi?System_CtrName7='+document.getElementById('CN7').value);" id="CN7">
+                </div>
+                <div  onmouseover="CounterCountText(this)" onmouseout="CounterText(this)">
+                    <div class="item-line"> Count Input</div>
+                    <input style="margin:5px; width:250px;" type="text" value = "~System_CtrCount7~" onkeyup="newAJAXCommand('dscript.cgi?System_CtrCount7='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="CounterCapText(this)" onmouseout="CounterText(this)">
+                    <div class="item-line"> Capture Input</div>
+                    <input style="margin:5px; width:250px;" type="text" value = "~System_CtrCap7~" onkeyup="newAJAXCommand('dscript.cgi?System_CtrCap7='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="CounterResetText(this)" onmouseout="CounterText(this)">
+                    <div class="item-line"> Reset Input</div>
+                    <input style="margin:5px; width:250px;" type="text" value = "~System_CtrReset7~" onkeyup="newAJAXCommand('dscript.cgi?System_CtrReset7='+encodeURIComponent(this.value));">
+                </div>
+                <div  style="margin-top:5px" onmouseover="CounterValueText(this)" onmouseout="CounterText(this)">
+                    <div class="item-line"> Current Value</div>
+                    <input style="margin:5px; width:250px;" readonly type="text" value = "~System_CtrVal7~" onkeyup="newAJAXCommand('dscript.cgi?System_CtrVal7='+document.getElementById('CV7').value);" id="CV7">
+                </div>
+                <div  onmouseover="CounterCaptureText(this)" onmouseout="CounterText(this)">
+                    <div class="item-line"> Captured Value</div>
+                    <input style="margin:5px; width:250px;" readonly type="text" value = "~System_CtrCapt7~" onkeyup="newAJAXCommand('dscript.cgi?System_CtrVal7='+document.getElementById('CC7').value);" id="CC7">
+                </div>
+                <script> document.getElementById('Loading').innerHTML = "Loading Counter Data ------>"; </script>
+            </div>
+            <div id="ct8" style="display:none">
+                <div onmouseover="CounterNameText(this)" onmouseout="CounterText(this)">
+                    <div class="item-line"> Counter Name</div>
+                    <input style="margin:5px; width:250px;" type="text" value = "~System_CtrName8~" onkeyup="newAJAXCommand('dscript.cgi?System_CtrName8='+document.getElementById('CN8').value);" id="CN8">
+                </div>
+                <div  onmouseover="CounterCountText(this)" onmouseout="CounterText(this)">
+                    <div class="item-line"> Count Input</div>
+                    <input style="margin:5px; width:250px;" type="text" value = "~System_CtrCount8~" onkeyup="newAJAXCommand('dscript.cgi?System_CtrCount8='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="CounterCapText(this)" onmouseout="CounterText(this)">
+                    <div class="item-line"> Capture Input</div>
+                    <input style="margin:5px; width:250px;" type="text" value = "~System_CtrCap8~" onkeyup="newAJAXCommand('dscript.cgi?System_CtrCap8='+encodeURIComponent(this.value));">
+                </div>
+                <div onmouseover="CounterResetText(this)" onmouseout="CounterText(this)">
+                    <div class="item-line"> Reset Input</div>
+                    <input style="margin:5px; width:250px;" type="text" value = "~System_CtrReset8~" onkeyup="newAJAXCommand('dscript.cgi?System_CtrReset8='+encodeURIComponent(this.value));">
+                </div>
+                <div  style="margin-top:5px" onmouseover="CounterValueText(this)" onmouseout="CounterText(this)">
+                    <div class="item-line"> Current Value</div>
+                    <input style="margin:5px; width:250px;" readonly type="text" value = "~System_CtrVal8~" onkeyup="newAJAXCommand('dscript.cgi?System_CtrVal8='+document.getElementById('CV8').value);" id="CV8">
+                </div>
+                <div  onmouseover="CounterCaptureText(this)" onmouseout="CounterText(this)">
+                    <div class="item-line"> Captured Value</div>
+                    <input style="margin:5px; width:250px;" readonly type="text" value = "~System_CtrCapt8~" onkeyup="newAJAXCommand('dscript.cgi?System_CtrVal8='+document.getElementById('CC8').value);" id="CC8">
+                </div>
+            </div>
+        </div>
+
+        <div id="helpblock">
+            <div ID="help">
+            </div>
+            <div>
+                <div class='Indicator1'>  <img class='IO' id='Pend' src='DarkOff.png'/> Update Pending </div>
+            </div>
+        </div>
+
+    </div>
+
+ <script>
+
+CounterText(0);
+
+var sel = document.getElementById('CtrNum');
+for(var i = 2; i < 9; i++) {
+    var opt = document.createElement('option');
+    opt.innerHTML = i;
+    opt.value = i;
+    sel.appendChild(opt);
+}
+document.getElementById('Loading').innerHTML = "";
+
+function SelectCtr()
+{
+    selection = document.getElementById('CtrNum');
+    k = selection.options[selection.selectedIndex].value;
+    for(x=1; x<9; x++) {
+        if(k==x) {
+            document.getElementById('ct'+x).style.display = 'block';
+        }
+        else {
+            document.getElementById("ct"+x).style.display = "none";
+        }
+    }
+}
+
+function dSxText(x) {
+    document.getElementById('help').innerHTML = "<br>dSx Extension Modules.<br><br>Configure dSx I/O extension modules that are connected down stream on the RS485 port.";
+}
+
+function PingText(x) {
+    document.getElementById('help').innerHTML = "<br>Ping<br><br>Ping to up to two remote hosts.<br><br> Used to to test if a remote system is alive and well.<br><br>";
+}
+
+function CounterCapText(x) {
+    document.getElementById('help').innerHTML = "<br>Counter Capture<br><br>Captures the current value of the counter and stores it in 'Captured Value'.<br><br>If left blank, then the reset event will capture the counter.";
+}
+
+function CounterNoText(x) {
+    document.getElementById('help').innerHTML = "<br>Counter Number<br><br>Selects the Counter/Timer to configure.<br><br>Used in boolean equations to reference the counters value.<br> Example C1>1234, C2<10 etc.";
+}
+
+function CounterNameText(x) {
+    document.getElementById('help').innerHTML = "<br>Counter Name<br><br>Displayed on webpage to identify this counter.";
+}
+
+function CounterResetText(x) {
+    document.getElementById('help').innerHTML = "<br>Counter Reset<br><br>Enter the boolean equation to reset the counter. For example D8 to reset when input 8 becomes active.<br>C1>9 to reset when the counter C1 reaches 10.<br><br>Counter is reset on transition from inactive to active. It is not held in reset while the reset input is active.";
+}
+
+function CounterCountText(x) {
+    document.getElementById('help').innerHTML = "<br>Count Input<br><br>The counter increments when this input transitions from inactive to active. <br><br>Example <br>D1 to count pulses on Input 1<br>T1 to increment once per second.";
+}
+
+function CounterValueText(x) {
+    document.getElementById('help').innerHTML = "<br>Count value<br><br>Read only<br>This is the counter.";
+}
+
+function CounterCaptureText(x) {
+    document.getElementById('help').innerHTML = "<br>Count Capture<br><br>Read only<br>This is the value the counter had the instant before it was last reset.<br>It will remain valid until the next reset event or power is cycled.";
+}
+
+function CounterText(x) {
+    document.getElementById('help').innerHTML = "<br>Counter/Timers<br><br>Eight Counter/Timers.<br> Used as Counters when the count input is connected to an Input <br><br>Used as Timers when connected to the internal 1Hz clock, T1.<br><br>The 32-bit counter counts up from zero to a maximum of 2,147,483,647.";
+}
+
+function ScheduleText(x) {
+    document.getElementById('help').innerHTML = "<br>Scheduler<br><br>Schedule daily events with 8 schedules, 2 events per schedule and a week day mask.";
+}
+
+function P2PText(x) {
+    document.getElementById('help').innerHTML = "<br>Peer to Peer<br><br>Use inputs on this module to control relays on other dSxxxx modules which can be on your local LAN or across the internet.<br>";
+}
+
+function HostText(x) {
+    document.getElementById('help').innerHTML = "<br>Host Name<br><br>A unique name for the device on your network. Use plain text such as:<br>MYMODULE";
+}
+
+function EasyMailText(x) {
+    document.getElementById('help').innerHTML = "<br>Easy Mail<br><br>Send secure emails in response to selected events.";
+}
+
+function RelayText(x) {
+    document.getElementById('help').innerHTML = "<br>Relay Names<br><br>These are the labels on the relay buttons on the aplication page to give each relay a unique and descriptive name. <br><br>Maximum 20 characters.";
+}
+
+function IOText(x) {
+    document.getElementById('help').innerHTML = "<br>I/O Names<br><br>These are the I/O labels on the aplication page to give each I/O a unique and descriptive name. <br><br>Maximum 20 characters.";
+}
+
+function StatusText(x) {
+    document.getElementById('help').innerHTML = "<br>Status<br><br>Shows the current status of the module.";
+}
+
+function NetworkText(x) {
+    document.getElementById('help').innerHTML = "<br>Network<br><br>Configure network IP address and associated parameters.";
+}
+
+function TCPIPText(x) {
+    document.getElementById('help').innerHTML = "<br>TCP/IP<br><br>Configure the TCP/IP port and command set.";
+}
+
+function AppText(x) {
+    document.getElementById('help').innerHTML = "<br>Application<br><br>Jumps to the application webpage.";
+}
+
+function printDHCPhelp()
+{
+    document.getElementById('help').innerHTML = "<br>Static IP is disabled because DHCP is enabled.<br><br>Uncheck DHCP to allow static IP addresses.";
+}
+
+function SequenceText(x) {
+    document.getElementById('help').innerHTML = "<br>Sequencer<br><br>A 120 step, 12 output sequencer<br><br>Delay in mS, Seconds, Minutes, Hours or Random Seconds.<br><br>Wait for specified time.<br><br>Jump, Call & Return.<br><br>Branch on Relay, Digital Input or Schedule active.";
+}
+
+
+</script>
+
+<script>
+function ajaxUpdate()
+{
+    LedStatus = getValue('FlashWritePending');
+    if(LedStatus>0) document.getElementById('Pend').src = 'RedOn.png';
+    else document.getElementById('Pend').src = 'DarkOff.png';
+
+    document.getElementById('CV1').value = getValue('System_CtrVal1');
+    document.getElementById('CV2').value = getValue('System_CtrVal2');
+    document.getElementById('CV3').value = getValue('System_CtrVal3');
+    document.getElementById('CV4').value = getValue('System_CtrVal4');
+    document.getElementById('CV5').value = getValue('System_CtrVal5');
+    document.getElementById('CV6').value = getValue('System_CtrVal6');
+    document.getElementById('CV7').value = getValue('System_CtrVal7');
+    document.getElementById('CV8').value = getValue('System_CtrVal8');
+    document.getElementById('CC1').value = getValue('System_CtrCapt1');
+    document.getElementById('CC2').value = getValue('System_CtrCapt2');
+    document.getElementById('CC3').value = getValue('System_CtrCapt3');
+    document.getElementById('CC4').value = getValue('System_CtrCapt4');
+    document.getElementById('CC5').value = getValue('System_CtrCapt5');
+    document.getElementById('CC6').value = getValue('System_CtrCapt6');
+    document.getElementById('CC7').value = getValue('System_CtrCapt7');
+    document.getElementById('CC8').value = getValue('System_CtrCapt8');
+}
+</script>
+
+</body>
+</html>
+

@@ -1,0 +1,318 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8"/>
+    <title>Configuration</title>
+    <link rel="stylesheet" type="text/css" href="dscript.css">
+ </head>
+
+<body onload="startAJAX()">
+    <div id="container">
+            <p id="ModuleName"> ~Module~ <span style="font-size: 40%">  System Configuration </span> </p>
+            <p id="devantech"> Devantech Ltd </p>
+          <br>
+        <div id="hr"> <hr style="width: 100%; height: 1px; background-color: #FFFFFF; border: none">  </div>
+
+          <div id="menubar">
+            <ul>
+                <div onmouseover="StatusText(this)" onmouseout="EasyMailText(this)"> <li><a href="_config.htm">Status</a></li> </div>
+                <div onmouseover="NetworkText(this)" onmouseout="EasyMailText(this)"><li><a href="_config2.htm">Network</a></li> </div>
+                <div onmouseover="TCPIPText(this)" onmouseout="EasyMailText(this)"> <li><a href="_config3.htm">TCP/IP</a></li> </div>
+                <div onmouseover="RelayText(this)" onmouseout="EasyMailText(this)"> <li><a href="_config5.htm">Relays</a></li> </div>
+                <div onmouseover="IOText(this)" onmouseout="EasyMailText(this)"> <li><a href="_config7.htm">Input/Output</a></li> </div>
+                <div onmouseover="dSxText(this)" onmouseout="EasyMailText(this)"> <li><a href="_config6.htm">dSx Config</a></li> </div>
+                <div onmouseover="SequenceText(this)" onmouseout="EasyMailText(this)"> <li><a href="_config14.htm">Sequencer</a></li> </div>
+                <div onmouseover="ScheduleText(this)" onmouseout="EasyMailText(this)"> <li><a href="_config11.htm">Scheduler</a></li> </div>
+                <div onmouseover="CounterText(this)" onmouseout="EasyMailText(this)"> <li><a href="_config12.htm">Counter/Timer</a></li> </div>
+                <div onmouseover="NotifyText(this)" onmouseout="EasyMailText(this)"> <li><a href="_config4.htm">Event Notification</a></li> </div>
+                <div onmouseover="P2PText(this)" onmouseout="EasyMailText(this)"> <li><a href="_config10.htm">Peer to Peer</a></li> </div>
+                <div onmouseover="EasyMailText(this)"> <li><a style="background-color: #8090a0;" href="_config9.htm">Email</a></li> </div>
+                <div onmouseover="PingText(this)" onmouseout="EasyMailText(this)"> <li><a href="_config8.htm">Ping</a></li> </div>
+                <div onmouseover="AppText(this)" onmouseout="EasyMailText(this)"> <li><a href="index.htm">Application Page</a></li> </div>
+            </ul>
+        </div>
+
+       <div id="centerblock">
+            <div onmouseover="EmailFromAddrText(this)" onmouseout="EasyMailText(this)">
+                    <div class="item-line"> From Address </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_EmailFromAddr~" onkeyup="newAJAXCommand('dscript.cgi?System_EmailFromAddr='+document.getElementById('fromAddr').value);" id="fromAddr">
+            </div><br>
+
+            <div onmouseover="EmailNoText(this)" onmouseout="EasyMailText(this)">
+                <div class="item-line"> Email No. </div>
+                    <select id="EmailNum" onChange="SelectEmail();">
+                        <option value="1">1</option>
+                    </select>
+            </div>  <br>
+
+            <div id="em1" style="display:block">
+                <div onmouseover="EmailAddrText(this)" onmouseout="EasyMailText(this)">
+                    <div class="item-line"> Email Address </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_EmailAddr1~" onkeyup="newAJAXCommand('dscript.cgi?System_EmailAddr1='+document.getElementById('addr1').value);" id="addr1">
+                </div>
+                <div onmouseover="EmailSubjectText(this)" onmouseout="EasyMailText(this)">
+                    <div class="item-line"> Subject </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_EmailSubject1~" onkeyup="newAJAXCommand('dscript.cgi?System_EmailSubject1='+document.getElementById('sub1').value);" id="sub1">
+                </div>
+                <div onmouseover="EmailTriggerText(this)" onmouseout="EasyMailText(this)">
+                    <div class="item-line"> Trigger </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_EmailTrigger1~" onkeyup="newAJAXCommand('dscript.cgi?System_EmailTrigger1='+encodeURIComponent(document.getElementById('trig1').value));" id="trig1">
+                </div>
+                <p id="Loading"> Loading Email Data >------</p>
+            </div>
+            <div id="em2" style="display:none">
+                <div onmouseover="EmailAddrText(this)" onmouseout="EasyMailText(this)">
+                    <div class="item-line"> Email Address </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_EmailAddr2~" onkeyup="newAJAXCommand('dscript.cgi?System_EmailAddr2='+document.getElementById('addr2').value);" id="addr2">
+                </div>
+                <div onmouseover="EmailSubjectText(this)" onmouseout="EasyMailText(this)">
+                    <div class="item-line"> Subject </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_EmailSubject2~" onkeyup="newAJAXCommand('dscript.cgi?System_EmailSubject2='+document.getElementById('sub2').value);" id="sub2">
+                </div>
+                <div onmouseover="EmailTriggerText(this)" onmouseout="EasyMailText(this)">
+                    <div class="item-line"> Trigger </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_EmailTrigger2~" onkeyup="newAJAXCommand('dscript.cgi?System_EmailTrigger2='+encodeURIComponent(document.getElementById('trig2').value));" id="trig2">
+                </div>
+                <script> document.getElementById('Loading').innerHTML = "Loading Email Data ->-----"; </script>
+            </div>
+            <div id="em3" style="display:none">
+                <div onmouseover="EmailAddrText(this)" onmouseout="EasyMailText(this)">
+                    <div class="item-line"> Email Address </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_EmailAddr3~" onkeyup="newAJAXCommand('dscript.cgi?System_EmailAddr3='+document.getElementById('addr3').value);" id="addr3">
+                </div>
+                <div onmouseover="EmailSubjectText(this)" onmouseout="EasyMailText(this)">
+                    <div class="item-line"> Subject </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_EmailSubject3~" onkeyup="newAJAXCommand('dscript.cgi?System_EmailSubject3='+document.getElementById('sub3').value);" id="sub3">
+                </div>
+                <div onmouseover="EmailTriggerText(this)" onmouseout="EasyMailText(this)">
+                    <div class="item-line"> Trigger </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_EmailTrigger3~" onkeyup="newAJAXCommand('dscript.cgi?System_EmailTrigger3='+encodeURIComponent(document.getElementById('trig3').value));" id="trig3">
+                </div>
+                <script> document.getElementById('Loading').innerHTML = "Loading Email Data -->----"; </script>
+            </div>
+            <div id="em4" style="display:none">
+                <div onmouseover="EmailAddrText(this)" onmouseout="EasyMailText(this)">
+                    <div class="item-line"> Email Address </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_EmailAddr4~" onkeyup="newAJAXCommand('dscript.cgi?System_EmailAddr4='+document.getElementById('addr4').value);" id="addr4">
+                </div>
+                <div onmouseover="EmailSubjectText(this)" onmouseout="EasyMailText(this)">
+                    <div class="item-line"> Subject </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_EmailSubject4~" onkeyup="newAJAXCommand('dscript.cgi?System_EmailSubject4='+document.getElementById('sub4').value);" id="sub4">
+                </div>
+                <div onmouseover="EmailTriggerText(this)" onmouseout="EasyMailText(this)">
+                    <div class="item-line"> Trigger </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_EmailTrigger4~" onkeyup="newAJAXCommand('dscript.cgi?System_EmailTrigger4='+encodeURIComponent(document.getElementById('trig4').value));" id="trig4">
+                </div>
+                <script> document.getElementById('Loading').innerHTML = "Loading Email Data --->---"; </script>
+            </div>
+            <div id="em5" style="display:none">
+                <div onmouseover="EmailAddrText(this)" onmouseout="EasyMailText(this)">
+                    <div class="item-line"> Email Address </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_EmailAddr5~" onkeyup="newAJAXCommand('dscript.cgi?System_EmailAddr5='+document.getElementById('addr5').value);" id="addr5">
+                </div>
+                <div onmouseover="EmailSubjectText(this)" onmouseout="EasyMailText(this)">
+                    <div class="item-line"> Subject </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_EmailSubject5~" onkeyup="newAJAXCommand('dscript.cgi?System_EmailSubject5='+document.getElementById('sub5').value);" id="sub5">
+                </div>
+                <div onmouseover="EmailTriggerText(this)" onmouseout="EasyMailText(this)">
+                    <div class="item-line"> Trigger </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_EmailTrigger5~" onkeyup="newAJAXCommand('dscript.cgi?System_EmailTrigger5='+encodeURIComponent(document.getElementById('trig5').value));" id="trig5">
+                </div>
+                <script> document.getElementById('Loading').innerHTML = "Loading Email Data ---->--"; </script>
+            </div>
+            <div id="em6" style="display:none">
+                <div onmouseover="EmailAddrText(this)" onmouseout="EasyMailText(this)">
+                    <div class="item-line"> Email Address </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_EmailAddr6~" onkeyup="newAJAXCommand('dscript.cgi?System_EmailAddr6='+document.getElementById('addr6').value);" id="addr6">
+                </div>
+                <div onmouseover="EmailSubjectText(this)" onmouseout="EasyMailText(this)">
+                    <div class="item-line"> Subject </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_EmailSubject6~" onkeyup="newAJAXCommand('dscript.cgi?System_EmailSubject6='+document.getElementById('sub6').value);" id="sub6">
+                </div>
+                <div onmouseover="EmailTriggerText(this)" onmouseout="EasyMailText(this)">
+                    <div class="item-line"> Trigger </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_EmailTrigger6~" onkeyup="newAJAXCommand('dscript.cgi?System_EmailTrigger6='+encodeURIComponent(document.getElementById('trig6').value));" id="trig6">
+                </div>
+               <script> document.getElementById('Loading').innerHTML = "Loading Email Data ----->-"; </script>
+            </div>
+            <div id="em7" style="display:none">
+                <div onmouseover="EmailAddrText(this)" onmouseout="EasyMailText(this)">
+                    <div class="item-line"> Email Address </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_EmailAddr7~" onkeyup="newAJAXCommand('dscript.cgi?System_EmailAddr7='+document.getElementById('addr7').value);" id="addr7">
+                </div>
+                <div onmouseover="EmailSubjectText(this)" onmouseout="EasyMailText(this)">
+                    <div class="item-line"> Subject </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_EmailSubject7~" onkeyup="newAJAXCommand('dscript.cgi?System_EmailSubject7='+document.getElementById('sub7').value);" id="sub7">
+                </div>
+                <div onmouseover="EmailTriggerText(this)" onmouseout="EasyMailText(this)">
+                    <div class="item-line"> Trigger </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_EmailTrigger7~" onkeyup="newAJAXCommand('dscript.cgi?System_EmailTrigger7='+encodeURIComponent(document.getElementById('trig7').value));" id="trig7">
+                <p id="Loading"> Loading Email Data ------></p>
+                </div>
+               <script> document.getElementById('Loading').innerHTML = "Loading Email Data ------>"; </script>
+            </div>
+            <div id="em8" style="display:none">
+                <div onmouseover="EmailAddrText(this)" onmouseout="EasyMailText(this)">
+                    <div class="item-line"> Email Address </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_EmailAddr8~" onkeyup="newAJAXCommand('dscript.cgi?System_EmailAddr8='+document.getElementById('addr8').value);" id="addr8">
+                </div>
+                <div onmouseover="EmailSubjectText(this)" onmouseout="EasyMailText(this)">
+                    <div class="item-line"> Subject </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_EmailSubject8~" onkeyup="newAJAXCommand('dscript.cgi?System_EmailSubject8='+document.getElementById('sub8').value);" id="sub8">
+                </div>
+                <div onmouseover="EmailTriggerText(this)" onmouseout="EasyMailText(this)">
+                    <div class="item-line"> Trigger </div>
+                    <input style="width:250px; margin:5px;" type="text" value = "~System_EmailTrigger8~" onkeyup="newAJAXCommand('dscript.cgi?System_EmailTrigger8='+encodeURIComponent(document.getElementById('trig8').value));" id="trig8">
+                </div>
+            </div>
+<!--            <br><br><div style="margin-left:60px">
+                <input type="radio" value="" name="group2" onclick="SelectEmail(1);" checked="checked" >
+                <input type="radio" value="" name="group2" onclick="SelectEmail(2);">
+                <input type="radio" value="" name="group2" onclick="SelectEmail(3);">
+                <input type="radio" value="" name="group2" onclick="SelectEmail(4);">
+                <input type="radio" value="" name="group2" onclick="SelectEmail(5);">
+                <input type="radio" value="" name="group2" onclick="SelectEmail(6);">
+                <input type="radio" value="" name="group2" onclick="SelectEmail(7);">
+                <input type="radio" value="" name="group2" onclick="SelectEmail(8);">
+            </div>
+-->
+        </div>
+
+        <div id="helpblock">
+            <div ID="help">
+            </div>
+            <div>
+                <div class='Indicator1'>  <img class='IO' id='Pend' src='DarkOff.png'/> Update Pending </div>
+            </div>
+        </div>
+
+    </div>
+
+ <script>
+
+var sel = document.getElementById('EmailNum');
+for(var i = 2; i < 9; i++) {
+    var opt = document.createElement('option');
+    opt.innerHTML = i;
+    opt.value = i;
+    sel.appendChild(opt);
+}
+document.getElementById('Loading').innerHTML = "";
+
+EasyMailText(0);
+
+function SelectEmail()
+{
+    selection = document.getElementById('EmailNum');
+    k = selection.options[selection.selectedIndex].value;
+    for(x=1; x<9; x++) {
+        if(k==x) {
+            document.getElementById('em'+x).style.display = 'block';
+        }
+        else {
+            document.getElementById("em"+x).style.display = "none";
+        }
+    }
+}
+
+function dSxText(x) {
+    document.getElementById('help').innerHTML = "<br>dSx Extension Modules.<br><br>Configure dSx I/O extension modules that are connected down stream on the RS485 port.";
+}
+
+function PingText(x) {
+    document.getElementById('help').innerHTML = "<br>Ping<br><br>Ping to up to two remote hosts.<br><br> Used to to test if a remote system is alive and well.<br><br>";
+}
+
+function CounterText(x) {
+    document.getElementById('help').innerHTML = "<br>Counter/Timers<br><br>Eight Counter/Timers.<br> Used as Counters when the count input is connected to an Input <br><br>Used as Timers when connected to the internal 1Hz clock, T1.<br><br>The 32-bit counter counts up from zero to a maximum of 2,147,483,647.";
+}
+
+function ScheduleText(x) {
+    document.getElementById('help').innerHTML = "<br>Scheduler<br><br>Schedule daily events with 8 schedules, 2 events per schedule and a week day mask.";
+}
+
+function P2PText(x) {
+    document.getElementById('help').innerHTML = "<br>Peer to Peer<br><br>Use inputs on this module to control relays on other dSxxxx modules which can be on your local LAN or across the internet.<br>";
+}
+
+function HostText(x) {
+    document.getElementById('help').innerHTML = "<br>Host Name<br><br>A unique name for the device on your network. Use plain text such as:<br>MYMODULE";
+}
+
+function EasyMailText(x) {
+    document.getElementById('help').innerHTML = "<br>Easy Mail<br><br>Send secure emails in response to selected events.";
+}
+
+function EmailFromAddrText(x) {
+    document.getElementById('help').innerHTML = "<br>Email From Address<br><br>This is a common 'From' address for all eight emails. To help avoid spam filter issues, make it a real address and don't use any of the 'to' addresses.<br><br>This email address is not actually used, as the module does not receive emails.";
+}
+
+function EmailNoText(x) {
+    document.getElementById('help').innerHTML = "<br>Email number<br><br>Select one of eight emails to configure.";
+}
+
+function EmailAddrText(x) {
+    document.getElementById('help').innerHTML = "<br>Recipient Email Adrress<br><br>Enter the email address of the recipient.<br>Max. 50 characters.";
+}
+
+function EmailSubjectText(x) {
+    document.getElementById('help').innerHTML = "<br>Email Subject Header<br><br>Use this to describe the event for the recipient, such as:<br><br>Main Gate Opened.<br><br>The subject line may be up to 150 characters.";
+}
+
+function EmailTriggerText(x) {
+    document.getElementById('help').innerHTML = "<br>Email Trigger<br><br>D1 for Digital input 1 active.<br>R1 for Relay 1 active.<br>D1&D2 for both active.<br>D1|D2 for either active.<br>A1<1234 analog input less than.<br>A1>1234 greater than.<br>(D1&D2)|A3>1234.<br><br>50 characters max.<br>See manual for full documentation";
+}
+
+function RelayText(x) {
+    document.getElementById('help').innerHTML = "<br>Relay Names<br><br>These are the labels on the relay buttons on the aplication page to give each relay a unique and descriptive name. <br><br>Maximum 20 characters.";
+}
+
+function IOText(x) {
+    document.getElementById('help').innerHTML = "<br>I/O Names<br><br>These are the I/O labels on the aplication page to give each I/O a unique and descriptive name. <br><br>Maximum 20 characters.";
+}
+
+function IOType(x) {
+    document.getElementById('help').innerHTML = "<br>I/O Types<br><br>Configure Digital I/O with or without pull-up resistors, or analogue inputs with 4.096v or 5v reference.";
+}
+
+function StatusText(x) {
+    document.getElementById('help').innerHTML = "<br>Status<br><br>Shows the current status of the module.";
+}
+
+function NetworkText(x) {
+    document.getElementById('help').innerHTML = "<br>Network<br><br>Configure network IP address and associated parameters.";
+}
+
+function TCPIPText(x) {
+    document.getElementById('help').innerHTML = "<br>TCP/IP<br><br>Configure the TCP/IP port and command set.";
+}
+
+function AppText(x) {
+    document.getElementById('help').innerHTML = "<br>Application<br><br>Jumps to the application webpage.";
+}
+
+function printDHCPhelp()
+{
+    document.getElementById('help').innerHTML = "<br>Static IP is disabled because DHCP is enabled.<br><br>Uncheck DHCP to allow static IP addresses.";
+}
+
+function SequenceText(x) {
+    document.getElementById('help').innerHTML = "<br>Sequencer<br><br>A 120 step, 12 output sequencer<br><br>Delay in mS, Seconds, Minutes, Hours or Random Seconds.<br><br>Wait for specified time.<br><br>Jump, Call & Return.<br><br>Branch on Relay, Digital Input or Schedule active.";
+}
+
+
+</script>
+
+<script>
+function ajaxUpdate()
+{
+    LedStatus = getValue('FlashWritePending');
+    if(LedStatus>0) document.getElementById('Pend').src = 'RedOn.png';
+    else document.getElementById('Pend').src = 'DarkOff.png';
+}
+</script>
+
+</body>
+</html>
+
