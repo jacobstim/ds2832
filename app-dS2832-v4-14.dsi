@@ -4959,9 +4959,9 @@ endfunction
 
 function waitModbusResponse()
 int32 i
-    for i = 1 to 10
+    for i = 1 to 30
         if RS485.BytesToRead>0 return
-        threadsleep 10                                                  ;wait up to 100mS for intial Modbus response
+        threadsleep 10                                                  ;wait up to 300mS for intial Modbus response
     next
 endfunction
 
