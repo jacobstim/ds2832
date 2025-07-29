@@ -125,7 +125,7 @@ else document.getElementById('mbus').style.display = 'none';
 
 document.getElementById('baud').value = ~System_ModbusBaud~;
 document.getElementById('Parity').value = ~System_ModbusParity~;
-document.getElementById('ModbusTimeout').value = (~System_ModbusTimeout~)*10;
+document.getElementById('ModbusTimeout').value = (~System_ModbusTimeout~);
 document.getElementById('ModbusTimeoutValue').innerText = (~System_ModbusTimeout~)*10;
 
 if(document.getElementById("AsciiChkBox").checked == true) {
