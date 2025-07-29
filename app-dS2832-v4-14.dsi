@@ -2513,7 +2513,7 @@ thread main(const)
 	if initControl != AppVersion Init()		; init module if different from app version
 ;	Init()									; uncomment this line to force init
 	
-    x = system.InhibitUSBLock                  ; NOT RECOMMENDED, uncomment to allow config pages when USB is unplugged. This exposes the config pages makes the system vunerable
+    x = system.InhibitUSBLock                  ; NOT RECOMMENDED, uncomment to allow config pages when USB is unplugged. This exposes the config pages makes the system vulnerable
 
 	if System_RLY_PUR&0x00000001 Rly1 = RelayStore[0]		; restore relay states on power up
 	if System_RLY_PUR&0x00000002 Rly2 = RelayStore[1]
