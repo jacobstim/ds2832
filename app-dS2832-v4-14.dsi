@@ -36,6 +36,7 @@ flstring    System_AD4Name[NAMESIZE]
 flint32     System_ModbusUID
 flint8      System_ModbusBaud
 flint8      System_ModbusParity
+flint32     System_ModbusTimeout
 
 flstring    System_Rly1Name[NAMESIZE]
 flstring    System_Rly1Bool[BOOLSIZE]
@@ -2512,7 +2513,7 @@ thread main(const)
 	if initControl != AppVersion Init()		; init module if different from app version
 ;	Init()									; uncomment this line to force init
 	
-;    x = system.InhibitUSBLock                  ; NOT RECOMMENDED, uncomment to allow config pages when USB is unplugged. This exposes the config pages makes the system vunerable
+    x = system.InhibitUSBLock                  ; NOT RECOMMENDED, uncomment to allow config pages when USB is unplugged. This exposes the config pages makes the system vulnerable
 
 	if System_RLY_PUR&0x00000001 Rly1 = RelayStore[0]		; restore relay states on power up
 	if System_RLY_PUR&0x00000002 Rly2 = RelayStore[1]
@@ -2792,6 +2793,7 @@ function Init()
     System_ModbusUID = 1
     System_ModbusBaud = 1               ; 9600
     System_ModbusParity = 1             ; even
+	System_ModbusTimeout = 10 			; 100ms default (in units of 10ms)
 
     System_Rly1Name = "Relay 1"
     System_Rly2Name = "Relay 2"
@@ -4959,9 +4961,9 @@ endfunction
 
 function waitModbusResponse()
 int32 i
-    for i = 1 to 10
+    for i = 1 to System_ModbusTimeout
         if RS485.BytesToRead>0 return
-        threadsleep 10                                                  ;wait up to 100mS for intial Modbus response
+        threadsleep 10                                                  ;wait up to System_ModbusTimeout*10 ms for intial Modbus response
     next
 endfunction
 

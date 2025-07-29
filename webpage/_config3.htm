@@ -93,6 +93,13 @@
                             <option value='2'>Odd</option>
                         </select>
                     </div>
+                    <div>
+                      <div class="item-line">Modbus Slave Timeout (ms)</div>
+                      <input style = "margin-top:20px" type="range" id="ModbusTimeout" min="1" max="300" step="1"
+                             oninput="document.getElementById('ModbusTimeoutValue').innerText = (this.value * 10)"
+                             onchange="newAJAXCommand('dscript.cgi?System_ModbusTimeout=' + (this.value));" />
+                      <span id="ModbusTimeoutValue">100</span> ms
+                    </div>					
                 </div>
             </div>
         </div>
@@ -115,8 +122,11 @@ if(document.getElementById("ModBusChkBox").checked == true) {
     document.getElementById('SystemPINnumber').disabled = true;
 }
 else document.getElementById('mbus').style.display = 'none';
+
 document.getElementById('baud').value = ~System_ModbusBaud~;
 document.getElementById('Parity').value = ~System_ModbusParity~;
+document.getElementById('ModbusTimeout').value = (~System_ModbusTimeout~);
+document.getElementById('ModbusTimeoutValue').innerText = (~System_ModbusTimeout~)*10;
 
 if(document.getElementById("AsciiChkBox").checked == true) {
         document.getElementById('SystemAESkey').disabled = true;
